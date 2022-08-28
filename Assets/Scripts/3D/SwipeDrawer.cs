@@ -5,7 +5,7 @@ using UnityEngine;
 public class SwipeDrawer : MonoBehaviour
 {
     private LineRenderer lineRenderer;
-    private float zOffset = 10;
+    private float zOffset = 10F;
     private void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
@@ -17,7 +17,9 @@ public class SwipeDrawer : MonoBehaviour
         Vector3[] positions = new Vector3[2];
         positions[0] = Camera.main.ScreenToWorldPoint(new Vector3(data.StartPosition.x, data.StartPosition.y, zOffset));
         positions[1] = Camera.main.ScreenToWorldPoint(new Vector3(data.EndPosition.x, data.EndPosition.y, zOffset));
+        lineRenderer.transform.eulerAngles = new Vector3(80F, 0F, 0F);
         lineRenderer.positionCount = 2;
         lineRenderer.SetPositions(positions);
+        lineRenderer.gameObject.tag = "Swipe";
     }
 }
