@@ -27,6 +27,7 @@ public class FlowerSound : MonoBehaviour
             {
                 _audio.pitch = 1.2f;
             }
+            ground.GetComponent<SingleLand>().plantedOn();
         }
     }
 
