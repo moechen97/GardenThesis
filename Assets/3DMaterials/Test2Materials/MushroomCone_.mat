@@ -131,9 +131,9 @@ Material:
     - _GlossyReflections: 0
     - _GradientAngle: 0
     - _GradientCenterX: 0
-    - _GradientCenterY: 0
+    - _GradientCenterY: 0.06
     - _GradientEnabled: 1
-    - _GradientSize: 0.24
+    - _GradientSize: 0.39
     - _LightContribution: 0
     - _LightFalloffSize: 0
     - _LightmapDirectionPitch: 0
@@ -169,13 +169,13 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.7267253, g: 0.51063544, b: 0.8018868, a: 1}
+    - _BaseColor: {r: 0.7169812, g: 0.251313, b: 0.1792453, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColorDim: {r: 0.02669989, g: 0.3773585, b: 0.33158115, a: 1}
     - _ColorDimCurve: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
     - _ColorDimExtra: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
     - _ColorDimSteps: {r: 0.7267253, g: 0.51063544, b: 0.8018868, a: 1}
-    - _ColorGradient: {r: 0, g: 0.36609823, b: 0.4433962, a: 1}
+    - _ColorGradient: {r: 0.0074759745, g: 0.2264151, b: 0.20697258, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FlatRimColor: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
     - _FlatSpecularColor: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
