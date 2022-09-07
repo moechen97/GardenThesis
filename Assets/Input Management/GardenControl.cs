@@ -37,7 +37,7 @@ public partial class @GardenControl : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Drag"",
+                    ""name"": ""MouseMiddlePress"",
                     ""type"": ""Value"",
                     ""id"": ""4432f258-b66d-4ba9-82bd-30c49d201a0b"",
                     ""expectedControlType"": ""Vector2"",
@@ -55,13 +55,13 @@ public partial class @GardenControl : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Rotation"",
-                    ""type"": ""PassThrough"",
+                    ""name"": ""FingerAndMouseDrag"",
+                    ""type"": ""Value"",
                     ""id"": ""09597d47-7deb-449c-ad01-42a79b60400f"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""FirstFingerPosition"",
@@ -82,22 +82,31 @@ public partial class @GardenControl : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""SecondaryTouchContact"",
-                    ""type"": ""Button"",
-                    ""id"": ""05657cb6-cb26-4b07-b31b-220720e00c6e"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""FirstTouchContact"",
-                    ""type"": ""Button"",
-                    ""id"": ""27f8f9f6-6569-425e-9d69-8e5041bbcb8c"",
-                    ""expectedControlType"": ""Button"",
+                    ""name"": ""ScrollZoom"",
+                    ""type"": ""Value"",
+                    ""id"": ""fcb9d63c-81c8-400c-9a00-fa7ea927205e"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""FirstTouchInformation"",
+                    ""type"": ""Value"",
+                    ""id"": ""0a0f9ca8-82d9-4ea9-956b-e73105993b9a"",
+                    ""expectedControlType"": ""Touch"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SecondTouchInformation"",
+                    ""type"": ""Value"",
+                    ""id"": ""1f38400a-daa1-4e68-9eab-043783b75ae3"",
+                    ""expectedControlType"": ""Touch"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -127,10 +136,10 @@ public partial class @GardenControl : IInputActionCollection2, IDisposable
                     ""name"": ""MouseDrag"",
                     ""id"": ""09bee3a9-2e0b-4d0f-8d06-5f41fd870e9b"",
                     ""path"": ""OneModifier"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Drag"",
+                    ""action"": ""MouseMiddlePress"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -141,7 +150,7 @@ public partial class @GardenControl : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Drag"",
+                    ""action"": ""MouseMiddlePress"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -152,7 +161,7 @@ public partial class @GardenControl : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Drag"",
+                    ""action"": ""MouseMiddlePress"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -179,13 +188,13 @@ public partial class @GardenControl : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""MouseRotation"",
+                    ""name"": ""MouseDrag"",
                     ""id"": ""ed8723b3-4475-4fcd-9e2f-f6906a572a84"",
                     ""path"": ""OneModifier"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Rotation"",
+                    ""action"": ""FingerAndMouseDrag"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -196,7 +205,7 @@ public partial class @GardenControl : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Rotation"",
+                    ""action"": ""FingerAndMouseDrag"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -207,7 +216,40 @@ public partial class @GardenControl : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Rotation"",
+                    ""action"": ""FingerAndMouseDrag"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""FingerDrag"",
+                    ""id"": ""c765716a-6203-4243-a8c2-cc058cbe311d"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FingerAndMouseDrag"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""d903d396-1ddb-4ba0-9038-a40d949f9f16"",
+                    ""path"": ""<Touchscreen>/Press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FingerAndMouseDrag"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""71d0d440-1475-40ea-885a-31ed5a21984a"",
+                    ""path"": ""<Touchscreen>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FingerAndMouseDrag"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -235,23 +277,34 @@ public partial class @GardenControl : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""a3266d1f-8e07-4ad1-b569-5d439c2cd150"",
-                    ""path"": ""<Touchscreen>/touch1/press"",
+                    ""id"": ""86cae1d2-ced5-4af3-bc8a-e52e2b2a3182"",
+                    ""path"": ""<Mouse>/scroll"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""NormalizeVector2"",
                     ""groups"": """",
-                    ""action"": ""SecondaryTouchContact"",
+                    ""action"": ""ScrollZoom"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""4e4b9a44-16b7-47db-a54e-df38ba261dae"",
-                    ""path"": ""<Touchscreen>/Press"",
+                    ""id"": ""e3b48bfb-6e55-4612-b6b3-0aa45dc4cf4a"",
+                    ""path"": ""<Touchscreen>/primaryTouch"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""FirstTouchContact"",
+                    ""action"": ""FirstTouchInformation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""55663691-9724-4cf8-a045-4e6395dc748a"",
+                    ""path"": ""<Touchscreen>/touch1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SecondTouchInformation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -263,13 +316,14 @@ public partial class @GardenControl : IInputActionCollection2, IDisposable
         // Plant
         m_Plant = asset.FindActionMap("Plant", throwIfNotFound: true);
         m_Plant_Tap = m_Plant.FindAction("Tap", throwIfNotFound: true);
-        m_Plant_Drag = m_Plant.FindAction("Drag", throwIfNotFound: true);
+        m_Plant_MouseMiddlePress = m_Plant.FindAction("MouseMiddlePress", throwIfNotFound: true);
         m_Plant_Hold = m_Plant.FindAction("Hold", throwIfNotFound: true);
-        m_Plant_Rotation = m_Plant.FindAction("Rotation", throwIfNotFound: true);
+        m_Plant_FingerAndMouseDrag = m_Plant.FindAction("FingerAndMouseDrag", throwIfNotFound: true);
         m_Plant_FirstFingerPosition = m_Plant.FindAction("FirstFingerPosition", throwIfNotFound: true);
         m_Plant_SecondaryFingerPosition = m_Plant.FindAction("SecondaryFingerPosition", throwIfNotFound: true);
-        m_Plant_SecondaryTouchContact = m_Plant.FindAction("SecondaryTouchContact", throwIfNotFound: true);
-        m_Plant_FirstTouchContact = m_Plant.FindAction("FirstTouchContact", throwIfNotFound: true);
+        m_Plant_ScrollZoom = m_Plant.FindAction("ScrollZoom", throwIfNotFound: true);
+        m_Plant_FirstTouchInformation = m_Plant.FindAction("FirstTouchInformation", throwIfNotFound: true);
+        m_Plant_SecondTouchInformation = m_Plant.FindAction("SecondTouchInformation", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -330,25 +384,27 @@ public partial class @GardenControl : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Plant;
     private IPlantActions m_PlantActionsCallbackInterface;
     private readonly InputAction m_Plant_Tap;
-    private readonly InputAction m_Plant_Drag;
+    private readonly InputAction m_Plant_MouseMiddlePress;
     private readonly InputAction m_Plant_Hold;
-    private readonly InputAction m_Plant_Rotation;
+    private readonly InputAction m_Plant_FingerAndMouseDrag;
     private readonly InputAction m_Plant_FirstFingerPosition;
     private readonly InputAction m_Plant_SecondaryFingerPosition;
-    private readonly InputAction m_Plant_SecondaryTouchContact;
-    private readonly InputAction m_Plant_FirstTouchContact;
+    private readonly InputAction m_Plant_ScrollZoom;
+    private readonly InputAction m_Plant_FirstTouchInformation;
+    private readonly InputAction m_Plant_SecondTouchInformation;
     public struct PlantActions
     {
         private @GardenControl m_Wrapper;
         public PlantActions(@GardenControl wrapper) { m_Wrapper = wrapper; }
         public InputAction @Tap => m_Wrapper.m_Plant_Tap;
-        public InputAction @Drag => m_Wrapper.m_Plant_Drag;
+        public InputAction @MouseMiddlePress => m_Wrapper.m_Plant_MouseMiddlePress;
         public InputAction @Hold => m_Wrapper.m_Plant_Hold;
-        public InputAction @Rotation => m_Wrapper.m_Plant_Rotation;
+        public InputAction @FingerAndMouseDrag => m_Wrapper.m_Plant_FingerAndMouseDrag;
         public InputAction @FirstFingerPosition => m_Wrapper.m_Plant_FirstFingerPosition;
         public InputAction @SecondaryFingerPosition => m_Wrapper.m_Plant_SecondaryFingerPosition;
-        public InputAction @SecondaryTouchContact => m_Wrapper.m_Plant_SecondaryTouchContact;
-        public InputAction @FirstTouchContact => m_Wrapper.m_Plant_FirstTouchContact;
+        public InputAction @ScrollZoom => m_Wrapper.m_Plant_ScrollZoom;
+        public InputAction @FirstTouchInformation => m_Wrapper.m_Plant_FirstTouchInformation;
+        public InputAction @SecondTouchInformation => m_Wrapper.m_Plant_SecondTouchInformation;
         public InputActionMap Get() { return m_Wrapper.m_Plant; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -361,27 +417,30 @@ public partial class @GardenControl : IInputActionCollection2, IDisposable
                 @Tap.started -= m_Wrapper.m_PlantActionsCallbackInterface.OnTap;
                 @Tap.performed -= m_Wrapper.m_PlantActionsCallbackInterface.OnTap;
                 @Tap.canceled -= m_Wrapper.m_PlantActionsCallbackInterface.OnTap;
-                @Drag.started -= m_Wrapper.m_PlantActionsCallbackInterface.OnDrag;
-                @Drag.performed -= m_Wrapper.m_PlantActionsCallbackInterface.OnDrag;
-                @Drag.canceled -= m_Wrapper.m_PlantActionsCallbackInterface.OnDrag;
+                @MouseMiddlePress.started -= m_Wrapper.m_PlantActionsCallbackInterface.OnMouseMiddlePress;
+                @MouseMiddlePress.performed -= m_Wrapper.m_PlantActionsCallbackInterface.OnMouseMiddlePress;
+                @MouseMiddlePress.canceled -= m_Wrapper.m_PlantActionsCallbackInterface.OnMouseMiddlePress;
                 @Hold.started -= m_Wrapper.m_PlantActionsCallbackInterface.OnHold;
                 @Hold.performed -= m_Wrapper.m_PlantActionsCallbackInterface.OnHold;
                 @Hold.canceled -= m_Wrapper.m_PlantActionsCallbackInterface.OnHold;
-                @Rotation.started -= m_Wrapper.m_PlantActionsCallbackInterface.OnRotation;
-                @Rotation.performed -= m_Wrapper.m_PlantActionsCallbackInterface.OnRotation;
-                @Rotation.canceled -= m_Wrapper.m_PlantActionsCallbackInterface.OnRotation;
+                @FingerAndMouseDrag.started -= m_Wrapper.m_PlantActionsCallbackInterface.OnFingerAndMouseDrag;
+                @FingerAndMouseDrag.performed -= m_Wrapper.m_PlantActionsCallbackInterface.OnFingerAndMouseDrag;
+                @FingerAndMouseDrag.canceled -= m_Wrapper.m_PlantActionsCallbackInterface.OnFingerAndMouseDrag;
                 @FirstFingerPosition.started -= m_Wrapper.m_PlantActionsCallbackInterface.OnFirstFingerPosition;
                 @FirstFingerPosition.performed -= m_Wrapper.m_PlantActionsCallbackInterface.OnFirstFingerPosition;
                 @FirstFingerPosition.canceled -= m_Wrapper.m_PlantActionsCallbackInterface.OnFirstFingerPosition;
                 @SecondaryFingerPosition.started -= m_Wrapper.m_PlantActionsCallbackInterface.OnSecondaryFingerPosition;
                 @SecondaryFingerPosition.performed -= m_Wrapper.m_PlantActionsCallbackInterface.OnSecondaryFingerPosition;
                 @SecondaryFingerPosition.canceled -= m_Wrapper.m_PlantActionsCallbackInterface.OnSecondaryFingerPosition;
-                @SecondaryTouchContact.started -= m_Wrapper.m_PlantActionsCallbackInterface.OnSecondaryTouchContact;
-                @SecondaryTouchContact.performed -= m_Wrapper.m_PlantActionsCallbackInterface.OnSecondaryTouchContact;
-                @SecondaryTouchContact.canceled -= m_Wrapper.m_PlantActionsCallbackInterface.OnSecondaryTouchContact;
-                @FirstTouchContact.started -= m_Wrapper.m_PlantActionsCallbackInterface.OnFirstTouchContact;
-                @FirstTouchContact.performed -= m_Wrapper.m_PlantActionsCallbackInterface.OnFirstTouchContact;
-                @FirstTouchContact.canceled -= m_Wrapper.m_PlantActionsCallbackInterface.OnFirstTouchContact;
+                @ScrollZoom.started -= m_Wrapper.m_PlantActionsCallbackInterface.OnScrollZoom;
+                @ScrollZoom.performed -= m_Wrapper.m_PlantActionsCallbackInterface.OnScrollZoom;
+                @ScrollZoom.canceled -= m_Wrapper.m_PlantActionsCallbackInterface.OnScrollZoom;
+                @FirstTouchInformation.started -= m_Wrapper.m_PlantActionsCallbackInterface.OnFirstTouchInformation;
+                @FirstTouchInformation.performed -= m_Wrapper.m_PlantActionsCallbackInterface.OnFirstTouchInformation;
+                @FirstTouchInformation.canceled -= m_Wrapper.m_PlantActionsCallbackInterface.OnFirstTouchInformation;
+                @SecondTouchInformation.started -= m_Wrapper.m_PlantActionsCallbackInterface.OnSecondTouchInformation;
+                @SecondTouchInformation.performed -= m_Wrapper.m_PlantActionsCallbackInterface.OnSecondTouchInformation;
+                @SecondTouchInformation.canceled -= m_Wrapper.m_PlantActionsCallbackInterface.OnSecondTouchInformation;
             }
             m_Wrapper.m_PlantActionsCallbackInterface = instance;
             if (instance != null)
@@ -389,27 +448,30 @@ public partial class @GardenControl : IInputActionCollection2, IDisposable
                 @Tap.started += instance.OnTap;
                 @Tap.performed += instance.OnTap;
                 @Tap.canceled += instance.OnTap;
-                @Drag.started += instance.OnDrag;
-                @Drag.performed += instance.OnDrag;
-                @Drag.canceled += instance.OnDrag;
+                @MouseMiddlePress.started += instance.OnMouseMiddlePress;
+                @MouseMiddlePress.performed += instance.OnMouseMiddlePress;
+                @MouseMiddlePress.canceled += instance.OnMouseMiddlePress;
                 @Hold.started += instance.OnHold;
                 @Hold.performed += instance.OnHold;
                 @Hold.canceled += instance.OnHold;
-                @Rotation.started += instance.OnRotation;
-                @Rotation.performed += instance.OnRotation;
-                @Rotation.canceled += instance.OnRotation;
+                @FingerAndMouseDrag.started += instance.OnFingerAndMouseDrag;
+                @FingerAndMouseDrag.performed += instance.OnFingerAndMouseDrag;
+                @FingerAndMouseDrag.canceled += instance.OnFingerAndMouseDrag;
                 @FirstFingerPosition.started += instance.OnFirstFingerPosition;
                 @FirstFingerPosition.performed += instance.OnFirstFingerPosition;
                 @FirstFingerPosition.canceled += instance.OnFirstFingerPosition;
                 @SecondaryFingerPosition.started += instance.OnSecondaryFingerPosition;
                 @SecondaryFingerPosition.performed += instance.OnSecondaryFingerPosition;
                 @SecondaryFingerPosition.canceled += instance.OnSecondaryFingerPosition;
-                @SecondaryTouchContact.started += instance.OnSecondaryTouchContact;
-                @SecondaryTouchContact.performed += instance.OnSecondaryTouchContact;
-                @SecondaryTouchContact.canceled += instance.OnSecondaryTouchContact;
-                @FirstTouchContact.started += instance.OnFirstTouchContact;
-                @FirstTouchContact.performed += instance.OnFirstTouchContact;
-                @FirstTouchContact.canceled += instance.OnFirstTouchContact;
+                @ScrollZoom.started += instance.OnScrollZoom;
+                @ScrollZoom.performed += instance.OnScrollZoom;
+                @ScrollZoom.canceled += instance.OnScrollZoom;
+                @FirstTouchInformation.started += instance.OnFirstTouchInformation;
+                @FirstTouchInformation.performed += instance.OnFirstTouchInformation;
+                @FirstTouchInformation.canceled += instance.OnFirstTouchInformation;
+                @SecondTouchInformation.started += instance.OnSecondTouchInformation;
+                @SecondTouchInformation.performed += instance.OnSecondTouchInformation;
+                @SecondTouchInformation.canceled += instance.OnSecondTouchInformation;
             }
         }
     }
@@ -417,12 +479,13 @@ public partial class @GardenControl : IInputActionCollection2, IDisposable
     public interface IPlantActions
     {
         void OnTap(InputAction.CallbackContext context);
-        void OnDrag(InputAction.CallbackContext context);
+        void OnMouseMiddlePress(InputAction.CallbackContext context);
         void OnHold(InputAction.CallbackContext context);
-        void OnRotation(InputAction.CallbackContext context);
+        void OnFingerAndMouseDrag(InputAction.CallbackContext context);
         void OnFirstFingerPosition(InputAction.CallbackContext context);
         void OnSecondaryFingerPosition(InputAction.CallbackContext context);
-        void OnSecondaryTouchContact(InputAction.CallbackContext context);
-        void OnFirstTouchContact(InputAction.CallbackContext context);
+        void OnScrollZoom(InputAction.CallbackContext context);
+        void OnFirstTouchInformation(InputAction.CallbackContext context);
+        void OnSecondTouchInformation(InputAction.CallbackContext context);
     }
 }

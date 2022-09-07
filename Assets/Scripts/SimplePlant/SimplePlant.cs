@@ -77,17 +77,17 @@ public class SimplePlant : MonoBehaviour
     }
     
 
-    public void OnDrag(InputValue value)
+    public void OnMouseMiddlePress(InputValue value)
     {
         //Pan
        
         Vector2 moveVal = value.Get<Vector2>();
         Vector3 forwardDirection = transform.position - Camera.main.transform.position;
-        transform.Translate(new Vector3(moveVal.x,0,0)*moveSpeed*Time.deltaTime,Space.Self);
-        transform.Translate(new Vector3(forwardDirection.x,0,forwardDirection.z).normalized*moveVal.y*moveSpeed*Time.deltaTime,Space.World);
+        transform.Translate(new Vector3(-moveVal.x,0,0)*moveSpeed*Time.deltaTime,Space.Self);
+        transform.Translate(new Vector3(forwardDirection.x,0,forwardDirection.z).normalized*-moveVal.y*moveSpeed*Time.deltaTime,Space.World);
     }
     
-    public void OnFirstFingerPosition(InputValue value)
+    public void OnFirstTouchInformation(InputValue value)
     {
         if (value.Get<TouchState>().phase == TouchPhase.Began)
         {
@@ -101,7 +101,7 @@ public class SimplePlant : MonoBehaviour
         
     }
     
-    public void OnSecondaryFingerPosition(InputValue value)
+    public void OnSecondTouchInformation(InputValue value)
     {
         if (value.Get<TouchState>().phase == TouchPhase.Began)
         {
@@ -151,7 +151,7 @@ public class SimplePlant : MonoBehaviour
         
     }
     
-    public void OnRotation(InputValue value)
+    public void OnFingerAndMouseDrag(InputValue value)
     {
         pointerDelta = value.Get<Vector2>();
         Debug.Log("Rotate");
