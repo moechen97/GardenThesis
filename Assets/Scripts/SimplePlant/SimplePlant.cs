@@ -1,7 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
+using Mono.Cecil.Cil;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
+using TouchPhase = UnityEngine.InputSystem.TouchPhase;
+
 public class SimplePlant : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
@@ -9,6 +14,10 @@ public class SimplePlant : MonoBehaviour
     [SerializeField] private float maxRotationSpeed;
     [SerializeField] private float maxFingerChangeDistance;
     [SerializeField] private float dampTime;
+    [SerializeField] private float fingerZoomSpeed = 4f;
+    [SerializeField] private float cameraZoomMin = -20f;
+    [SerializeField] private float cameraZoomMax = -1f;
+    [SerializeField] private float scrollZoomSpeed = 8f;
     
     private float lerpDuration;
     private float timeElapsed;
@@ -29,24 +38,35 @@ public class SimplePlant : MonoBehaviour
     
     private Vector2 firstFingerPreviousPosition;
     private Vector2 secondFingerPreviousPosition;
+
+    private float previousDistance;
+
+    private CinemachineVirtualCamera _virtualCamera;
+
+    private bool cannotRotatie = false;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        _virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
     }
 
     // Update is called once per frame
     void Update()
     {
         isfirstFingerTapping = pointerDelta != Vector2.zero;
+        
+        cannotRotatie = Input.touchCount > 1;
+
         if (isfirstFingerTapping)
         {
             RotateCamera();
+            Debug.Log("NotSlowDown");
         }
         else
         {
             RotationSpeedSlowDown();
+            Debug.Log("SlowDown");
         }
     }
     
@@ -59,43 +79,84 @@ public class SimplePlant : MonoBehaviour
 
     public void OnDrag(InputValue value)
     {
-        Debug.Log("Drag");
-
+        //Pan
+       
         Vector2 moveVal = value.Get<Vector2>();
         Vector3 forwardDirection = transform.position - Camera.main.transform.position;
         transform.Translate(new Vector3(moveVal.x,0,0)*moveSpeed*Time.deltaTime,Space.Self);
         transform.Translate(new Vector3(forwardDirection.x,0,forwardDirection.z).normalized*moveVal.y*moveSpeed*Time.deltaTime,Space.World);
     }
-
-    public void OnRotation(InputValue value)
-    {
-        pointerDelta = value.Get<Vector2>();
-    }
-
+    
     public void OnFirstFingerPosition(InputValue value)
     {
-        firstFingerPositionDelta = value.Get<Vector2>();
-        //Debug.Log("firstFingerPositionDelta: "+firstFingerPositionDelta);
+        if (value.Get<TouchState>().phase == TouchPhase.Began)
+        {
+            firstFingerPreviousPosition = value.Get<TouchState>().startPosition;
+        }
+        
+        firstFingerCurrentPosition = value.Get<TouchState>().position;
+        firstFingerPositionDelta = firstFingerCurrentPosition-firstFingerPreviousPosition;
+        firstFingerPreviousPosition = firstFingerCurrentPosition;
+
+        
     }
     
     public void OnSecondaryFingerPosition(InputValue value)
     {
-        secondFingerPositionDelta = value.Get<Vector2>();
-        //Debug.Log("secondFingerPositionDelta: "+secondFingerPositionDelta);
+        if (value.Get<TouchState>().phase == TouchPhase.Began)
+        {
+            secondFingerPreviousPosition = value.Get<TouchState>().startPosition;
+            previousDistance = Vector3.Distance(firstFingerPreviousPosition, secondFingerPreviousPosition);
+        }
         
-        if (firstFingerPositionDelta.x * secondFingerPositionDelta.x > 0 &&
+        
+        secondFingerCurrentPosition = value.Get<TouchState>().position;
+        secondFingerPositionDelta = secondFingerCurrentPosition-secondFingerPreviousPosition;
+        secondFingerPreviousPosition = secondFingerCurrentPosition;
+
+
+        //camera move follow finger
+        if (firstFingerPositionDelta.x * secondFingerPositionDelta.x > 0 ||
             firstFingerPositionDelta.y * secondFingerPositionDelta.y > 0)
         {
             Vector3 forwardDirection = transform.position - Camera.main.transform.position;
-            transform.Translate(new Vector3(secondFingerPositionDelta.x,0,0)*moveSpeed*Time.deltaTime,Space.Self);
-            transform.Translate(new Vector3(forwardDirection.x,0,forwardDirection.z).normalized*secondFingerPositionDelta.y*moveSpeed*Time.deltaTime,Space.World);
-            Debug.Log("move");
+            transform.Translate(new Vector3(-secondFingerPositionDelta.x,0,0)*moveSpeed*Time.deltaTime,Space.Self);
+            transform.Translate(new Vector3(forwardDirection.x,0,forwardDirection.z).normalized*-secondFingerPositionDelta.y*moveSpeed*Time.deltaTime,Space.World);
+           
         }
-        else
+        else if(Vector2.Dot(firstFingerPositionDelta,secondFingerPositionDelta)<-0.1f)
         {
+            //camera zoom
+           
+            float distance = Vector3.Distance(firstFingerCurrentPosition, secondFingerCurrentPosition);
             
+            float offset = _virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z;
+            float target = Mathf.Clamp(offset + (distance - previousDistance)/100f,cameraZoomMin,cameraZoomMax);
+            float newZValue = Mathf.Lerp(offset, target, fingerZoomSpeed * Time.deltaTime);
+            _virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset =
+                new Vector3(0, 0, newZValue);
+            
+            previousDistance = distance;
         }
     }
+    
+    public void OnScrollZoom(InputValue value)
+    {
+        float offset = _virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z;
+        float offsetChange = offset + value.Get<Vector2>().y;
+        float target = Mathf.Clamp(offsetChange,cameraZoomMin,cameraZoomMax);
+        float newZValue = Mathf.Lerp(offset, target, scrollZoomSpeed * Time.deltaTime);
+        _virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset =
+            new Vector3(0, 0, newZValue);
+        
+    }
+    
+    public void OnRotation(InputValue value)
+    {
+        pointerDelta = value.Get<Vector2>();
+        Debug.Log("Rotate");
+    }
+    
     
     
     void RotationSpeedSlowDown()
@@ -134,6 +195,9 @@ public class SimplePlant : MonoBehaviour
     
     void RotateCamera()
     {
+        if (cannotRotatie)
+            return;
+        
         if (!isDragging)
         {
             isDragging = true;
@@ -143,7 +207,7 @@ public class SimplePlant : MonoBehaviour
         rotateDirection = pointerDelta;
 
         Vector3 rot = transform.localRotation.eulerAngles + new Vector3(
-            -rotateDirection.y * rotationSpeed * Time.deltaTime, -rotateDirection.x * rotationSpeed * Time.deltaTime, 0f);
+            -rotateDirection.y * rotationSpeed * Time.deltaTime, rotateDirection.x * rotationSpeed * Time.deltaTime, 0f);
         rot.x = ClampAngle(rot.x, 0f, 85f);
         rot.z = 0;
          

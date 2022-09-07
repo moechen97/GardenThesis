@@ -45,7 +45,7 @@
                     "name": "FirstFingerPosition",
                     "type": "Value",
                     "id": "97d0be76-fe16-44b2-890f-e03f8381f5d9",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Touch",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -54,28 +54,19 @@
                     "name": "SecondaryFingerPosition",
                     "type": "Value",
                     "id": "b5838c7e-bb74-4f89-ab91-0fe54256e729",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Touch",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 },
                 {
-                    "name": "SecondaryTouchContact",
-                    "type": "Button",
-                    "id": "05657cb6-cb26-4b07-b31b-220720e00c6e",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "FirstTouchContact",
-                    "type": "Button",
-                    "id": "27f8f9f6-6569-425e-9d69-8e5041bbcb8c",
-                    "expectedControlType": "Button",
-                    "processors": "",
+                    "name": "ScrollZoom",
+                    "type": "Value",
+                    "id": "225784d4-9450-4ec7-b2c8-d66ec8d6f11a",
+                    "expectedControlType": "Vector2",
+                    "processors": "NormalizeVector2",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -190,9 +181,42 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "FingerRotation",
+                    "id": "a258cc3b-254e-4298-a5b4-ee21a94ebc6d",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotation",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "01ade7cc-c3b5-415e-9e85-8426be930b34",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotation",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "c41db627-f463-4a51-b18e-a64d4384c538",
+                    "path": "<Touchscreen>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotation",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "be8903ac-0f78-450b-bea5-f7563fc2351d",
-                    "path": "<Touchscreen>/position",
+                    "path": "<Touchscreen>/primaryTouch",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -203,7 +227,7 @@
                 {
                     "name": "",
                     "id": "454c6ee6-c0a1-43a7-a3af-3cce3d147a72",
-                    "path": "<Touchscreen>/touch1/position",
+                    "path": "<Touchscreen>/touch1",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -213,23 +237,12 @@
                 },
                 {
                     "name": "",
-                    "id": "a3266d1f-8e07-4ad1-b569-5d439c2cd150",
-                    "path": "<Touchscreen>/touch1/press",
+                    "id": "582b1eb5-5cfd-4cf8-8930-7477b1961c09",
+                    "path": "<Mouse>/scroll",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "NormalizeVector2",
                     "groups": "",
-                    "action": "SecondaryTouchContact",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4e4b9a44-16b7-47db-a54e-df38ba261dae",
-                    "path": "<Touchscreen>/Press",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "FirstTouchContact",
+                    "action": "ScrollZoom",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

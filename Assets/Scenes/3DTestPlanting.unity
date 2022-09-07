@@ -195,8 +195,8 @@ MonoBehaviour:
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
-  m_HorizontalDamping: 0.5
-  m_VerticalDamping: 0.5
+  m_HorizontalDamping: 0
+  m_VerticalDamping: 0
   m_ScreenX: 0.5
   m_ScreenY: 0.5
   m_DeadZoneWidth: 0
@@ -480,8 +480,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 137082774}
-  m_LocalRotation: {x: 0.008726558, y: -8.649246e-25, z: -7.548105e-27, w: 0.9999619}
-  m_LocalPosition: {x: -0.03, y: 0.41668618, z: -8.888477}
+  m_LocalRotation: {x: 0.16513363, y: -5.057502e-16, z: -8.4678896e-17, w: 0.9862712}
+  m_LocalPosition: {x: -0.03, y: 3.4994924, z: -8.344618}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -541,7 +541,7 @@ MonoBehaviour:
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
-    m_Time: 2
+    m_Time: 1
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -651,12 +651,12 @@ GameObject:
   - component: {fileID: 240061343}
   - component: {fileID: 240061342}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: DebugSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &240061341
 Transform:
   m_ObjectHideFlags: 0
@@ -797,8 +797,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 251807125}
-  m_LocalRotation: {x: 0.008726558, y: -8.649246e-25, z: -7.548105e-27, w: 0.9999619}
-  m_LocalPosition: {x: -0.03, y: 0.41668618, z: -8.888477}
+  m_LocalRotation: {x: 0.16513363, y: -5.057502e-16, z: -8.4678896e-17, w: 0.9862712}
+  m_LocalPosition: {x: -0.03, y: 3.4994924, z: -8.344618}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2272,7 +2272,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1325417976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2316,9 +2316,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0.5
-  maxRotationSpeed: 2
+  maxRotationSpeed: 15
   maxFingerChangeDistance: 1
-  dampTime: 2
+  dampTime: 10
+  fingerZoomSpeed: 20
+  cameraZoomMin: -20
+  cameraZoomMax: -1
+  scrollZoomSpeed: 18
 --- !u!4 &1325417978
 Transform:
   m_ObjectHideFlags: 0
@@ -2326,7 +2330,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1325417975}
-  m_LocalRotation: {x: 0.008726558, y: 0, z: 0, w: 0.999962}
+  m_LocalRotation: {x: 0.16513363, y: 0, z: 0, w: 0.9862712}
   m_LocalPosition: {x: -0.03, y: 0.24216166, z: 1.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2334,7 +2338,7 @@ Transform:
   - {fileID: 240061341}
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 1, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 19.01, y: 0, z: 0}
 --- !u!1001 &1363108900
 PrefabInstance:
   m_ObjectHideFlags: 0
