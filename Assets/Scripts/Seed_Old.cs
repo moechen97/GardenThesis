@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class Seed : MonoBehaviour
+public class Seed_Old : MonoBehaviour
 {
     [SerializeField] private float minSpeed;
     [SerializeField] private GameObject Flower;

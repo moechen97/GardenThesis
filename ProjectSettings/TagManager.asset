@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Seed
   - Tile
+  - GardenInput
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - Seed
