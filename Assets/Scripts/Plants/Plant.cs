@@ -68,26 +68,27 @@ public class Plant : MonoBehaviour
                 Ray ray = new Ray(midpoint, Vector3.right);
                 RaycastHit hit;
                 Vector3 direction = Vector3.right;
-                if (Physics.Raycast(ray, out hit, 0.1F, LayerMask.GetMask("Plant")))
+                float distance = 0.15F;
+                if (Physics.Raycast(ray, out hit, distance, LayerMask.GetMask("Plant")))
                 {
                     direction = Vector3.left;
                     ray = new Ray(midpoint, direction);
-                    if (Physics.Raycast(ray, out hit, 0.1F, LayerMask.GetMask("Plant")))
+                    if (Physics.Raycast(ray, out hit, distance, LayerMask.GetMask("Plant")))
                     {
                         direction = Vector3.down;
                         ray = new Ray(midpoint, direction);
-                        if (Physics.Raycast(ray, out hit, 0.1F, LayerMask.GetMask("Plant")))
+                        if (Physics.Raycast(ray, out hit, distance, LayerMask.GetMask("Plant")))
                         {
                             direction = Vector3.up;
                             ray = new Ray(midpoint, direction);
-                            if (Physics.Raycast(ray, out hit, 0.1F, LayerMask.GetMask("Plant")))
+                            if (Physics.Raycast(ray, out hit, distance, LayerMask.GetMask("Plant")))
                             {
                                 continue;
                             }
                             else
                             {
                                 GameObject newPlant = GameObject.Instantiate(plantPrefab);
-                                newPlant.transform.position += Vector3.up * 0.1F;
+                                newPlant.transform.position += Vector3.up * distance;
                                 collision.transform.parent.GetComponent<Plant>().isBreeding = false;
                                 break;
                             }
@@ -95,7 +96,7 @@ public class Plant : MonoBehaviour
                         else
                         {
                             GameObject newPlant = GameObject.Instantiate(plantPrefab);
-                            newPlant.transform.position += Vector3.down * 0.1F;
+                            newPlant.transform.position += Vector3.down * distance;
                             collision.transform.parent.GetComponent<Plant>().isBreeding = false;
                             break;
                         }
@@ -103,7 +104,7 @@ public class Plant : MonoBehaviour
                     else
                     {
                         GameObject newPlant = GameObject.Instantiate(plantPrefab);
-                        newPlant.transform.position += Vector3.left * 0.1F;
+                        newPlant.transform.position += Vector3.left * distance;
                         collision.transform.parent.GetComponent<Plant>().isBreeding = false;
                         break;
                     }
@@ -111,7 +112,7 @@ public class Plant : MonoBehaviour
                 else
                 {
                     GameObject newPlant = GameObject.Instantiate(plantPrefab);
-                    newPlant.transform.position += Vector3.right * 0.1F;
+                    newPlant.transform.position += Vector3.right * distance;
                     collision.transform.parent.GetComponent<Plant>().isBreeding = false;
                     break;
                 }
