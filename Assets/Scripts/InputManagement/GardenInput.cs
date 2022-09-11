@@ -50,8 +50,8 @@ public class GardenInput : MonoBehaviour
                 Debug.Log("Hit transform: " + hit.point);
                 Debug.Log("Hit name: " + hit.transform);
                 //Don't let plants plant on top of each other
-                Collider[] collisions = Physics.OverlapSphere(hit.point, 0.05F);//activeSeeds[0].plantRadius);
-                if (hit.transform.gameObject.name.Equals("Ground") && collisions.Length == 1)
+                Collider[] collisions = Physics.OverlapSphere(hit.point, 0.05F, LayerMask.GetMask("Plant"));//activeSeeds[0].plantRadius);
+                if (hit.transform.gameObject.name.Equals("Ground") && collisions.Length == 0)
                 {
                     indicator.color = Color.green;
                 }
@@ -100,8 +100,6 @@ public class GardenInput : MonoBehaviour
         if(Physics.Raycast(ray, out hit, Mathf.Infinity, layer_mask))
         {
             Transform objectHit = hit.transform;
-            Debug.Log("Hit transform: " + hit.point);
-            Debug.Log("Hit name: " + hit.transform);
             //Don't let plants plant on top of each other
             Collider[] collisions = Physics.OverlapSphere(hit.point, 0.05F);
             if (hit.transform.gameObject.name.Equals("Ground") && collisions.Length == 1)

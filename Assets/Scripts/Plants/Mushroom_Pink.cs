@@ -2,37 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mushroom_Pink : MonoBehaviour
+public class Mushroom_Pink : Plant
 {
-    private Animator animator;
-    private bool isGrown;
-    private float aliveTime = 20F;
-    // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        isGrown = false;
-        animator = transform.GetComponentInChildren<Animator>();
-        float speed = Random.Range(0.005F, 0.100F);
-        Debug.Log("SPEED: " + speed);
-        animator.speed = speed;
+        id = "Mushroom_Pink";
+        finishGrowAnimationName = "Fungus_Stem_White_FinishGrow";
+        base.Start();
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        if (!isGrown && animator.GetCurrentAnimatorStateInfo(0).IsName("Fungus_Stem_White_FinishGrow"))
-        {
-            Debug.Log("GROWN");
-            isGrown = true;
-            animator.speed = 1.00F;
-        }
-        else if (isGrown)
-        {
-            aliveTime -= Time.deltaTime;
-            if (aliveTime <= 0.0F)
-            {
-                Destroy(transform.parent.gameObject);
-            }
-        }
+        base.Update();
     }
 }
