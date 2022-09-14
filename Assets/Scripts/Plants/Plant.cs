@@ -60,6 +60,10 @@ public class Plant : MonoBehaviour
             {
                 continue;
             }
+            if(!collision.transform.parent.GetComponent<Plant>().isGrown)
+            {
+                continue;
+            }
             if (isBreeding && collision.transform.parent.GetComponent<Plant>().isBreeding)
             {
                 Vector3 midpoint = (transform.position + collision.transform.position) / 2F;
@@ -70,8 +74,13 @@ public class Plant : MonoBehaviour
                 RaycastHit hit;
                 foreach (Vector3 direction in directionList)
                 {
+                    float distance = 0.17F;
+                    Ray groundRay = new Ray(midpoint + (direction * distance), Vector3.down);
+                    if (!Physics.Raycast(groundRay, out hit, Mathf.Infinity, LayerMask.GetMask("Ground")))
+                    {
+                        continue;
+                    }
                     Ray ray = new Ray(midpoint, direction);
-                    float distance = 0.15F;
                     if (!Physics.Raycast(ray, out hit, distance, LayerMask.GetMask("Plant")))
                     {
                         GameObject newPlant = GameObject.Instantiate(plantPrefab);
