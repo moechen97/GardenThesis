@@ -60,63 +60,40 @@ public class Plant : MonoBehaviour
             {
                 continue;
             }
-            if (collision.transform.parent.GetComponent<Plant>().isBreeding)
+            if (isBreeding && collision.transform.parent.GetComponent<Plant>().isBreeding)
             {
                 Vector3 midpoint = (transform.position + collision.transform.position) / 2F;
-                Debug.Log("BREEDING");
-                
-                Ray ray = new Ray(midpoint, Vector3.right);
+                List<Vector3> directionList = new List<Vector3> { Vector3.left, Vector3.right, new Vector3(0F, 0F, 1F), new Vector3(0F, 0F, -1F),
+                    Vector3.Normalize(new Vector3(1F, 0F, 1F)), Vector3.Normalize(new Vector3(-1F, 0F, 1F)), 
+                    Vector3.Normalize(new Vector3(-1F, 0F, -1F)), Vector3.Normalize(new Vector3(1F, 0F, -1F)) };
+                directionList = Shuffle(directionList);
                 RaycastHit hit;
-                Vector3 direction = Vector3.right;
-                float distance = 0.15F;
-                if (Physics.Raycast(ray, out hit, distance, LayerMask.GetMask("Plant")))
+                foreach (Vector3 direction in directionList)
                 {
-                    direction = Vector3.left;
-                    ray = new Ray(midpoint, direction);
-                    if (Physics.Raycast(ray, out hit, distance, LayerMask.GetMask("Plant")))
-                    {
-                        direction = Vector3.down;
-                        ray = new Ray(midpoint, direction);
-                        if (Physics.Raycast(ray, out hit, distance, LayerMask.GetMask("Plant")))
-                        {
-                            direction = Vector3.up;
-                            ray = new Ray(midpoint, direction);
-                            if (Physics.Raycast(ray, out hit, distance, LayerMask.GetMask("Plant")))
-                            {
-                                continue;
-                            }
-                            else
-                            {
-                                GameObject newPlant = GameObject.Instantiate(plantPrefab);
-                                newPlant.transform.position += Vector3.up * distance;
-                                collision.transform.parent.GetComponent<Plant>().isBreeding = false;
-                                break;
-                            }
-                        }
-                        else
-                        {
-                            GameObject newPlant = GameObject.Instantiate(plantPrefab);
-                            newPlant.transform.position += Vector3.down * distance;
-                            collision.transform.parent.GetComponent<Plant>().isBreeding = false;
-                            break;
-                        }
-                    }
-                    else
+                    Ray ray = new Ray(midpoint, direction);
+                    float distance = 0.15F;
+                    if (!Physics.Raycast(ray, out hit, distance, LayerMask.GetMask("Plant")))
                     {
                         GameObject newPlant = GameObject.Instantiate(plantPrefab);
-                        newPlant.transform.position += Vector3.left * distance;
+                        newPlant.transform.position += direction * distance;
                         collision.transform.parent.GetComponent<Plant>().isBreeding = false;
+                        isBreeding = false;
                         break;
                     }
                 }
-                else
-                {
-                    GameObject newPlant = GameObject.Instantiate(plantPrefab);
-                    newPlant.transform.position += Vector3.right * distance;
-                    collision.transform.parent.GetComponent<Plant>().isBreeding = false;
-                    break;
-                }
             }
         }
+    }
+
+    public List<Vector3> Shuffle(List<Vector3> directionList)
+    {
+        for (int i = 0; i < directionList.Count; i++)
+        {
+            Vector3 temp = directionList[i];
+            int randomIndex = Random.Range(i, directionList.Count);
+            directionList[i] = directionList[randomIndex];
+            directionList[randomIndex] = temp;
+        }
+        return directionList;
     }
 }
