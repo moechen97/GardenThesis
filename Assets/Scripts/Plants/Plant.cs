@@ -22,6 +22,7 @@ public class Plant : MonoBehaviour
         //float speed = Random.Range(0.005F, 0.100F);
         float speed = Random.Range(growthSpeed_lowRange, growthSpeed_highRange);
         animator.speed = speed;
+        
     }
 
     // Update is called once per frame
@@ -38,6 +39,10 @@ public class Plant : MonoBehaviour
         }
         else if (isGrown)
         {
+            if(Mathf.Approximately(aliveTime % 2, 0F))
+            {
+                CheckForBreeding();
+            }
             aliveTime -= Time.deltaTime;
             if (aliveTime <= 0.0F)
             {
@@ -48,6 +53,10 @@ public class Plant : MonoBehaviour
 
     private void CheckForBreeding()
     {
+        if(!isBreeding || !GrowthManager.CanBreedPlant(id))
+        {
+            return;
+        }
         Collider[] hits = Physics.OverlapSphere(transform.position, 0.1F, LayerMask.GetMask("Plant"));
         Debug.Log("HITS COUNT: " + hits.Length);
         foreach (Collider collision in hits)
@@ -64,7 +73,7 @@ public class Plant : MonoBehaviour
             {
                 continue;
             }
-            if (isBreeding && collision.transform.parent.GetComponent<Plant>().isBreeding)
+            if (collision.transform.parent.GetComponent<Plant>().isBreeding)
             {
                 Vector3 midpoint = (transform.position + collision.transform.position) / 2F;
                 List<Vector3> directionList = new List<Vector3> { Vector3.left, Vector3.right, new Vector3(0F, 0F, 1F), new Vector3(0F, 0F, -1F),
@@ -74,7 +83,7 @@ public class Plant : MonoBehaviour
                 RaycastHit hit;
                 foreach (Vector3 direction in directionList)
                 {
-                    float distance = 0.17F;
+                    float distance = 0.25F;
                     Ray groundRay = new Ray(midpoint + (direction * distance), Vector3.down);
                     if (!Physics.Raycast(groundRay, out hit, Mathf.Infinity, LayerMask.GetMask("Ground")))
                     {
@@ -83,11 +92,14 @@ public class Plant : MonoBehaviour
                     Ray ray = new Ray(midpoint, direction);
                     if (!Physics.Raycast(ray, out hit, distance, LayerMask.GetMask("Plant")))
                     {
-                        GameObject newPlant = GameObject.Instantiate(plantPrefab);
-                        newPlant.transform.position += direction * distance;
-                        collision.transform.parent.GetComponent<Plant>().isBreeding = false;
-                        isBreeding = false;
-                        break;
+                        if (GrowthManager.SpawnPlantBreed(id))
+                        {
+                            GameObject newPlant = GameObject.Instantiate(plantPrefab);
+                            newPlant.transform.position += direction * distance;
+                            collision.transform.parent.GetComponent<Plant>().isBreeding = false;
+                            isBreeding = false;
+                            break;
+                        }
                     }
                 }
             }
@@ -104,5 +116,10 @@ public class Plant : MonoBehaviour
             directionList[randomIndex] = temp;
         }
         return directionList;
+    }
+
+    private void OnDestroy()
+    {
+        GrowthManager.DecrementPlant(id);
     }
 }

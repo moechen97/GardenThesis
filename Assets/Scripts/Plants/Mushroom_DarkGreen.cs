@@ -8,6 +8,8 @@ public class Mushroom_DarkGreen : Plant
     {
         id = "Mushroom_DarkGreen";
         finishGrowAnimationName = "Fungus_Stem_Darkgreen_FinishGrow";
+        GrowthManager.num_MushroomDarkGreen++;
+        Debug.Log("Mushroom Dark Green: " + GrowthManager.num_MushroomDarkGreen);
         base.Start();
     }
 
