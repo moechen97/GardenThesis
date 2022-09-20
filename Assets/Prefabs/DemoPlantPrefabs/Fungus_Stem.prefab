@@ -231,8 +231,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 
   plantPrefab: {fileID: 7178698840623816203}
-  growthSpeed_lowRange: 0.05
-  growthSpeed_highRange: 0.1
+  growthSpeed_lowRange: 1
+  growthSpeed_highRange: 1
   aliveTime: 20
   flower: {fileID: 5274058148995799804}
   isBreeding: 0
@@ -257,7 +257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4988131420397518208, guid: 466b008c8ca8949b39794f0a059c1a52, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4988131420397518223, guid: 466b008c8ca8949b39794f0a059c1a52, type: 3}
       propertyPath: m_RootOrder
