@@ -62,10 +62,10 @@ namespace Planting {
             Collider[] hits = Physics.OverlapSphere(transform.position, 1F, LayerMask.GetMask("Plant"));
             foreach (Collider collision in hits)
             {
-                if (collision.transform.parent == transform)
-                {
-                    continue;
-                }
+                //if (collision.transform.parent == transform)
+                //{
+                //    continue;
+                //}
                 Plant otherPlant = collision.transform.parent.GetComponent<Plant>();
                 
                 if (otherPlant.id != id)
