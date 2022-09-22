@@ -10,8 +10,8 @@ namespace Planting {
         private Animator animator;
         private bool isGrown;
         [SerializeField, Tooltip("Prefab for when breeding plant")] GameObject plantPrefab;
-        [SerializeField, Tooltip("Minimum growth speed")] private float growthSpeed_minRange;
-        [SerializeField, Tooltip("Maximum growth speed")] private float growthSpeed_maxRange;
+        [SerializeField, Tooltip("Minimum growth speed")] private float growthSpeed_minRange = 0.05F;
+        [SerializeField, Tooltip("Maximum growth speed")] private float growthSpeed_maxRange = 0.1F;
         [SerializeField, Tooltip("Amount of time the plant stays alive after reaching full growth")] private float aliveTime = 20F;
         [SerializeField, Tooltip("Blooming flower when fully grown")] protected GameObject flower;
         [HideInInspector] public bool isBreeding = false;

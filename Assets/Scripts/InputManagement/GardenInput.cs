@@ -42,7 +42,7 @@ namespace Planting
             if(isOnPlantMenu)
             {
                 Debug.Log("IS ON PLANT MENU");
-                //Destroy(menu);
+                Destroy(menu);
             }
             Debug.Log("Tap!");
             StartCoroutine(WaitForTap());
