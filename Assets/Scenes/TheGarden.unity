@@ -1519,7 +1519,8 @@ MonoBehaviour:
   indicator: {fileID: 2016396509}
   mushroom_darkgreen_UI: {fileID: 1940476358}
   mushroom_pink_UI: {fileID: 249358845}
-  isDragging: 0
+  plantMenu: {fileID: 555271177162985868, guid: 8ec96ba418583d24ea95c5f54df8e2bc, type: 3}
+  isDraggingSeed: 0
 --- !u!4 &1480540003
 Transform:
   m_ObjectHideFlags: 0

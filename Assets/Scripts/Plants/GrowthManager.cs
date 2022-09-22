@@ -2,47 +2,59 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class GrowthManager
+namespace Planting
 {
-    public static int num_MushroomDarkGreen = 0;
-    public static int max_MushroomDarkGreen = 10;
-    public static int num_MushroomPink = 0;
-    public static bool SpawnPlantBreed(string id)
+    public enum PlantType { MushroomDarkGreen, MushroomPink }
+    public static class GrowthManager
     {
-        float random = Random.value;
-        if (id.Equals("Mushroom_DarkGreen"))
+        public static Dictionary<PlantType, int> plantCounter = new Dictionary<PlantType, int>();
+        public static int num_MushroomDarkGreen = 0;
+        public static int max_MushroomDarkGreen = 10;
+        public static int num_MushroomPink = 0;
+
+        public static void AddPlant(List<PlantType> type)
         {
-            if (random < 1.0F - 0.1 * num_MushroomDarkGreen)
+            //keep counter of each plant
+            foreach (PlantType plantType in type)
             {
-                return true;
+                plantCounter[plantType] = 0;
             }
         }
-        return false;
-    }
-
-    public static int GetNumPlants(string id)
-    {
-        if(id.Equals("Mushroom_DarkGreen"))
+        public static bool SpawnPlantBreed(PlantType type)
         {
-            return num_MushroomDarkGreen;
+            float random = Random.value;
+            //if (type == PlantType.MushroomDarkGreen)
+            //{
+                //randomize mushroom spawning validity
+                if(plantCounter[type] < 5)
+                {
+                    return true;
+                }
+                if (random < 1.0F - 0.1 * plantCounter[type])
+                {
+                    return true;
+                }
+            //}
+            return false;
         }
-        return 0;
-    }
 
-    public static bool CanBreedPlant(string id)
-    {
-        if (id.Equals("Mushroom_DarkGreen"))
+        public static int GetNumPlants(PlantType type)
         {
-            return num_MushroomDarkGreen < max_MushroomDarkGreen;
+            return plantCounter[type];
         }
-        return false;
-    }
 
-    public static void DecrementPlant(string id)
-    {
-        if (id.Equals("Mushroom_DarkGreen"))
+        public static bool CanBreedPlant(PlantType type)
         {
-            num_MushroomDarkGreen--;
+            if (type == PlantType.MushroomDarkGreen)
+            {
+                return plantCounter[type] < max_MushroomDarkGreen;
+            }
+            return false;
+        }
+
+        public static void DecrementPlant(PlantType type)
+        {
+            plantCounter[type]--;
         }
     }
 }

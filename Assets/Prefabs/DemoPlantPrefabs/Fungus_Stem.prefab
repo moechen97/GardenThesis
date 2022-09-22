@@ -145,7 +145,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7178698841264737095
 Transform:
   m_ObjectHideFlags: 0
@@ -229,13 +229,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40294a1a13023c8478eb842dc4b7279a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 
   plantPrefab: {fileID: 7178698840623816203}
-  growthSpeed_lowRange: 0.05
-  growthSpeed_highRange: 0.1
+  growthSpeed_minRange: 0.05
+  growthSpeed_maxRange: 0.1
   aliveTime: 20
-  flower: {fileID: 5274058148995799804}
+  flower: {fileID: 7178698841264737092}
   isBreeding: 0
+  growthDistance: 0.2
+  height_minRange: 0.5
+  height_maxRange: 1
 --- !u!1001 &867031886745315196
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -257,7 +259,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4988131420397518208, guid: 466b008c8ca8949b39794f0a059c1a52, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4988131420397518223, guid: 466b008c8ca8949b39794f0a059c1a52, type: 3}
       propertyPath: m_RootOrder
@@ -324,10 +326,5 @@ PrefabInstance:
 --- !u!4 &5274058148995799795 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4988131420397518223, guid: 466b008c8ca8949b39794f0a059c1a52, type: 3}
-  m_PrefabInstance: {fileID: 867031886745315196}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5274058148995799804 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4988131420397518208, guid: 466b008c8ca8949b39794f0a059c1a52, type: 3}
   m_PrefabInstance: {fileID: 867031886745315196}
   m_PrefabAsset: {fileID: 0}

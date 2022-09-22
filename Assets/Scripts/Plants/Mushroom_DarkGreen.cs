@@ -2,21 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mushroom_DarkGreen : Plant
+namespace Planting
 {
-    protected override void Start()
+    public class Mushroom_DarkGreen : Plant
     {
-        id = "Mushroom_DarkGreen";
-        finishGrowAnimationName = "Fungus_Stem_Darkgreen_FinishGrow";
-        GrowthManager.num_MushroomDarkGreen++;
-        Debug.Log("Mushroom Dark Green: " + GrowthManager.num_MushroomDarkGreen);
-        base.Start();
+        [SerializeField, Tooltip("Minimum height")] float height_minRange = 0.5F;
+        [SerializeField, Tooltip("Maximum height")] float height_maxRange = 1.0F;
+        protected override void Start()
+        {
+            transform.parent.localScale = new Vector3(1.0F, Random.Range(height_minRange, height_maxRange), 1.0F);
+            id = PlantType.MushroomDarkGreen;
+            finishGrowAnimationName = "Fungus_Stem_Darkgreen_FinishGrow";
+            base.Start();
+            Debug.Log("Mushroom Dark Green: " + GrowthManager.plantCounter[id]);
+        }
+
+        protected override void Update()
+        {
+            base.Update();
+        }
     }
-
-    protected override void Update()
-    {
-        base.Update();
-    }
-
-
 }

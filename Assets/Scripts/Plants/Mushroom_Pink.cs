@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mushroom_Pink : Plant
+namespace Planting
 {
-    protected override void Start()
+    public class Mushroom_Pink : Plant
     {
-        id = "Mushroom_Pink";
-        finishGrowAnimationName = "Fungus_Stem_White_FinishGrow";
-        base.Start();
-    }
+        protected override void Start()
+        {
+            id = PlantType.MushroomPink;
+            finishGrowAnimationName = "Fungus_Stem_White_FinishGrow";
+            base.Start();
+        }
 
-    protected override void Update()
-    {
-        base.Update();
+        protected override void Update()
+        {
+            base.Update();
+        }
     }
 }
+
