@@ -230,8 +230,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plantPrefab: {fileID: 7178698840623816203}
+<<<<<<< HEAD
   growthSpeed_minRange: 0.05
   growthSpeed_maxRange: 0.1
+=======
+  growthSpeed_lowRange: 1
+  growthSpeed_highRange: 1
+>>>>>>> de19c9e4d57cb0435aaf47b3196e74e6fb7397fc
   aliveTime: 20
   flower: {fileID: 7178698841264737092}
   isBreeding: 0
