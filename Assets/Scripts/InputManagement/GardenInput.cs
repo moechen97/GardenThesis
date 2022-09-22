@@ -16,7 +16,25 @@ namespace Planting
         [SerializeField] Seed mushroom_pink_UI;
         [SerializeField] GameObject plantMenu;
         private bool isOnPlantMenu = false;
-        private GameObject menu;
+        private PlantMenu menu;
+        public struct PlantMenu
+        {
+            public GameObject menuObject;
+            public GameObject plantObject;
+
+            public PlantMenu(GameObject menu, GameObject plant)
+            {
+                menuObject = menu;
+                plantObject = plant;
+                Transform traverse = plant.transform;
+                //traverse to root transform of plant
+                while (traverse != null)
+                {
+                    plantObject = traverse.gameObject;
+                    traverse = traverse.parent;
+                }
+            }
+        }
         [HideInInspector] public bool isDraggingSeed = false;
         void Awake()
         {
@@ -39,13 +57,37 @@ namespace Planting
         }
         private void StartTap(InputAction.CallbackContext context)
         {
-            if(isOnPlantMenu)
+            if (isOnPlantMenu)
             {
                 Debug.Log("IS ON PLANT MENU");
-                Destroy(menu);
+                //Destroy(menu);
+                Vector2 finger = gardenControl.Plant.FirstFingerPosition.ReadValue<Vector2>();
+                Vector3 screenCoordinates = new Vector3(finger.x, finger.y, cameraMain.nearClipPlane);
+                screenCoordinates.z = 0.0F;
+                RaycastHit hit;
+                Ray ray = cameraMain.ScreenPointToRay(screenCoordinates);
+                int layer_mask = LayerMask.GetMask("PlantMenu");
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, layer_mask))
+                {
+                    Debug.Log("GAME OBJECT: " + hit.transform.name);
+                    if(hit.transform.name.Equals("DeletePlant"))
+                    {
+                        Destroy(menu.menuObject);
+                        Destroy(menu.plantObject);
+                        isOnPlantMenu = false;
+                    }
+                }
+                else
+                {
+                    Destroy(menu.menuObject);
+                    isOnPlantMenu = false;
+                }
             }
-            Debug.Log("Tap!");
-            StartCoroutine(WaitForTap());
+
+            if (!isOnPlantMenu)
+            {
+                StartCoroutine(WaitForTap());
+            }
         }
 
         private IEnumerator WaitForTap()
@@ -62,9 +104,12 @@ namespace Planting
                 int layer_mask = LayerMask.GetMask("Plant");
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, layer_mask))
                 {
+                    //If true, create plant menu
                     isOnPlantMenu = true;
-                    menu = GameObject.Instantiate(plantMenu);
-                    menu.transform.position = hit.transform.position + new Vector3(0F, 0.25F, 0F);
+                    GameObject menuObject = GameObject.Instantiate(plantMenu);
+                    //Give y-height boost of 0.25F so the menu doesn't spawn partially inside the ground
+                    menuObject.transform.position = hit.transform.position + new Vector3(0F, 0.25F, 0F);
+                    menu = new PlantMenu(menuObject, hit.transform.gameObject);
                 }
             }
         }
