@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
+using UnityEngine.UI;
 
 namespace Planting
 {
@@ -15,6 +17,9 @@ namespace Planting
         [SerializeField] Seed mushroom_darkgreen_UI;
         [SerializeField] Seed mushroom_pink_UI;
         [SerializeField] GameObject plantMenu;
+        [SerializeField] GameObject plantMenu_Canvas;
+        [SerializeField] EventSystem eventSystem;
+        private GraphicRaycaster graphicRaycaster;
         private bool isOnPlantMenu = false;
         private PlantMenu menu;
         public struct PlantMenu
@@ -38,6 +43,7 @@ namespace Planting
         [HideInInspector] public bool isDraggingSeed = false;
         void Awake()
         {
+            graphicRaycaster = plantMenu_Canvas.GetComponent<GraphicRaycaster>();
             gardenControl = new GardenControl();
             cameraMain = Camera.main;
             activeSeeds = new List<Seed>();
@@ -59,25 +65,24 @@ namespace Planting
         {
             if (isOnPlantMenu)
             {
-                Debug.Log("IS ON PLANT MENU");
-                //Destroy(menu);
                 Vector2 finger = gardenControl.Plant.FirstFingerPosition.ReadValue<Vector2>();
                 Vector3 screenCoordinates = new Vector3(finger.x, finger.y, cameraMain.nearClipPlane);
                 screenCoordinates.z = 0.0F;
-                RaycastHit hit;
-                Ray ray = cameraMain.ScreenPointToRay(screenCoordinates);
-                int layer_mask = LayerMask.GetMask("PlantMenu");
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity, layer_mask))
+                RaycastHit2D hit;
+                PointerEventData pointerEventData = new PointerEventData(eventSystem);
+                pointerEventData.position = screenCoordinates;
+                List<RaycastResult> results = new List<RaycastResult>();
+                graphicRaycaster.Raycast(pointerEventData, results);
+                foreach(RaycastResult result in results)
                 {
-                    Debug.Log("GAME OBJECT: " + hit.transform.name);
-                    if(hit.transform.name.Equals("DeletePlant"))
+                    if(result.gameObject.name.Equals("DeletePlant"))
                     {
                         Destroy(menu.menuObject);
                         Destroy(menu.plantObject);
                         isOnPlantMenu = false;
                     }
                 }
-                else
+                if(isOnPlantMenu)
                 {
                     Destroy(menu.menuObject);
                     isOnPlantMenu = false;
@@ -108,7 +113,8 @@ namespace Planting
                     isOnPlantMenu = true;
                     GameObject menuObject = GameObject.Instantiate(plantMenu);
                     //Give y-height boost of 0.25F so the menu doesn't spawn partially inside the ground
-                    menuObject.transform.position = hit.transform.position + new Vector3(0F, 0.25F, 0F);
+                    menuObject.transform.parent = plantMenu_Canvas.transform;
+                    menuObject.transform.position = screenCoordinates;
                     menu = new PlantMenu(menuObject, hit.transform.gameObject);
                 }
             }
