@@ -22,6 +22,7 @@ namespace Planting
         private GraphicRaycaster graphicRaycaster;
         private bool isOnPlantMenu = false;
         private PlantMenu menu;
+        [HideInInspector] public Seed currSeed;
         public struct PlantMenu
         {
             public GameObject menuObject;
@@ -131,33 +132,36 @@ namespace Planting
                 Vector3 screenCoordinates = new Vector3(finger.x, finger.y, cameraMain.nearClipPlane);
                 screenCoordinates.z = 0.0F;
                 indicator.transform.position = screenCoordinates;
-                RaycastHit hit;
-                Ray ray = cameraMain.ScreenPointToRay(screenCoordinates);
-                int layer_mask = LayerMask.GetMask("Ground");
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity, layer_mask))
+                if (ResourceBar.GetResourcesUsed() + GrowthManager.resourceDict[currSeed.plantType] > 1.0F)
                 {
-                    Transform objectHit = hit.transform;
-                    //Debug.Log("Hit transform: " + hit.point);
-                    //Debug.Log("Hit name: " + hit.transform);
-                    //Don't let plants plant on top of each other
-                    Collider[] collisions = Physics.OverlapSphere(hit.point, 0.05F, LayerMask.GetMask("Plant"));//activeSeeds[0].plantRadius);
-                    if (hit.transform.gameObject.name.Equals("Ground") && collisions.Length == 0)
+                    indicator.color = Color.red;
+                }
+                else
+                {
+                    RaycastHit hit;
+                    Ray ray = cameraMain.ScreenPointToRay(screenCoordinates);
+                    int layer_mask = LayerMask.GetMask("Ground");
+                    if (Physics.Raycast(ray, out hit, Mathf.Infinity, layer_mask))
                     {
-                        indicator.color = Color.green;
+                        Transform objectHit = hit.transform;
+                        //Debug.Log("Hit transform: " + hit.point);
+                        //Debug.Log("Hit name: " + hit.transform);
+                        //Don't let plants plant on top of each other
+                        Collider[] collisions = Physics.OverlapSphere(hit.point, 0.05F, LayerMask.GetMask("Plant"));//activeSeeds[0].plantRadius);
+                        if (hit.transform.gameObject.name.Equals("Ground") && collisions.Length == 0)
+                        {
+                            indicator.color = Color.green;
+                        }
+                        else
+                        {
+                            indicator.color = Color.red;
+                        }
                     }
                     else
                     {
                         indicator.color = Color.red;
                     }
                 }
-                else
-                {
-                    indicator.color = Color.red;
-                }
-            }
-            if(ResourceBar.GetResourcesUsed() >= 1.0F)
-            {
-                indicator.color = Color.red;
             }
         }
 

@@ -39,6 +39,7 @@ namespace Planting
         public void OnDrag(PointerEventData eventData)
         {
             gardenInput.isDraggingSeed = true;
+            gardenInput.currSeed = this;
             isDragging = true;
             // Convert the mouse position in screen coordinates to world coordinates with respect to the plane of the given RectTransform. Used to move the gameobject right under the mouse while dragging.
             //if (RectTransformUtility.ScreenPointToWorldPointInRectangle(draggingObjectRectTransform, eventData.position, eventData.pressEventCamera, out var globalMousePosition)) {
