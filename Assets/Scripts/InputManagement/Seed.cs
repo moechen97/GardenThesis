@@ -13,6 +13,7 @@ namespace Planting
     [RequireComponent(typeof(RectTransform))]
     public class Seed : MonoBehaviour, IDragHandler
     {
+        [SerializeField] public PlantType plantType;
         [SerializeField, Tooltip("Approximately the time it will take to reach the target. A smaller value will reach the target faster.")]
         private float dampingSpeed = .05f;
 
@@ -27,7 +28,6 @@ namespace Planting
         private void Awake()
         {
             startPos = transform.localPosition;
-            Debug.Log("START POS: " + startPos);
             draggingObjectRectTransform = transform as RectTransform;
             gardenInput = GameObject.FindGameObjectWithTag("GardenInput").GetComponent<GardenInput>();
         }

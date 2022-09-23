@@ -8,6 +8,7 @@ namespace Planting
     public static class GrowthManager
     {
         public static Dictionary<PlantType, int> plantCounter = new Dictionary<PlantType, int>();
+        public static Dictionary<PlantType, float> resourceDict = new Dictionary<PlantType, float>() { { PlantType.MushroomDarkGreen, 0.1F } };
         public static int num_MushroomDarkGreen = 0;
         public static int max_MushroomDarkGreen = 10;
         public static int num_MushroomPink = 0;
@@ -22,6 +23,10 @@ namespace Planting
         }
         public static bool SpawnPlantBreed(PlantType type)
         {
+            if(ResourceBar.GetResourcesUsed() + resourceDict[type] > 1.0F)
+            {
+                return false;
+            }
             float random = Random.value;
             //if (type == PlantType.MushroomDarkGreen)
             //{

@@ -26,6 +26,7 @@ namespace Planting {
             animator.speed = speed;
             //Notify growth manager of new plant
             GrowthManager.plantCounter[id]++;
+            ResourceBar.IncrementProgress(GrowthManager.resourceDict[id]);
             flower.SetActive(false);
         }
 
@@ -41,10 +42,7 @@ namespace Planting {
             }
             else if (isGrown)
             {
-                if (Mathf.Approximately(aliveTime % 2, 0F))
-                {
-                    CheckForBreeding();
-                }
+                CheckForBreeding();
                 aliveTime -= Time.deltaTime;
                 if (aliveTime <= 0.0F)
                 {
@@ -55,6 +53,10 @@ namespace Planting {
 
         private void CheckForBreeding()
         {
+            if(ResourceBar.GetResourcesUsed() + GrowthManager.resourceDict[id] > 1.0F)
+            {
+                return;
+            }
             if (!isBreeding || !GrowthManager.CanBreedPlant(id))
             {
                 return;
@@ -134,6 +136,7 @@ namespace Planting {
         {
             //Notify growth manager that plant died
             GrowthManager.DecrementPlant(id);
+            ResourceBar.DecrementProgress(GrowthManager.resourceDict[id]);
         }
     }
 }

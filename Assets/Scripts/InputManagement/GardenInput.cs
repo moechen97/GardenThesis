@@ -155,6 +155,10 @@ namespace Planting
                     indicator.color = Color.red;
                 }
             }
+            if(ResourceBar.GetResourcesUsed() >= 1.0F)
+            {
+                indicator.color = Color.red;
+            }
         }
 
         private void StartDrag(InputAction.CallbackContext context)
@@ -171,7 +175,7 @@ namespace Planting
                 {
                     if (dragPlant.isDragging)
                     {
-                        AttemptPlant(dragPlant);
+                        AttemptPlant(dragPlant, dragPlant.plantType);
                         break;
                     }
                 }
@@ -180,8 +184,12 @@ namespace Planting
             indicator.gameObject.SetActive(false);
         }
 
-        private bool AttemptPlant(Seed plant)
+        private bool AttemptPlant(Seed plant, PlantType type)
         {
+            if (ResourceBar.GetResourcesUsed() + GrowthManager.resourceDict[type] > 1.0F)
+            {
+                return false;
+            }
             bool success = false;
             Vector2 finger = gardenControl.Plant.FirstFingerPosition.ReadValue<Vector2>();
             Vector3 screenCoordinates = new Vector3(finger.x, finger.y, cameraMain.nearClipPlane);
