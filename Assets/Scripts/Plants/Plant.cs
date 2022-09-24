@@ -101,7 +101,7 @@ namespace Planting {
                         Ray ray = new Ray(midpoint, direction);
                         if (!Physics.Raycast(ray, out hit, growthDistance, LayerMask.GetMask("Plant")))
                         {
-                            if (GrowthManager.SpawnPlantBreed(id))
+                            if (GrowthManager.CanSpawnPlantBreed(id))
                             {
                                 Breed(otherPlant, direction, growthDistance);
                                 break;

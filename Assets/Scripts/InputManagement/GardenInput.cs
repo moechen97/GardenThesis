@@ -13,7 +13,7 @@ namespace Planting
         private GardenControl gardenControl;
         private Camera cameraMain;
         private List<Seed> activeSeeds;
-        [SerializeField] UnityEngine.UI.Image indicator;
+        [SerializeField] Image indicator;
         [SerializeField] Seed mushroom_darkgreen_UI;
         [SerializeField] Seed mushroom_pink_UI;
         [SerializeField] GameObject plantMenu;
@@ -81,6 +81,7 @@ namespace Planting
                         Destroy(menu.menuObject);
                         Destroy(menu.plantObject);
                         isOnPlantMenu = false;
+                        return;
                     }
                 }
                 if(isOnPlantMenu)

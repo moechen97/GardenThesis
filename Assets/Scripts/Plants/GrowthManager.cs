@@ -22,7 +22,7 @@ namespace Planting
                 plantCounter[plantType] = 0;
             }
         }
-        public static bool SpawnPlantBreed(PlantType type)
+        public static bool CanSpawnPlantBreed(PlantType type)
         {
             if(ResourceBar.GetResourcesUsed() + resourceDict[type] > 1.0F)
             {
