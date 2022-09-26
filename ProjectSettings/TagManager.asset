@@ -8,6 +8,7 @@ TagManager:
   - Tile
   - GardenInput
   - PlantCollider
+  - GrowthManager
   layers:
   - Default
   - TransparentFX

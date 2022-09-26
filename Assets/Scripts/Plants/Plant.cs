@@ -23,10 +23,10 @@ namespace Planting {
             animator = transform.GetComponentInChildren<Animator>();
             //float speed = Random.Range(0.005F, 0.100F);
             float speed = Random.Range(growthSpeed_minRange, growthSpeed_maxRange);
-            animator.speed = speed;
+            animator.speed = speed * GameObject.FindGameObjectWithTag("GrowthManager").GetComponent<GrowthManager>().growthFactor;
             //Notify growth manager of new plant
-            GrowthManager.plantCounter[id]++;
-            ResourceBar.IncrementProgress(GrowthManager.resourceDict[id]);
+            PlantManager.plantCounter[id]++;
+            ResourceBar.IncrementProgress(PlantManager.resourceDict[id]);
             flower.SetActive(false);
         }
 
@@ -41,8 +41,7 @@ namespace Planting {
                 flower.SetActive(true);
             }
             else if (isGrown)
-            {
-                CheckForBreeding();
+            {            
                 aliveTime -= Time.deltaTime;
                 if (aliveTime <= 0.0F)
                 {
@@ -51,17 +50,29 @@ namespace Planting {
             }
         }
 
+        private void FixedUpdate()
+        {
+            if (isGrown && isBreeding)
+            {
+                if (Random.Range(0, (int)(1F / Time.deltaTime) * 5) == 0)
+                {
+                    CheckForBreeding();
+                }
+            }
+        }
+
         private void CheckForBreeding()
         {
-            if(ResourceBar.GetResourcesUsed() + GrowthManager.resourceDict[id] > 1.0F)
+            if(ResourceBar.GetResourcesUsed() + PlantManager.resourceDict[id] > 1.0F)
             {
                 return;
             }
-            if (!isBreeding || !GrowthManager.CanBreedPlant(id))
+            if (!isBreeding || !PlantManager.CanBreedPlant(id))
             {
                 return;
             }
             Collider[] hits = Physics.OverlapSphere(transform.position, 1F, LayerMask.GetMask("Plant"));
+            Debug.Log("COLLISION SIZE: " + hits.Length);
             foreach (Collider collision in hits)
             {
                 //if (collision.transform.parent == transform)
@@ -101,7 +112,7 @@ namespace Planting {
                         Ray ray = new Ray(midpoint, direction);
                         if (!Physics.Raycast(ray, out hit, growthDistance, LayerMask.GetMask("Plant")))
                         {
-                            if (GrowthManager.CanSpawnPlantBreed(id))
+                            if (PlantManager.CanSpawnPlantBreed(id))
                             {
                                 Breed(otherPlant, direction, growthDistance);
                                 break;
@@ -135,8 +146,8 @@ namespace Planting {
         private void OnDestroy()
         {
             //Notify growth manager that plant died
-            GrowthManager.DecrementPlant(id);
-            ResourceBar.DecrementProgress(GrowthManager.resourceDict[id]);
+            PlantManager.DecrementPlant(id);
+            ResourceBar.DecrementProgress(PlantManager.resourceDict[id]);
         }
     }
 }

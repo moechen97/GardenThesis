@@ -50,7 +50,7 @@ namespace Planting
             activeSeeds = new List<Seed>();
             activeSeeds.Add(mushroom_darkgreen_UI);
             activeSeeds.Add(mushroom_pink_UI);
-            GrowthManager.AddPlant(new List<PlantType> { PlantType.MushroomDarkGreen, PlantType.MushroomPink });
+            PlantManager.AddPlant(new List<PlantType> { PlantType.MushroomDarkGreen, PlantType.MushroomPink });
         }
 
         private void Start()
@@ -133,7 +133,7 @@ namespace Planting
                 Vector3 screenCoordinates = new Vector3(finger.x, finger.y, cameraMain.nearClipPlane);
                 screenCoordinates.z = 0.0F;
                 indicator.transform.position = screenCoordinates;
-                if (ResourceBar.GetResourcesUsed() + GrowthManager.resourceDict[currSeed.plantType] > 1.0F)
+                if (ResourceBar.GetResourcesUsed() + PlantManager.resourceDict[currSeed.plantType] > 1.0F)
                 {
                     indicator.color = Color.red;
                 }
@@ -191,7 +191,7 @@ namespace Planting
 
         private bool AttemptPlant(Seed plant, PlantType type)
         {
-            if (ResourceBar.GetResourcesUsed() + GrowthManager.resourceDict[type] > 1.0F)
+            if (ResourceBar.GetResourcesUsed() + PlantManager.resourceDict[type] > 1.0F)
             {
                 return false;
             }

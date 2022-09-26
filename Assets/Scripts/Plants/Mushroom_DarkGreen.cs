@@ -14,7 +14,7 @@ namespace Planting
             id = PlantType.MushroomDarkGreen;
             finishGrowAnimationName = "Fungus_Stem_Darkgreen_FinishGrow";
             base.Start();
-            Debug.Log("Mushroom Dark Green: " + GrowthManager.plantCounter[id]);
+            Debug.Log("Mushroom Dark Green: " + PlantManager.plantCounter[id]);
         }
 
         protected override void Update()
