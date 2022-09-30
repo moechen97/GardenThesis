@@ -1342,7 +1342,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &210732267
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1361,7 +1361,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -51.69987, y: 0}
+  m_AnchoredPosition: {x: -51.69983, y: 0}
   m_SizeDelta: {x: -143.3989, y: 88.223}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &210732268
@@ -1589,7 +1589,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 502.00003, y: 103.04}
+  m_SizeDelta: {x: 550, y: 103.04}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &218345615
 MonoBehaviour:
@@ -1623,7 +1623,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 7
-  m_Spacing: 28.4
+  m_Spacing: 38
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -3936,7 +3936,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 353.6, y: -103.04}
+  m_AnchoredPosition: {x: 392, y: -103.04}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &603208042
@@ -4400,7 +4400,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &648533980
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7601,7 +7601,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 265.2, y: -103.04}
+  m_AnchoredPosition: {x: 294, y: -103.04}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1047861260
@@ -10683,8 +10683,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   indicator: {fileID: 2016396509}
-  mushroom_darkgreen_UI: {fileID: 1940476358}
-  mushroom_pink_UI: {fileID: 249358845}
+  mushroom_darkgreen_UI: {fileID: 1938702468}
+  mushroom_pink_UI: {fileID: 1856188078}
   plantMenu: {fileID: 555271177162985868, guid: 8ec96ba418583d24ea95c5f54df8e2bc, type: 3}
   plantMenu_Canvas: {fileID: 1439167986}
   eventSystem: {fileID: 2092049947}
@@ -11733,7 +11733,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 176.8, y: -103.04}
+  m_AnchoredPosition: {x: 196, y: -103.04}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1677543655
@@ -12604,7 +12604,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 50.5, y: 48, z: 0}
+  m_Size: {x: 59.8, y: 61.1, z: 0}
   m_Center: {x: 0.1958664, y: -0.22780949, z: -0.5000003}
 --- !u!114 &1856188076
 MonoBehaviour:
@@ -13005,7 +13005,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 50.5, y: 50.2, z: 0}
+  m_Size: {x: 58.95, y: 60.1, z: 0}
   m_Center: {x: 0.1958664, y: -0.22780949, z: -0.5000003}
 --- !u!114 &1938702466
 MonoBehaviour:
@@ -13203,7 +13203,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 442, y: -103.04}
+  m_AnchoredPosition: {x: 490, y: -103.04}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1981774236
@@ -13879,7 +13879,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 88.4, y: -103.04}
+  m_AnchoredPosition: {x: 98, y: -103.04}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0, y: 0}
 --- !u!1 &2077926349
