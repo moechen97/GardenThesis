@@ -8,4 +8,6 @@ public class LightingPreset : ScriptableObject
 {
     public Gradient TopColor;
     public Gradient BottomColor;
+    public Gradient LightColor;
+    public Gradient GroundBottomColor;
 }

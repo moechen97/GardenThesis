@@ -118,7 +118,7 @@ Material:
     - _Glossness: 32.42
     - _GlossyReflections: 0
     - _GlowExtent: 0
-    - _GradientHeightTheshold: 0.27
+    - _GradientHeightTheshold: 0.25
     - _GradientSmoothness: 2.3
     - _GradientSmoothnessTheshold: 4.76
     - _HASRIM: 0
@@ -147,11 +147,11 @@ Material:
     - _DarkColor: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GlowColor: {r: 0.585648, g: 1, b: 0.4669811, a: 0}
-    - _GradientBottomColor: {r: 0.31608313, g: 0.20291919, b: 0.4528302, a: 0}
+    - _GradientBottomColor: {r: 0.21154714, g: 0.16260235, b: 0.3962264, a: 0}
     - _HighlightColor: {r: 1, g: 0.8905283, b: 0.7311321, a: 0}
-    - _MainColor: {r: 0.5849056, g: 0.4423579, b: 0.29521182, a: 0}
+    - _MainColor: {r: 0.14782843, g: 0.16275811, b: 0.20754719, a: 0}
     - _RimColor: {r: 1, g: 1, b: 1, a: 0}
-    - _ShadowColor: {r: 0.6886792, g: 0.43204877, b: 0.50869054, a: 0}
+    - _ShadowColor: {r: 0.8207547, g: 0.6775098, b: 0.7730541, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _Specular_Color: {r: 1, g: 0.8915094, b: 0.8915094, a: 0}
     - _WitheredColor: {r: 0.4339623, g: 0.259968, b: 0.259968, a: 0}
