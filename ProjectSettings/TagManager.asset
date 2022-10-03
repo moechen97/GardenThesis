@@ -9,6 +9,7 @@ TagManager:
   - GardenInput
   - PlantCollider
   - GrowthManager
+  - ResourceBar
   layers:
   - Default
   - TransparentFX

@@ -25,8 +25,7 @@ namespace Planting {
             float speed = Random.Range(growthSpeed_minRange, growthSpeed_maxRange);
             animator.speed = speed * GameObject.FindGameObjectWithTag("GrowthManager").GetComponent<GrowthManager>().growthFactor;
             //Notify growth manager of new plant
-            PlantManager.plantCounter[id]++;
-            ResourceBar.IncrementProgress(PlantManager.resourceDict[id]);
+            PlantManager.IncrementPlant(id);          
             flower.SetActive(false);
         }
 
@@ -63,7 +62,7 @@ namespace Planting {
 
         private void CheckForBreeding()
         {
-            if(ResourceBar.GetResourcesUsed() + PlantManager.resourceDict[id] > 1.0F)
+            if(Resources.GetResourcesUsed() + PlantManager.resourceDict[id] > 1.0F)
             {
                 return;
             }
@@ -72,7 +71,6 @@ namespace Planting {
                 return;
             }
             Collider[] hits = Physics.OverlapSphere(transform.position, 1F, LayerMask.GetMask("Plant"));
-            Debug.Log("COLLISION SIZE: " + hits.Length);
             foreach (Collider collision in hits)
             {
                 //if (collision.transform.parent == transform)
@@ -147,7 +145,6 @@ namespace Planting {
         {
             //Notify growth manager that plant died
             PlantManager.DecrementPlant(id);
-            ResourceBar.DecrementProgress(PlantManager.resourceDict[id]);
         }
     }
 }

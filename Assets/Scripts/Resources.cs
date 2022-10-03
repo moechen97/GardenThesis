@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 namespace Planting {
-    public class ResourceBar : MonoBehaviour
+    public class Resources : MonoBehaviour
     {
         public float FillSpeed = 0.25F;
         private static Slider slider;
         private static float resourcesUsed = 0;
         private static bool incrementProgress = true;
         private GameObject fillBar;
+        private static float sliderValue;
         // Start is called before the first frame update
         void Start()
         {
-            slider = GetComponent<Slider>();
+            slider = GameObject.FindGameObjectWithTag("ResourceBar").GetComponent<Slider>();
             slider.value = 0.0F;
+            sliderValue = 0.0F;
             fillBar = slider.fillRect.transform.gameObject;
             fillBar.SetActive(false);
         }
@@ -22,19 +24,29 @@ namespace Planting {
         // Update is called once per frame
         void Update()
         {
-            if (incrementProgress && slider.value < resourcesUsed)
+            if (sliderValue < resourcesUsed)
             {
-                slider.value += FillSpeed * Time.deltaTime;
+                sliderValue += FillSpeed * Time.deltaTime;
             }
-            else if (!incrementProgress && slider.value > resourcesUsed)
+            else if (sliderValue > resourcesUsed)
             {
-                slider.value -= FillSpeed * Time.deltaTime;
+                sliderValue -= FillSpeed * Time.deltaTime;
             }
-            if (Mathf.Approximately(slider.value, resourcesUsed))
+            if (Mathf.Approximately(sliderValue, resourcesUsed))
             {
-                slider.value = resourcesUsed;
+                sliderValue = resourcesUsed;
             }
 
+            slider.value = sliderValue;
+
+            if (!slider.gameObject.activeSelf)
+            {
+                return;
+            }
+
+            Debug.Log("RESOURCES USED: " + resourcesUsed);
+
+            
             if(resourcesUsed == 0.0F)
             {
                 fillBar.SetActive(false);
@@ -47,16 +59,15 @@ namespace Planting {
 
         public static void IncrementProgress(float newProgress)
         {
-            resourcesUsed = Mathf.Round((slider.value + newProgress) * 100.0F) * 0.01F;
+            resourcesUsed += Mathf.Round((newProgress) * 100.0F) * 0.01F;
             incrementProgress = true;
         }
 
         public static void DecrementProgress(float newProgress)
         {
-            resourcesUsed = Mathf.Round((slider.value - newProgress) * 100.0F) * 0.01F;
+            resourcesUsed -= Mathf.Round((newProgress) * 100.0F) * 0.01F;
             incrementProgress = false;
         }
-
         public static float GetResourcesUsed()
         {
             return resourcesUsed;

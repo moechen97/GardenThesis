@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.07888774, g: 0.2699836, b: 0.44972426, a: 1}
+  m_IndirectSpecularColor: {r: 0.07883266, g: 0.26988122, b: 0.4495561, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4536,6 +4536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55af4b01e67bfdb43bf3a7cbf2e98c33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  proceduralSky: {fileID: 1411803758}
   growthFactor: 1
 --- !u!4 &673037378
 Transform:
@@ -5611,7 +5612,7 @@ GameObject:
   - component: {fileID: 838402975}
   m_Layer: 5
   m_Name: Resource Bar
-  m_TagString: Untagged
+  m_TagString: ResourceBar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5678,7 +5679,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 997525758}
   m_HandleRect: {fileID: 0}
@@ -5925,7 +5926,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -5983,7 +5984,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 875453221}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: -0.6532815, y: -0.27059808, z: -0.27059808, w: 0.6532815}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9712,6 +9713,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lightingPreset: {fileID: 11400000, guid: 289512b4994cb4e49b400d9b298f3f2f, type: 2}
+  DirectionLight: {fileID: 875453222}
+  Ground: {fileID: 0}
   TimeOfDay: 0
   timePassSpeed: 1
 --- !u!4 &1411803759

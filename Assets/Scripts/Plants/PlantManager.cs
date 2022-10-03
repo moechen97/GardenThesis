@@ -24,7 +24,7 @@ namespace Planting
         }
         public static bool CanSpawnPlantBreed(PlantType type)
         {
-            if(ResourceBar.GetResourcesUsed() + resourceDict[type] > 1.0F)
+            if(Resources.GetResourcesUsed() + resourceDict[type] > 1.0F)
             {
                 return false;
             }
@@ -58,9 +58,15 @@ namespace Planting
             return false;
         }
 
+        public static void IncrementPlant(PlantType type)
+        {
+            plantCounter[type]++;
+            Resources.IncrementProgress(resourceDict[type]);
+        }
         public static void DecrementPlant(PlantType type)
         {
             plantCounter[type]--;
+            Resources.DecrementProgress(resourceDict[type]);
         }
     }
 }

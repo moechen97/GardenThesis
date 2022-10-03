@@ -133,7 +133,7 @@ namespace Planting
                 Vector3 screenCoordinates = new Vector3(finger.x, finger.y, cameraMain.nearClipPlane);
                 screenCoordinates.z = 0.0F;
                 indicator.transform.position = screenCoordinates;
-                if (ResourceBar.GetResourcesUsed() + PlantManager.resourceDict[currSeed.plantType] > 1.0F)
+                if (Resources.GetResourcesUsed() + PlantManager.resourceDict[currSeed.plantType] > 1.0F)
                 {
                     indicator.color = Color.red;
                 }
@@ -191,7 +191,7 @@ namespace Planting
 
         private bool AttemptPlant(Seed plant, PlantType type)
         {
-            if (ResourceBar.GetResourcesUsed() + PlantManager.resourceDict[type] > 1.0F)
+            if (Resources.GetResourcesUsed() + PlantManager.resourceDict[type] > 1.0F)
             {
                 return false;
             }

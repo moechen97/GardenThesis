@@ -68,4 +68,9 @@ public class ProceduralSky : MonoBehaviour
             }
         }
     }
+
+    public void SetTimePassSpeed(float speed)
+    {
+        timePassSpeed = speed;
+    }
 }
