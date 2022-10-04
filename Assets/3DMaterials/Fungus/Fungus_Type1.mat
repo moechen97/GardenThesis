@@ -46,7 +46,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _GlowMask:
-        m_Texture: {fileID: 2800000, guid: a0de1343c3d194c7c910843b82031114, type: 3}
+        m_Texture: {fileID: 2800000, guid: 63b95ba9a5dcb4480a1718dcb825d38f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -96,15 +96,15 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DissolveExtent: -1
-    - _DissolveNoiseScale: 26.1
+    - _DissolveExtent: -0.16
+    - _DissolveNoiseScale: 18.79
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _Glossness: 36.3
     - _GlossyReflections: 0
-    - _GlowExtent: 0
+    - _GlowExtent: 0.679
     - _GradientHeightTheshold: 0.65
     - _GradientSmoothness: 0.89
     - _GradientSmoothnessTheshold: 5.78
@@ -135,7 +135,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DarkColor: {r: 0.05808899, g: 0.048860796, b: 0.16981131, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GlowColor: {r: 0, g: 0.52963686, b: 0.13864839, a: 0}
+    - _GlowColor: {r: 0, g: 0.9437483, b: 1.6015118, a: 0}
     - _GradientBottomColor: {r: 0.5019608, g: 0.8000001, b: 0.4431373, a: 0}
     - _HighlightColor: {r: 1, g: 0.8905283, b: 0.7311321, a: 0}
     - _MainColor: {r: 0.92549026, g: 0.8078432, b: 0.30588236, a: 1}

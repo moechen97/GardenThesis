@@ -14,6 +14,7 @@ public class ProceduralSky : MonoBehaviour
     //Variables
     [SerializeField,Range(0,24)] private float TimeOfDay;
     [SerializeField] private float timePassSpeed;
+    public static float TimeofDay;
     
 
     void UpdateLighting(float timePercent)
@@ -49,7 +50,9 @@ public class ProceduralSky : MonoBehaviour
         {
             UpdateLighting(TimeOfDay/24f);
         }
-        
+
+        TimeofDay = TimeOfDay;
+
     }
     private void OnValidate()
     {
