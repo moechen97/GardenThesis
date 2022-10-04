@@ -30,7 +30,7 @@ public class ProceduralSky : MonoBehaviour
 
         if (Ground != null)
         {
-            Ground.GetComponent<Renderer>().material.SetColor("_GradientBottomColor",_lightingPreset.GroundBottomColor.Evaluate(timePercent));
+            Ground.GetComponent<Renderer>().sharedMaterial.SetColor("_GradientBottomColor",_lightingPreset.GroundBottomColor.Evaluate(timePercent));
         }
     }
 
