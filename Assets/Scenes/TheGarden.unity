@@ -4548,8 +4548,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55af4b01e67bfdb43bf3a7cbf2e98c33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 1
   proceduralSky: {fileID: 1411803758}
-  growthFactor: 1
+  scrollbar: {fileID: 232151729}
 --- !u!4 &673037378
 Transform:
   m_ObjectHideFlags: 0
