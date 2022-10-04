@@ -13,6 +13,7 @@ namespace Planting
         public static int num_MushroomDarkGreen = 0;
         public static int max_MushroomDarkGreen = 10;
         public static int num_MushroomPink = 0;
+        public static List<Plant> allPlants = new List<Plant>();
 
         public static void AddPlant(List<PlantType> type)
         {
@@ -58,15 +59,25 @@ namespace Planting
             return false;
         }
 
-        public static void IncrementPlant(PlantType type)
+        public static void IncrementPlant(PlantType type, Plant plant)
         {
             plantCounter[type]++;
+            allPlants.Add(plant);
             Resources.IncrementProgress(resourceDict[type]);
         }
-        public static void DecrementPlant(PlantType type)
+        public static void DecrementPlant(PlantType type, Plant plant)
         {
             plantCounter[type]--;
+            allPlants.Remove(plant);
             Resources.DecrementProgress(resourceDict[type]);
+        }
+
+        public static void UpdatePlantsAnimationSpeed(float speedFactor)
+        {
+            foreach(Plant plant in allPlants)
+            {
+                plant.UpdateAnimationSpeed(speedFactor);
+            }
         }
     }
 }

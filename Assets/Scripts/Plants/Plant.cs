@@ -12,6 +12,7 @@ namespace Planting {
         [SerializeField, Tooltip("Prefab for when breeding plant")] GameObject plantPrefab;
         [SerializeField, Tooltip("Minimum growth speed")] private float growthSpeed_minRange = 0.05F;
         [SerializeField, Tooltip("Maximum growth speed")] private float growthSpeed_maxRange = 0.1F;
+        private float speed;
         [SerializeField, Tooltip("Amount of time the plant stays alive after reaching full growth")] private float aliveTime = 20F;
         [SerializeField, Tooltip("Blooming flower when fully grown")] protected GameObject flower;
         [HideInInspector] public bool isBreeding = false;
@@ -22,10 +23,10 @@ namespace Planting {
             isGrown = false;
             animator = transform.GetComponentInChildren<Animator>();
             //float speed = Random.Range(0.005F, 0.100F);
-            float speed = Random.Range(growthSpeed_minRange, growthSpeed_maxRange);
-            animator.speed = speed * GameObject.FindGameObjectWithTag("GrowthManager").GetComponent<GrowthManager>().growthFactor;
+            speed = Random.Range(growthSpeed_minRange, growthSpeed_maxRange);
+            animator.speed = speed * GameObject.FindGameObjectWithTag("GrowthManager").GetComponent<SpeedManager>().speed;
             //Notify growth manager of new plant
-            PlantManager.IncrementPlant(id);          
+            PlantManager.IncrementPlant(id, this);          
             flower.SetActive(false);
         }
 
@@ -144,7 +145,12 @@ namespace Planting {
         private void OnDestroy()
         {
             //Notify growth manager that plant died
-            PlantManager.DecrementPlant(id);
+            PlantManager.DecrementPlant(id, this);
+        }
+
+        public void UpdateAnimationSpeed(float speedFactor)
+        {
+            animator.speed = speed * speedFactor;
         }
     }
 }

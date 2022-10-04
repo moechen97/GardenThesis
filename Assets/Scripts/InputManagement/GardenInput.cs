@@ -23,6 +23,8 @@ namespace Planting
         private bool isOnPlantMenu = false;
         private PlantMenu menu;
         [HideInInspector] public Seed currSeed;
+
+        [SerializeField] GraphicRaycaster UIgraphicRaycaster;
         public struct PlantMenu
         {
             public GameObject menuObject;
@@ -120,6 +122,25 @@ namespace Planting
                     menu = new PlantMenu(menuObject, hit.transform.gameObject);
                 }
             }
+            //Check for taps on UI seeds
+            //Vector2 fingerPos = gardenControl.Plant.FirstFingerPosition.ReadValue<Vector2>();
+            //Vector3 screenCoordinatesUI = new Vector3(fingerPos.x, fingerPos.y, cameraMain.nearClipPlane);
+            //screenCoordinatesUI.z = 0.0F;
+            //RaycastHit2D hits;
+            //PointerEventData pointerEventData = new PointerEventData(eventSystem);
+            //pointerEventData.position = screenCoordinatesUI;
+            //List<RaycastResult> results = new List<RaycastResult>();
+            //UIgraphicRaycaster.Raycast(pointerEventData, results);
+            //foreach (RaycastResult result in results)
+            //{
+            //    Debug.Log("RESULT: " + result.gameObject.name);
+            //    if (result.gameObject.name.Equals("MushroomDarkGreen"))
+            //    {
+            //        Debug.Log("MUSHROOM DARK GREEN");
+            //        yield return null;
+            //    }
+            //}
+            
         }
 
         private void Update()

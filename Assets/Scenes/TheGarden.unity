@@ -4042,15 +4042,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1449604729109114373, guid: 36d5a1071723d45cea61d76df59e9596, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1449604729109114373, guid: 36d5a1071723d45cea61d76df59e9596, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1449604729109114373, guid: 36d5a1071723d45cea61d76df59e9596, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1449604729109114373, guid: 36d5a1071723d45cea61d76df59e9596, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -7774,7 +7774,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1112358971
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10704,6 +10704,7 @@ MonoBehaviour:
   plantMenu_Canvas: {fileID: 1439167986}
   eventSystem: {fileID: 2092049947}
   currSeed: {fileID: 0}
+  UIgraphicRaycaster: {fileID: 1200201132}
   isDraggingSeed: 0
 --- !u!4 &1480540003
 Transform:

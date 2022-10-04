@@ -43,9 +43,6 @@ namespace Planting {
             {
                 return;
             }
-
-            Debug.Log("RESOURCES USED: " + resourcesUsed);
-
             
             if(resourcesUsed == 0.0F)
             {
