@@ -4303,9 +4303,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cbc8f0278a1a4945850834a169e19d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  touchPosition: {x: 0, y: 0}
-  rotationY: {x: 0, y: 0, z: 0, w: 0}
-  rotationSpeedModifier: 0.1
 --- !u!1 &644088958
 GameObject:
   m_ObjectHideFlags: 0
@@ -4563,8 +4560,8 @@ GameObject:
   - component: {fileID: 673037378}
   - component: {fileID: 673037377}
   m_Layer: 0
-  m_Name: GrowthManager
-  m_TagString: GrowthManager
+  m_Name: SpeedManager
+  m_TagString: SpeedManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

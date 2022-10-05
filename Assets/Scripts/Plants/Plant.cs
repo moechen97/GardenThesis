@@ -24,7 +24,7 @@ namespace Planting {
             animator = transform.GetComponentInChildren<Animator>();
             //float speed = Random.Range(0.005F, 0.100F);
             speed = Random.Range(growthSpeed_minRange, growthSpeed_maxRange);
-            animator.speed = speed * GameObject.FindGameObjectWithTag("GrowthManager").GetComponent<SpeedManager>().speed;
+            animator.speed = speed * GameObject.FindGameObjectWithTag("SpeedManager").GetComponent<SpeedManager>().speed;
             //Notify growth manager of new plant
             PlantManager.IncrementPlant(id, this);          
             flower.SetActive(false);
