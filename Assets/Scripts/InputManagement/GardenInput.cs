@@ -198,7 +198,7 @@ namespace Planting
                 //cam.transform.Rotate(new Vector3(1, 0, 0), rotationAroundXAxis);
                 cam.transform.Rotate(new Vector3(0, 1, 0), rotationAroundYAxis, Space.World);
                 //cam.transform.eulerAngles += new Vector3(12.312F, -4.502F, -0.004F);
-                cam.transform.Translate(new Vector3(0, 0, -2.76F));
+                cam.transform.Translate(new Vector3(0, 0, -2.758623F));
                 previousRotatePosition = currentRotatePosition;
                 //ground.transform.eulerAngles = ground.transform.eulerAngles + 15 * new Vector3(-fingerPos.y, fingerPos.x, 0F);
             }
@@ -234,7 +234,7 @@ namespace Planting
                     currSeed = PlantType.MushroomPink;
                 }
             }
-            if(!isDraggingSeed)
+            if(!isDraggingSeed && results.Count == 0)
             {
                 rotatingScreen = true;
                 previousRotatePosition = screenCoordinates;
