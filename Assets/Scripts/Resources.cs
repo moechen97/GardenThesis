@@ -7,7 +7,7 @@ namespace Planting {
     {
         public float FillSpeed = 0.25F;
         private static Slider slider;
-        private static float resourcesUsed = 0;
+        public static float resourcesUsed = 0;
         private static bool incrementProgress = true;
         private GameObject fillBar;
         private static float sliderValue;

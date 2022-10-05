@@ -3045,7 +3045,7 @@ GameObject:
   - component: {fileID: 467296374}
   m_Layer: 5
   m_Name: Resource Bar
-  m_TagString: Untagged
+  m_TagString: ResourceBar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
