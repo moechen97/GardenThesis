@@ -10,21 +10,24 @@ namespace Planting
 {
     public class GardenInput : MonoBehaviour
     {
+        private Dictionary<PlantType, GameObject> seeds;
         private GardenControl gardenControl;
-        private Camera cameraMain;
-        private List<Seed> activeSeeds;
+        Camera cameraMain;
+        [SerializeField] GameObject cam;
         [SerializeField] Image indicator;
-        [SerializeField] Seed mushroom_darkgreen_UI;
-        [SerializeField] Seed mushroom_pink_UI;
         [SerializeField] GameObject plantMenu;
         [SerializeField] GameObject plantMenu_Canvas;
         [SerializeField] EventSystem eventSystem;
         private GraphicRaycaster graphicRaycaster;
         private bool isOnPlantMenu = false;
+        private bool rotatingScreen = false;
         private PlantMenu menu;
-        [HideInInspector] public Seed currSeed;
-
+        [HideInInspector] public PlantType currSeed;
+        [HideInInspector] public bool isDraggingSeed = false;
         [SerializeField] GraphicRaycaster UIgraphicRaycaster;
+        private Vector3 previousRotatePosition;
+        private Vector3 currentRotatePosition;
+        [SerializeField] GameObject ground;
         public struct PlantMenu
         {
             public GameObject menuObject;
@@ -43,15 +46,12 @@ namespace Planting
                 }
             }
         }
-        [HideInInspector] public bool isDraggingSeed = false;
         void Awake()
         {
+            seeds = GetComponent<SeedDictionaryScript>().DeserializeDictionary();
             graphicRaycaster = plantMenu_Canvas.GetComponent<GraphicRaycaster>();
             gardenControl = new GardenControl();
             cameraMain = Camera.main;
-            activeSeeds = new List<Seed>();
-            activeSeeds.Add(mushroom_darkgreen_UI);
-            activeSeeds.Add(mushroom_pink_UI);
             PlantManager.AddPlant(new List<PlantType> { PlantType.MushroomDarkGreen, PlantType.MushroomPink });
         }
 
@@ -154,7 +154,7 @@ namespace Planting
                 Vector3 screenCoordinates = new Vector3(finger.x, finger.y, cameraMain.nearClipPlane);
                 screenCoordinates.z = 0.0F;
                 indicator.transform.position = screenCoordinates;
-                if (Resources.GetResourcesUsed() + PlantManager.resourceDict[currSeed.plantType] > 1.0F)
+                if (Resources.GetResourcesUsed() + PlantManager.resourceDict[currSeed] > 1.0F)
                 {
                     indicator.color = Color.red;
                 }
@@ -185,32 +185,75 @@ namespace Planting
                     }
                 }
             }
+            else if(rotatingScreen)
+            {
+                Vector2 fingerPos = gardenControl.Plant.FirstFingerPosition.ReadValue<Vector2>();
+                Vector3 screenCoordinates = new Vector3(fingerPos.x, fingerPos.y, cameraMain.nearClipPlane);
+                screenCoordinates.z = 0.0F;
+                currentRotatePosition = screenCoordinates;
+                Vector3 direction = previousRotatePosition - currentRotatePosition;
+                float rotationAroundYAxis = -direction.x * 2; //camera moves horizontally
+                //float rotationAroundXAxis = direction.y * 2; //camera moves vertically
+                cam.transform.position = ground.transform.position;
+                //cam.transform.Rotate(new Vector3(1, 0, 0), rotationAroundXAxis);
+                cam.transform.Rotate(new Vector3(0, 1, 0), rotationAroundYAxis, Space.World);
+                //cam.transform.eulerAngles += new Vector3(12.312F, -4.502F, -0.004F);
+                cam.transform.Translate(new Vector3(0, 0, -2.76F));
+                previousRotatePosition = currentRotatePosition;
+                //ground.transform.eulerAngles = ground.transform.eulerAngles + 15 * new Vector3(-fingerPos.y, fingerPos.x, 0F);
+            }
         }
 
         private void StartDrag(InputAction.CallbackContext context)
         {
             //Debug.Log("START Drag " + context.ReadValue<float>());
-            //Debug.Log("IS DRAGGING: " + activeSeeds[0].isDragging);
+            //Check for taps on UI seeds
+            StartCoroutine(WaitForDrag());
+        }
+
+        private IEnumerator WaitForDrag()
+        {
+            yield return new WaitForEndOfFrame();
+            Vector2 fingerPos = gardenControl.Plant.FirstFingerPosition.ReadValue<Vector2>();
+            Vector3 screenCoordinates = new Vector3(fingerPos.x, fingerPos.y, cameraMain.nearClipPlane);
+            screenCoordinates.z = 0.0F;
+            PointerEventData pointerEventData = new PointerEventData(eventSystem);
+            pointerEventData.position = screenCoordinates;
+            List<RaycastResult> results = new List<RaycastResult>();
+            UIgraphicRaycaster.Raycast(pointerEventData, results);
+            foreach (RaycastResult result in results)
+            {
+                if (result.gameObject.name.Equals("MushroomDarkGreen"))
+                { 
+                    isDraggingSeed = true;
+                    currSeed = PlantType.MushroomDarkGreen;
+                }
+                else if (result.gameObject.name.Equals("MushroomPink"))
+                {
+                    isDraggingSeed = true;
+                    currSeed = PlantType.MushroomPink;
+                }
+            }
+            if(!isDraggingSeed)
+            {
+                rotatingScreen = true;
+                previousRotatePosition = screenCoordinates;
+            }
+            
         }
         private void EndDrag(InputAction.CallbackContext context)
         {
             //Debug.Log("END DRAG!! " + gardenControl.Plant.FirstFingerPosition.ReadValue<Vector2>());
             if (isDraggingSeed)
             {
-                foreach (Seed dragPlant in activeSeeds)
-                {
-                    if (dragPlant.isDragging)
-                    {
-                        AttemptPlant(dragPlant, dragPlant.plantType);
-                        break;
-                    }
-                }
+                AttemptPlant(currSeed);
             }
             isDraggingSeed = false;
+            rotatingScreen = false;
             indicator.gameObject.SetActive(false);
         }
 
-        private bool AttemptPlant(Seed plant, PlantType type)
+        private bool AttemptPlant(PlantType type)
         {
             if (Resources.GetResourcesUsed() + PlantManager.resourceDict[type] > 1.0F)
             {
@@ -231,12 +274,12 @@ namespace Planting
                 Collider[] collisions = Physics.OverlapSphere(hit.point, 0.05F);
                 if (hit.transform.gameObject.name.Equals("Ground") && collisions.Length == 1)
                 {
-                    GameObject newPlant = GameObject.Instantiate(plant.plant);
+                    GameObject newPlant = GameObject.Instantiate(seeds[currSeed]);
                     newPlant.transform.position = hit.point;
                     success = true;
                 }
             }
-            plant.ResetPosition();
+            //seed.ResetPosition();
             return success;
         }
         private void OnEnable()

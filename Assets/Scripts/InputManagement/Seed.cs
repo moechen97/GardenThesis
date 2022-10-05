@@ -15,7 +15,7 @@ namespace Planting
         [SerializeField] public PlantType plantType;
         private Vector3 startPos;
         [HideInInspector] public bool isDragging;
-        [SerializeField] public float plantRadius;
+        //[SerializeField] public float plantRadius;
         [SerializeField] public GameObject plant;
         private GardenInput gardenInput;
 
@@ -26,8 +26,7 @@ namespace Planting
         }
         public void OnDrag(PointerEventData eventData)
         {
-            gardenInput.isDraggingSeed = true;
-            gardenInput.currSeed = this;
+            //gardenInput.isDraggingSeed = true;
             isDragging = true;
         }
         public void ResetPosition()

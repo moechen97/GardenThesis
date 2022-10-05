@@ -468,6 +468,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 70254273}
   m_CullTransparentMesh: 1
+--- !u!1 &117516811
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 117516812}
+  m_Layer: 0
+  m_Name: Center_Camera_Ground
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &117516812
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117516811}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &119324774
 GameObject:
   m_ObjectHideFlags: 0
@@ -2009,7 +2040,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plantType: 0
   isDragging: 0
-  plantRadius: 0.01
   plant: {fileID: 9033520164648056915, guid: ee86437b885f04b04b59f84c17e0dffe, type: 3}
 --- !u!1 &252856960
 GameObject:
@@ -5766,7 +5796,7 @@ MonoBehaviour:
     m_SensorSize: {x: 1, y: 1}
   m_Transitions:
     m_BlendHint: 0
-    m_InheritPosition: 0
+    m_InheritPosition: 1
     m_OnCameraLive:
       m_PersistentCalls:
         m_Calls: []
@@ -10679,6 +10709,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1480540003}
   - component: {fileID: 1480540002}
+  - component: {fileID: 1480540004}
   m_Layer: 0
   m_Name: GardenInputControl
   m_TagString: GardenInput
@@ -10698,15 +10729,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6edab3de7bc2eb44a97e5d18c5ce3963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 866208683}
   indicator: {fileID: 2016396509}
-  mushroom_darkgreen_UI: {fileID: 1938702468}
-  mushroom_pink_UI: {fileID: 1856188078}
   plantMenu: {fileID: 555271177162985868, guid: 8ec96ba418583d24ea95c5f54df8e2bc, type: 3}
   plantMenu_Canvas: {fileID: 1439167986}
   eventSystem: {fileID: 2092049947}
-  currSeed: {fileID: 0}
-  UIgraphicRaycaster: {fileID: 1200201132}
+  currSeed: 0
   isDraggingSeed: 0
+  UIgraphicRaycaster: {fileID: 1200201132}
+  ground: {fileID: 117516811}
 --- !u!4 &1480540003
 Transform:
   m_ObjectHideFlags: 0
@@ -10715,13 +10746,31 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1480540001}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.023, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1480540004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480540001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f5ae89ed503d1e4f81d2dec4c4d91fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dictionaryData: {fileID: 11400000, guid: 5ceb1491a6c62f8489653107383a3b1e, type: 2}
+  keys: 0000000001000000
+  values:
+  - {fileID: 7178698840623816203, guid: b2c4a4fd7c5a04827bf2fd98e549707e, type: 3}
+  - {fileID: 9033520164648056915, guid: ee86437b885f04b04b59f84c17e0dffe, type: 3}
+  modifyValues: 0
 --- !u!1 &1487688895
 GameObject:
   m_ObjectHideFlags: 0
@@ -12675,7 +12724,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plantType: 0
   isDragging: 0
-  plantRadius: 0.01
   plant: {fileID: 9033520164648056915, guid: ee86437b885f04b04b59f84c17e0dffe, type: 3}
 --- !u!1 &1873275906
 GameObject:
@@ -13076,7 +13124,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plantType: 0
   isDragging: 0
-  plantRadius: 0.01
   plant: {fileID: 7178698840623816203, guid: b2c4a4fd7c5a04827bf2fd98e549707e, type: 3}
 --- !u!1 &1940476353
 GameObject:
@@ -13183,7 +13230,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plantType: 0
   isDragging: 0
-  plantRadius: 0.01
   plant: {fileID: 7178698840623816203, guid: b2c4a4fd7c5a04827bf2fd98e549707e, type: 3}
 --- !u!1 &1981774234
 GameObject:
