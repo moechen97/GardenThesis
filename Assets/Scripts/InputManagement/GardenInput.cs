@@ -192,7 +192,7 @@ namespace Planting
                 screenCoordinates.z = 0.0F;
                 currentRotatePosition = screenCoordinates;
                 Vector3 direction = previousRotatePosition - currentRotatePosition;
-                float rotationAroundYAxis = -direction.x * 2; //camera moves horizontally
+                float rotationAroundYAxis = -direction.x * 1; //camera moves horizontally
                 //float rotationAroundXAxis = direction.y * 2; //camera moves vertically
                 cam.transform.position = ground.transform.position;
                 //cam.transform.Rotate(new Vector3(1, 0, 0), rotationAroundXAxis);
