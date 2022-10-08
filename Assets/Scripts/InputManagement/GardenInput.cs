@@ -57,9 +57,11 @@ namespace Planting
             graphicRaycaster = plantMenu_Canvas.GetComponent<GraphicRaycaster>();
             gardenControl = new GardenControl();
             cameraMain = Camera.main;
-            PlantManager.AddPlant(new List<PlantType> { PlantType.MushroomDarkGreen, PlantType.MushroomPink });
+            foreach(PlantType type in seeds.Keys)
+            {
+                PlantManager.AddPlant(type);
+            }
         }
-
         private void Start()
         {
             gardenControl.Plant.Hold.started += ctx => StartDrag(ctx);
@@ -127,25 +129,6 @@ namespace Planting
                     menu = new PlantMenu(menuObject, hit.transform.gameObject);
                 }
             }
-            //Check for taps on UI seeds
-            //Vector2 fingerPos = gardenControl.Plant.FirstFingerPosition.ReadValue<Vector2>();
-            //Vector3 screenCoordinatesUI = new Vector3(fingerPos.x, fingerPos.y, cameraMain.nearClipPlane);
-            //screenCoordinatesUI.z = 0.0F;
-            //RaycastHit2D hits;
-            //PointerEventData pointerEventData = new PointerEventData(eventSystem);
-            //pointerEventData.position = screenCoordinatesUI;
-            //List<RaycastResult> results = new List<RaycastResult>();
-            //UIgraphicRaycaster.Raycast(pointerEventData, results);
-            //foreach (RaycastResult result in results)
-            //{
-            //    Debug.Log("RESULT: " + result.gameObject.name);
-            //    if (result.gameObject.name.Equals("MushroomDarkGreen"))
-            //    {
-            //        Debug.Log("MUSHROOM DARK GREEN");
-            //        yield return null;
-            //    }
-            //}
-            
         }
 
         private void Update()
@@ -341,7 +324,6 @@ namespace Planting
         private void FingerDown(Finger finger)
         {
             Debug.Log("Finger down");
-           // if()
         }
     }
 }

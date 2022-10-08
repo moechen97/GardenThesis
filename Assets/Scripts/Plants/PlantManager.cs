@@ -15,13 +15,9 @@ namespace Planting
         public static int num_MushroomPink = 0;
         public static List<Plant> allPlants = new List<Plant>();
 
-        public static void AddPlant(List<PlantType> type)
+        public static void AddPlant(PlantType type)
         {
-            //keep counter of each plant
-            foreach (PlantType plantType in type)
-            {
-                plantCounter[plantType] = 0;
-            }
+            plantCounter[type] = 0;
         }
         public static bool CanSpawnPlantBreed(PlantType type)
         {
