@@ -27,7 +27,11 @@ namespace Planting
         [SerializeField] GraphicRaycaster UIgraphicRaycaster;
         private Vector3 previousRotatePosition;
         private Vector3 currentRotatePosition;
+        [SerializeField] GameObject camFocusPoint;
         [SerializeField] GameObject ground;
+        private Vector3 rotateDirection;
+        private float rotateStep;
+        [SerializeField] float rotateSpeed = 1F;
         public struct PlantMenu
         {
             public GameObject menuObject;
@@ -191,19 +195,46 @@ namespace Planting
                 Vector3 screenCoordinates = new Vector3(fingerPos.x, fingerPos.y, cameraMain.nearClipPlane);
                 screenCoordinates.z = 0.0F;
                 currentRotatePosition = screenCoordinates;
-                Vector3 direction = previousRotatePosition - currentRotatePosition;
-                float rotationAroundYAxis = -direction.x * 1; //camera moves horizontally
-                //float rotationAroundXAxis = direction.y * 2; //camera moves vertically
-                cam.transform.position = ground.transform.position;
-                //cam.transform.Rotate(new Vector3(1, 0, 0), rotationAroundXAxis);
-                cam.transform.Rotate(new Vector3(0, 1, 0), rotationAroundYAxis, Space.World);
+                rotateDirection = previousRotatePosition - currentRotatePosition;
+                float rotationAroundYAxis = -rotateDirection.x * rotateSpeed; //camera moves horizontally
+                float rotationAroundXAxis = rotateDirection.y * rotateSpeed; //camera moves vertically
+                //cam.transform.position = ground.transform.position;
+                
+                camFocusPoint.transform.RotateAround(camFocusPoint.transform.position, new Vector3(1, 0, 0), rotationAroundXAxis);
+                camFocusPoint.transform.RotateAround(camFocusPoint.transform.position, new Vector3(0, 1, 0), rotationAroundYAxis);
+                camFocusPoint.transform.eulerAngles = new Vector3(camFocusPoint.transform.eulerAngles.x, camFocusPoint.transform.eulerAngles.y, 0.0F);
+
+                //Fix rotation point
+                FixRotationPoints();
                 //cam.transform.eulerAngles += new Vector3(12.312F, -4.502F, -0.004F);
-                cam.transform.Translate(new Vector3(0, 0, -2.76F));
+                //ground.transform.Translate(new Vector3(0, 0, -2.76F));
                 previousRotatePosition = currentRotatePosition;
                 //ground.transform.eulerAngles = ground.transform.eulerAngles + 15 * new Vector3(-fingerPos.y, fingerPos.x, 0F);
             }
         }
 
+        private void FixRotationPoints()
+        {
+            if (camFocusPoint.transform.localEulerAngles.x < 1F || camFocusPoint.transform.localEulerAngles.x > 350F)
+            {
+                camFocusPoint.transform.eulerAngles = new Vector3(1F, camFocusPoint.transform.eulerAngles.y, camFocusPoint.transform.eulerAngles.z);
+            }
+        }
+        private IEnumerator SpinAfterRotate()
+        {
+            yield return new WaitForEndOfFrame();
+            Debug.Log("SPIN");
+            rotateStep -= Time.deltaTime / 5F;
+            float rotationAroundYAxis = -rotateDirection.x * rotateStep; //camera moves horizontally
+            camFocusPoint.transform.RotateAround(camFocusPoint.transform.position, new Vector3(0, 1, 0), rotationAroundYAxis);
+            camFocusPoint.transform.eulerAngles = new Vector3(camFocusPoint.transform.eulerAngles.x, camFocusPoint.transform.eulerAngles.y, 0.0F);
+            FixRotationPoints();
+            if(rotateStep > 0F)
+            {
+                StartCoroutine(SpinAfterRotate());
+            }
+
+        }
         private void StartDrag(InputAction.CallbackContext context)
         {
             //Debug.Log("START Drag " + context.ReadValue<float>());
@@ -237,6 +268,7 @@ namespace Planting
             if(!isDraggingSeed && results.Count == 0)
             {
                 rotatingScreen = true;
+                rotateStep = rotateSpeed;
                 previousRotatePosition = screenCoordinates;
             }
             
@@ -249,6 +281,10 @@ namespace Planting
                 AttemptPlant(currSeed);
             }
             isDraggingSeed = false;
+            if(rotatingScreen)
+            {
+                StartCoroutine(SpinAfterRotate());
+            }
             rotatingScreen = false;
             indicator.gameObject.SetActive(false);
         }

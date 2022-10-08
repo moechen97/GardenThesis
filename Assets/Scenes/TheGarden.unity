@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.078808896, g: 0.26996017, b: 0.44971907, a: 1}
+  m_IndirectSpecularColor: {r: 0.07883266, g: 0.26988122, b: 0.4495561, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -530,7 +530,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88122235}
-  m_LocalRotation: {x: 0.06416708, y: -1.3152172e-22, z: -6.6174433e-24, w: 0.99793917}
+  m_LocalRotation: {x: 0.064167075, y: 1.0234668e-15, z: 6.580852e-17, w: 0.99793917}
   m_LocalPosition: {x: -0.03, y: 8.828532, z: -57.10506}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -563,7 +563,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 117516811}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0125, y: 0.3, z: 0.1}
+  m_LocalPosition: {x: -0.0125, y: 1.94, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5638,6 +5638,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 808353032}
   m_CullTransparentMesh: 1
+--- !u!1 &817644488 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1949292449668056107, guid: 20c8f07e0e7494131ae7a1ad591b8faa, type: 3}
+  m_PrefabInstance: {fileID: 1963439134}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &818045338
 GameObject:
   m_ObjectHideFlags: 0
@@ -5835,7 +5840,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &866208684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7037,7 +7042,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 954583513}
-  m_LocalRotation: {x: 0.06416708, y: -1.3152172e-22, z: -6.6174433e-24, w: 0.99793917}
+  m_LocalRotation: {x: 0.064167075, y: 1.0234668e-15, z: 6.580852e-17, w: 0.99793917}
   m_LocalPosition: {x: -0.03, y: 8.828532, z: -57.10506}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10805,7 +10810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6edab3de7bc2eb44a97e5d18c5ce3963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 866208683}
+  cam: {fileID: 88122235}
   indicator: {fileID: 2016396509}
   plantMenu: {fileID: 555271177162985868, guid: 8ec96ba418583d24ea95c5f54df8e2bc, type: 3}
   plantMenu_Canvas: {fileID: 1439167986}
@@ -10813,7 +10818,9 @@ MonoBehaviour:
   currSeed: 0
   isDraggingSeed: 0
   UIgraphicRaycaster: {fileID: 1200201132}
-  ground: {fileID: 117516811}
+  camFocusPoint: {fileID: 1730793915}
+  ground: {fileID: 817644488}
+  rotateSpeed: 0.15
 --- !u!4 &1480540003
 Transform:
   m_ObjectHideFlags: 0
@@ -12133,7 +12140,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1730793915}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
@@ -12163,7 +12170,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1730793915}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca2c491cbc07343c1af431ea4b1186a5, type: 3}
   m_Name: 
