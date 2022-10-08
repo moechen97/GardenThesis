@@ -16,7 +16,7 @@ namespace Planting {
         [SerializeField, Tooltip("Amount of time the plant stays alive after reaching full growth")] private float aliveTime = 20F;
         [SerializeField, Tooltip("Blooming flower when fully grown")] protected GameObject flower;
         [HideInInspector] public bool isBreeding = false;
-        [SerializeField, Tooltip("Distance to check/plant for nearby ones of same breed")] private float growthDistance = 0.2F;
+        [SerializeField, Tooltip("Distance to check/plant for nearby ones of same breed")] private float growthDistance = 2F;
         // Start is called before the first frame update
         protected virtual void Start()
         {

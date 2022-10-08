@@ -530,7 +530,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88122235}
-  m_LocalRotation: {x: 0.064167075, y: 1.0234668e-15, z: 6.580852e-17, w: 0.99793917}
+  m_LocalRotation: {x: 0.064167075, y: -1.0234667e-15, z: -6.580851e-17, w: 0.99793917}
   m_LocalPosition: {x: -0.03, y: 8.828532, z: -57.10506}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5638,11 +5638,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 808353032}
   m_CullTransparentMesh: 1
---- !u!1 &817644488 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1949292449668056107, guid: 20c8f07e0e7494131ae7a1ad591b8faa, type: 3}
-  m_PrefabInstance: {fileID: 1963439134}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &818045338
 GameObject:
   m_ObjectHideFlags: 0
@@ -7042,7 +7037,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 954583513}
-  m_LocalRotation: {x: 0.064167075, y: 1.0234668e-15, z: 6.580852e-17, w: 0.99793917}
+  m_LocalRotation: {x: 0.064167075, y: -1.0234667e-15, z: -6.580851e-17, w: 0.99793917}
   m_LocalPosition: {x: -0.03, y: 8.828532, z: -57.10506}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10819,7 +10814,7 @@ MonoBehaviour:
   isDraggingSeed: 0
   UIgraphicRaycaster: {fileID: 1200201132}
   camFocusPoint: {fileID: 1730793915}
-  ground: {fileID: 817644488}
+  ground: {fileID: 117516811}
   rotateSpeed: 0.15
 --- !u!4 &1480540003
 Transform:

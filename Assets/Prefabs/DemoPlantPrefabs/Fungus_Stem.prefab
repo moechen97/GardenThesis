@@ -121,7 +121,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7178698840623816203}
-  m_LocalRotation: {x: 0, y: 0, z: -0.052335896, w: 0.9986295}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -129,7 +129,7 @@ Transform:
   - {fileID: 7178698841749599636}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -6}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7178698841264737092
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,9 +235,9 @@ MonoBehaviour:
   aliveTime: 20
   flower: {fileID: 7178698841264737092}
   isBreeding: 0
-  growthDistance: 0.2
-  height_minRange: 0.5
-  height_maxRange: 1
+  growthDistance: 2
+  height_minRange: 8
+  height_maxRange: 11
 --- !u!1001 &867031886745315196
 PrefabInstance:
   m_ObjectHideFlags: 0
