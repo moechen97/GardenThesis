@@ -110,6 +110,7 @@ namespace Planting
                     Vector3 targetPosition = camTransform.position;
                     targetPosition.z += 1F;
                     Camera.main.orthographicSize--;
+                    //Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, Camera.main.orthographicSize--, Time.deltaTime);
                     camTransform.position = Vector3.Slerp(camTransform.position,
                                                           targetPosition,
                                                           Time.deltaTime * cameraSpeed);
