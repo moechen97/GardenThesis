@@ -173,7 +173,7 @@ namespace Planting
                         //Debug.Log("Hit transform: " + hit.point);
                         //Debug.Log("Hit name: " + hit.transform);
                         //Don't let plants plant on top of each other
-                        Collider[] collisions = Physics.OverlapSphere(hit.point, 0.05F, LayerMask.GetMask("Plant"));//activeSeeds[0].plantRadius);
+                        Collider[] collisions = Physics.OverlapSphere(hit.point, 0.5F, LayerMask.GetMask("Plant"));//activeSeeds[0].plantRadius);
                         if (hit.transform.gameObject.name.Equals("Ground") && collisions.Length == 0)
                         {
                             indicator.color = Color.green;
@@ -307,7 +307,7 @@ namespace Planting
             {
                 Transform objectHit = hit.transform;
                 //Don't let plants plant on top of each other
-                Collider[] collisions = Physics.OverlapSphere(hit.point, 0.05F);
+                Collider[] collisions = Physics.OverlapSphere(hit.point, 0.5F);
                 if (hit.transform.gameObject.name.Equals("Ground") && collisions.Length == 1)
                 {
                     GameObject newPlant = GameObject.Instantiate(seeds[currSeed]);
