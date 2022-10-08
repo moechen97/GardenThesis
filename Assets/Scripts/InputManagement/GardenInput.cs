@@ -32,6 +32,7 @@ namespace Planting
         private Vector3 rotateDirection;
         private float rotateStep;
         [SerializeField] float rotateSpeed = 1F;
+        private Coroutine afterRotate = null;
         public struct PlantMenu
         {
             public GameObject menuObject;
@@ -223,15 +224,18 @@ namespace Planting
         private IEnumerator SpinAfterRotate()
         {
             yield return new WaitForEndOfFrame();
-            Debug.Log("SPIN");
             rotateStep -= Time.deltaTime / 5F;
             float rotationAroundYAxis = -rotateDirection.x * rotateStep; //camera moves horizontally
             camFocusPoint.transform.RotateAround(camFocusPoint.transform.position, new Vector3(0, 1, 0), rotationAroundYAxis);
             camFocusPoint.transform.eulerAngles = new Vector3(camFocusPoint.transform.eulerAngles.x, camFocusPoint.transform.eulerAngles.y, 0.0F);
             FixRotationPoints();
-            if(rotateStep > 0F)
+            if(rotateStep > 0.0F)
             {
-                StartCoroutine(SpinAfterRotate());
+                afterRotate = StartCoroutine(SpinAfterRotate());
+            }
+            else
+            {
+                afterRotate = null;
             }
 
         }
@@ -268,6 +272,11 @@ namespace Planting
             if(!isDraggingSeed && results.Count == 0)
             {
                 rotatingScreen = true;
+                if(afterRotate != null)
+                {
+                    StopCoroutine(afterRotate);
+                    afterRotate = null;
+                }
                 rotateStep = rotateSpeed;
                 previousRotatePosition = screenCoordinates;
             }
@@ -283,7 +292,7 @@ namespace Planting
             isDraggingSeed = false;
             if(rotatingScreen)
             {
-                StartCoroutine(SpinAfterRotate());
+                afterRotate = StartCoroutine(SpinAfterRotate());
             }
             rotatingScreen = false;
             indicator.gameObject.SetActive(false);
