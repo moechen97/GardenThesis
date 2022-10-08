@@ -107,6 +107,15 @@ public partial class @GardenControl : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SecondaryTouchContact"",
+                    ""type"": ""Button"",
+                    ""id"": ""20b66b9d-4083-443f-aa35-85a9545969a4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -307,6 +316,17 @@ public partial class @GardenControl : IInputActionCollection2, IDisposable
                     ""action"": ""SecondTouchInformation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cdbfa71a-c567-4a75-a027-67d3e12a79e4"",
+                    ""path"": ""<Touchscreen>/touch1/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SecondaryTouchContact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -324,6 +344,7 @@ public partial class @GardenControl : IInputActionCollection2, IDisposable
         m_Plant_ScrollZoom = m_Plant.FindAction("ScrollZoom", throwIfNotFound: true);
         m_Plant_FirstTouchInformation = m_Plant.FindAction("FirstTouchInformation", throwIfNotFound: true);
         m_Plant_SecondTouchInformation = m_Plant.FindAction("SecondTouchInformation", throwIfNotFound: true);
+        m_Plant_SecondaryTouchContact = m_Plant.FindAction("SecondaryTouchContact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -392,6 +413,7 @@ public partial class @GardenControl : IInputActionCollection2, IDisposable
     private readonly InputAction m_Plant_ScrollZoom;
     private readonly InputAction m_Plant_FirstTouchInformation;
     private readonly InputAction m_Plant_SecondTouchInformation;
+    private readonly InputAction m_Plant_SecondaryTouchContact;
     public struct PlantActions
     {
         private @GardenControl m_Wrapper;
@@ -405,6 +427,7 @@ public partial class @GardenControl : IInputActionCollection2, IDisposable
         public InputAction @ScrollZoom => m_Wrapper.m_Plant_ScrollZoom;
         public InputAction @FirstTouchInformation => m_Wrapper.m_Plant_FirstTouchInformation;
         public InputAction @SecondTouchInformation => m_Wrapper.m_Plant_SecondTouchInformation;
+        public InputAction @SecondaryTouchContact => m_Wrapper.m_Plant_SecondaryTouchContact;
         public InputActionMap Get() { return m_Wrapper.m_Plant; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -441,6 +464,9 @@ public partial class @GardenControl : IInputActionCollection2, IDisposable
                 @SecondTouchInformation.started -= m_Wrapper.m_PlantActionsCallbackInterface.OnSecondTouchInformation;
                 @SecondTouchInformation.performed -= m_Wrapper.m_PlantActionsCallbackInterface.OnSecondTouchInformation;
                 @SecondTouchInformation.canceled -= m_Wrapper.m_PlantActionsCallbackInterface.OnSecondTouchInformation;
+                @SecondaryTouchContact.started -= m_Wrapper.m_PlantActionsCallbackInterface.OnSecondaryTouchContact;
+                @SecondaryTouchContact.performed -= m_Wrapper.m_PlantActionsCallbackInterface.OnSecondaryTouchContact;
+                @SecondaryTouchContact.canceled -= m_Wrapper.m_PlantActionsCallbackInterface.OnSecondaryTouchContact;
             }
             m_Wrapper.m_PlantActionsCallbackInterface = instance;
             if (instance != null)
@@ -472,6 +498,9 @@ public partial class @GardenControl : IInputActionCollection2, IDisposable
                 @SecondTouchInformation.started += instance.OnSecondTouchInformation;
                 @SecondTouchInformation.performed += instance.OnSecondTouchInformation;
                 @SecondTouchInformation.canceled += instance.OnSecondTouchInformation;
+                @SecondaryTouchContact.started += instance.OnSecondaryTouchContact;
+                @SecondaryTouchContact.performed += instance.OnSecondaryTouchContact;
+                @SecondaryTouchContact.canceled += instance.OnSecondaryTouchContact;
             }
         }
     }
@@ -487,5 +516,6 @@ public partial class @GardenControl : IInputActionCollection2, IDisposable
         void OnScrollZoom(InputAction.CallbackContext context);
         void OnFirstTouchInformation(InputAction.CallbackContext context);
         void OnSecondTouchInformation(InputAction.CallbackContext context);
+        void OnSecondaryTouchContact(InputAction.CallbackContext context);
     }
 }

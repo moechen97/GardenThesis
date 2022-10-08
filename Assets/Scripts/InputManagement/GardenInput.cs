@@ -33,6 +33,9 @@ namespace Planting
         private float rotateStep;
         [SerializeField] float rotateSpeed = 1F;
         private Coroutine afterRotate = null;
+        private Coroutine zoomCoroutine = null;
+        private Transform camTransform;
+        private float cameraSpeed = 4F;
         public struct PlantMenu
         {
             public GameObject menuObject;
@@ -57,6 +60,7 @@ namespace Planting
             graphicRaycaster = plantMenu_Canvas.GetComponent<GraphicRaycaster>();
             gardenControl = new GardenControl();
             cameraMain = Camera.main;
+            camTransform = cam.transform;
             foreach(PlantType type in seeds.Keys)
             {
                 PlantManager.AddPlant(type);
@@ -67,9 +71,61 @@ namespace Planting
             gardenControl.Plant.Hold.started += ctx => StartDrag(ctx);
             gardenControl.Plant.Hold.canceled += ctx => EndDrag(ctx);
             gardenControl.Plant.Tap.started += ctx => StartTap(ctx);
+            gardenControl.Plant.SecondaryTouchContact.started += _ => ZoomStart();
+            gardenControl.Plant.SecondaryTouchContact.canceled += _ => ZoomEnd();
             //gardenControl.Plant.Tap.canceled += ctx => EndTap(ctx);
             //gardenControl.Plant.Drag.started += ctx => StartDrag(ctx);
             //UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerDown += FingerDown;
+        }
+        private void ZoomStart()
+        {
+            zoomCoroutine = StartCoroutine(ZoomDetection());
+        }
+        private void ZoomEnd()
+        {
+            StopCoroutine(zoomCoroutine);
+        }
+
+        private IEnumerator ZoomDetection()
+        {
+            float previousDistance = 0f, distance = 0f;
+            while(true)
+            {
+                distance = Vector2.Distance(gardenControl.Plant.FirstFingerPosition.ReadValue<Vector2>(),
+                    gardenControl.Plant.SecondaryFingerPosition.ReadValue<Vector2>());
+                //Detection
+                //Zoom out
+                if(distance > previousDistance)
+                {
+                    Vector3 targetPosition = camTransform.position;
+                    targetPosition.z = -1F;
+                    Camera.main.orthographicSize++;
+                    camTransform.position = Vector3.Slerp(camTransform.position, 
+                                                           targetPosition,
+                                                           Time.deltaTime * cameraSpeed);
+                }
+                //Zoom in
+                else if(distance < previousDistance)
+                {
+                    Vector3 targetPosition = camTransform.position;
+                    targetPosition.z += 1F;
+                    Camera.main.orthographicSize--;
+                    camTransform.position = Vector3.Slerp(camTransform.position,
+                                                          targetPosition,
+                                                          Time.deltaTime * cameraSpeed);
+                }
+                //Keep track of previous distance 
+                previousDistance = distance;
+                yield return null;
+            }
+        }
+        private void StartSecondTouch(InputAction.CallbackContext context)
+        {
+            Debug.Log("Second Touch Information");
+        }
+        private void StartSecondaryFinger(InputAction.CallbackContext context)
+        {
+            Debug.Log("Secondary Finger Position");
         }
         private void StartTap(InputAction.CallbackContext context)
         {
