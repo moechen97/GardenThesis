@@ -237,7 +237,6 @@ namespace Planting
             {
                 afterRotate = null;
             }
-
         }
         private void StartDrag(InputAction.CallbackContext context)
         {
