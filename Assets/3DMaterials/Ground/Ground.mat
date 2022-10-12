@@ -123,6 +123,7 @@ Material:
     - _GradientSmoothnessTheshold: 4.76
     - _HASRIM: 0
     - _HASSPECULAR: 0
+    - _HeightWaveFrequency: 0
     - _HighlightExtent: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
