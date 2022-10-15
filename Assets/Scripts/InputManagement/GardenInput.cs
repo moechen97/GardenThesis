@@ -288,7 +288,7 @@ namespace Planting
                 rot.x = ClampAngle(rot.x, 0f, 85f);
                 rot.z = 0;
 
-                transform.eulerAngles = rot;
+                camFocusPoint.transform.eulerAngles = rot;
                 //cam.transform.eulerAngles += new Vector3(12.312F, -4.502F, -0.004F);
                 //ground.transform.Translate(new Vector3(0, 0, -2.76F));
                 previousRotatePosition = currentRotatePosition;
