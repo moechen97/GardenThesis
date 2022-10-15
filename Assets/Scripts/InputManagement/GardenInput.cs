@@ -272,9 +272,10 @@ namespace Planting
                 //cam.transform.position = ground.transform.position;
                 Debug.Log("Rotation around y axis: " + rotationAroundYAxis);
                 Debug.Log("Rotation around x axis: " + rotationAroundXAxis);
-                camFocusPoint.transform.RotateAround(camFocusPoint.transform.position, new Vector3(1, 0, 0), rotationAroundXAxis);
-                camFocusPoint.transform.RotateAround(camFocusPoint.transform.position, new Vector3(0, 1, 0), rotationAroundYAxis);
-                camFocusPoint.transform.eulerAngles = new Vector3(camFocusPoint.transform.eulerAngles.x, camFocusPoint.transform.eulerAngles.y, 0.0F);
+                //camFocusPoint.transform.RotateAround(camFocusPoint.transform.position, new Vector3(1, 0, 0), rotationAroundXAxis);
+                //camFocusPoint.transform.RotateAround(camFocusPoint.transform.position, new Vector3(0, 1, 0), rotationAroundYAxis);
+                camFocusPoint.transform.eulerAngles = new Vector3(camFocusPoint.transform.eulerAngles.x + rotationAroundXAxis, camFocusPoint.transform.eulerAngles.y + rotationAroundYAxis, 0.0F);
+                //camFocusPoint.transform.eulerAngles = new Vector3(camFocusPoint.transform.eulerAngles.x, camFocusPoint.transform.eulerAngles.y, 0.0F);
 
                 //Fix rotation point
                 //FixRotationPoints(); 
@@ -307,20 +308,20 @@ namespace Planting
         private IEnumerator SpinAfterRotate()
         {
             yield return new WaitForEndOfFrame();
-            rotateStep -= Time.deltaTime / 5F;
-            float rotationAroundYAxis = -rotateDirection.x * rotateStep; //camera moves horizontally
-            camFocusPoint.transform.RotateAround(camFocusPoint.transform.position, new Vector3(0, 1, 0), rotationAroundYAxis);
-            camFocusPoint.transform.eulerAngles = new Vector3(camFocusPoint.transform.eulerAngles.x, camFocusPoint.transform.eulerAngles.y, 0.0F);
-            //FixRotationPoints();
-            camFocusPoint.transform.eulerAngles = new Vector3(ClampAngle(camFocusPoint.transform.eulerAngles.x, 0F, 89F), camFocusPoint.transform.eulerAngles.y, camTransform.eulerAngles.z);
-            if (rotateStep > 0.0F)
-            {
-                afterRotate = StartCoroutine(SpinAfterRotate());
-            }
-            else
-            {
-                afterRotate = null;
-            }
+            //rotateStep -= Time.deltaTime / 5F;
+            //float rotationAroundYAxis = -rotateDirection.x * rotateStep; //camera moves horizontally
+            //camFocusPoint.transform.RotateAround(camFocusPoint.transform.position, new Vector3(0, 1, 0), rotationAroundYAxis);
+            //camFocusPoint.transform.eulerAngles = new Vector3(camFocusPoint.transform.eulerAngles.x, camFocusPoint.transform.eulerAngles.y, 0.0F);
+            ////FixRotationPoints();
+            //camFocusPoint.transform.eulerAngles = new Vector3(ClampAngle(camFocusPoint.transform.eulerAngles.x, 0F, 89F), camFocusPoint.transform.eulerAngles.y, camTransform.eulerAngles.z);
+            //if (rotateStep > 0.0F)
+            //{
+            //    afterRotate = StartCoroutine(SpinAfterRotate());
+            //}
+            //else
+            //{
+            //    afterRotate = null;
+            //}
         }
         private void StartDrag(InputAction.CallbackContext context)
         {
