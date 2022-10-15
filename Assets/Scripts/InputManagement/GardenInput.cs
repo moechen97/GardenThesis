@@ -34,8 +34,11 @@ namespace Planting
         [SerializeField] float rotateSpeed = 1F;
         private Coroutine afterRotate = null;
         private Coroutine zoomCoroutine = null;
-        private Transform camTransform;
-        private float cameraSpeed = 4F;
+        [SerializeField] Transform camTransform;
+        [SerializeField] float cameraZoomSpeed = 4F;
+        private Coroutine zoomEndDelay = null;
+
+        private bool twoFingers = false;
         public struct PlantMenu
         {
             public GameObject menuObject;
@@ -60,7 +63,6 @@ namespace Planting
             graphicRaycaster = plantMenu_Canvas.GetComponent<GraphicRaycaster>();
             gardenControl = new GardenControl();
             cameraMain = Camera.main;
-            camTransform = cam.transform;
             foreach(PlantType type in seeds.Keys)
             {
                 PlantManager.AddPlant(type);
@@ -79,11 +81,25 @@ namespace Planting
         }
         private void ZoomStart()
         {
+            Debug.Log("ZOOM START");
+            twoFingers = true;
+            if (zoomEndDelay != null)
+            {
+                StopCoroutine(zoomEndDelay);
+            }
             zoomCoroutine = StartCoroutine(ZoomDetection());
         }
         private void ZoomEnd()
         {
             StopCoroutine(zoomCoroutine);
+            zoomEndDelay = StartCoroutine(ZoomEndDelay());
+        }
+
+        private IEnumerator ZoomEndDelay()
+        {
+            yield return new WaitForSeconds(1.0F);
+            twoFingers = false;
+            zoomEndDelay = null;
         }
 
         private IEnumerator ZoomDetection()
@@ -98,22 +114,22 @@ namespace Planting
                 if(distance > previousDistance)
                 {
                     Vector3 targetPosition = camTransform.position;
-                    targetPosition.z = -1F;
-                    Camera.main.orthographicSize++;
+                    targetPosition.z -= 1F;
+                    //Camera.main.orthographicSize++;
                     camTransform.position = Vector3.Slerp(camTransform.position, 
                                                            targetPosition,
-                                                           Time.deltaTime * cameraSpeed);
+                                                           Time.deltaTime * cameraZoomSpeed);
                 }
                 //Zoom in
                 else if(distance < previousDistance)
                 {
                     Vector3 targetPosition = camTransform.position;
                     targetPosition.z += 1F;
-                    Camera.main.orthographicSize--;
+                    //Camera.main.orthographicSize--;
                     //Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, Camera.main.orthographicSize--, Time.deltaTime);
                     camTransform.position = Vector3.Slerp(camTransform.position,
                                                           targetPosition,
-                                                          Time.deltaTime * cameraSpeed);
+                                                          Time.deltaTime * cameraZoomSpeed);
                 }
                 //Keep track of previous distance 
                 previousDistance = distance;
@@ -232,6 +248,11 @@ namespace Planting
             }
             else if(rotatingScreen)
             {
+                if(twoFingers)
+                {
+                    rotatingScreen = false;
+                    return;
+                }
                 Vector2 fingerPos = gardenControl.Plant.FirstFingerPosition.ReadValue<Vector2>();
                 Vector3 screenCoordinates = new Vector3(fingerPos.x, fingerPos.y, cameraMain.nearClipPlane);
                 screenCoordinates.z = 0.0F;
@@ -259,6 +280,10 @@ namespace Planting
             if (camFocusPoint.transform.localEulerAngles.x < 1F || camFocusPoint.transform.localEulerAngles.x > 350F)
             {
                 camFocusPoint.transform.eulerAngles = new Vector3(1F, camFocusPoint.transform.eulerAngles.y, camFocusPoint.transform.eulerAngles.z);
+            }
+            if(camFocusPoint.transform.eulerAngles.x > 89F)
+            {
+                camFocusPoint.transform.eulerAngles = new Vector3(89F, camFocusPoint.transform.eulerAngles.y, camFocusPoint.transform.eulerAngles.z);
             }
         }
         private IEnumerator SpinAfterRotate()
@@ -288,6 +313,10 @@ namespace Planting
         private IEnumerator WaitForDrag()
         {
             yield return new WaitForEndOfFrame();
+            if(twoFingers)
+            {
+                yield return null;
+            }
             Vector2 fingerPos = gardenControl.Plant.FirstFingerPosition.ReadValue<Vector2>();
             Vector3 screenCoordinates = new Vector3(fingerPos.x, fingerPos.y, cameraMain.nearClipPlane);
             screenCoordinates.z = 0.0F;
@@ -308,7 +337,7 @@ namespace Planting
                     currSeed = PlantType.MushroomPink;
                 }
             }
-            if(!isDraggingSeed && results.Count == 0)
+            if(!isDraggingSeed && !twoFingers && results.Count == 0)
             {
                 rotatingScreen = true;
                 if(afterRotate != null)
@@ -323,6 +352,12 @@ namespace Planting
         }
         private void EndDrag(InputAction.CallbackContext context)
         {
+            if(twoFingers)
+            {
+                rotatingScreen = false;
+                indicator.gameObject.SetActive(false);
+                return;
+            }
             //Debug.Log("END DRAG!! " + gardenControl.Plant.FirstFingerPosition.ReadValue<Vector2>());
             if (isDraggingSeed)
             {
