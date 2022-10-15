@@ -270,13 +270,14 @@ namespace Planting
                 float rotationAroundYAxis = -rotateDirection.x * rotateSpeed; //camera moves horizontally
                 float rotationAroundXAxis = rotateDirection.y * rotateSpeed; //camera moves vertically
                 //cam.transform.position = ground.transform.position;
-                
+
                 camFocusPoint.transform.RotateAround(camFocusPoint.transform.position, new Vector3(1, 0, 0), rotationAroundXAxis);
                 camFocusPoint.transform.RotateAround(camFocusPoint.transform.position, new Vector3(0, 1, 0), rotationAroundYAxis);
                 camFocusPoint.transform.eulerAngles = new Vector3(camFocusPoint.transform.eulerAngles.x, camFocusPoint.transform.eulerAngles.y, 0.0F);
 
                 //Fix rotation point
-                FixRotationPoints();
+                //FixRotationPoints();
+                ClampAngle(transform.eulerAngles.x, 1F, 85F);
                 //cam.transform.eulerAngles += new Vector3(12.312F, -4.502F, -0.004F);
                 //ground.transform.Translate(new Vector3(0, 0, -2.76F));
                 previousRotatePosition = currentRotatePosition;
@@ -286,14 +287,21 @@ namespace Planting
 
         private void FixRotationPoints()
         {
-            if (camFocusPoint.transform.localEulerAngles.x < 1F || camFocusPoint.transform.localEulerAngles.x > 350F)
+            if (camFocusPoint.transform.localEulerAngles.x < 1F)
             {
                 camFocusPoint.transform.eulerAngles = new Vector3(1F, camFocusPoint.transform.eulerAngles.y, camFocusPoint.transform.eulerAngles.z);
             }
-            if(camFocusPoint.transform.eulerAngles.x > 89F)
+            if (camFocusPoint.transform.localEulerAngles.x > 340F)
             {
-                camFocusPoint.transform.eulerAngles = new Vector3(89F, camFocusPoint.transform.eulerAngles.y, camFocusPoint.transform.eulerAngles.z);
+                camFocusPoint.transform.eulerAngles = new Vector3(340F, camFocusPoint.transform.eulerAngles.y, camFocusPoint.transform.eulerAngles.z);
             }
+        }
+        float ClampAngle(float angle, float from, float to)
+        {
+            // accepts e.g. -80, 80
+            if (angle < 0f) angle = 360 + angle;
+            if (angle > 180f) return Mathf.Max(angle, 360 + from);
+            return Mathf.Min(angle, to);
         }
         private IEnumerator SpinAfterRotate()
         {
@@ -302,8 +310,9 @@ namespace Planting
             float rotationAroundYAxis = -rotateDirection.x * rotateStep; //camera moves horizontally
             camFocusPoint.transform.RotateAround(camFocusPoint.transform.position, new Vector3(0, 1, 0), rotationAroundYAxis);
             camFocusPoint.transform.eulerAngles = new Vector3(camFocusPoint.transform.eulerAngles.x, camFocusPoint.transform.eulerAngles.y, 0.0F);
-            FixRotationPoints();
-            if(rotateStep > 0.0F)
+            //FixRotationPoints();
+            ClampAngle(transform.eulerAngles.x, 1F, 85F);
+            if (rotateStep > 0.0F)
             {
                 afterRotate = StartCoroutine(SpinAfterRotate());
             }
