@@ -274,7 +274,9 @@ namespace Planting
                 Debug.Log("Rotation around x axis: " + rotationAroundXAxis);
                 //camFocusPoint.transform.RotateAround(camFocusPoint.transform.position, new Vector3(1, 0, 0), rotationAroundXAxis);
                 //camFocusPoint.transform.RotateAround(camFocusPoint.transform.position, new Vector3(0, 1, 0), rotationAroundYAxis);
-                camFocusPoint.transform.eulerAngles = new Vector3(camFocusPoint.transform.eulerAngles.x + rotationAroundXAxis, camFocusPoint.transform.eulerAngles.y + rotationAroundYAxis, 0.0F) + new Vector3(rotationAroundYAxis, rotationAroundYAxis, 0.0F);
+                //camFocusPoint.transform.eulerAngles = new Vector3(camFocusPoint.transform.eulerAngles.x + rotationAroundXAxis, camFocusPoint.transform.eulerAngles.y + rotationAroundYAxis, 0.0F) + new Vector3(rotationAroundYAxis, rotationAroundYAxis, 0.0F);
+                camFocusPoint.transform.eulerAngles = camFocusPoint.transform.eulerAngles + new Vector3(rotationAroundXAxis, rotationAroundYAxis, 0.0F);
+
                 //camFocusPoint.transform.eulerAngles = new Vector3(camFocusPoint.transform.eulerAngles.x, camFocusPoint.transform.eulerAngles.y, 0.0F);
 
                 //Fix rotation point
