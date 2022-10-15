@@ -283,7 +283,7 @@ namespace Planting
                 //Fix rotation point
                 //FixRotationPoints(); 
                 //camFocusPoint.transform.localEulerAngles = new Vector3(ClampAngle(camFocusPoint.transform.localEulerAngles.x, 0F, 85F), camFocusPoint.transform.localEulerAngles.y, 0.0F);
-                Vector3 rot = transform.localRotation.eulerAngles + new Vector3(
+                Vector3 rot = camFocusPoint.transform.localRotation.eulerAngles + new Vector3(
             -rotateDirection.y * rotateSpeed * Time.deltaTime, rotateDirection.x * rotateSpeed * Time.deltaTime, 0f);
                 rot.x = ClampAngle(rot.x, 0f, 85f);
                 rot.z = 0;
