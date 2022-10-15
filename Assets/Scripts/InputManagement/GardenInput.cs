@@ -97,7 +97,7 @@ namespace Planting
 
         private IEnumerator ZoomEndDelay()
         {
-            yield return new WaitForSeconds(1.0F);
+            yield return new WaitForSeconds(0.5F);
             twoFingers = false;
             zoomEndDelay = null;
         }
@@ -132,6 +132,15 @@ namespace Planting
                                                           Time.deltaTime * cameraZoomSpeed);
                 }
                 //Keep track of previous distance 
+                Debug.Log("CAM TRANSFORM Z: " + camTransform.position.z);
+                if(camTransform.position.z < -32F)
+                {
+                    camTransform.position = new Vector3(camTransform.position.x, camTransform.position.y, -32F);
+                }
+                if(camTransform.position.z > 6.87F)
+                {
+                    camTransform.position = new Vector3(camTransform.position.x, camTransform.position.y, 6.87F);
+                }
                 previousDistance = distance;
                 yield return null;
             }
