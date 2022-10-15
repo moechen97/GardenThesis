@@ -270,14 +270,15 @@ namespace Planting
                 float rotationAroundYAxis = -rotateDirection.x * rotateSpeed; //camera moves horizontally
                 float rotationAroundXAxis = rotateDirection.y * rotateSpeed; //camera moves vertically
                 //cam.transform.position = ground.transform.position;
-
+                Debug.Log("Rotation around y axis: " + rotationAroundYAxis);
+                Debug.Log("Rotation around x axis: " + rotationAroundXAxis);
                 camFocusPoint.transform.RotateAround(camFocusPoint.transform.position, new Vector3(1, 0, 0), rotationAroundXAxis);
                 camFocusPoint.transform.RotateAround(camFocusPoint.transform.position, new Vector3(0, 1, 0), rotationAroundYAxis);
                 camFocusPoint.transform.eulerAngles = new Vector3(camFocusPoint.transform.eulerAngles.x, camFocusPoint.transform.eulerAngles.y, 0.0F);
 
                 //Fix rotation point
                 //FixRotationPoints();
-                ClampAngle(transform.eulerAngles.x, 1F, 85F);
+                camFocusPoint.transform.eulerAngles = new Vector3(ClampAngle(transform.eulerAngles.x, 1F, 85F), camFocusPoint.transform.eulerAngles.y, camTransform.eulerAngles.z);
                 //cam.transform.eulerAngles += new Vector3(12.312F, -4.502F, -0.004F);
                 //ground.transform.Translate(new Vector3(0, 0, -2.76F));
                 previousRotatePosition = currentRotatePosition;
@@ -311,7 +312,7 @@ namespace Planting
             camFocusPoint.transform.RotateAround(camFocusPoint.transform.position, new Vector3(0, 1, 0), rotationAroundYAxis);
             camFocusPoint.transform.eulerAngles = new Vector3(camFocusPoint.transform.eulerAngles.x, camFocusPoint.transform.eulerAngles.y, 0.0F);
             //FixRotationPoints();
-            ClampAngle(transform.eulerAngles.x, 1F, 85F);
+            camFocusPoint.transform.eulerAngles = new Vector3(ClampAngle(transform.eulerAngles.x, 1F, 85F), camFocusPoint.transform.eulerAngles.y, camTransform.eulerAngles.z);
             if (rotateStep > 0.0F)
             {
                 afterRotate = StartCoroutine(SpinAfterRotate());
