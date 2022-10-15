@@ -318,20 +318,26 @@ namespace Planting
         private IEnumerator SpinAfterRotate()
         {
             yield return new WaitForEndOfFrame();
-            //rotateStep -= Time.deltaTime / 5F;
-            //float rotationAroundYAxis = -rotateDirection.x * rotateStep; //camera moves horizontally
+            //rotateStep -= Time.deltaTime * Mathf.Clamp(rotateStep, 1F, rotateSpeed) * rotateSpeed;
+            rotateStep -= Time.deltaTime / 5F;
+            float rotationAroundYAxis = -rotateDirection.x * rotateStep; //camera moves horizontally
+            Vector3 rot = camFocusPoint.transform.localEulerAngles +
+    new Vector3(0f, rotationAroundYAxis, 0f);
+            rot.x = ClampAngle(rot.x, 0f, 85f);
+            rot.z = 0;
+
+            camFocusPoint.transform.localEulerAngles = rot;
             //camFocusPoint.transform.RotateAround(camFocusPoint.transform.position, new Vector3(0, 1, 0), rotationAroundYAxis);
-            //camFocusPoint.transform.eulerAngles = new Vector3(camFocusPoint.transform.eulerAngles.x, camFocusPoint.transform.eulerAngles.y, 0.0F);
-            ////FixRotationPoints();
-            //camFocusPoint.transform.eulerAngles = new Vector3(ClampAngle(camFocusPoint.transform.eulerAngles.x, 0F, 89F), camFocusPoint.transform.eulerAngles.y, camTransform.eulerAngles.z);
-            //if (rotateStep > 0.0F)
-            //{
-            //    afterRotate = StartCoroutine(SpinAfterRotate());
-            //}
-            //else
-            //{
-            //    afterRotate = null;
-            //}
+            //camFocusPoint.transform.eulerAngles = new Vector3(ClampAngle(camFocusPoint.transform.eulerAngles.x, 0F, 85F), camFocusPoint.transform.eulerAngles.y, 0.0F);
+            //FixRotationPoints();
+            if (rotateStep > 0.0F)
+            {
+                afterRotate = StartCoroutine(SpinAfterRotate());
+            }
+            else
+            {
+                afterRotate = null;
+            }
         }
         private void StartDrag(InputAction.CallbackContext context)
         {
@@ -375,10 +381,10 @@ namespace Planting
                     StopCoroutine(afterRotate);
                     afterRotate = null;
                 }
-                rotateStep = rotateSpeed;
+                //rotateStep = rotateSpeed / 2F;
+                rotateStep = 0.15F;
                 previousRotatePosition = screenCoordinates;
             }
-            
         }
         private void EndDrag(InputAction.CallbackContext context)
         {

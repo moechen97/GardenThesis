@@ -12,11 +12,9 @@ namespace Planting
 {
     public class Seed : MonoBehaviour, IDragHandler
     {
-        [SerializeField] public PlantType plantType;
         private Vector3 startPos;
         [HideInInspector] public bool isDragging;
         //[SerializeField] public float plantRadius;
-        [SerializeField] public GameObject plant;
         private GardenInput gardenInput;
 
         private void Awake()

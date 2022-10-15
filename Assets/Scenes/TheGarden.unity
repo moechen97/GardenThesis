@@ -530,7 +530,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88122235}
-  m_LocalRotation: {x: 0.064167075, y: -1.0234667e-15, z: -6.580851e-17, w: 0.99793917}
+  m_LocalRotation: {x: 0.064167075, y: 1.0234668e-15, z: 6.580852e-17, w: 0.99793917}
   m_LocalPosition: {x: -0.03, y: 8.828532, z: -57.10506}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2015,7 +2015,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 249358841}
-  - component: {fileID: 249358845}
   - component: {fileID: 249358844}
   - component: {fileID: 249358843}
   - component: {fileID: 249358842}
@@ -2097,21 +2096,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 249358840}
   m_CullTransparentMesh: 1
---- !u!114 &249358845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 249358840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efaa767f387a5294eb2bd7ce1c866ed6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  plantType: 0
-  isDragging: 0
-  plant: {fileID: 9033520164648056915, guid: ee86437b885f04b04b59f84c17e0dffe, type: 3}
 --- !u!1 &252856960
 GameObject:
   m_ObjectHideFlags: 0
@@ -7037,7 +7021,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 954583513}
-  m_LocalRotation: {x: 0.064167075, y: -1.0234667e-15, z: -6.580851e-17, w: 0.99793917}
+  m_LocalRotation: {x: 0.064167075, y: 1.0234668e-15, z: 6.580852e-17, w: 0.99793917}
   m_LocalPosition: {x: -0.03, y: 8.828532, z: -57.10506}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -13078,9 +13062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efaa767f387a5294eb2bd7ce1c866ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plantType: 0
   isDragging: 0
-  plant: {fileID: 9033520164648056915, guid: ee86437b885f04b04b59f84c17e0dffe, type: 3}
 --- !u!1 &1873275906
 GameObject:
   m_ObjectHideFlags: 0
@@ -13478,9 +13460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efaa767f387a5294eb2bd7ce1c866ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plantType: 0
   isDragging: 0
-  plant: {fileID: 7178698840623816203, guid: b2c4a4fd7c5a04827bf2fd98e549707e, type: 3}
 --- !u!1 &1940476353
 GameObject:
   m_ObjectHideFlags: 0
@@ -13490,7 +13470,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1940476354}
-  - component: {fileID: 1940476358}
   - component: {fileID: 1940476356}
   - component: {fileID: 1940476355}
   - component: {fileID: 1940476357}
@@ -13572,21 +13551,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 99.36728, y: 99.81692, z: 0}
   m_Center: {x: 0.1958664, y: -0.22780949, z: -0.5000003}
---- !u!114 &1940476358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1940476353}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efaa767f387a5294eb2bd7ce1c866ed6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  plantType: 0
-  isDragging: 0
-  plant: {fileID: 7178698840623816203, guid: b2c4a4fd7c5a04827bf2fd98e549707e, type: 3}
 --- !u!1001 &1963439134
 PrefabInstance:
   m_ObjectHideFlags: 0
