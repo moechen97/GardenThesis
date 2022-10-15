@@ -277,7 +277,7 @@ namespace Planting
                 //camFocusPoint.transform.eulerAngles = new Vector3(camFocusPoint.transform.eulerAngles.x + rotationAroundXAxis, camFocusPoint.transform.eulerAngles.y + rotationAroundYAxis, 0.0F) + new Vector3(rotationAroundYAxis, rotationAroundYAxis, 0.0F);
                 camFocusPoint.transform.eulerAngles = camFocusPoint.transform.eulerAngles + new Vector3(rotationAroundXAxis, rotationAroundYAxis, 0.0F);
 
-                //camFocusPoint.transform.eulerAngles = new Vector3(camFocusPoint.transform.eulerAngles.x, camFocusPoint.transform.eulerAngles.y, 0.0F);
+                camFocusPoint.transform.eulerAngles = new Vector3(camFocusPoint.transform.eulerAngles.x, camFocusPoint.transform.eulerAngles.y, 0.0F);
 
                 //Fix rotation point
                 //FixRotationPoints(); 
