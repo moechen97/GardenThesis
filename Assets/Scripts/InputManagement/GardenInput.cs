@@ -273,22 +273,22 @@ namespace Planting
                 Debug.Log("Rotation around y axis: " + rotationAroundYAxis / Time.deltaTime);
                 Debug.Log("Rotation around x axis: " + rotationAroundXAxis / Time.deltaTime);
                 //camFocusPoint.transform.RotateAround(camFocusPoint.transform.position, new Vector3(1, 0, 0), rotationAroundXAxis);
-                camFocusPoint.transform.RotateAround(camFocusPoint.transform.position, new Vector3(0, 1, 0), rotationAroundYAxis);
+                //camFocusPoint.transform.RotateAround(camFocusPoint.transform.position, new Vector3(0, 1, 0), rotationAroundYAxis);
                 //camFocusPoint.transform.eulerAngles = new Vector3(camFocusPoint.transform.eulerAngles.x + rotationAroundXAxis, camFocusPoint.transform.eulerAngles.y + rotationAroundYAxis, 0.0F) + new Vector3(rotationAroundYAxis, rotationAroundYAxis, 0.0F);
 
-                camFocusPoint.transform.localEulerAngles = camFocusPoint.transform.localEulerAngles + new Vector3(rotationAroundXAxis, 0.0F, 0.0F);
+                //camFocusPoint.transform.localEulerAngles = camFocusPoint.transform.localEulerAngles + new Vector3(rotationAroundXAxis, 0.0F, 0.0F);
 
                 //camFocusPoint.transform.localEulerAngles = new Vector3(camFocusPoint.transform.localEulerAngles.x, camFocusPoint.transform.localEulerAngles.y, 0.0F);
 
                 //Fix rotation point
                 //FixRotationPoints(); 
                 //camFocusPoint.transform.localEulerAngles = new Vector3(ClampAngle(camFocusPoint.transform.localEulerAngles.x, 0F, 85F), camFocusPoint.transform.localEulerAngles.y, 0.0F);
-                Vector3 rot = camFocusPoint.transform.localRotation.eulerAngles + new Vector3(
+                Vector3 rot = camFocusPoint.transform.localEulerAngles + new Vector3(
             -rotateDirection.y * rotateSpeed * Time.deltaTime, rotateDirection.x * rotateSpeed * Time.deltaTime, 0f);
                 rot.x = ClampAngle(rot.x, 0f, 85f);
                 rot.z = 0;
 
-                camFocusPoint.transform.eulerAngles = rot;
+                camFocusPoint.transform.localEulerAngles = rot;
                 //cam.transform.eulerAngles += new Vector3(12.312F, -4.502F, -0.004F);
                 //ground.transform.Translate(new Vector3(0, 0, -2.76F));
                 previousRotatePosition = currentRotatePosition;
