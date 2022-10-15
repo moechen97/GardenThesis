@@ -268,7 +268,7 @@ namespace Planting
                 currentRotatePosition = screenCoordinates;
                 rotateDirection = previousRotatePosition - currentRotatePosition;
                 float rotationAroundYAxis = -rotateDirection.x * rotateSpeed * Time.deltaTime; //camera moves horizontally
-                float rotationAroundXAxis = rotateDirection.y * rotateSpeed * Time.deltaTime; //camera moves vertically
+                float rotationAroundXAxis = -rotateDirection.y * rotateSpeed * Time.deltaTime; //camera moves vertically
                 //cam.transform.position = ground.transform.position;
                 Debug.Log("Rotation around y axis: " + rotationAroundYAxis / Time.deltaTime);
                 Debug.Log("Rotation around x axis: " + rotationAroundXAxis / Time.deltaTime);
