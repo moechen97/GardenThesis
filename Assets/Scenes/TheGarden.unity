@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.07888513, g: 0.2699008, b: 0.44956136, a: 1}
+  m_IndirectSpecularColor: {r: 0.07883266, g: 0.26988122, b: 0.4495561, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10815,7 +10815,7 @@ MonoBehaviour:
   UIgraphicRaycaster: {fileID: 1200201132}
   camFocusPoint: {fileID: 1730793915}
   ground: {fileID: 117516811}
-  rotateSpeed: 0.15
+  rotateSpeed: 40
   camTransform: {fileID: 1730793918}
   cameraZoomSpeed: 50
 --- !u!4 &1480540003
