@@ -309,8 +309,7 @@ namespace Planting
                 float rotationAroundYAxis = -rotateDirection.x * rotateSpeed * Time.deltaTime; //camera moves horizontally
                 float rotationAroundXAxis = -rotateDirection.y * rotateSpeed * Time.deltaTime; //camera moves vertically
                 //cam.transform.position = ground.transform.position;
-                Debug.Log("Rotation around y axis: " + rotationAroundYAxis / Time.deltaTime);
-                Debug.Log("Rotation around x axis: " + rotationAroundXAxis / Time.deltaTime);
+                Debug.Log("Rotate direction: " + rotateDirection);
                 //camFocusPoint.transform.RotateAround(camFocusPoint.transform.position, new Vector3(1, 0, 0), rotationAroundXAxis);
                 //camFocusPoint.transform.RotateAround(camFocusPoint.transform.position, new Vector3(0, 1, 0), rotationAroundYAxis);
                 //camFocusPoint.transform.eulerAngles = new Vector3(camFocusPoint.transform.eulerAngles.x + rotationAroundXAxis, camFocusPoint.transform.eulerAngles.y + rotationAroundYAxis, 0.0F) + new Vector3(rotationAroundYAxis, rotationAroundYAxis, 0.0F);
@@ -358,8 +357,8 @@ namespace Planting
         {
             yield return new WaitForEndOfFrame();
             //rotateStep -= Time.deltaTime * Mathf.Clamp(rotateStep, 1F, rotateSpeed) * rotateSpeed;
-            rotateStep -= Time.deltaTime / 5F;
-            float rotationAroundYAxis = -rotateDirection.x * rotateStep; //camera moves horizontally
+            rotateStep -= Time.deltaTime / 2F;
+            float rotationAroundYAxis = -rotateDirection.normalized.x * rotateStep; //camera moves horizontally
             Vector3 rot = camFocusPoint.transform.localEulerAngles +
     new Vector3(0f, rotationAroundYAxis, 0f);
             rot.x = ClampAngle(rot.x, 0f, 85f);
@@ -426,7 +425,7 @@ namespace Planting
                     afterRotate = null;
                 }
                 //rotateStep = rotateSpeed / 2F;
-                rotateStep = 0.15F;
+                rotateStep = 0.1F * Mathf.Abs(Mathf.Clamp(rotateDirection.x, -5F, 5F));
                 previousRotatePosition = screenCoordinates;
             }
         }
