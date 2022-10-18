@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
 using UnityEngine.UI;
+using Cinemachine;
 
 namespace Planting
 {
@@ -36,8 +37,9 @@ namespace Planting
         private Coroutine zoomCoroutine = null;
         [SerializeField] Transform camTransform;
         [SerializeField] float cameraZoomSpeed = 4F;
+        
         private Coroutine zoomEndDelay = null;
-
+        private CinemachineVirtualCamera _virtualCamera;
         private bool twoFingers = false;
         public struct PlantMenu
         {
@@ -78,6 +80,8 @@ namespace Planting
             //gardenControl.Plant.Tap.canceled += ctx => EndTap(ctx);
             //gardenControl.Plant.Drag.started += ctx => StartDrag(ctx);
             //UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerDown += FingerDown;
+            
+            _virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
         }
         private void ZoomStart()
         {
@@ -113,34 +117,69 @@ namespace Planting
                 //Zoom out
                 if(distance > previousDistance)
                 {
-                    Vector3 targetPosition = camTransform.position;
+                    /*Vector3 targetPosition = camTransform.position;
                     targetPosition.z -= 1F;
                     //Camera.main.orthographicSize++;
                     camTransform.position = Vector3.Slerp(camTransform.position, 
                                                            targetPosition,
-                                                           Time.deltaTime * cameraZoomSpeed);
+                                                           Time.deltaTime * cameraZoomSpeed);*/
+                    float offset = _virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z;
+                    offset -= 1F;
+                    float newZValue =
+                        Mathf.Lerp(_virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z,
+                            offset, Time.deltaTime * cameraZoomSpeed);
+
+                    if (newZValue > 6.87f)
+                    {
+                        newZValue = 6.87f;
+                    }
+                    else if (newZValue < -62f)
+                    {
+                        newZValue = -62f;
+                    }
+                    _virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset =
+                        new Vector3(0, 0, newZValue);
+
                 }
                 //Zoom in
                 else if(distance < previousDistance)
                 {
-                    Vector3 targetPosition = camTransform.position;
+                    /*Vector3 targetPosition = camTransform.position;
                     targetPosition.z += 1F;
                     //Camera.main.orthographicSize--;
                     //Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, Camera.main.orthographicSize--, Time.deltaTime);
                     camTransform.position = Vector3.Slerp(camTransform.position,
                                                           targetPosition,
-                                                          Time.deltaTime * cameraZoomSpeed);
+                                                          Time.deltaTime * cameraZoomSpeed);*/
+                    float offset = _virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z;
+                    offset += 1F;
+                    float newZValue =
+                        Mathf.Lerp(_virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z,
+                            offset, Time.deltaTime * cameraZoomSpeed);
+                    if (newZValue > -10f)
+                    {
+                        newZValue = -10f;
+                    }
+                    else if (newZValue < -62f)
+                    {
+                        newZValue = -62f;
+                    }
+                    _virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset =
+                        new Vector3(0, 0, newZValue);
+                    
                 }
                 //Keep track of previous distance 
                 Debug.Log("CAM TRANSFORM Z: " + camTransform.position.z);
-                if(camTransform.position.z < -32F)
+                /*if(camTransform.position.z < -32F)
                 {
                     camTransform.position = new Vector3(camTransform.position.x, camTransform.position.y, -32F);
                 }
                 if(camTransform.position.z > 6.87F)
                 {
                     camTransform.position = new Vector3(camTransform.position.x, camTransform.position.y, 6.87F);
-                }
+                }*/
+                
+                
                 previousDistance = distance;
                 yield return null;
             }
