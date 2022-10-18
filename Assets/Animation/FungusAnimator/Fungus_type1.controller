@@ -21,7 +21,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -7137088634397008639, guid: 97ec6e37e5aed4e4892ce72a1b01815d, type: 3}
+  m_Motion: {fileID: 7400000, guid: 430d4748582f144d3a0d9c95ee7edb09, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -148,7 +148,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -8052411429893362668, guid: 97ec6e37e5aed4e4892ce72a1b01815d, type: 3}
+  m_Motion: {fileID: 7400000, guid: ddfad0821c9f44ba88e1a7c4daa5fb1f, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -190,7 +190,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Fungus_Fully_Grow
-  m_Speed: 0.5
+  m_Speed: 0.4
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -4293940765372684461}
@@ -203,7 +203,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -1528952742487972417, guid: 97ec6e37e5aed4e4892ce72a1b01815d, type: 3}
+  m_Motion: {fileID: 7400000, guid: 79a01bffba86e4cb0b09524d39822b01, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -229,7 +229,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -2130654313065295899, guid: 97ec6e37e5aed4e4892ce72a1b01815d, type: 3}
+  m_Motion: {fileID: 7400000, guid: 23f31da62d1d54b3b8239cd08626fe7c, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

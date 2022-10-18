@@ -524,6 +524,9 @@
         },
         {
             "m_Id": "e3f50f281fe44dfba37ce2d82eccf63e"
+        },
+        {
+            "m_Id": "d00f7c2f3973477da2ea081c925faf13"
         }
     ],
     "m_StickyNoteDatas": [],
@@ -5541,7 +5544,7 @@
     "m_Type": "UnityEditor.ShaderGraph.MultiplyNode",
     "m_ObjectId": "43a1d4420aee40daa8b829294a564ff0",
     "m_Group": {
-        "m_Id": ""
+        "m_Id": "d00f7c2f3973477da2ea081c925faf13"
     },
     "m_Name": "Multiply",
     "m_DrawState": {
@@ -11836,10 +11839,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 6384.9990234375,
-            "y": 726.4999389648438,
-            "width": 208.00048828125,
-            "height": 349.99981689453127
+            "x": 6427.5,
+            "y": 726.5,
+            "width": 208.0,
+            "height": 350.0001220703125
         }
     },
     "m_Slots": [
@@ -13325,6 +13328,17 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.GroupData",
+    "m_ObjectId": "d00f7c2f3973477da2ea081c925faf13",
+    "m_Title": "Deform Extent",
+    "m_Position": {
+        "x": 10.0,
+        "y": 10.0
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
     "m_ObjectId": "d054a381cefb43048a8445aca7157bcf",
     "m_Group": {
@@ -14080,7 +14094,7 @@
     "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
     "m_ObjectId": "deff5258f08d4de5841a93eaa56da32c",
     "m_Group": {
-        "m_Id": ""
+        "m_Id": "d00f7c2f3973477da2ea081c925faf13"
     },
     "m_Name": "Property",
     "m_DrawState": {

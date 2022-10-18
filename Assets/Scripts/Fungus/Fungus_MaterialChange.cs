@@ -14,6 +14,9 @@ public class Fungus_MaterialChange : MonoBehaviour
     [SerializeField] private float witheredExtent;
     [SerializeField] private float explodeSpeed;
     [SerializeField] private float explodeExtent;
+    [SerializeField] private float hightLightExtent;
+    [SerializeField] private float hightLightBreathInSpeed;
+    [SerializeField] private float hightLightBreathOutSpeed;
     [SerializeField] private Animator fungusAnimator;
     [SerializeField] private GameObject explodeParticle;
     [SerializeField] private Transform particleGeneratePosition;
@@ -43,7 +46,12 @@ public class Fungus_MaterialChange : MonoBehaviour
     public void Withered()
     {
         fungusAnimator.SetBool("isWithered",true);
+    }
+
+    public void MaterialWithered()
+    {
         fungusRenderer.material.DOFloat(witheredExtent,"_WitheredExtent",witheredSpeed);
+        fungusRenderer.material.DOFloat(0, "_DeformExtent", witheredSpeed);
     }
 
     public void Exploded()
@@ -57,5 +65,15 @@ public class Fungus_MaterialChange : MonoBehaviour
         yield return new WaitForSeconds(explodeExtent * 0.2f);
         Instantiate(explodeParticle, particleGeneratePosition.position,quaternion.identity);
         yield return null;
+    }
+
+    public void BreathIn()
+    {
+        fungusRenderer.material.DOFloat(0f,"_HighlightExtent",hightLightBreathInSpeed);
+    }
+
+    public void BreathOut()
+    {
+        fungusRenderer.material.DOFloat(hightLightExtent,"_HighlightExtent",hightLightBreathOutSpeed);
     }
 }
