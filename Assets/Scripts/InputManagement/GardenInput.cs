@@ -372,6 +372,11 @@ namespace Planting
                     isDraggingSeed = true;
                     currSeed = PlantType.MushroomPink;
                 }
+                else if (result.gameObject.name.Equals("Fungus_Green"))
+                {
+                    isDraggingSeed = true;
+                    currSeed = PlantType.Fungus_Green;
+                }
             }
             if(!isDraggingSeed && !twoFingers && results.Count == 0)
             {

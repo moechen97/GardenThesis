@@ -27,7 +27,7 @@ namespace Planting {
             animator.speed = speed * GameObject.FindGameObjectWithTag("SpeedManager").GetComponent<SpeedManager>().speed;
             //Notify growth manager of new plant
             PlantManager.IncrementPlant(id, this);          
-            flower.SetActive(false);
+            //flower.SetActive(false);
         }
 
         // Update is called once per frame
@@ -38,14 +38,22 @@ namespace Planting {
                 isGrown = true;
                 isBreeding = true;
                 animator.speed = 1.00F;
-                flower.SetActive(true);
+                //flower.SetActive(true);
+                Debug.Log(name+"isGrown");
             }
             else if (isGrown)
             {            
                 aliveTime -= Time.deltaTime;
                 if (aliveTime <= 0.0F)
                 {
-                    Destroy(transform.parent.gameObject);
+                    if (GetComponent<Fungus_MaterialChange>())
+                    {
+                        transform.GetComponent<Fungus_MaterialChange>().Withered();
+                    }
+                    else
+                    {
+                        Destroy(transform.parent.gameObject);
+                    }
                 }
             }
         }

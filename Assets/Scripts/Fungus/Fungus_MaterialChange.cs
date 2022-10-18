@@ -20,7 +20,11 @@ public class Fungus_MaterialChange : MonoBehaviour
     [SerializeField] private Animator fungusAnimator;
     [SerializeField] private GameObject explodeParticle;
     [SerializeField] private Transform particleGeneratePosition;
+    [SerializeField] private Transform Shadow;
 
+    private Material m_Material;
+    private MaterialPropertyBlock _propertyBlock;
+    
     private void OnEnable()
     {
         TimeEventManager.NightStart += GotoNight;
@@ -33,14 +37,24 @@ public class Fungus_MaterialChange : MonoBehaviour
         TimeEventManager.DayStart -= GotoDay;
     }
 
+    private void Start()
+    {
+        _propertyBlock = new MaterialPropertyBlock();
+        m_Material = fungusRenderer.material;
+
+    }
+
     void GotoNight()
     {
-        fungusRenderer.material.DOFloat(glowExtentMax,"_GlowExtent",changeSpeed);
+        fungusRenderer.GetPropertyBlock(_propertyBlock);
+        _propertyBlock.SetFloat("_GlowExtent",glowExtentMax);
+        fungusRenderer.SetPropertyBlock(_propertyBlock);
+        //m_Material.DOFloat(glowExtentMax,"_GlowExtent",changeSpeed);
     }
 
     void GotoDay()
     {
-        fungusRenderer.material.DOFloat(0,"_GlowExtent",changeSpeed);
+        m_Material.DOFloat(0,"_GlowExtent",changeSpeed);
     }
 
     public void Withered()
@@ -50,8 +64,8 @@ public class Fungus_MaterialChange : MonoBehaviour
 
     public void MaterialWithered()
     {
-        fungusRenderer.material.DOFloat(witheredExtent,"_WitheredExtent",witheredSpeed);
-        fungusRenderer.material.DOFloat(0, "_DeformExtent", witheredSpeed);
+        m_Material.DOFloat(witheredExtent,"_WitheredExtent",witheredSpeed);
+        m_Material.DOFloat(0, "_DeformExtent", witheredSpeed);
     }
 
     public void Exploded()
@@ -61,19 +75,27 @@ public class Fungus_MaterialChange : MonoBehaviour
 
     IEnumerator Explosion()
     {
-        fungusRenderer.material.DOFloat(explodeExtent, "_DissolveExtent", explodeSpeed);
+        m_Material.DOFloat(explodeExtent, "_DissolveExtent", explodeSpeed);
+        Shadow.gameObject.SetActive(false);
         yield return new WaitForSeconds(explodeExtent * 0.2f);
         Instantiate(explodeParticle, particleGeneratePosition.position,quaternion.identity);
+        Destroy(this.gameObject,0.1f);
         yield return null;
+        
     }
 
     public void BreathIn()
     {
-        fungusRenderer.material.DOFloat(0f,"_HighlightExtent",hightLightBreathInSpeed);
+        m_Material.DOFloat(0f,"_HighlightExtent",hightLightBreathInSpeed);
     }
 
     public void BreathOut()
     {
-        fungusRenderer.material.DOFloat(hightLightExtent,"_HighlightExtent",hightLightBreathOutSpeed);
+        m_Material.DOFloat(hightLightExtent,"_HighlightExtent",hightLightBreathOutSpeed);
+    }
+
+    private void OnDestroy()
+    {
+        //Destroy(m_Material);
     }
 }

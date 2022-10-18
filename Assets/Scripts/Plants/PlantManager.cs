@@ -4,15 +4,19 @@ using UnityEngine;
 
 namespace Planting
 {
-    public enum PlantType { MushroomDarkGreen, MushroomPink }
+    public enum PlantType { MushroomDarkGreen, MushroomPink, Fungus_Green }
     public static class PlantManager
     {
         public static Dictionary<PlantType, int> plantCounter = new Dictionary<PlantType, int>();
         public static Dictionary<PlantType, float> resourceDict = new 
-            Dictionary<PlantType, float>() { { PlantType.MushroomDarkGreen, 0.1F }, { PlantType.MushroomPink, 0.05F } };
+            Dictionary<PlantType, float>() { { PlantType.MushroomDarkGreen, 0.1F }, 
+                { PlantType.MushroomPink, 0.05F },
+                { PlantType.Fungus_Green , 0.1f} };
         public static int num_MushroomDarkGreen = 0;
         public static int max_MushroomDarkGreen = 10;
         public static int num_MushroomPink = 0;
+        public static int num_Fungus_Green = 0;
+        public static int max_Fungus_Green = 10;
         public static List<Plant> allPlants = new List<Plant>();
 
         public static void AddPlant(PlantType type)
@@ -51,6 +55,10 @@ namespace Planting
             if (type == PlantType.MushroomDarkGreen)
             {
                 return plantCounter[type] < max_MushroomDarkGreen;
+            }
+            else if (type == PlantType.Fungus_Green)
+            {
+                return plantCounter[type] < max_Fungus_Green;
             }
             return false;
         }
