@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.68799436, g: 0.78084624, b: 0.6660111, a: 1}
+  m_IndirectSpecularColor: {r: 0.7767887, g: 0.78232056, b: 0.6001355, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -530,7 +530,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88122235}
-  m_LocalRotation: {x: 0.06416709, y: 3.0829458e-16, z: 1.9823216e-17, w: 0.99793917}
+  m_LocalRotation: {x: 0.06416708, y: -2.3156536e-16, z: -1.488956e-17, w: 0.99793917}
   m_LocalPosition: {x: 0, y: 10.488533, z: -57.68106}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1469,7 +1469,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0.000045776, y: 0.000045776}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!65 &200637104
 BoxCollider:
@@ -1497,14 +1497,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.44671357, g: 0.6698113, b: 0.42021182, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d0ca99642fe5f4ffa9859004dacf948c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2c8d31a4c2d7a4064808d54c42d31d4d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6655,7 +6655,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.93670744, g: 0.88428444, b: 0.7113675, a: 1}
+  m_Color: {r: 1, g: 0.94468653, b: 0.7602617, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -6713,7 +6713,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 875453221}
-  m_LocalRotation: {x: 0.27396867, y: -0.36547035, z: 0.11348155, w: 0.8823234}
+  m_LocalRotation: {x: 0.62713015, y: -0.2810131, z: 0.25976586, w: 0.67842555}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7651,7 +7651,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 954583513}
-  m_LocalRotation: {x: 0.06416709, y: 3.0829458e-16, z: 1.9823216e-17, w: 0.99793917}
+  m_LocalRotation: {x: 0.06416708, y: -2.3156536e-16, z: -1.488956e-17, w: 0.99793917}
   m_LocalPosition: {x: 0, y: 10.488533, z: -57.68106}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10576,7 +10576,7 @@ MonoBehaviour:
   _lightingPreset: {fileID: 11400000, guid: 289512b4994cb4e49b400d9b298f3f2f, type: 2}
   DirectionLight: {fileID: 875453222}
   Ground: {fileID: 1963439135}
-  TimeOfDay: 8.3
+  TimeOfDay: 11.7
   timePassSpeed: 0.2
 --- !u!4 &1411803759
 Transform:
@@ -11557,7 +11557,7 @@ MonoBehaviour:
   UIgraphicRaycaster: {fileID: 1200201132}
   camFocusPoint: {fileID: 1730793915}
   ground: {fileID: 117516811}
-  rotateSpeed: 40
+  rotateSpeed: 35
   camTransform: {fileID: 1730793918}
   cameraZoomSpeed: 50
 --- !u!4 &1480540003
@@ -13393,7 +13393,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -6.4868, y: -6.4868}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1789855917
 MonoBehaviour:
@@ -13408,14 +13408,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.754717, g: 0.6544995, b: 0.33819866, a: 1}
+  m_Color: {r: 0.9528302, g: 0.91865927, b: 0.85844606, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

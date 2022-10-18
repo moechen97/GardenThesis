@@ -106,7 +106,7 @@ Material:
     - _Glossiness: 0
     - _Glossness: 36.3
     - _GlossyReflections: 0
-    - _GlowExtent: 1
+    - _GlowExtent: 0
     - _GradientHeightTheshold: 0.05
     - _GradientSmoothness: 2.4
     - _GradientSmoothnessTheshold: 3.61
