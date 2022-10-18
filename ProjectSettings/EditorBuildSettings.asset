@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/3DTestPlanting.unity
     guid: 47fcb1ab4aa324042ba5798a1e0ff443
+  - enabled: 1
+    path: Assets/Scenes/TheGarden.unity
+    guid: 68c058ee8710642c48dc98e8dd80ce35
   m_configObjects: {}
