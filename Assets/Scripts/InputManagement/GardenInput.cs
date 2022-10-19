@@ -125,14 +125,14 @@ namespace Planting
                                                            targetPosition,
                                                            Time.deltaTime * cameraZoomSpeed);*/
                     float offset = _virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z;
-                    offset -= 1F;
+                    offset += 1F;
                     float newZValue =
                         Mathf.Lerp(_virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z,
                             offset, Time.deltaTime * cameraZoomSpeed);
 
-                    if (newZValue > 6.87f)
+                    if (newZValue > -10f)
                     {
-                        newZValue = 6.87f;
+                        newZValue = -10f;
                     }
                     else if (newZValue < -62f)
                     {
@@ -153,7 +153,7 @@ namespace Planting
                                                           targetPosition,
                                                           Time.deltaTime * cameraZoomSpeed);*/
                     float offset = _virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z;
-                    offset += 1F;
+                    offset -= 1F;
                     float newZValue =
                         Mathf.Lerp(_virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z,
                             offset, Time.deltaTime * cameraZoomSpeed);
@@ -308,7 +308,7 @@ namespace Planting
                 currentRotatePosition = screenCoordinates;
                 rotateDirection = previousRotatePosition - currentRotatePosition;
                 float rotationAroundYAxis = -rotateDirection.x * rotateSpeed * Time.deltaTime; //camera moves horizontally
-                float rotationAroundXAxis = -rotateDirection.y * rotateSpeed * Time.deltaTime; //camera moves vertically
+                float rotationAroundXAxis = rotateDirection.y * rotateSpeed * Time.deltaTime; //camera moves vertically
                 //cam.transform.position = ground.transform.position;
                 Debug.Log("Rotate direction: " + rotateDirection);
                 //camFocusPoint.transform.RotateAround(camFocusPoint.transform.position, new Vector3(1, 0, 0), rotationAroundXAxis);
