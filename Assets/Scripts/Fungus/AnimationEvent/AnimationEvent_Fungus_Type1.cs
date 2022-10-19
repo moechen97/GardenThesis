@@ -52,6 +52,11 @@ public class AnimationEvent_Fungus_Type1 : MonoBehaviour
         MaterialChange.Exploded();
     }
 
+    public void Die()
+    {
+        MaterialChange.Die();
+    }
+
     public void BreathOut()
     {
         MaterialChange.BreathOut();

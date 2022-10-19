@@ -9,7 +9,7 @@ public class TimeEventManager : MonoBehaviour
     [SerializeField] private float duskTimeStart;
     [SerializeField] private float nightTimeStart;
     //state = 0 = night , state = 1 = day , state = 2 = dusk
-    private int state = 0;
+    public static int state = 1;
     private float currentTime;
 
     public delegate void TimePeriod();

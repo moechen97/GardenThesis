@@ -19,11 +19,16 @@ public class Fungus_MaterialChange : MonoBehaviour
     [SerializeField] private float hightLightBreathOutSpeed;
     [SerializeField] private Animator fungusAnimator;
     [SerializeField] private GameObject explodeParticle;
+    [SerializeField] private GameObject DieParticle;
+    [SerializeField] private float DieSpeed;
     [SerializeField] private Transform particleGeneratePosition;
     [SerializeField] private Transform Shadow;
 
     private Material m_Material;
     private MaterialPropertyBlock _propertyBlock;
+    
+    //state = 0 = night , state = 1 = day , state = 2 = dusk
+    private float currentTime;
     
     private void OnEnable()
     {
@@ -41,20 +46,32 @@ public class Fungus_MaterialChange : MonoBehaviour
     {
         _propertyBlock = new MaterialPropertyBlock();
         m_Material = fungusRenderer.material;
-
+        currentTime = TimeEventManager.state;
+        //if it's night now
+        if (currentTime == 0)
+        {
+            _propertyBlock.SetFloat("_GlowExtent",glowExtentMax);
+            fungusRenderer.SetPropertyBlock(_propertyBlock);
+        }
     }
 
     void GotoNight()
     {
-        fungusRenderer.GetPropertyBlock(_propertyBlock);
-        _propertyBlock.SetFloat("_GlowExtent",glowExtentMax);
-        fungusRenderer.SetPropertyBlock(_propertyBlock);
+        DOVirtual.Float(0, glowExtentMax, changeSpeed, (float value) => {
+            _propertyBlock.SetFloat("_GlowExtent", value);
+            fungusRenderer.SetPropertyBlock(_propertyBlock);
+        });
         //m_Material.DOFloat(glowExtentMax,"_GlowExtent",changeSpeed);
     }
 
     void GotoDay()
     {
-        m_Material.DOFloat(0,"_GlowExtent",changeSpeed);
+        float currentExtent = _propertyBlock.GetFloat("_GlowExtent");
+        DOVirtual.Float(currentExtent, glowExtentMax, changeSpeed, (float value) => {
+            _propertyBlock.SetFloat("_GlowExtent", value);
+            fungusRenderer.SetPropertyBlock(_propertyBlock);
+        });
+        //m_Material.DOFloat(0,"_GlowExtent",changeSpeed);
     }
 
     public void Withered()
@@ -64,8 +81,19 @@ public class Fungus_MaterialChange : MonoBehaviour
 
     public void MaterialWithered()
     {
-        m_Material.DOFloat(witheredExtent,"_WitheredExtent",witheredSpeed);
-        m_Material.DOFloat(0, "_DeformExtent", witheredSpeed);
+        float currentExtent = _propertyBlock.GetFloat("_WitheredExtent");
+        DOVirtual.Float(currentExtent, witheredExtent, witheredSpeed, (float value) => {
+            _propertyBlock.SetFloat("_WitheredExtent", value);
+            fungusRenderer.SetPropertyBlock(_propertyBlock);
+        });
+        
+        float currentDeformExtent = _propertyBlock.GetFloat("_DeformExtent");
+        DOVirtual.Float(currentDeformExtent, 0, witheredSpeed, (float value) => {
+            _propertyBlock.SetFloat("_DeformExtent", value);
+            fungusRenderer.SetPropertyBlock(_propertyBlock);
+        });
+        /*m_Material.DOFloat(witheredExtent,"_WitheredExtent",witheredSpeed);
+        m_Material.DOFloat(0, "_DeformExtent", witheredSpeed);*/
     }
 
     public void Exploded()
@@ -75,23 +103,62 @@ public class Fungus_MaterialChange : MonoBehaviour
 
     IEnumerator Explosion()
     {
-        m_Material.DOFloat(explodeExtent, "_DissolveExtent", explodeSpeed);
+        float currentDissolveExtent = _propertyBlock.GetFloat("_DissolveExtent");
+        DOVirtual.Float(currentDissolveExtent, explodeExtent, explodeSpeed, (float value) => {
+            _propertyBlock.SetFloat("_DissolveExtent", value);
+            fungusRenderer.SetPropertyBlock(_propertyBlock);
+        });
+        
+        //m_Material.DOFloat(explodeExtent, "_DissolveExtent", explodeSpeed);
         Shadow.gameObject.SetActive(false);
-        yield return new WaitForSeconds(explodeExtent * 0.2f);
+        yield return new WaitForSeconds(explodeSpeed * 0.2f);
+        
         Instantiate(explodeParticle, particleGeneratePosition.position,quaternion.identity);
-        Destroy(this.gameObject,0.1f);
+        Destroy(this.gameObject,explodeSpeed*0.8f+0.1f);
         yield return null;
         
     }
 
+    public void Die()
+    {
+        StartCoroutine(Dead());
+    }
+
+    IEnumerator Dead()
+    {
+        float currentDissolveExtent = _propertyBlock.GetFloat("_DissolveExtent");
+        DOVirtual.Float(currentDissolveExtent, explodeExtent, DieSpeed, (float value) => {
+            _propertyBlock.SetFloat("_DissolveExtent", value);
+            fungusRenderer.SetPropertyBlock(_propertyBlock);
+        });
+        
+        //m_Material.DOFloat(explodeExtent, "_DissolveExtent", explodeSpeed);
+        Shadow.gameObject.SetActive(false);
+        yield return new WaitForSeconds(DieSpeed * 0.2f);
+        
+        Instantiate(DieParticle, particleGeneratePosition.position,quaternion.identity);
+        Destroy(this.gameObject,DieSpeed*0.8f+0.1f);
+        yield return null;
+    }
+
     public void BreathIn()
     {
-        m_Material.DOFloat(0f,"_HighlightExtent",hightLightBreathInSpeed);
+        float currentHighLightExtent = _propertyBlock.GetFloat("_HighlightExtent");
+        DOVirtual.Float(currentHighLightExtent, 0, hightLightBreathInSpeed, (float value) => {
+            _propertyBlock.SetFloat("_HighlightExtent", value);
+            fungusRenderer.SetPropertyBlock(_propertyBlock);
+        });
+        //m_Material.DOFloat(0f,"_HighlightExtent",hightLightBreathInSpeed);
     }
 
     public void BreathOut()
     {
-        m_Material.DOFloat(hightLightExtent,"_HighlightExtent",hightLightBreathOutSpeed);
+        float currentHighLightExtent = _propertyBlock.GetFloat("_HighlightExtent");
+        DOVirtual.Float(currentHighLightExtent, hightLightExtent, hightLightBreathOutSpeed, (float value) => {
+            _propertyBlock.SetFloat("_HighlightExtent", value);
+            fungusRenderer.SetPropertyBlock(_propertyBlock);
+        });
+        //m_Material.DOFloat(hightLightExtent,"_HighlightExtent",hightLightBreathOutSpeed);
     }
 
     private void OnDestroy()
