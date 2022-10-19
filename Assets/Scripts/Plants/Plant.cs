@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Planting {
     public class Plant : MonoBehaviour
@@ -132,8 +134,9 @@ namespace Planting {
 
         protected void Breed(Plant otherPlant, Vector3 direction, float distance)
         {
-            GameObject newPlant = GameObject.Instantiate(plantPrefab);
-            newPlant.transform.position += direction * distance;
+            Vector3 newPlantPosition = transform.position + direction * distance;
+            GameObject newPlant = GameObject.Instantiate(plantPrefab,newPlantPosition,quaternion.identity);
+            //newPlant.transform.position += direction * distance;
             otherPlant.isBreeding = false;
             isBreeding = false;
         }

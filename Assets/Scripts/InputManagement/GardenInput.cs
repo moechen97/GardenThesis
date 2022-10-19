@@ -37,6 +37,7 @@ namespace Planting
         private Coroutine zoomCoroutine = null;
         [SerializeField] Transform camTransform;
         [SerializeField] float cameraZoomSpeed = 4F;
+        [SerializeField] private float rotationSlowDownSpeed = 1 / 2f;
         
         private Coroutine zoomEndDelay = null;
         private CinemachineVirtualCamera _virtualCamera;
@@ -357,7 +358,7 @@ namespace Planting
         {
             yield return new WaitForEndOfFrame();
             //rotateStep -= Time.deltaTime * Mathf.Clamp(rotateStep, 1F, rotateSpeed) * rotateSpeed;
-            rotateStep -= Time.deltaTime / 2F;
+            rotateStep -= Time.deltaTime * rotationSlowDownSpeed;
             float rotationAroundYAxis = -rotateDirection.normalized.x * rotateStep; //camera moves horizontally
             Vector3 rot = camFocusPoint.transform.localEulerAngles +
     new Vector3(0f, rotationAroundYAxis, 0f);
@@ -414,6 +415,11 @@ namespace Planting
                 {
                     isDraggingSeed = true;
                     currSeed = PlantType.Fungus_Green;
+                }
+                else if (result.gameObject.name.Equals("Fungus_Jelly"))
+                {
+                    isDraggingSeed = true;
+                    currSeed = PlantType.Fungus_Jelly;
                 }
             }
             if(!isDraggingSeed && !twoFingers && results.Count == 0)

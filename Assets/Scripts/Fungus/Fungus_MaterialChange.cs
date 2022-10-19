@@ -67,7 +67,7 @@ public class Fungus_MaterialChange : MonoBehaviour
     void GotoDay()
     {
         float currentExtent = _propertyBlock.GetFloat("_GlowExtent");
-        DOVirtual.Float(currentExtent, glowExtentMax, changeSpeed, (float value) => {
+        DOVirtual.Float(currentExtent, 0, changeSpeed, (float value) => {
             _propertyBlock.SetFloat("_GlowExtent", value);
             fungusRenderer.SetPropertyBlock(_propertyBlock);
         });
@@ -112,8 +112,10 @@ public class Fungus_MaterialChange : MonoBehaviour
         //m_Material.DOFloat(explodeExtent, "_DissolveExtent", explodeSpeed);
         Shadow.gameObject.SetActive(false);
         yield return new WaitForSeconds(explodeSpeed * 0.2f);
-        
-        Instantiate(explodeParticle, particleGeneratePosition.position,quaternion.identity);
+        if (explodeParticle)
+        {
+            Instantiate(explodeParticle, particleGeneratePosition.position,quaternion.identity);
+        }
         Destroy(this.gameObject,explodeSpeed*0.8f+0.1f);
         yield return null;
         
@@ -133,10 +135,12 @@ public class Fungus_MaterialChange : MonoBehaviour
         });
         
         //m_Material.DOFloat(explodeExtent, "_DissolveExtent", explodeSpeed);
-        Shadow.gameObject.SetActive(false);
+        if(Shadow)
+            Shadow.gameObject.SetActive(false);
         yield return new WaitForSeconds(DieSpeed * 0.2f);
         
-        Instantiate(DieParticle, particleGeneratePosition.position,quaternion.identity);
+        if(DieParticle)
+            Instantiate(DieParticle, particleGeneratePosition.position,quaternion.identity);
         Destroy(this.gameObject,DieSpeed*0.8f+0.1f);
         yield return null;
     }
