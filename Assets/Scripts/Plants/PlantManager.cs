@@ -73,8 +73,8 @@ namespace Planting
 
         public static void IncrementPlant(PlantType type, Plant plant)
         {
-            plantCounter[type]++;
             allPlants.Add(plant);
+            plantCounter[type]++;
             Resources.IncrementProgress(resourceDict[type]);
         }
         public static void DecrementPlant(PlantType type, Plant plant)

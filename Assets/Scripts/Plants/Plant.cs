@@ -111,8 +111,7 @@ namespace Planting {
                     RaycastHit hit;
                     //Check for collision in each direction
                     foreach (Vector3 direction in directionList)
-                    {
-                        
+                    {                  
                         Ray groundRay = new Ray(midpoint + (direction * growthDistance), Vector3.down);
                         if (!Physics.Raycast(groundRay, out hit, Mathf.Infinity, LayerMask.GetMask("Ground")))
                         {
