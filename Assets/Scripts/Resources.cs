@@ -38,6 +38,7 @@ namespace Planting {
             }
 
             slider.value = sliderValue;
+            Debug.Log("RESOURCES USED: " + GetResourcesUsed());
 
             if (!slider.gameObject.activeSelf)
             {
@@ -56,13 +57,15 @@ namespace Planting {
 
         public static void IncrementProgress(float newProgress)
         {
-            resourcesUsed += Mathf.Round((newProgress) * 100.0F) * 0.01F;
+            resourcesUsed += newProgress;
+            resourcesUsed = float.Parse(resourcesUsed.ToString("F2"));
             incrementProgress = true;
         }
 
         public static void DecrementProgress(float newProgress)
         {
-            resourcesUsed -= Mathf.Round((newProgress) * 100.0F) * 0.01F;
+            resourcesUsed -= newProgress;
+            resourcesUsed = float.Parse(resourcesUsed.ToString("F2"));
             incrementProgress = false;
         }
         public static float GetResourcesUsed()
