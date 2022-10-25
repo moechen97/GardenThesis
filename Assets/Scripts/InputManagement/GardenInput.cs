@@ -15,6 +15,7 @@ namespace Planting
         private Dictionary<PlantType, string> plantNames;
         private GardenControl gardenControl;
         Camera cameraMain;
+        [SerializeField] PlantManager plantManager;
         [SerializeField] GameObject cam;
         [SerializeField] Image indicator;
         [SerializeField] GameObject plantMenu;
@@ -63,8 +64,8 @@ namespace Planting
         }
         void Awake()
         {
-            seeds = GetComponent<SeedDictionaryScript>().DeserializeDictionary();
-            plantNames = GetComponent<PlantNameDictionaryScript>().DeserializeDictionary();
+            seeds = plantManager.GetComponent<SeedDictionaryScript>().DeserializeDictionary();
+            plantNames = plantManager.GetComponent<PlantNameDictionaryScript>().DeserializeDictionary();
             graphicRaycaster = plantMenu_Canvas.GetComponent<GraphicRaycaster>();
             gardenControl = new GardenControl();
             cameraMain = Camera.main;

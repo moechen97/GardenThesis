@@ -6,15 +6,14 @@ namespace Planting {
 
     public class UnlockablePlants : MonoBehaviour
     {
-        public List<PlantType> unlockables;
-        public List<GameObject> unlockable_icons;
+        private Dictionary<PlantType, GameObject> unlockable_icons;
         private Dictionary<PlantType, string> plantNames;
-        [SerializeField] PlantNameDictionaryScript plantNameDictionaryScript;
         [SerializeField] GameObject seedPanel;
         // Start is called before the first frame update
         void Start()
         {
-            plantNames = plantNameDictionaryScript.DeserializeDictionary();
+            plantNames = GetComponent<PlantNameDictionaryScript>().DeserializeDictionary();
+            unlockable_icons = GetComponent<UnlockableIconDictionaryScript>().DeserializeDictionary();
         }
 
         // Update is called once per frame
@@ -27,15 +26,15 @@ namespace Planting {
         public void Unlock_Progress()
         {
             List<PlantType> unlocks = new List<PlantType>();
-            foreach(PlantType type in unlockables)
+            foreach(KeyValuePair<PlantType, GameObject> unlockable in unlockable_icons)
             {
-                if(type == PlantType.Fungus_Purple)
+                if(unlockable.Key == PlantType.Fungus_Purple)
                 {
                     if(PlantManager.plantedPlantCounter[PlantType.Fungus_Green] >= 3 && 
                         PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 4)
                     {
-                        GameObject fungusPurpleIcon = GameObject.Instantiate(unlockable_icons[0]);
-                        fungusPurpleIcon.name = plantNames[type];
+                        GameObject fungusPurpleIcon = GameObject.Instantiate(unlockable_icons[unlockable.Key]);
+                        fungusPurpleIcon.name = plantNames[unlockable.Key];
                         fungusPurpleIcon.transform.parent = seedPanel.transform;
                         fungusPurpleIcon.transform.localScale = new Vector3(1.440003F, 1.440003F, 1.440003F);
                         unlocks.Add(PlantType.Fungus_Purple);
@@ -44,7 +43,7 @@ namespace Planting {
             }
             foreach(PlantType type in unlocks)
             {
-                unlockables.Remove(type);
+                unlockable_icons.Remove(type);
             }
         }
     }
