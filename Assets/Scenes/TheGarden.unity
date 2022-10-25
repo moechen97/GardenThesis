@@ -530,7 +530,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88122235}
-  m_LocalRotation: {x: 0.064167075, y: -1.0234667e-15, z: -6.580852e-17, w: 0.99793917}
+  m_LocalRotation: {x: 0.064167075, y: 1.0234668e-15, z: 6.5808524e-17, w: 0.99793917}
   m_LocalPosition: {x: 0, y: 9.823851, z: -52.533802}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7772,7 +7772,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 954583513}
-  m_LocalRotation: {x: 0.064167075, y: -1.0234667e-15, z: -6.580852e-17, w: 0.99793917}
+  m_LocalRotation: {x: 0.064167075, y: 1.0234668e-15, z: 6.5808524e-17, w: 0.99793917}
   m_LocalPosition: {x: 0, y: 9.823851, z: -52.533802}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -16188,7 +16188,7 @@ MonoBehaviour:
   unlockables: 04000000
   unlockable_icons:
   - {fileID: 4155947344800111990, guid: 043f02d8c9e981e45b4faf9b450acb1d, type: 3}
-  gardenInput: {fileID: 1480540002}
+  plantNameDictionaryScript: {fileID: 1480540005}
   seedPanel: {fileID: 218345613}
 --- !u!1 &2129768135
 GameObject:

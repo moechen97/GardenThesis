@@ -421,12 +421,6 @@ namespace Planting
                     afterRotate = null;
                 }
                 //rotateStep = rotateSpeed / 2F;
-                rotateStep = 0.1F * Mathf.Abs(Mathf.Clamp(rotateDirection.x, -7F, 7F));
-                if (Mathf.Abs(rotateDirection.x) > Mathf.Abs(rotateDirection.y) && rotateStep < 0.25F)
-                {
-                    rotateStep = 0.25F;
-                }
-                Debug.Log("ROTATE STEP: " + rotateStep);
                 previousRotatePosition = screenCoordinates;
             }
         }
@@ -446,7 +440,20 @@ namespace Planting
             isDraggingSeed = false;
             if(rotatingScreen)
             {
-                afterRotate = StartCoroutine(SpinAfterRotate());
+                if (Mathf.Abs(rotateDirection.x) > Mathf.Abs(rotateDirection.y))
+                {
+                    rotateStep = 0.1F * Mathf.Abs(Mathf.Clamp(rotateDirection.x, -7F, 7F));
+                    if (rotateStep < 0.25F)
+                    {
+                        rotateStep = 0.25F;
+                    }
+                    afterRotate = StartCoroutine(SpinAfterRotate());
+                }
+                else
+                {
+                    rotateStep = 0.0F;
+                }
+                Debug.Log("ROTATE STEP: " + rotateStep);
             }
             rotatingScreen = false;
             indicator.gameObject.SetActive(false);
