@@ -83,9 +83,9 @@ namespace Planting
 
         public static void IncrementPlant(PlantType type, Plant plant, bool isBred = false)
         {
-            plantCounter[type]++;
             allPlants.Add(plant);
             //Debug.Log("Plant counter - " + type + ": " + plantCounter[type]);
+            plantCounter[type]++;
             Resources.IncrementProgress(resourceDict[type]);
         }
         public static void DecrementPlant(PlantType type, Plant plant)

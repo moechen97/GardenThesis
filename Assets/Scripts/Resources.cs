@@ -5,7 +5,7 @@ using UnityEngine.UI;
 namespace Planting {
     public class Resources : MonoBehaviour
     {
-        public float FillSpeed = 0.25F;
+        public float FillSpeed = 0.125F;
         private static Slider slider;
         public static float resourcesUsed = 0;
         private static bool incrementProgress = true;
@@ -32,7 +32,7 @@ namespace Planting {
             {
                 sliderValue -= FillSpeed * Time.deltaTime;
             }
-            if (Mathf.Approximately(sliderValue, resourcesUsed))
+            if (Mathf.Abs(sliderValue - resourcesUsed) < 0.0125F)//Mathf.Approximately(sliderValue, resourcesUsed) || )
             {
                 sliderValue = resourcesUsed;
             }

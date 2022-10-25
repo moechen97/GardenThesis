@@ -102,7 +102,7 @@ namespace Planting
 
         private IEnumerator ZoomEndDelay()
         {
-            yield return new WaitForSeconds(0.5F);
+            yield return new WaitForSeconds(0.15F);
             twoFingers = false;
             zoomEndDelay = null;
         }
