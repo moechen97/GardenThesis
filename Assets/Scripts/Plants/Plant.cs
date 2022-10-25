@@ -19,6 +19,7 @@ namespace Planting {
         [SerializeField, Tooltip("Blooming flower when fully grown")] protected GameObject flower;
         [HideInInspector] public bool isBreeding = false;
         [SerializeField, Tooltip("Distance to check/plant for nearby ones of same breed")] private float growthDistance = 2F;
+        [HideInInspector] private bool wasBred = false;
         // Start is called before the first frame update
         protected virtual void Start()
         {
@@ -39,9 +40,10 @@ namespace Planting {
             {
                 isGrown = true;
                 isBreeding = true;
+                GameEvents.current.PlantFullyGrown(id, wasBred);
                 animator.speed = 1.00F;
                 //flower.SetActive(true);
-                Debug.Log(name+"isGrown");
+                //Debug.Log(name+"isGrown");
             }
             else if (isGrown)
             {            
@@ -136,6 +138,7 @@ namespace Planting {
         {
             Vector3 newPlantPosition = transform.position + direction * distance;
             GameObject newPlant = GameObject.Instantiate(plantPrefab,newPlantPosition,quaternion.identity);
+            newPlant.GetComponent<Plant>().WasBred();
             //newPlant.transform.position += direction * distance;
             otherPlant.isBreeding = false;
             isBreeding = false;
@@ -162,6 +165,11 @@ namespace Planting {
         public void UpdateAnimationSpeed(float speedFactor)
         {
             animator.speed = speed * speedFactor;
+        }
+
+        public void WasBred()
+        {
+            wasBred = true;
         }
     }
 }

@@ -10,6 +10,7 @@ TagManager:
   - PlantCollider
   - ResourceBar
   - SpeedManager
+  - PlantManager
   layers:
   - Default
   - TransparentFX

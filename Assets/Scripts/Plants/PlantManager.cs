@@ -4,28 +4,50 @@ using UnityEngine;
 
 namespace Planting
 {
-    public enum PlantType { MushroomDarkGreen, MushroomPink, Fungus_Green, Fungus_Jelly }
-    public static class PlantManager
+    public enum PlantType { MushroomDarkGreen, MushroomPink, Fungus_Green, Fungus_Jelly, Fungus_Purple }
+    public class PlantManager : MonoBehaviour
     {
+        private UnlockablePlants unlockablePlants;
+        private void Start()
+        {
+            GameEvents.current.onPlantFullyGrownTrigger += FullyGrownPlant;
+            unlockablePlants = GetComponent<UnlockablePlants>();
+        }
         public static Dictionary<PlantType, int> plantCounter = new Dictionary<PlantType, int>();
         public static Dictionary<PlantType, float> resourceDict = new 
-            Dictionary<PlantType, float>() { { PlantType.MushroomDarkGreen, 0.1F }, 
+            Dictionary<PlantType, float>() { 
+                { PlantType.MushroomDarkGreen, 0.1F }, 
                 { PlantType.MushroomPink, 0.05F },
                 { PlantType.Fungus_Green , 0.1f},
-                { PlantType.Fungus_Jelly , 0.05f}
+                { PlantType.Fungus_Jelly , 0.05f },
+                { PlantType.Fungus_Purple, 0.05f}
             };
-        public static int num_MushroomDarkGreen = 0;
-        public static int max_MushroomDarkGreen = 10;
-        public static int num_MushroomPink = 0;
-        public static int num_Fungus_Green = 0;
-        public static int max_Fungus_Green = 10;
-        public static int num_Fungus_Jelly = 0;
-        public static int max_Fungus_Jelly = 15;
+
+        //public static int num_MushroomDarkGreen = 0;
+        //public static int max_MushroomDarkGreen = 10;
+        //public static int num_MushroomPink = 0;
+        //public static int max_Fungus_Green = 10;
+        //public static int max_Fungus_Jelly = 15;
+
+        public static Dictionary<PlantType, int> maxPlants = new
+            Dictionary<PlantType, int>()
+        {
+            { PlantType.MushroomDarkGreen, 10 },
+            { PlantType.MushroomPink, 10 },
+            { PlantType.Fungus_Green , 10 },
+            { PlantType.Fungus_Jelly , 10 },
+            { PlantType.Fungus_Purple, 10 }
+        };
         public static List<Plant> allPlants = new List<Plant>();
 
+        //for unlocks
+        public static Dictionary<PlantType, int> plantedPlantCounter = new Dictionary<PlantType, int>();
+        public static Dictionary<PlantType, int> bredPlantCounter = new Dictionary<PlantType, int>();
         public static void AddPlant(PlantType type)
         {
             plantCounter[type] = 0;
+            plantedPlantCounter[type] = 0;
+            bredPlantCounter[type] = 0;
         }
         public static bool CanSpawnPlantBreed(PlantType type)
         {
@@ -56,32 +78,37 @@ namespace Planting
 
         public static bool CanBreedPlant(PlantType type)
         {
-            if (type == PlantType.MushroomDarkGreen)
-            {
-                return plantCounter[type] < max_MushroomDarkGreen;
-            }
-            else if (type == PlantType.Fungus_Green)
-            {
-                return plantCounter[type] < max_Fungus_Green;
-            }
-            else if (type == PlantType.Fungus_Jelly)
-            {
-                return plantCounter[type] < max_Fungus_Jelly;
-            }
-            return false;
+            return plantCounter[type] < maxPlants[type];
         }
 
-        public static void IncrementPlant(PlantType type, Plant plant)
+        public static void IncrementPlant(PlantType type, Plant plant, bool isBred = false)
         {
             plantCounter[type]++;
             allPlants.Add(plant);
+            //Debug.Log("Plant counter - " + type + ": " + plantCounter[type]);
             Resources.IncrementProgress(resourceDict[type]);
         }
         public static void DecrementPlant(PlantType type, Plant plant)
         {
-            plantCounter[type]--;
+            //plantCounter[type]--;
             allPlants.Remove(plant);
             Resources.DecrementProgress(resourceDict[type]);
+        }
+
+        //tracker for unlocking
+        public void FullyGrownPlant(PlantType type, bool isBred = false)
+        {
+            if (isBred)
+            {
+                bredPlantCounter[type]++;
+                Debug.Log("Bred plant counter - " + type + ": " + bredPlantCounter[type]);
+            }
+            else
+            {
+                plantedPlantCounter[type]++;
+                Debug.Log("Planted plant counter - " + type + ": " + plantedPlantCounter[type]);
+            }
+            unlockablePlants.Unlock_Progress();
         }
 
         public static void UpdatePlantsAnimationSpeed(float speedFactor)

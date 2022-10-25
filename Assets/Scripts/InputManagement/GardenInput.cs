@@ -421,6 +421,11 @@ namespace Planting
                     isDraggingSeed = true;
                     currSeed = PlantType.Fungus_Jelly;
                 }
+                else if(result.gameObject.name.Equals("Fungus_Purple"))
+                {
+                    isDraggingSeed = true;
+                    currSeed = PlantType.Fungus_Purple;
+                }
             }
             if(!isDraggingSeed && !twoFingers && results.Count == 0)
             {
