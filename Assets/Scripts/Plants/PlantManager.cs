@@ -33,10 +33,10 @@ namespace Planting
             Dictionary<PlantType, int>()
         {
             { PlantType.MushroomDarkGreen, 10 },
-            { PlantType.MushroomPink, 10 },
+            { PlantType.MushroomPink, 20 },
             { PlantType.Fungus_Green , 10 },
-            { PlantType.Fungus_Jelly , 10 },
-            { PlantType.Fungus_Purple, 10 }
+            { PlantType.Fungus_Jelly , 20 },
+            { PlantType.Fungus_Purple, 20 }
         };
         public static List<Plant> allPlants = new List<Plant>();
 

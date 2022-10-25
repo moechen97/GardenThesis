@@ -8,11 +8,13 @@ namespace Planting {
     {
         public List<PlantType> unlockables;
         public List<GameObject> unlockable_icons;
+        private Dictionary<PlantType, string> plantNames;
+        [SerializeField] PlantNameDictionaryScript plantNameDictionaryScript;
         [SerializeField] GameObject seedPanel;
         // Start is called before the first frame update
         void Start()
         {
-
+            plantNames = plantNameDictionaryScript.DeserializeDictionary();
         }
 
         // Update is called once per frame
@@ -33,7 +35,7 @@ namespace Planting {
                         PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 4)
                     {
                         GameObject fungusPurpleIcon = GameObject.Instantiate(unlockable_icons[0]);
-                        fungusPurpleIcon.name = "Fungus_Purple";
+                        fungusPurpleIcon.name = plantNames[type];
                         fungusPurpleIcon.transform.parent = seedPanel.transform;
                         fungusPurpleIcon.transform.localScale = new Vector3(1.440003F, 1.440003F, 1.440003F);
                         unlocks.Add(PlantType.Fungus_Purple);

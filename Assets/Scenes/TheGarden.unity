@@ -11825,6 +11825,7 @@ GameObject:
   - component: {fileID: 1480540003}
   - component: {fileID: 1480540002}
   - component: {fileID: 1480540004}
+  - component: {fileID: 1480540005}
   m_Layer: 0
   m_Name: GardenInputControl
   m_TagString: GardenInput
@@ -11893,6 +11894,27 @@ MonoBehaviour:
   - {fileID: 2434433552892972562, guid: 1b39b747ccd9e48ec97115c337f236b4, type: 3}
   - {fileID: 9193809187864115647, guid: 9a0211bb8d7654489822a2d890ae28c9, type: 3}
   - {fileID: 9193809187864115647, guid: 9a0211bb8d7654489822a2d890ae28c9, type: 3}
+  modifyValues: 0
+--- !u!114 &1480540005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480540001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8119cdeea593368488417b66ff7bb03d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dictionaryData: {fileID: 11400000, guid: fb45f34e316aefa419647eb115c4e682, type: 2}
+  keys: 0000000001000000020000000300000004000000
+  values:
+  - MushroomDarkGreen
+  - MushroomPink
+  - Fungus_Green
+  - Fungus_Jelly
+  - Fungus_Purple
   modifyValues: 0
 --- !u!1 &1487688895
 GameObject:
@@ -16166,6 +16188,7 @@ MonoBehaviour:
   unlockables: 04000000
   unlockable_icons:
   - {fileID: 4155947344800111990, guid: 043f02d8c9e981e45b4faf9b450acb1d, type: 3}
+  gardenInput: {fileID: 1480540002}
   seedPanel: {fileID: 218345613}
 --- !u!1 &2129768135
 GameObject:

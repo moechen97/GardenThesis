@@ -12,6 +12,7 @@ namespace Planting
     public class GardenInput : MonoBehaviour
     {
         private Dictionary<PlantType, GameObject> seeds;
+        private Dictionary<PlantType, string> plantNames;
         private GardenControl gardenControl;
         Camera cameraMain;
         [SerializeField] GameObject cam;
@@ -63,6 +64,7 @@ namespace Planting
         void Awake()
         {
             seeds = GetComponent<SeedDictionaryScript>().DeserializeDictionary();
+            plantNames = GetComponent<PlantNameDictionaryScript>().DeserializeDictionary();
             graphicRaycaster = plantMenu_Canvas.GetComponent<GraphicRaycaster>();
             gardenControl = new GardenControl();
             cameraMain = Camera.main;
@@ -401,30 +403,13 @@ namespace Planting
             UIgraphicRaycaster.Raycast(pointerEventData, results);
             foreach (RaycastResult result in results)
             {
-                if (result.gameObject.name.Equals("MushroomDarkGreen"))
-                { 
-                    isDraggingSeed = true;
-                    currSeed = PlantType.MushroomDarkGreen;
-                }
-                else if (result.gameObject.name.Equals("MushroomPink"))
+                foreach(KeyValuePair<PlantType, string> plant in plantNames)
                 {
-                    isDraggingSeed = true;
-                    currSeed = PlantType.MushroomPink;
-                }
-                else if (result.gameObject.name.Equals("Fungus_Green"))
-                {
-                    isDraggingSeed = true;
-                    currSeed = PlantType.Fungus_Green;
-                }
-                else if (result.gameObject.name.Equals("Fungus_Jelly"))
-                {
-                    isDraggingSeed = true;
-                    currSeed = PlantType.Fungus_Jelly;
-                }
-                else if(result.gameObject.name.Equals("Fungus_Purple"))
-                {
-                    isDraggingSeed = true;
-                    currSeed = PlantType.Fungus_Purple;
+                    if(result.gameObject.name.Equals(plant.Value))
+                    {
+                        isDraggingSeed = true;
+                        currSeed = plant.Key;
+                    }
                 }
             }
             if(!isDraggingSeed && !twoFingers && results.Count == 0)
