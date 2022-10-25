@@ -88,7 +88,6 @@ namespace Planting
         }
         private void ZoomStart()
         {
-            Debug.Log("ZOOM START");
             twoFingers = true;
             if (zoomEndDelay != null)
             {
@@ -363,9 +362,10 @@ namespace Planting
             rotateStep -= Time.deltaTime * rotationSlowDownSpeed;
             float rotationAroundYAxis = -rotateDirection.normalized.x * rotateStep; //camera moves horizontally
             Vector3 rot = camFocusPoint.transform.localEulerAngles +
-    new Vector3(0f, rotationAroundYAxis, 0f);
+                new Vector3(0f, rotationAroundYAxis, 0f);
             rot.x = ClampAngle(rot.x, 0f, 85f);
             rot.z = 0;
+
 
             camFocusPoint.transform.localEulerAngles = rot;
             //camFocusPoint.transform.RotateAround(camFocusPoint.transform.position, new Vector3(0, 1, 0), rotationAroundYAxis);
@@ -421,7 +421,12 @@ namespace Planting
                     afterRotate = null;
                 }
                 //rotateStep = rotateSpeed / 2F;
-                rotateStep = 0.1F * Mathf.Abs(Mathf.Clamp(rotateDirection.x, -5F, 5F));
+                rotateStep = 0.1F * Mathf.Abs(Mathf.Clamp(rotateDirection.x, -7F, 7F));
+                if (Mathf.Abs(rotateDirection.x) > Mathf.Abs(rotateDirection.y) && rotateStep < 0.25F)
+                {
+                    rotateStep = 0.25F;
+                }
+                Debug.Log("ROTATE STEP: " + rotateStep);
                 previousRotatePosition = screenCoordinates;
             }
         }
