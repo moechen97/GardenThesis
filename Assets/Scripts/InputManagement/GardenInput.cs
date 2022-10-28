@@ -351,12 +351,7 @@ namespace Planting
                 new Vector3(0f, rotationAroundYAxis, 0f);
             rot.x = ClampAngle(rot.x, 0f, 85f);
             rot.z = 0;
-
-
             camFocusPoint.transform.localEulerAngles = rot;
-            //camFocusPoint.transform.RotateAround(camFocusPoint.transform.position, new Vector3(0, 1, 0), rotationAroundYAxis);
-            //camFocusPoint.transform.eulerAngles = new Vector3(ClampAngle(camFocusPoint.transform.eulerAngles.x, 0F, 85F), camFocusPoint.transform.eulerAngles.y, 0.0F);
-            //FixRotationPoints();
             if (rotateStep > 0.0F)
             {
                 afterRotate = StartCoroutine(SpinAfterRotate());
@@ -418,11 +413,16 @@ namespace Planting
                 previousRotatePosition = screenCoordinates;
             }
         }
+        private IEnumerator WaitForEndDrag()
+        {
+            yield return new WaitForEndOfFrame();
+            touchPlantDrag = false;
+        }
         private void EndDrag(InputAction.CallbackContext context)
         {
             if(touchPlantDrag)
             {
-                touchPlantDrag = false;
+                StartCoroutine(WaitForEndDrag());
                 return;
             }
             if(twoFingers)
@@ -452,7 +452,7 @@ namespace Planting
                 {
                     rotateStep = 0.0F;
                 }
-                Debug.Log("ROTATE STEP: " + rotateStep);
+                Debug.Log("ROTATE STEP: " + rotateStep + ", " + rotateDirection);
             }
             rotatingScreen = false;
             indicator.gameObject.SetActive(false);
