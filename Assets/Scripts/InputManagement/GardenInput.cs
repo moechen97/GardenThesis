@@ -44,6 +44,7 @@ namespace Planting
         private Coroutine zoomEndDelay = null;
         private CinemachineVirtualCamera _virtualCamera;
         private bool twoFingers = false;
+        private bool touchPlantDrag = false;
         public struct PlantMenu
         {
             public GameObject menuObject;
@@ -299,7 +300,7 @@ namespace Planting
             }
             else if(rotatingScreen)
             {
-                if(twoFingers)
+                if(twoFingers || touchPlantDrag)
                 {
                     rotatingScreen = false;
                     return;
@@ -311,29 +312,13 @@ namespace Planting
                 rotateDirection = previousRotatePosition - currentRotatePosition;
                 float rotationAroundYAxis = -rotateDirection.x * rotateSpeed * Time.deltaTime; //camera moves horizontally
                 float rotationAroundXAxis = rotateDirection.y * rotateSpeed * Time.deltaTime; //camera moves vertically
-                //cam.transform.position = ground.transform.position;
-                Debug.Log("Rotate direction: " + rotateDirection);
-                //camFocusPoint.transform.RotateAround(camFocusPoint.transform.position, new Vector3(1, 0, 0), rotationAroundXAxis);
-                //camFocusPoint.transform.RotateAround(camFocusPoint.transform.position, new Vector3(0, 1, 0), rotationAroundYAxis);
-                //camFocusPoint.transform.eulerAngles = new Vector3(camFocusPoint.transform.eulerAngles.x + rotationAroundXAxis, camFocusPoint.transform.eulerAngles.y + rotationAroundYAxis, 0.0F) + new Vector3(rotationAroundYAxis, rotationAroundYAxis, 0.0F);
-
-                //camFocusPoint.transform.localEulerAngles = camFocusPoint.transform.localEulerAngles + new Vector3(rotationAroundXAxis, 0.0F, 0.0F);
-
-                //camFocusPoint.transform.localEulerAngles = new Vector3(camFocusPoint.transform.localEulerAngles.x, camFocusPoint.transform.localEulerAngles.y, 0.0F);
-
-                //Fix rotation point
-                //FixRotationPoints(); 
-                //camFocusPoint.transform.localEulerAngles = new Vector3(ClampAngle(camFocusPoint.transform.localEulerAngles.x, 0F, 85F), camFocusPoint.transform.localEulerAngles.y, 0.0F);
                 Vector3 rot = camFocusPoint.transform.localEulerAngles + 
                     new Vector3(rotationAroundXAxis, rotationAroundYAxis, 0f);
                 rot.x = ClampAngle(rot.x, 0f, 85f);
                 rot.z = 0;
 
                 camFocusPoint.transform.localEulerAngles = rot;
-                //cam.transform.eulerAngles += new Vector3(12.312F, -4.502F, -0.004F);
-                //ground.transform.Translate(new Vector3(0, 0, -2.76F));
                 previousRotatePosition = currentRotatePosition;
-                //ground.transform.eulerAngles = ground.transform.eulerAngles + 15 * new Vector3(-fingerPos.y, fingerPos.x, 0F);
             }
         }
 
@@ -400,9 +385,9 @@ namespace Planting
             screenCoordinates.z = 0.0F;
             PointerEventData pointerEventData = new PointerEventData(eventSystem);
             pointerEventData.position = screenCoordinates;
-            List<RaycastResult> results = new List<RaycastResult>();
-            UIgraphicRaycaster.Raycast(pointerEventData, results);
-            foreach (RaycastResult result in results)
+            List<RaycastResult> UIresults = new List<RaycastResult>();
+            UIgraphicRaycaster.Raycast(pointerEventData, UIresults);
+            foreach (RaycastResult result in UIresults)
             {
                 foreach(KeyValuePair<PlantType, string> plant in plantNames)
                 {
@@ -413,8 +398,16 @@ namespace Planting
                     }
                 }
             }
-            if(!isDraggingSeed && !twoFingers && results.Count == 0)
+            if(!isDraggingSeed && !twoFingers && UIresults.Count == 0)
             {
+                RaycastHit hit;
+                Ray ray = cameraMain.ScreenPointToRay(screenCoordinates);
+                int layer_mask = LayerMask.GetMask("Plant");
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, layer_mask))
+                {
+                    touchPlantDrag = true;
+                    yield return null;
+                }
                 rotatingScreen = true;
                 if(afterRotate != null)
                 {
@@ -427,6 +420,11 @@ namespace Planting
         }
         private void EndDrag(InputAction.CallbackContext context)
         {
+            if(touchPlantDrag)
+            {
+                touchPlantDrag = false;
+                return;
+            }
             if(twoFingers)
             {
                 rotatingScreen = false;
