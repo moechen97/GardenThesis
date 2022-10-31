@@ -147,13 +147,6 @@ namespace Planting
                 //Zoom in
                 else if(distance < previousDistance)
                 {
-                    /*Vector3 targetPosition = camTransform.position;
-                    targetPosition.z += 1F;
-                    //Camera.main.orthographicSize--;
-                    //Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, Camera.main.orthographicSize--, Time.deltaTime);
-                    camTransform.position = Vector3.Slerp(camTransform.position,
-                                                          targetPosition,
-                                                          Time.deltaTime * cameraZoomSpeed);*/
                     float offset = _virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z;
                     offset -= 1F;
                     float newZValue =
@@ -171,18 +164,7 @@ namespace Planting
                         new Vector3(0, 0, newZValue);
                     
                 }
-                //Keep track of previous distance 
-                Debug.Log("CAM TRANSFORM Z: " + camTransform.position.z);
-                /*if(camTransform.position.z < -32F)
-                {
-                    camTransform.position = new Vector3(camTransform.position.x, camTransform.position.y, -32F);
-                }
-                if(camTransform.position.z > 6.87F)
-                {
-                    camTransform.position = new Vector3(camTransform.position.x, camTransform.position.y, 6.87F);
-                }*/
-                
-                
+
                 previousDistance = distance;
                 yield return null;
             }
@@ -311,29 +293,14 @@ namespace Planting
                 rotateDirection = previousRotatePosition - currentRotatePosition;
                 float rotationAroundYAxis = -rotateDirection.x * rotateSpeed * Time.deltaTime; //camera moves horizontally
                 float rotationAroundXAxis = rotateDirection.y * rotateSpeed * Time.deltaTime; //camera moves vertically
-                //cam.transform.position = ground.transform.position;
                 Debug.Log("Rotate direction: " + rotateDirection);
-                //camFocusPoint.transform.RotateAround(camFocusPoint.transform.position, new Vector3(1, 0, 0), rotationAroundXAxis);
-                //camFocusPoint.transform.RotateAround(camFocusPoint.transform.position, new Vector3(0, 1, 0), rotationAroundYAxis);
-                //camFocusPoint.transform.eulerAngles = new Vector3(camFocusPoint.transform.eulerAngles.x + rotationAroundXAxis, camFocusPoint.transform.eulerAngles.y + rotationAroundYAxis, 0.0F) + new Vector3(rotationAroundYAxis, rotationAroundYAxis, 0.0F);
-
-                //camFocusPoint.transform.localEulerAngles = camFocusPoint.transform.localEulerAngles + new Vector3(rotationAroundXAxis, 0.0F, 0.0F);
-
-                //camFocusPoint.transform.localEulerAngles = new Vector3(camFocusPoint.transform.localEulerAngles.x, camFocusPoint.transform.localEulerAngles.y, 0.0F);
-
-                //Fix rotation point
-                //FixRotationPoints(); 
-                //camFocusPoint.transform.localEulerAngles = new Vector3(ClampAngle(camFocusPoint.transform.localEulerAngles.x, 0F, 85F), camFocusPoint.transform.localEulerAngles.y, 0.0F);
                 Vector3 rot = camFocusPoint.transform.localEulerAngles + 
                     new Vector3(rotationAroundXAxis, rotationAroundYAxis, 0f);
                 rot.x = ClampAngle(rot.x, 0f, 85f);
                 rot.z = 0;
 
                 camFocusPoint.transform.localEulerAngles = rot;
-                //cam.transform.eulerAngles += new Vector3(12.312F, -4.502F, -0.004F);
-                //ground.transform.Translate(new Vector3(0, 0, -2.76F));
                 previousRotatePosition = currentRotatePosition;
-                //ground.transform.eulerAngles = ground.transform.eulerAngles + 15 * new Vector3(-fingerPos.y, fingerPos.x, 0F);
             }
         }
 
@@ -369,9 +336,6 @@ namespace Planting
 
 
             camFocusPoint.transform.localEulerAngles = rot;
-            //camFocusPoint.transform.RotateAround(camFocusPoint.transform.position, new Vector3(0, 1, 0), rotationAroundYAxis);
-            //camFocusPoint.transform.eulerAngles = new Vector3(ClampAngle(camFocusPoint.transform.eulerAngles.x, 0F, 85F), camFocusPoint.transform.eulerAngles.y, 0.0F);
-            //FixRotationPoints();
             if (rotateStep > 0.0F)
             {
                 afterRotate = StartCoroutine(SpinAfterRotate());
@@ -383,7 +347,6 @@ namespace Planting
         }
         private void StartDrag(InputAction.CallbackContext context)
         {
-            //Debug.Log("START Drag " + context.ReadValue<float>());
             //Check for taps on UI seeds
             StartCoroutine(WaitForDrag());
         }
@@ -433,7 +396,7 @@ namespace Planting
                 indicator.gameObject.SetActive(false);
                 return;
             }
-            //Debug.Log("END DRAG!! " + gardenControl.Plant.FirstFingerPosition.ReadValue<Vector2>());
+
             if (isDraggingSeed)
             {
                 AttemptPlant(currSeed);
@@ -454,7 +417,6 @@ namespace Planting
                 {
                     rotateStep = 0.0F;
                 }
-                Debug.Log("ROTATE STEP: " + rotateStep);
             }
             rotatingScreen = false;
             indicator.gameObject.SetActive(false);
