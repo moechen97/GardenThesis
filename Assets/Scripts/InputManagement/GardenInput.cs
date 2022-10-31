@@ -33,6 +33,8 @@ namespace Planting
         [SerializeField] GameObject camFocusPoint;
         [SerializeField] GameObject ground;
         private Vector3 rotateDirection;
+        private Vector3 startDragPosition;
+        private Vector3 endDragPosition;
         private float rotateStep;
         [SerializeField] float rotateSpeed = 1F;
         private Coroutine afterRotate = null;
@@ -44,6 +46,7 @@ namespace Planting
         private Coroutine zoomEndDelay = null;
         private CinemachineVirtualCamera _virtualCamera;
         private bool twoFingers = false;
+        private bool touchPlantDrag = false;
         public struct PlantMenu
         {
             public GameObject menuObject;
@@ -281,7 +284,7 @@ namespace Planting
             }
             else if(rotatingScreen)
             {
-                if(twoFingers)
+                if(twoFingers || touchPlantDrag)
                 {
                     rotatingScreen = false;
                     return;
@@ -293,7 +296,6 @@ namespace Planting
                 rotateDirection = previousRotatePosition - currentRotatePosition;
                 float rotationAroundYAxis = -rotateDirection.x * rotateSpeed * Time.deltaTime; //camera moves horizontally
                 float rotationAroundXAxis = rotateDirection.y * rotateSpeed * Time.deltaTime; //camera moves vertically
-                Debug.Log("Rotate direction: " + rotateDirection);
                 Vector3 rot = camFocusPoint.transform.localEulerAngles + 
                     new Vector3(rotationAroundXAxis, rotationAroundYAxis, 0f);
                 rot.x = ClampAngle(rot.x, 0f, 85f);
@@ -303,18 +305,7 @@ namespace Planting
                 previousRotatePosition = currentRotatePosition;
             }
         }
-
-        private void FixRotationPoints()
-        {
-            if (camFocusPoint.transform.localEulerAngles.x < 1F)
-            {
-                camFocusPoint.transform.eulerAngles = new Vector3(1F, camFocusPoint.transform.eulerAngles.y, camFocusPoint.transform.eulerAngles.z);
-            }
-            if (camFocusPoint.transform.localEulerAngles.x > 340F)
-            {
-                camFocusPoint.transform.eulerAngles = new Vector3(340F, camFocusPoint.transform.eulerAngles.y, camFocusPoint.transform.eulerAngles.z);
-            }
-        }
+        
         float ClampAngle(float angle, float from, float to)
         {
             // accepts e.g. -80, 80
@@ -323,22 +314,20 @@ namespace Planting
             return Mathf.Min(angle, to);
         }
 
-        private IEnumerator SpinAfterRotate()
+        private IEnumerator SpinAfterRotate(Vector3 direction)
         {
             yield return new WaitForEndOfFrame();
             //rotateStep -= Time.deltaTime * Mathf.Clamp(rotateStep, 1F, rotateSpeed) * rotateSpeed;
             rotateStep -= Time.deltaTime * rotationSlowDownSpeed;
-            float rotationAroundYAxis = -rotateDirection.normalized.x * rotateStep; //camera moves horizontally
+            float rotationAroundYAxis = direction.normalized.x * rotateStep; //camera moves horizontally
             Vector3 rot = camFocusPoint.transform.localEulerAngles +
                 new Vector3(0f, rotationAroundYAxis, 0f);
             rot.x = ClampAngle(rot.x, 0f, 85f);
             rot.z = 0;
-
-
             camFocusPoint.transform.localEulerAngles = rot;
             if (rotateStep > 0.0F)
             {
-                afterRotate = StartCoroutine(SpinAfterRotate());
+                afterRotate = StartCoroutine(SpinAfterRotate(direction));
             }
             else
             {
@@ -363,9 +352,9 @@ namespace Planting
             screenCoordinates.z = 0.0F;
             PointerEventData pointerEventData = new PointerEventData(eventSystem);
             pointerEventData.position = screenCoordinates;
-            List<RaycastResult> results = new List<RaycastResult>();
-            UIgraphicRaycaster.Raycast(pointerEventData, results);
-            foreach (RaycastResult result in results)
+            List<RaycastResult> UIresults = new List<RaycastResult>();
+            UIgraphicRaycaster.Raycast(pointerEventData, UIresults);
+            foreach (RaycastResult result in UIresults)
             {
                 foreach(KeyValuePair<PlantType, string> plant in plantNames)
                 {
@@ -376,9 +365,18 @@ namespace Planting
                     }
                 }
             }
-            if(!isDraggingSeed && !twoFingers && results.Count == 0)
+            if(!isDraggingSeed && !twoFingers && UIresults.Count == 0)
             {
+                RaycastHit hit;
+                Ray ray = cameraMain.ScreenPointToRay(screenCoordinates);
+                int layer_mask = LayerMask.GetMask("Plant");
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, layer_mask))
+                {
+                    touchPlantDrag = true;
+                    yield return null;
+                }
                 rotatingScreen = true;
+                StartCoroutine(SaveStartDragPosition());
                 if(afterRotate != null)
                 {
                     StopCoroutine(afterRotate);
@@ -388,8 +386,24 @@ namespace Planting
                 previousRotatePosition = screenCoordinates;
             }
         }
+
+        private IEnumerator SaveStartDragPosition()
+        {
+            yield return new WaitForEndOfFrame();
+            startDragPosition = currentRotatePosition;
+        }
+        private IEnumerator WaitForEndDrag()
+        {
+            yield return new WaitForEndOfFrame();
+            touchPlantDrag = false;
+        }
         private void EndDrag(InputAction.CallbackContext context)
         {
+            if(touchPlantDrag)
+            {
+                StartCoroutine(WaitForEndDrag());
+                return;
+            }
             if(twoFingers)
             {
                 rotatingScreen = false;
@@ -404,14 +418,18 @@ namespace Planting
             isDraggingSeed = false;
             if(rotatingScreen)
             {
-                if (Mathf.Abs(rotateDirection.x) > Mathf.Abs(rotateDirection.y))
+                Vector3 dragRotationLength = currentRotatePosition - startDragPosition;
+                Debug.Log("DRAG ROTATION LENGTH: " + dragRotationLength.x);
+                if (Mathf.Abs(dragRotationLength.x) > Mathf.Abs(dragRotationLength.y))
                 {
-                    rotateStep = 0.1F * Mathf.Abs(Mathf.Clamp(rotateDirection.x, -7F, 7F));
+                    rotateStep = Mathf.Abs(Mathf.Clamp(dragRotationLength.x, -400F, 400F)) / 300F;
+                    //rotateStep = 0.1F * Mathf.Abs(Mathf.Clamp(dragRotationLength.x, -7F, 7F));
                     if (rotateStep < 0.25F)
                     {
                         rotateStep = 0.25F;
                     }
-                    afterRotate = StartCoroutine(SpinAfterRotate());
+                    Debug.Log("ROTATE STEP: " + rotateStep + ", " + rotateDirection);
+                    afterRotate = StartCoroutine(SpinAfterRotate(dragRotationLength));
                 }
                 else
                 {
