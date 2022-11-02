@@ -117,12 +117,21 @@ namespace Planting
             float previousDistance = 0f, distance = 0f;
             while(true)
             {
-                distance = Vector2.Distance(gardenControl.Plant.FirstFingerPosition.ReadValue<Vector2>(),
-                    gardenControl.Plant.SecondaryFingerPosition.ReadValue<Vector2>());
+                Vector2 firstFingerPos = gardenControl.Plant.FirstFingerPosition.ReadValue<Vector2>();
+                Vector2 secondFingerPos = gardenControl.Plant.SecondaryFingerPosition.ReadValue<Vector2>();
+                distance = Vector2.Distance(firstFingerPos, secondFingerPos);
+                float dot = Vector2.Dot(firstFingerPos.normalized, secondFingerPos.normalized);
+                if (dot >= 0.9915F)
+                {
+                    Vector2 TouchDeltaPosition = (Input.GetTouch(0).deltaPosition + Input.GetTouch(1).deltaPosition) / 2F;
+                    camFocusPoint.transform.Translate(cameraZoomSpeed * Time.deltaTime * -TouchDeltaPosition.normalized.x, cameraZoomSpeed * Time.deltaTime * -TouchDeltaPosition.normalized.y, 0F);
+                    camFocusPoint.transform.position = new Vector3(Mathf.Clamp(camFocusPoint.transform.position.x, -20F, 20F), Mathf.Clamp(camFocusPoint.transform.position.y, -10F + 3.04F, 10F), camFocusPoint.transform.position.z);
+                }
                 //Detection
                 //Zoom out
-                if(distance > previousDistance)
+                else if (distance > previousDistance)
                 {
+                    Debug.Log("DOT: " + Vector2.Dot(firstFingerPos.normalized, secondFingerPos.normalized));
                     /*Vector3 targetPosition = camTransform.position;
                     targetPosition.z -= 1F;
                     //Camera.main.orthographicSize++;
@@ -150,6 +159,7 @@ namespace Planting
                 //Zoom in
                 else if(distance < previousDistance)
                 {
+                    Debug.Log("DOT: " + Vector2.Dot(firstFingerPos.normalized, secondFingerPos.normalized));
                     /*Vector3 targetPosition = camTransform.position;
                     targetPosition.z += 1F;
                     //Camera.main.orthographicSize--;
