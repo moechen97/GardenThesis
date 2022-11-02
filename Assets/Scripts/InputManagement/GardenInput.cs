@@ -124,8 +124,6 @@ namespace Planting
                 //Camera pan
                 if (dot > 0.9960975F)
                 {
-                    Debug.Log("DOT: " + Vector2.Dot(firstFingerPos.normalized, secondFingerPos.normalized));
-                    Debug.Log("FIRST: " + firstFingerPos.normalized.x + " || SECOND: " + secondFingerPos.normalized.x);
                     Vector2 TouchDeltaPosition;
                     if (Input.touchCount >= 2) 
                     {
@@ -434,7 +432,6 @@ namespace Planting
             if(rotatingScreen)
             {
                 Vector3 dragRotationLength = currentRotatePosition - startDragPosition;
-                Debug.Log("DRAG ROTATION LENGTH: " + dragRotationLength.x);
                 if (Mathf.Abs(dragRotationLength.x) > Mathf.Abs(dragRotationLength.y))
                 {
                     rotateStep = Mathf.Abs(Mathf.Clamp(dragRotationLength.x, -400F, 400F)) / 300F;
@@ -443,7 +440,6 @@ namespace Planting
                     {
                         rotateStep = 0.25F;
                     }
-                    Debug.Log("ROTATE STEP: " + rotateStep + ", " + rotateDirection);
                     afterRotate = StartCoroutine(SpinAfterRotate(dragRotationLength));
                 }
                 else
