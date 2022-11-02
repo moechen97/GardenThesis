@@ -14,11 +14,17 @@ public class AnimationEvent_Fungus_Jelly : MonoBehaviour
     
     private void Start()
     {
-        jellyHead =Instantiate(JellyHead, JellyHeadPostion.position, JellyHeadRotation.rotation, 
-            this.transform.parent);
-        jellyHead.GetComponent<Fungus_JellyHead>().GetPosition(JellyHeadPostion,JellyHeadRotation);
+        StartCoroutine(InstantiateJellyHead());
+
     }
 
+    private IEnumerator InstantiateJellyHead()
+    {
+        yield return new WaitForEndOfFrame();
+        jellyHead = Instantiate(JellyHead, JellyHeadPostion.position, JellyHeadRotation.rotation,
+    this.transform.parent);
+        jellyHead.GetComponent<Fungus_JellyHead>().GetPosition(JellyHeadPostion, JellyHeadRotation);
+    }
     public void Bloom()
     {
         jellyHead.GetComponent<Fungus_JellyHead>().JellyBloom();

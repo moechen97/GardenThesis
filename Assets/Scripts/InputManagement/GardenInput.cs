@@ -159,6 +159,7 @@ namespace Planting
                 //Zoom in
                 else if(distance < previousDistance)
                 {
+<<<<<<< HEAD
                     Debug.Log("DOT: " + Vector2.Dot(firstFingerPos.normalized, secondFingerPos.normalized));
                     /*Vector3 targetPosition = camTransform.position;
                     targetPosition.z += 1F;
@@ -167,6 +168,8 @@ namespace Planting
                     camTransform.position = Vector3.Slerp(camTransform.position,
                                                           targetPosition,
                                                           Time.deltaTime * cameraZoomSpeed);*/
+=======
+>>>>>>> e94648c528f7224ecdff6ad996d1380ac2bababe
                     float offset = _virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z;
                     offset -= 1F;
                     float newZValue =
@@ -184,18 +187,7 @@ namespace Planting
                         new Vector3(0, 0, newZValue);
                     
                 }
-                //Keep track of previous distance 
-                Debug.Log("CAM TRANSFORM Z: " + camTransform.position.z);
-                /*if(camTransform.position.z < -32F)
-                {
-                    camTransform.position = new Vector3(camTransform.position.x, camTransform.position.y, -32F);
-                }
-                if(camTransform.position.z > 6.87F)
-                {
-                    camTransform.position = new Vector3(camTransform.position.x, camTransform.position.y, 6.87F);
-                }*/
-                
-                
+
                 previousDistance = distance;
                 yield return null;
             }
@@ -333,6 +325,7 @@ namespace Planting
                 previousRotatePosition = currentRotatePosition;
             }
         }
+        
         float ClampAngle(float angle, float from, float to)
         {
             // accepts e.g. -80, 80
@@ -363,7 +356,6 @@ namespace Planting
         }
         private void StartDrag(InputAction.CallbackContext context)
         {
-            //Debug.Log("START Drag " + context.ReadValue<float>());
             //Check for taps on UI seeds
             StartCoroutine(WaitForDrag());
         }
@@ -438,7 +430,7 @@ namespace Planting
                 indicator.gameObject.SetActive(false);
                 return;
             }
-            //Debug.Log("END DRAG!! " + gardenControl.Plant.FirstFingerPosition.ReadValue<Vector2>());
+
             if (isDraggingSeed)
             {
                 AttemptPlant(currSeed);

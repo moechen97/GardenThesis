@@ -101,12 +101,12 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _Alpha_Clip: 0.04
-    - _Base_Noise_Scale: 10.15
+    - _Base_Noise_Scale: 7.03
     - _Blend: 0
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
-    - _ColorGradient: 1.28
+    - _ColorGradient: 0.9
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
@@ -118,19 +118,21 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Height_Gradient: -0.5
-    - _Height_Scale: 0.22
-    - _Mask2Distance: 0.45
-    - _MaskDistance: 2.14
-    - _MaskGradient: 7.5
+    - _Height_Gradient: -0.71
+    - _Height_Scale: 0.38
+    - _Mask2Distance: 0.43
+    - _MaskDistance: 4
+    - _MaskGradient: 12.4
     - _Metallic: 0
-    - _MovingSpeed: 0.002
+    - _MossDense: 300
+    - _MovingSpeed: 0.01
     - _OcclusionStrength: 1
     - _Parallax: 0.005
-    - _PowerG: 14.3
+    - _PowerG: 10.87
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _Simple_noise_scale: 158.25
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -139,12 +141,13 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.205306, g: 0.3301887, b: 0.16665184, a: 1}
-    - _BottonColor: {r: 0.4046601, g: 0.4811321, b: 0.12936097, a: 0}
+    - _BaseColor: {r: 0.07450981, g: 0.3529412, b: 0.27058825, a: 1}
+    - _BottonColor: {r: 0, g: 0.5686275, b: 0.43137258, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FlowerColor: {r: 1, g: 0.8066038, b: 0.8713535, a: 0}
-    - _HeightColor: {r: 0.015352435, g: 0.21698111, b: 0.18948631, a: 0}
-    - _Shadow_Color: {r: 0.1407974, g: 0.26415092, b: 0.15530957, a: 0}
+    - _HeightColor: {r: 0.051397298, g: 0.1981132, b: 0.10134313, a: 1}
+    - _Shadow_Color: {r: 0.4716981, g: 0.43793553, b: 0.1713243, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+    - _TopColor: {r: 0.7169812, g: 0.5957354, b: 0.253649, a: 1}
   m_BuildTextureStacks: []
