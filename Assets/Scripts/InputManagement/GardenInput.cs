@@ -121,9 +121,21 @@ namespace Planting
                 Vector2 secondFingerPos = gardenControl.Plant.SecondaryFingerPosition.ReadValue<Vector2>();
                 distance = Vector2.Distance(firstFingerPos, secondFingerPos);
                 float dot = Vector2.Dot(firstFingerPos.normalized, secondFingerPos.normalized);
-                if (dot >= 0.9915F)
+                //Camera pan
+                if (dot > 0.9960975F)
                 {
-                    Vector2 TouchDeltaPosition = (Input.GetTouch(0).deltaPosition + Input.GetTouch(1).deltaPosition) / 2F;
+                    Debug.Log("DOT: " + Vector2.Dot(firstFingerPos.normalized, secondFingerPos.normalized));
+                    Debug.Log("FIRST: " + firstFingerPos.normalized.x + " || SECOND: " + secondFingerPos.normalized.x);
+                    Vector2 TouchDeltaPosition;
+                    if (Input.touchCount >= 2) 
+                    {
+                        TouchDeltaPosition = (Input.GetTouch(0).deltaPosition + Input.GetTouch(1).deltaPosition) / 2F;
+                    }
+                    else
+                    {
+                        TouchDeltaPosition = Input.GetTouch(0).deltaPosition;
+                    }
+                    //Vector2 TouchDeltaPosition = (gardenControl.Plant.FirstFingerPositionDelta.ReadValue<Vector2>() + gardenControl.Plant.SecondaryFingerPositionDelta.ReadValue<Vector2>()) / 2F;
                     camFocusPoint.transform.Translate(cameraZoomSpeed * Time.deltaTime * -TouchDeltaPosition.normalized.x, cameraZoomSpeed * Time.deltaTime * -TouchDeltaPosition.normalized.y, 0F);
                     camFocusPoint.transform.position = new Vector3(Mathf.Clamp(camFocusPoint.transform.position.x, -20F, 20F), Mathf.Clamp(camFocusPoint.transform.position.y, -10F + 3.04F, 10F), camFocusPoint.transform.position.z);
                 }
@@ -131,13 +143,7 @@ namespace Planting
                 //Zoom out
                 else if (distance > previousDistance)
                 {
-                    Debug.Log("DOT: " + Vector2.Dot(firstFingerPos.normalized, secondFingerPos.normalized));
-                    /*Vector3 targetPosition = camTransform.position;
-                    targetPosition.z -= 1F;
-                    //Camera.main.orthographicSize++;
-                    camTransform.position = Vector3.Slerp(camTransform.position, 
-                                                           targetPosition,
-                                                           Time.deltaTime * cameraZoomSpeed);*/
+
                     float offset = _virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z;
                     offset += 1F;
                     float newZValue =
@@ -158,18 +164,7 @@ namespace Planting
                 }
                 //Zoom in
                 else if(distance < previousDistance)
-                {
-<<<<<<< HEAD
-                    Debug.Log("DOT: " + Vector2.Dot(firstFingerPos.normalized, secondFingerPos.normalized));
-                    /*Vector3 targetPosition = camTransform.position;
-                    targetPosition.z += 1F;
-                    //Camera.main.orthographicSize--;
-                    //Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, Camera.main.orthographicSize--, Time.deltaTime);
-                    camTransform.position = Vector3.Slerp(camTransform.position,
-                                                          targetPosition,
-                                                          Time.deltaTime * cameraZoomSpeed);*/
-=======
->>>>>>> e94648c528f7224ecdff6ad996d1380ac2bababe
+                { 
                     float offset = _virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z;
                     offset -= 1F;
                     float newZValue =
