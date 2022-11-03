@@ -265,7 +265,7 @@ public partial class @GardenControl : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""be8903ac-0f78-450b-bea5-f7563fc2351d"",
-                    ""path"": ""<Touchscreen>/position"",
+                    ""path"": ""<Touchscreen>/primaryTouch/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
