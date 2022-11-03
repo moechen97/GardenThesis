@@ -261,10 +261,10 @@ namespace Planting
         private IEnumerator DisableZoomDelay()
         {
             Debug.Log("HERE ZOOM PAN");
-            yield return new WaitForEndOfFrame();
-            yield return new WaitForEndOfFrame();
+            //yield return new WaitForEndOfFrame();
             isZooming = false;
             panToZoomEndDelay = null;
+            yield return null;
         }
 
         private IEnumerator DisablePanDelay()
