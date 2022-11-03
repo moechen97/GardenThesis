@@ -40,6 +40,7 @@ namespace Planting
         private Coroutine afterRotate = null;
         private Coroutine zoomCoroutine = null;
         [SerializeField] Transform camTransform;
+        [SerializeField] float panZoomSpeed = 4F;
         [SerializeField] float cameraZoomSpeed = 4F;
         [SerializeField] private float rotationSlowDownSpeed = 1 / 2f;
         
@@ -47,6 +48,8 @@ namespace Planting
         private CinemachineVirtualCamera _virtualCamera;
         private bool twoFingers = false;
         private bool touchPlantDrag = false;
+        private Vector2 prevFirstFingerPos = Vector2.zero;
+        private Vector2 prevSecondFingerPos = Vector2.zero;
         public struct PlantMenu
         {
             public GameObject menuObject;
@@ -120,70 +123,97 @@ namespace Planting
                 Vector2 firstFingerPos = gardenControl.Plant.FirstFingerPosition.ReadValue<Vector2>();
                 Vector2 secondFingerPos = gardenControl.Plant.SecondaryFingerPosition.ReadValue<Vector2>();
                 distance = Vector2.Distance(firstFingerPos, secondFingerPos);
-                float dot = Vector2.Dot(firstFingerPos.normalized, secondFingerPos.normalized);
-                //Camera pan
-                if (dot > 0.9960975F)
+                float dot = Vector3.Dot(new Vector3(firstFingerPos.normalized.x, firstFingerPos.normalized.y, 0F), new Vector3(secondFingerPos.normalized.x, secondFingerPos.normalized.y, 0F));
+                //bool sameDirection = (firstFingerPos.x > 0F && secondFingerPos.x > 0F || firstFingerPos.x < 0F && secondFingerPos.x < 0F) &&
+                //                        (firstFingerPos.y > 0F && secondFingerPos.y > 0F || firstFingerPos.y < 0F && secondFingerPos.y < 0F);
+                Vector2 deltaFirstFingerPos = (firstFingerPos - prevFirstFingerPos);
+                Vector2 deltaSecondFingerPos = (secondFingerPos - prevSecondFingerPos);
+                bool sameDirection = ((deltaFirstFingerPos.x > 0F && deltaSecondFingerPos.x > 0F) || (deltaFirstFingerPos.x < 0F && deltaSecondFingerPos.x < 0F) &&
+                                      ((deltaFirstFingerPos.y > 0F && deltaSecondFingerPos.y > 0F) || (deltaFirstFingerPos.y < 0F && deltaSecondFingerPos.y < 0F)));
+
+                if (deltaFirstFingerPos.x == 0F && deltaSecondFingerPos.x == 0F && deltaFirstFingerPos.y == 0F && deltaSecondFingerPos.y == 0F)
                 {
-                    Vector2 TouchDeltaPosition;
-                    if (Input.touchCount >= 2) 
-                    {
-                        TouchDeltaPosition = (Input.GetTouch(0).deltaPosition + Input.GetTouch(1).deltaPosition) / 2F;
-                    }
-                    else
-                    {
-                        TouchDeltaPosition = Input.GetTouch(0).deltaPosition;
-                    }
-                    //Vector2 TouchDeltaPosition = (gardenControl.Plant.FirstFingerPositionDelta.ReadValue<Vector2>() + gardenControl.Plant.SecondaryFingerPositionDelta.ReadValue<Vector2>()) / 2F;
-                    camFocusPoint.transform.Translate(cameraZoomSpeed * Time.deltaTime * -TouchDeltaPosition.normalized.x, cameraZoomSpeed * Time.deltaTime * -TouchDeltaPosition.normalized.y, 0F);
-                    camFocusPoint.transform.position = new Vector3(Mathf.Clamp(camFocusPoint.transform.position.x, -20F, 20F), Mathf.Clamp(camFocusPoint.transform.position.y, -10F + 3.04F, 10F), camFocusPoint.transform.position.z);
                 }
-                //Detection
-                //Zoom out
-                else if (distance > previousDistance)
+                else
                 {
-
-                    float offset = _virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z;
-                    offset += 1F;
-                    float newZValue =
-                        Mathf.Lerp(_virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z,
-                            offset, Time.deltaTime * cameraZoomSpeed);
-
-                    if (newZValue > -10f)
+                    Debug.Log("DOT: " + dot);
+                    Debug.Log("DISTANCE: " + distance);
+                    Debug.Log("DELTA FINGER POS: " + (firstFingerPos - prevFirstFingerPos));
+                    Debug.Log("DELTA SECOND FINGER POS: " + (secondFingerPos - prevSecondFingerPos));
+                    //Camera pan
+                    if (dot >= 0.965F && distance <= 420F && sameDirection)
+                    //|| (distance < previousDistance && dot > 0.996F && distance <= 200F) && sameDirection)
                     {
-                        newZValue = -10f;
+                        Vector2 TouchDeltaPosition;
+                        if (Input.touchCount >= 2)
+                        {
+                            TouchDeltaPosition = (Input.GetTouch(0).deltaPosition + Input.GetTouch(1).deltaPosition) / 2F;
+                        }
+                        else
+                        {
+                            TouchDeltaPosition = Input.GetTouch(0).deltaPosition;
+                        }
+                        //Vector2 TouchDeltaPosition = (gardenControl.Plant.FirstFingerPositionDelta.ReadValue<Vector2>() + gardenControl.Plant.SecondaryFingerPositionDelta.ReadValue<Vector2>()) / 2F;
+                        camFocusPoint.transform.Translate(panZoomSpeed * Time.deltaTime * -TouchDeltaPosition.normalized.x, panZoomSpeed * Time.deltaTime * -TouchDeltaPosition.normalized.y, 0F);
+                        camFocusPoint.transform.position = new Vector3(Mathf.Clamp(camFocusPoint.transform.position.x, -20F, 20F), Mathf.Clamp(camFocusPoint.transform.position.y, -10F + 3.04F, 10F), camFocusPoint.transform.position.z);
                     }
-                    else if (newZValue < -62f)
+                    //Detection
+                    //Zoom out
+                    else if (distance > previousDistance)
                     {
-                        newZValue = -62f;
-                    }
-                    _virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset =
-                        new Vector3(0, 0, newZValue);
 
+                        float offset = _virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z;
+                        offset += 1F;
+                        float newZValue =
+                            Mathf.Lerp(_virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z,
+                                offset, Time.deltaTime * cameraZoomSpeed);
+
+                        if (newZValue > -10f)
+                        {
+                            newZValue = -10f;
+                        }
+                        else if (newZValue < -62f)
+                        {
+                            newZValue = -62f;
+                        }
+                        _virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset =
+                            new Vector3(0, 0, newZValue);
+
+                    }
+                    //Zoom in
+                    else if (distance < previousDistance)
+                    {
+                        float offset = _virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z;
+                        offset -= 1F;
+                        float newZValue =
+                            Mathf.Lerp(_virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z,
+                                offset, Time.deltaTime * cameraZoomSpeed);
+                        if (newZValue > -10f)
+                        {
+                            newZValue = -10f;
+                        }
+                        else if (newZValue < -62f)
+                        {
+                            newZValue = -62f;
+                        }
+                        _virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset =
+                            new Vector3(0, 0, newZValue);
+
+                    }
                 }
-                //Zoom in
-                else if(distance < previousDistance)
-                { 
-                    float offset = _virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z;
-                    offset -= 1F;
-                    float newZValue =
-                        Mathf.Lerp(_virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z,
-                            offset, Time.deltaTime * cameraZoomSpeed);
-                    if (newZValue > -10f)
-                    {
-                        newZValue = -10f;
-                    }
-                    else if (newZValue < -62f)
-                    {
-                        newZValue = -62f;
-                    }
-                    _virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset =
-                        new Vector3(0, 0, newZValue);
-                    
-                }
-
                 previousDistance = distance;
+                prevFirstFingerPos = firstFingerPos;
+                prevSecondFingerPos = secondFingerPos;
+                //StartCoroutine(UpdatePrevFingerPosition(firstFingerPos, secondFingerPos));
                 yield return null;
             }
+        }
+
+        private IEnumerator UpdatePrevFingerPosition(Vector2 firstFingerPos, Vector2 secondFingerPos)
+        {
+            yield return new WaitForEndOfFrame();
+            prevFirstFingerPos = firstFingerPos;
+            prevSecondFingerPos = secondFingerPos;
         }
         private void StartSecondTouch(InputAction.CallbackContext context)
         {
