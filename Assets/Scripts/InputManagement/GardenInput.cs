@@ -123,7 +123,7 @@ namespace Planting
                     Debug.Log("FAKE DOT: " + Vector2.Dot(deltaFirstFingerPos.normalized, deltaSecondFingerPos.normalized));
                     float dot = Vector2.Dot(deltaFirstFingerPos.normalized, deltaSecondFingerPos.normalized);
                     //Camera pan
-                    if (dot >= 0.75F)
+                    if (dot >= 0.5F)
                     {
                         //IsZooming and panToZoomEndDelay: To prevent panning when at end of zooming out
                         if (isZooming)
@@ -219,7 +219,7 @@ namespace Planting
         }
         private IEnumerator PanToZoomEndDelay()
         {
-            yield return new WaitForSeconds(0.15F);
+            yield return new WaitForSeconds(0.075F);
             isPanning = false;
             panToZoomEndDelay = null;
             yield return null;
