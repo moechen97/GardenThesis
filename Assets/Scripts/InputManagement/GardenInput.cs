@@ -50,7 +50,9 @@ namespace Planting
         private Vector2 prevFirstFingerPos = Vector2.zero;
         private Vector2 prevSecondFingerPos = Vector2.zero;
         private bool isZooming = false;
+        private bool isPanning = false;
         private Coroutine zoomToPanEndDelay = null;
+        private Coroutine panToZoomEndDelay = null;
         void Awake()
         {
             seeds = plantManager.GetComponent<SeedDictionaryScript>().DeserializeDictionary();
@@ -103,23 +105,25 @@ namespace Planting
                 Vector2 firstFingerPos = gardenControl.Plant.FirstFingerPosition.ReadValue<Vector2>();
                 Vector2 secondFingerPos = gardenControl.Plant.SecondaryFingerPosition.ReadValue<Vector2>();
                 distance = Vector2.Distance(firstFingerPos, secondFingerPos);
-                float dot = Vector3.Dot(new Vector3(firstFingerPos.normalized.x, firstFingerPos.normalized.y, 0F), new Vector3(secondFingerPos.normalized.x, secondFingerPos.normalized.y, 0F));
+                //float dot = Vector3.Dot(new Vector3(firstFingerPos.normalized.x, firstFingerPos.normalized.y, 0F), new Vector3(secondFingerPos.normalized.x, secondFingerPos.normalized.y, 0F));
                 Vector2 deltaFirstFingerPos = (firstFingerPos - prevFirstFingerPos);
                 Vector2 deltaSecondFingerPos = (secondFingerPos - prevSecondFingerPos);
                 bool sameDirection = ((deltaFirstFingerPos.x >= 0F && deltaSecondFingerPos.x >= 0F) || (deltaFirstFingerPos.x <= 0F && deltaSecondFingerPos.x <= 0F) &&
                                       ((deltaFirstFingerPos.y >= 0F && deltaSecondFingerPos.y >= 0F) || (deltaFirstFingerPos.y <= 0F && deltaSecondFingerPos.y <= 0F)));
-                if(dot >= 0.998F)
-                {
-                    sameDirection = true;
-                }
+                //if(dot >= 0.998F)
+                //{
+                //    sameDirection = true;
+                //}
                 if ((deltaFirstFingerPos == Vector2.zero && deltaSecondFingerPos == Vector2.zero)
                     || previousDistance == 0F || previousDistance == distance)
                 {
                 }
                 else
                 {
+                    Debug.Log("FAKE DOT: " + Vector2.Dot(deltaFirstFingerPos.normalized, deltaSecondFingerPos.normalized));
+                    float dot = Vector2.Dot(deltaFirstFingerPos.normalized, deltaSecondFingerPos.normalized);
                     //Camera pan
-                    if (dot >= 0.975F && distance <= 350F && sameDirection)
+                    if (dot >= 0.75F)
                     {
                         //IsZooming and panToZoomEndDelay: To prevent panning when at end of zooming out
                         if (isZooming)
@@ -131,6 +135,7 @@ namespace Planting
                             }
                             continue;
                         }
+                        isPanning = true;
                         Vector2 TouchDeltaPosition = (deltaFirstFingerPos + deltaSecondFingerPos) / 2F;
                         camFocusPoint.transform.Translate(panZoomSpeed * Time.deltaTime * -TouchDeltaPosition.normalized.x, panZoomSpeed * Time.deltaTime * -TouchDeltaPosition.normalized.y, 0F);
                         camFocusPoint.transform.position = new Vector3(Mathf.Clamp(camFocusPoint.transform.position.x, -20F, 20F), Mathf.Clamp(camFocusPoint.transform.position.y, -10F + 3.04F, 10F), camFocusPoint.transform.position.z);
@@ -139,6 +144,15 @@ namespace Planting
                     //Zoom out
                     else if (distance > previousDistance)
                     {
+                        if (isPanning)
+                        {
+                            yield return null;
+                            if (panToZoomEndDelay == null)
+                            {
+                                panToZoomEndDelay = StartCoroutine(PanToZoomEndDelay());
+                            }
+                            continue;
+                        }
                         isZooming = true;
                         float offset = _virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z;
                         offset += 1F;
@@ -161,6 +175,15 @@ namespace Planting
                     //Zoom in
                     else if (distance < previousDistance)
                     {
+                        if (isPanning)
+                        {
+                            yield return null;
+                            if (panToZoomEndDelay == null)
+                            {
+                                panToZoomEndDelay = StartCoroutine(PanToZoomEndDelay());
+                            }
+                            continue;
+                        }
                         isZooming = true;
                         float offset = _virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z;
                         offset -= 1F;
@@ -192,6 +215,13 @@ namespace Planting
             yield return new WaitForSeconds(0.15F);
             isZooming = false;
             zoomToPanEndDelay = null;
+            yield return null;
+        }
+        private IEnumerator PanToZoomEndDelay()
+        {
+            yield return new WaitForSeconds(0.15F);
+            isPanning = false;
+            panToZoomEndDelay = null;
             yield return null;
         }
         private IEnumerator UpdatePrevFingerPosition(Vector2 firstFingerPos, Vector2 secondFingerPos)
