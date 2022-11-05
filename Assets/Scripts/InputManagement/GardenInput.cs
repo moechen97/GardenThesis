@@ -147,7 +147,7 @@ namespace Planting
                 else
                 {
                     //Camera pan
-                    if (dot >= 0.965F && distance <= 350F && sameDirection)
+                    if (dot >= 0.975F && distance <= 350F && sameDirection)
                     {
                         //IsZooming and panToZoomEndDelay: To prevent panning when at end of zooming out
                         //if (isZooming)
