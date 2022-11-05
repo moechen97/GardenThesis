@@ -113,7 +113,7 @@ namespace Planting
                     sameDirection = true;
                 }
                 if ((deltaFirstFingerPos == Vector2.zero && deltaSecondFingerPos == Vector2.zero)
-                    || previousDistance == 0F)
+                    || previousDistance == 0F || previousDistance == distance)
                 {
                 }
                 else
