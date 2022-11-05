@@ -140,32 +140,31 @@ namespace Planting
                 {
                     sameDirection = true;
                 }
-                if ((deltaFirstFingerPos.x == 0F && deltaSecondFingerPos.x == 0F && deltaFirstFingerPos.y == 0F && deltaSecondFingerPos.y == 0F)
+                if ((deltaFirstFingerPos == Vector2.zero && deltaSecondFingerPos == Vector2.zero)
                     || previousDistance == 0F)
                 {
                 }
                 else
                 {
                     //Camera pan
-                    if (dot >= 0.965F && distance <= 420F && sameDirection)
+                    if (dot >= 0.965F && distance <= 350F && sameDirection)
                     {
-                        Debug.Log("DELTA FIRST FINGER: " + deltaFirstFingerPos);
-                        Debug.Log("DELTA SECOND FINGER: " + deltaSecondFingerPos);
                         //IsZooming and panToZoomEndDelay: To prevent panning when at end of zooming out
-                        if (isZooming)
-                        {
-                            yield return null;
-                            if (panToZoomEndDelay != null)
-                            {
-                                panToZoomEndDelay = StartCoroutine(DisableZoomDelay());
-                            }
-                            continue;
-                        }
-                        if (panToZoomEndDelay != null)
-                        {
-                            StopCoroutine(panToZoomEndDelay);
-                            panToZoomEndDelay = null;
-                        }
+                        //if (isZooming)
+                        //{
+                        //    Debug.Log("IS ZOOMING SKIP");
+                        //    yield return null;
+                        //    if (panToZoomEndDelay != null)
+                        //    {
+                        //        panToZoomEndDelay = StartCoroutine(DisableZoomDelay());
+                        //    }
+                        //    continue;
+                        //}
+                        Debug.Log("=========PAN=========");
+                        Debug.Log("DOT: " + dot);
+                        Debug.Log("DISTANCE: " + distance);
+                        Debug.Log("SAME DIRECTION: " + sameDirection);
+                        Debug.Log("=====================");
                         isPanning = true;
                         Vector2 TouchDeltaPosition = (deltaFirstFingerPos + deltaSecondFingerPos) / 2F;
                         //Vector2 TouchDeltaPosition = (gardenControl.Plant.FirstFingerPositionDelta.ReadValue<Vector2>() + gardenControl.Plant.SecondaryFingerPositionDelta.ReadValue<Vector2>()) / 2F;
@@ -176,6 +175,7 @@ namespace Planting
                     //Zoom out
                     else if (distance > previousDistance)
                     {
+                        
                         //if (isPanning)
                         //{
                         //    yield return null;
@@ -190,11 +190,10 @@ namespace Planting
                         //    StopCoroutine(zoomToPanEndDelay);
                         //    zoomToPanEndDelay = null;
                         //}
-                        isPanning = false;
                         isZooming = true;
-                        Debug.Log("DOT: " + dot);
-                        Debug.Log("DISTANCE: " + distance);
-                        Debug.Log("SAME DIRECTION: " + sameDirection);
+                        //Debug.Log("DOT: " + dot);
+                        //Debug.Log("DISTANCE: " + distance);
+                        //Debug.Log("SAME DIRECTION: " + sameDirection);
                         float offset = _virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z;
                         offset += 1F;
                         float newZValue =
@@ -230,11 +229,10 @@ namespace Planting
                         //    StopCoroutine(zoomToPanEndDelay);
                         //    zoomToPanEndDelay = null;
                         //}
-                        isPanning = false;
                         isZooming = true;
-                        Debug.Log("DOT: " + dot);
-                        Debug.Log("DISTANCE: " + distance);
-                        Debug.Log("SAME DIRECTION: " + sameDirection);
+                        //Debug.Log("DOT: " + dot);
+                        //Debug.Log("DISTANCE: " + distance);
+                        //Debug.Log("SAME DIRECTION: " + sameDirection);
                         float offset = _virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z;
                         offset -= 1F;
                         float newZValue =
