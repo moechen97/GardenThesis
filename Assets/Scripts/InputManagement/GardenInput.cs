@@ -100,6 +100,7 @@ namespace Planting
         {
             float previousDistance = 0f, distance = 0f;
             isZooming = false;
+            bool doneZooming = false;
             while(true)
             {
                 Vector2 firstFingerPos = gardenControl.Plant.FirstFingerPosition.ReadValue<Vector2>();
@@ -115,12 +116,21 @@ namespace Planting
                 //    sameDirection = true;
                 //}
                 if ((deltaFirstFingerPos == Vector2.zero && deltaSecondFingerPos == Vector2.zero)
-                    || previousDistance == 0F || previousDistance == distance)
+                    || previousDistance == 0F || previousDistance == distance || (doneZooming && Mathf.Abs(distance - previousDistance) <= 0.65F))
                 {
+                    //if(doneZooming && Mathf.Abs(distance - previousDistance) > 0F && Mathf.Abs(distance - previousDistance) <= 0.65F)
+                    //{
+                    //    Debug.Log("DONE ZOOMING SKIP");
+                    //}
+                    if(deltaFirstFingerPos == Vector2.zero && deltaSecondFingerPos == Vector2.zero && isZooming)
+                    {
+                        doneZooming = true;
+                    }
                 }
                 else
                 {
-                    Debug.Log("FAKE DOT: " + Vector2.Dot(deltaFirstFingerPos.normalized, deltaSecondFingerPos.normalized));
+                    //Debug.Log("DISTANCE: " + Mathf.Abs(distance - previousDistance));
+                    doneZooming = false;
                     float dot = Vector2.Dot(deltaFirstFingerPos.normalized, deltaSecondFingerPos.normalized);
                     //Camera pan
                     if (dot >= 0.5F)
