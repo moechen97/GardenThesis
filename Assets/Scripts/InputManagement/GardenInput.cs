@@ -132,8 +132,8 @@ namespace Planting
                     //Debug.Log("DISTANCE: " + Mathf.Abs(distance - previousDistance));
                     doneZooming = false;
                     float dot = Vector2.Dot(deltaFirstFingerPos.normalized, deltaSecondFingerPos.normalized);
-                    //Camera pan
-                    if (dot >= 0.5F)
+                    //Camera pans
+                    if (dot >= 0.12F)
                     {
                         //IsZooming and panToZoomEndDelay: To prevent panning when at end of zooming out
                         if (isZooming)
