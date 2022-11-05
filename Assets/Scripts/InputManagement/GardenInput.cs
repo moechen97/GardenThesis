@@ -116,9 +116,9 @@ namespace Planting
                 //    sameDirection = true;
                 //}
                 if ((deltaFirstFingerPos == Vector2.zero && deltaSecondFingerPos == Vector2.zero)
-                    || previousDistance == 0F || previousDistance == distance || (doneZooming && Mathf.Abs(distance - previousDistance) <= 0.65F))
+                    || previousDistance == 0F || previousDistance == distance || (doneZooming && Mathf.Abs(distance - previousDistance) <= 0.85F))
                 {
-                    //if(doneZooming && Mathf.Abs(distance - previousDistance) > 0F && Mathf.Abs(distance - previousDistance) <= 0.65F)
+                    //if(doneZooming && Mathf.Abs(distance - previousDistance) > 0F && Mathf.Abs(distance - previousDistance) <= 0.85F)
                     //{
                     //    Debug.Log("DONE ZOOMING SKIP");
                     //}
