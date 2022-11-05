@@ -43,35 +43,14 @@ namespace Planting
         [SerializeField] float panZoomSpeed = 4F;
         [SerializeField] float cameraZoomSpeed = 4F;
         [SerializeField] private float rotationSlowDownSpeed = 1 / 2f;
-        
         private Coroutine zoomEndDelay = null;
         private CinemachineVirtualCamera _virtualCamera;
         private bool twoFingers = false;
         private bool touchPlantDrag = false;
         private Vector2 prevFirstFingerPos = Vector2.zero;
         private Vector2 prevSecondFingerPos = Vector2.zero;
-        private bool isPanning = false;
         private bool isZooming = false;
         private Coroutine zoomToPanEndDelay = null;
-        private Coroutine panToZoomEndDelay = null;
-        public struct PlantMenu
-        {
-            public GameObject menuObject;
-            public GameObject plantObject;
-
-            public PlantMenu(GameObject menu, GameObject plant)
-            {
-                menuObject = menu;
-                plantObject = plant;
-                Transform traverse = plant.transform;
-                //traverse to root transform of plant
-                while (traverse != null)
-                {
-                    plantObject = traverse.gameObject;
-                    traverse = traverse.parent;
-                }
-            }
-        }
         void Awake()
         {
             seeds = plantManager.GetComponent<SeedDictionaryScript>().DeserializeDictionary();
@@ -91,10 +70,6 @@ namespace Planting
             gardenControl.Plant.Tap.started += ctx => StartTap(ctx);
             gardenControl.Plant.SecondaryTouchContact.started += _ => ZoomStart();
             gardenControl.Plant.SecondaryTouchContact.canceled += _ => ZoomEnd();
-            //gardenControl.Plant.Tap.canceled += ctx => EndTap(ctx);
-            //gardenControl.Plant.Drag.started += ctx => StartDrag(ctx);
-            //UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerDown += FingerDown;
-            
             _virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
         }
         private void ZoomStart()
@@ -123,15 +98,12 @@ namespace Planting
         {
             float previousDistance = 0f, distance = 0f;
             isZooming = false;
-            isPanning = false;
             while(true)
             {
                 Vector2 firstFingerPos = gardenControl.Plant.FirstFingerPosition.ReadValue<Vector2>();
                 Vector2 secondFingerPos = gardenControl.Plant.SecondaryFingerPosition.ReadValue<Vector2>();
                 distance = Vector2.Distance(firstFingerPos, secondFingerPos);
                 float dot = Vector3.Dot(new Vector3(firstFingerPos.normalized.x, firstFingerPos.normalized.y, 0F), new Vector3(secondFingerPos.normalized.x, secondFingerPos.normalized.y, 0F));
-                //bool sameDirection = (firstFingerPos.x > 0F && secondFingerPos.x > 0F || firstFingerPos.x < 0F && secondFingerPos.x < 0F) &&
-                //                        (firstFingerPos.y > 0F && secondFingerPos.y > 0F || firstFingerPos.y < 0F && secondFingerPos.y < 0F);
                 Vector2 deltaFirstFingerPos = (firstFingerPos - prevFirstFingerPos);
                 Vector2 deltaSecondFingerPos = (secondFingerPos - prevSecondFingerPos);
                 bool sameDirection = ((deltaFirstFingerPos.x >= 0F && deltaSecondFingerPos.x >= 0F) || (deltaFirstFingerPos.x <= 0F && deltaSecondFingerPos.x <= 0F) &&
@@ -150,24 +122,16 @@ namespace Planting
                     if (dot >= 0.975F && distance <= 350F && sameDirection)
                     {
                         //IsZooming and panToZoomEndDelay: To prevent panning when at end of zooming out
-                        //if (isZooming)
-                        //{
-                        //    Debug.Log("IS ZOOMING SKIP");
-                        //    yield return null;
-                        //    if (panToZoomEndDelay != null)
-                        //    {
-                        //        panToZoomEndDelay = StartCoroutine(DisableZoomDelay());
-                        //    }
-                        //    continue;
-                        //}
-                        Debug.Log("=========PAN=========");
-                        Debug.Log("DOT: " + dot);
-                        Debug.Log("DISTANCE: " + distance);
-                        Debug.Log("SAME DIRECTION: " + sameDirection);
-                        Debug.Log("=====================");
-                        isPanning = true;
+                        if (isZooming)
+                        {
+                            yield return null;
+                            if (zoomToPanEndDelay == null)
+                            {
+                                zoomToPanEndDelay = StartCoroutine(ZoomToPanEndDelay());
+                            }
+                            continue;
+                        }
                         Vector2 TouchDeltaPosition = (deltaFirstFingerPos + deltaSecondFingerPos) / 2F;
-                        //Vector2 TouchDeltaPosition = (gardenControl.Plant.FirstFingerPositionDelta.ReadValue<Vector2>() + gardenControl.Plant.SecondaryFingerPositionDelta.ReadValue<Vector2>()) / 2F;
                         camFocusPoint.transform.Translate(panZoomSpeed * Time.deltaTime * -TouchDeltaPosition.normalized.x, panZoomSpeed * Time.deltaTime * -TouchDeltaPosition.normalized.y, 0F);
                         camFocusPoint.transform.position = new Vector3(Mathf.Clamp(camFocusPoint.transform.position.x, -20F, 20F), Mathf.Clamp(camFocusPoint.transform.position.y, -10F + 3.04F, 10F), camFocusPoint.transform.position.z);
                     }
@@ -175,25 +139,7 @@ namespace Planting
                     //Zoom out
                     else if (distance > previousDistance)
                     {
-                        
-                        //if (isPanning)
-                        //{
-                        //    yield return null;
-                        //    if (zoomToPanEndDelay != null)
-                        //    {
-                        //        zoomToPanEndDelay = StartCoroutine(DisablePanDelay());
-                        //    }
-                        //    continue;
-                        //}
-                        //if (zoomToPanEndDelay != null)
-                        //{
-                        //    StopCoroutine(zoomToPanEndDelay);
-                        //    zoomToPanEndDelay = null;
-                        //}
                         isZooming = true;
-                        //Debug.Log("DOT: " + dot);
-                        //Debug.Log("DISTANCE: " + distance);
-                        //Debug.Log("SAME DIRECTION: " + sameDirection);
                         float offset = _virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z;
                         offset += 1F;
                         float newZValue =
@@ -215,24 +161,7 @@ namespace Planting
                     //Zoom in
                     else if (distance < previousDistance)
                     {
-                        //if (isPanning)
-                        //{
-                        //    yield return null;
-                        //    if (zoomToPanEndDelay != null)
-                        //    {
-                        //        zoomToPanEndDelay = StartCoroutine(DisablePanDelay());
-                        //    }
-                        //    continue;
-                        //}
-                        //if (zoomToPanEndDelay != null)
-                        //{
-                        //    StopCoroutine(zoomToPanEndDelay);
-                        //    zoomToPanEndDelay = null;
-                        //}
                         isZooming = true;
-                        //Debug.Log("DOT: " + dot);
-                        //Debug.Log("DISTANCE: " + distance);
-                        //Debug.Log("SAME DIRECTION: " + sameDirection);
                         float offset = _virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z;
                         offset -= 1F;
                         float newZValue =
@@ -254,26 +183,16 @@ namespace Planting
                 previousDistance = distance;
                 prevFirstFingerPos = firstFingerPos;
                 prevSecondFingerPos = secondFingerPos;
-                //StartCoroutine(UpdatePrevFingerPosition(firstFingerPos, secondFingerPos));
                 yield return null;
             }
         }
 
-        private IEnumerator DisableZoomDelay()
+        private IEnumerator ZoomToPanEndDelay()
         {
-            Debug.Log("HERE ZOOM PAN");
-            yield return new WaitForSeconds(0.0025F * Time.deltaTime);
+            yield return new WaitForSeconds(0.15F);
             isZooming = false;
-            panToZoomEndDelay = null;
-            yield return null;
-        }
-
-        private IEnumerator DisablePanDelay()
-        {
-            Debug.Log("HERE PAN");
-            yield return new WaitForEndOfFrame();
-            isPanning = false;
             zoomToPanEndDelay = null;
+            yield return null;
         }
         private IEnumerator UpdatePrevFingerPosition(Vector2 firstFingerPos, Vector2 secondFingerPos)
         {
@@ -587,10 +506,22 @@ namespace Planting
             Debug.Log("Disabled garden input control");
             gardenControl.Disable();
         }
-
-        private void FingerDown(Finger finger)
+        public struct PlantMenu
         {
-            Debug.Log("Finger down");
+            public GameObject menuObject;
+            public GameObject plantObject;
+
+            public PlantMenu(GameObject menu, GameObject plant)
+            {
+                menuObject = menu;
+                plantObject = plant;
+                Transform traverse = plant.transform;
+                while (traverse != null)
+                {
+                    plantObject = traverse.gameObject;
+                    traverse = traverse.parent;
+                }
+            }
         }
     }
 }

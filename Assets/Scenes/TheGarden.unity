@@ -11822,7 +11822,7 @@ MonoBehaviour:
   ground: {fileID: 117516811}
   rotateSpeed: 5
   camTransform: {fileID: 1730793918}
-  panZoomSpeed: 30
+  panZoomSpeed: 25
   cameraZoomSpeed: 100
   rotationSlowDownSpeed: 0.3
 --- !u!4 &1480540003
