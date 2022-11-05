@@ -140,7 +140,8 @@ namespace Planting
                 {
                     sameDirection = true;
                 }
-                if (deltaFirstFingerPos.x == 0F && deltaSecondFingerPos.x == 0F && deltaFirstFingerPos.y == 0F && deltaSecondFingerPos.y == 0F)
+                if ((deltaFirstFingerPos.x == 0F && deltaSecondFingerPos.x == 0F && deltaFirstFingerPos.y == 0F && deltaSecondFingerPos.y == 0F)
+                    || previousDistance == 0F)
                 {
                 }
                 else
@@ -148,8 +149,10 @@ namespace Planting
                     //Camera pan
                     if (dot >= 0.965F && distance <= 420F && sameDirection)
                     {
+                        Debug.Log("DELTA FIRST FINGER: " + deltaFirstFingerPos);
+                        Debug.Log("DELTA SECOND FINGER: " + deltaSecondFingerPos);
                         //IsZooming and panToZoomEndDelay: To prevent panning when at end of zooming out
-                        if(isZooming)
+                        if (isZooming)
                         {
                             yield return null;
                             if (panToZoomEndDelay != null)
@@ -261,7 +264,7 @@ namespace Planting
         private IEnumerator DisableZoomDelay()
         {
             Debug.Log("HERE ZOOM PAN");
-            //yield return new WaitForEndOfFrame();
+            yield return new WaitForSeconds(0.0025F * Time.deltaTime);
             isZooming = false;
             panToZoomEndDelay = null;
             yield return null;
