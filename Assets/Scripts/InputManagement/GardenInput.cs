@@ -40,7 +40,7 @@ namespace Planting
         private Coroutine afterRotate = null;
         private Coroutine zoomCoroutine = null;
         [SerializeField] Transform camTransform;
-        [SerializeField] float panZoomSpeed = 4F;
+        [SerializeField] float panZoomSpeed = 10F;
         [SerializeField] float cameraZoomSpeed = 4F;
         [SerializeField] private float rotationSlowDownSpeed = 1 / 2f;
         private Coroutine zoomEndDelay = null;
@@ -101,41 +101,37 @@ namespace Planting
             float previousDistance = 0f, distance = 0f;
             isZooming = false;
             bool doneZooming = false;
-            while(true)
+            float minZoom = -61.48944F;
+            float maxZoom = -9.917652F;
+            float maxZoomDistance = minZoom - maxZoom;
+            yield return new WaitForSeconds(0.05F);
+            while (true)
             {
                 Vector2 firstFingerPos = gardenControl.Plant.FirstFingerPosition.ReadValue<Vector2>();
                 Vector2 secondFingerPos = gardenControl.Plant.SecondaryFingerPosition.ReadValue<Vector2>();
-                distance = Vector2.Distance(firstFingerPos, secondFingerPos);
-                //float dot = Vector3.Dot(new Vector3(firstFingerPos.normalized.x, firstFingerPos.normalized.y, 0F), new Vector3(secondFingerPos.normalized.x, secondFingerPos.normalized.y, 0F));
                 Vector2 deltaFirstFingerPos = (firstFingerPos - prevFirstFingerPos);
                 Vector2 deltaSecondFingerPos = (secondFingerPos - prevSecondFingerPos);
-                bool sameDirection = ((deltaFirstFingerPos.x >= 0F && deltaSecondFingerPos.x >= 0F) || (deltaFirstFingerPos.x <= 0F && deltaSecondFingerPos.x <= 0F) &&
-                                      ((deltaFirstFingerPos.y >= 0F && deltaSecondFingerPos.y >= 0F) || (deltaFirstFingerPos.y <= 0F && deltaSecondFingerPos.y <= 0F)));
-                //if(dot >= 0.998F)
-                //{
-                //    sameDirection = true;
-                //}
+                distance = Vector2.Distance(firstFingerPos, secondFingerPos);
+                float dot = Vector2.Dot(deltaFirstFingerPos.normalized, deltaSecondFingerPos.normalized);
                 if ((deltaFirstFingerPos == Vector2.zero && deltaSecondFingerPos == Vector2.zero)
-                    || previousDistance == 0F || previousDistance == distance || (doneZooming && Mathf.Abs(distance - previousDistance) <= 0.85F))
+                    || previousDistance == 0F || previousDistance == distance || (doneZooming && Mathf.Abs(distance - previousDistance) <= 0.35F))
                 {
                     //if(doneZooming && Mathf.Abs(distance - previousDistance) > 0F && Mathf.Abs(distance - previousDistance) <= 0.85F)
                     //{
                     //    Debug.Log("DONE ZOOMING SKIP");
                     //}
-                    if(deltaFirstFingerPos == Vector2.zero && deltaSecondFingerPos == Vector2.zero && isZooming)
+                    if(deltaFirstFingerPos == Vector2.zero && deltaSecondFingerPos == Vector2.zero && isZooming && zoomToPanEndDelay == null)
                     {
                         doneZooming = true;
                     }
                 }
                 else
                 {
-                    //Debug.Log("DISTANCE: " + Mathf.Abs(distance - previousDistance));
                     doneZooming = false;
-                    float dot = Vector2.Dot(deltaFirstFingerPos.normalized, deltaSecondFingerPos.normalized);
                     //Camera pans
-                    if (dot >= 0.12F)
+                    if (dot >= 0.01F || (dot >= -0.01F && dot != 0F))
                     {
-                        //IsZooming and panToZoomEndDelay: To prevent panning when at end of zooming out
+                        //panToZoomEndDelay: To prevent panning when at end of zooming out
                         if (isZooming)
                         {
                             yield return null;
@@ -147,7 +143,9 @@ namespace Planting
                         }
                         isPanning = true;
                         Vector2 TouchDeltaPosition = (deltaFirstFingerPos + deltaSecondFingerPos) / 2F;
-                        camFocusPoint.transform.Translate(panZoomSpeed * Time.deltaTime * -TouchDeltaPosition.normalized.x, panZoomSpeed * Time.deltaTime * -TouchDeltaPosition.normalized.y, 0F);
+                        float t = (minZoom - cam.transform.position.z) / maxZoomDistance;
+                        float panSpeed = Mathf.Lerp(panZoomSpeed, panZoomSpeed / 4F, t);
+                        camFocusPoint.transform.Translate(panSpeed * Time.deltaTime * -TouchDeltaPosition.normalized.x, panSpeed * Time.deltaTime * -TouchDeltaPosition.normalized.y, 0F);
                         camFocusPoint.transform.position = new Vector3(Mathf.Clamp(camFocusPoint.transform.position.x, -20F, 20F), Mathf.Clamp(camFocusPoint.transform.position.y, -10F + 3.04F, 10F), camFocusPoint.transform.position.z);
                     }
                     //Detection
@@ -216,7 +214,7 @@ namespace Planting
                 previousDistance = distance;
                 prevFirstFingerPos = firstFingerPos;
                 prevSecondFingerPos = secondFingerPos;
-                yield return null;
+                yield return new WaitForEndOfFrame();
             }
         }
 
