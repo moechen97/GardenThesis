@@ -53,8 +53,12 @@ namespace Planting
         private bool isPanning = false;
         private Coroutine zoomToPanEndDelay = null;
         private Coroutine panToZoomEndDelay = null;
+        private Vector3 startCamPosition;
+        private Vector3 startCamRotation;
         void Awake()
         {
+            startCamPosition = camFocusPoint.transform.position;
+            startCamRotation = camFocusPoint.transform.eulerAngles;
             seeds = plantManager.GetComponent<SeedDictionaryScript>().DeserializeDictionary();
             plantNames = plantManager.GetComponent<PlantNameDictionaryScript>().DeserializeDictionary();
             graphicRaycaster = plantMenu_Canvas.GetComponent<GraphicRaycaster>();
@@ -64,6 +68,17 @@ namespace Planting
             {
                 PlantManager.AddPlant(type);
             }
+        }
+
+        public void ResetPosition()
+        {
+            camFocusPoint.transform.position = startCamPosition;
+            camFocusPoint.transform.eulerAngles = startCamRotation;
+        }
+        public void SetTopView()
+        {
+            Vector3 rot = camFocusPoint.transform.eulerAngles;
+            camFocusPoint.transform.eulerAngles = new Vector3(85F, rot.y, rot.z);
         }
         private void Start()
         {
