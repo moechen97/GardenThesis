@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-1268868514923818151
+--- !u!114 &-5081595332019603819
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,11 +20,12 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Procedual Sky
-  m_Shader: {fileID: -6465566751694194690, guid: 33ec506fdb9ac406daa8cf3ecb1af09c, type: 3}
+  m_Name: Rings_Middle
+  m_Shader: {fileID: -6465566751694194690, guid: 5c50c883e3871439d853e6c837ed04d0, type: 3}
   m_ValidKeywords:
-  - _SHOWSTAR
-  m_InvalidKeywords: []
+  - _HAVEVERTEXPOSITIONADJUSTMENG
+  m_InvalidKeywords:
+  - _ALPHATEST_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -58,6 +59,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _GlowMask:
+        m_Texture: {fileID: 2800000, guid: 489e8cbba552a47e7bad78adbc4c8ced, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -78,6 +83,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture2D:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -92,64 +101,66 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AlphaClip: 0
-    - _AlphaCutoff: 0.5
+    - _AlphaClip: 1
     - _Blend: 0
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
+    - _DeformExtent: 0.065
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
+    - _DissolveExtent: -1
+    - _DissolveNoiseScale: 8.25
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
+    - _Glossness: 36.3
     - _GlossyReflections: 0
-    - _Gradient_Height: 0.5
-    - _HorizonGlowIntensity: 0.59
-    - _HorizonMinAmountAlways: 0
-    - _HorizonSharpness: 5.7
-    - _HorizonSunGlowSpreadMax: 0
-    - _HorizonSunGlowSpreadMin: 5.075109
-    - _HorizonTintSunPower: 0
+    - _GlowExtent: 0
+    - _GradientHeightTheshold: 0.59
+    - _GradientSmoothness: 0.68
+    - _GradientSmoothnessTheshold: 2.4
+    - _HASRIM: 0
+    - _HASSPECULAR: 0
+    - _HAVEVERTEXPOSITIONADJUSTMENG: 1
+    - _HeightMask: 1.67
+    - _HeightWaveFrequency: 2.11
+    - _HighlightExtent: 0
     - _Metallic: 0
-    - _NightTransitionHorizonDelay: 0
-    - _NightTransitionScale: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _SHOWSTAR: 1
-    - _Sky_and_Ground_Mask_Height: 0.91
+    - _RimAmount: 0.49
+    - _RimTheshold: 1
+    - _ShadowEdgeSmoothness: 1
+    - _ShadowSmooth: 0.001
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _StarDensity: 20
-    - _StarMask_MovingSpeed: 0.3
-    - _StarSize: 0.02
-    - _Star_Mask_Noise_Scale: 2
-    - _SunDiskSharpness: 0
-    - _SunDiskSize: 0
-    - _SunDiskSizeAdjust: 0
     - _Surface: 0
+    - _WaveSpeed: 2
+    - _WitheredExtent: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - _AmbientColor: {r: 0.3773585, g: 0.20113918, b: 0.21841566, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _BottomColor: {r: 0.3882353, g: 0.2117647, b: 0.5019608, a: 1}
-    - _Bottom_Color: {r: 0.4866391, g: 0.6421083, b: 0.36560825, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _DarkColor: {r: 0.05808899, g: 0.048860796, b: 0.16981131, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HorizonColor: {r: 0.9137255, g: 0.8509804, b: 0.7215686, a: 0}
-    - _NightColor: {r: 0, g: 0, b: 0, a: 0}
-    - _SkyColor: {r: 0.3764706, g: 0.6039216, b: 1, a: 0}
-    - _Sky_MovingSpeed: {r: 0, g: 0, b: 0, a: 0}
+    - _GlowColor: {r: 0.95440835, g: 0.72236025, b: 1.9162612, a: 0}
+    - _GradientBottomColor: {r: 0.9490197, g: 0.5568628, b: 0.14509805, a: 1}
+    - _HighlightColor: {r: 1, g: 0.4575472, b: 0.6092391, a: 0}
+    - _MainColor: {r: 0.9803922, g: 0.65882355, b: 0.14509805, a: 1}
+    - _RimColor: {r: 0.9339623, g: 0.4273318, b: 0.4273318, a: 0}
+    - _ShadowColor: {r: 0.9056604, g: 0.56134796, b: 0.252047, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-    - _StarColor: {r: 14.754423, g: 9.501539, b: 0.84973115, a: 1}
-    - _TopColor: {r: 0.22516908, g: 0.36870036, b: 0.41509432, a: 1}
-    - _Top_Color: {r: 0.7553192, g: 0.84695774, b: 0.8205971, a: 1}
+    - _Specular_Color: {r: 1, g: 0.7028302, b: 0.78949744, a: 0}
+    - _WitheredColor: {r: 0.31132078, g: 0.20691302, b: 0.048460316, a: 0}
   m_BuildTextureStacks: []
