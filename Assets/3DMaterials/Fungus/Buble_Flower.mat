@@ -120,8 +120,8 @@ Material:
     - _Glossness: 36.3
     - _GlossyReflections: 0
     - _GlowExtent: 0
-    - _GradientHeightTheshold: -0.48
-    - _GradientSmoothness: 1.1
+    - _GradientHeightTheshold: -0.64
+    - _GradientSmoothness: 3.03
     - _GradientSmoothnessTheshold: 3.13
     - _HASRIM: 0
     - _HASSPECULAR: 0
@@ -155,11 +155,11 @@ Material:
     - _DarkColor: {r: 0.05808899, g: 0.048860796, b: 0.16981131, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GlowColor: {r: 0.95440835, g: 0.72236025, b: 1.9162612, a: 0}
-    - _GradientBottomColor: {r: 0.8705883, g: 0.4156863, b: 0.54509807, a: 1}
+    - _GradientBottomColor: {r: 0.24296904, g: 0.41250274, b: 0.7924528, a: 1}
     - _HighlightColor: {r: 1, g: 0.4575472, b: 0.6092391, a: 0}
-    - _MainColor: {r: 0.96470594, g: 0.5803922, b: 0.62352943, a: 1}
+    - _MainColor: {r: 0.45882356, g: 0.6217501, b: 1, a: 1}
     - _RimColor: {r: 0.9339623, g: 0.4273318, b: 0.4273318, a: 0}
-    - _ShadowColor: {r: 0.8490566, g: 0.6047526, b: 0.6702976, a: 0}
+    - _ShadowColor: {r: 0.4285333, g: 0.54926527, b: 0.8490566, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _Specular_Color: {r: 1, g: 0.7028302, b: 0.78949744, a: 0}
     - _WitheredColor: {r: 0.31132078, g: 0.20691302, b: 0.048460316, a: 0}

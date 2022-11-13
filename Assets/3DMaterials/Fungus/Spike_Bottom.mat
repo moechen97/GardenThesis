@@ -97,8 +97,8 @@ Material:
     - _DeformExtent: 0.01
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DissolveExtent: -1
-    - _DissolveNoiseScale: 8.25
+    - _DissolveExtent: -0.16
+    - _DissolveNoiseScale: 10
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
@@ -138,17 +138,17 @@ Material:
     - _AmbientColor: {r: 0.3773585, g: 0.20113918, b: 0.21841566, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DarkColor: {r: 0.05808899, g: 0.048860796, b: 0.16981131, a: 0}
+    - _DarkColor: {r: 0.2085003, g: 0.17928979, b: 0.4811321, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GlowColor: {r: 0.95440835, g: 0.72236025, b: 1.9162612, a: 0}
+    - _GlowColor: {r: 2.2947617, g: 0.22731128, b: 0.5413626, a: 0}
     - _GradientBottomColor: {r: 0.23584908, g: 0.03216163, b: 0.030037384, a: 1}
-    - _HighlightColor: {r: 1, g: 0.4575472, b: 0.6092391, a: 0}
+    - _HighlightColor: {r: 2.340259, g: 0, b: 0.23810998, a: 0}
     - _MainColor: {r: 1, g: 0.19339621, b: 0.21430331, a: 1}
     - _RimColor: {r: 0.9339623, g: 0.4273318, b: 0.4273318, a: 0}
     - _ShadowColor: {r: 0.6603774, g: 0.49528304, b: 0.56998736, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _Specular_Color: {r: 1, g: 0.7028302, b: 0.78949744, a: 0}
-    - _WitheredColor: {r: 0.31132078, g: 0.20691302, b: 0.048460316, a: 0}
+    - _WitheredColor: {r: 0.3301887, g: 0.054092996, b: 0.029592374, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &5800779973156258036
 MonoBehaviour:

@@ -28,7 +28,7 @@ namespace Planting
         //public static int num_MushroomPink = 0;
         //public static int max_Fungus_Green = 10;
         //public static int max_Fungus_Jelly = 15;
-
+        
         public static Dictionary<PlantType, int> maxPlants = new
             Dictionary<PlantType, int>()
         {
