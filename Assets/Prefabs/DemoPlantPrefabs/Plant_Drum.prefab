@@ -75,13 +75,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d92915794662443cb5550db53ce03c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
+  isGrown: 0
   plantPrefab: {fileID: 4487841935939912684}
   growthSpeed_minRange: 0.8
   growthSpeed_maxRange: 1
   aliveTime: 30
-  flower: {fileID: 0}
   isBreeding: 0
-  growthDistance: 5
+  growthRadius: 5
   height_minRange: 0.6
   height_maxRange: 1
   XZScale: 1

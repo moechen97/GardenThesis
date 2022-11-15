@@ -15,7 +15,6 @@ namespace Planting
         private Dictionary<PlantType, GameObject> seeds;
         private GardenControl gardenControl;
         Camera cameraMain;
-        [SerializeField] PlantManager plantManager;
         [SerializeField] GameObject cam;
         [SerializeField] Image indicator;
         [SerializeField] GameObject plantMenu;
@@ -59,14 +58,24 @@ namespace Planting
         {
             startCamPosition = camFocusPoint.transform.position;
             startCamRotation = camFocusPoint.transform.eulerAngles;
-            seeds = plantManager.GetComponent<SeedDictionaryScript>().DeserializeDictionary();
             graphicRaycaster = plantMenu_Canvas.GetComponent<GraphicRaycaster>();
             gardenControl = new GardenControl();
             cameraMain = Camera.main;
-            foreach(PlantType type in seeds.Keys)
+        }
+
+        private void Start()
+        {
+            seeds = PlantManager.instance.GetComponent<SeedDictionaryScript>().DeserializeDictionary();
+            foreach (PlantType type in seeds.Keys)
             {
                 PlantManager.AddPlant(type);
             }
+            gardenControl.Plant.Hold.started += ctx => StartDrag(ctx);
+            gardenControl.Plant.Hold.canceled += ctx => EndDrag(ctx);
+            gardenControl.Plant.Tap.started += ctx => StartTap(ctx);
+            gardenControl.Plant.SecondaryTouchContact.started += _ => ZoomStart();
+            gardenControl.Plant.SecondaryTouchContact.canceled += _ => ZoomEnd();
+            _virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
         }
 
         public void ResetPosition()
@@ -93,15 +102,6 @@ namespace Planting
                 afterRotate = null;
                 rotatingScreen = false;
             }
-        }
-        private void Start()
-        {
-            gardenControl.Plant.Hold.started += ctx => StartDrag(ctx);
-            gardenControl.Plant.Hold.canceled += ctx => EndDrag(ctx);
-            gardenControl.Plant.Tap.started += ctx => StartTap(ctx);
-            gardenControl.Plant.SecondaryTouchContact.started += _ => ZoomStart();
-            gardenControl.Plant.SecondaryTouchContact.canceled += _ => ZoomEnd();
-            _virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
         }
         private void ZoomStart()
         {

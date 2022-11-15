@@ -108,6 +108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1796477626891198171}
   - component: {fileID: 1796477626891198170}
+  - component: {fileID: 1518518059730778626}
   m_Layer: 0
   m_Name: Spike_Tem
   m_TagString: Untagged
@@ -160,6 +161,28 @@ MonoBehaviour:
   DieSpeed: 0.3
   particleGeneratePosition: {fileID: 1796477627752160541}
   Shadow: {fileID: 1796477626647029257}
+--- !u!114 &1518518059730778626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796477626891198168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f09edb9b1e2b30b41bf08194a1581080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  isGrown: 0
+  plantPrefab: {fileID: 1796477626891198168}
+  growthSpeed_minRange: 1
+  growthSpeed_maxRange: 1
+  aliveTime: 20
+  isBreeding: 0
+  growthRadius: 1
+  generation: 1
+  breedAppearTimer: 1
 --- !u!1 &1796477627752160538
 GameObject:
   m_ObjectHideFlags: 0

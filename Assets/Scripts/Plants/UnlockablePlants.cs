@@ -62,6 +62,18 @@ namespace Planting {
                         unlocks.Add(PlantType.Plant_Drum);
                     }
                 }
+                if(unlockable.Key == PlantType.Plant_Spike)
+                {
+                    if (PlantManager.plantedPlantCounter[PlantType.Fungus_Green] >= 1 &&
+                       PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 0)
+                    {
+                        GameObject spikeIcon = GameObject.Instantiate(unlockable_icons[unlockable.Key]);
+                        spikeIcon.name = PlantType.Plant_Spike.ToString();
+                        spikeIcon.transform.parent = seedPanel.transform;
+                        spikeIcon.transform.localScale = new Vector3(1.440003F, 1.440003F, 1.440003F);
+                        unlocks.Add(PlantType.Plant_Spike);
+                    }
+                }
             }
             foreach(PlantType type in unlocks)
             {

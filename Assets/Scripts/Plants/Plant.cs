@@ -7,22 +7,23 @@ using Random = UnityEngine.Random;
 namespace Planting {
     public class Plant : MonoBehaviour
     {
-        [HideInInspector] protected PlantType id;
+        [HideInInspector] public PlantType id;
         protected string finishGrowAnimationName;
-        private Animator animator;
-        private bool isGrown;
-        [SerializeField, Tooltip("Prefab for when breeding plant")] GameObject plantPrefab;
+        protected Animator animator;
+        [HideInInspector] public bool isGrown;
+        [SerializeField] protected GameObject plantPrefab;
         [SerializeField, Tooltip("Minimum growth speed")] private float growthSpeed_minRange = 0.05F;
         [SerializeField, Tooltip("Maximum growth speed")] private float growthSpeed_maxRange = 0.1F;
         private float speed;
-        [SerializeField, Tooltip("Amount of time the plant stays alive after reaching full growth")] private float aliveTime = 20F;
-        [SerializeField, Tooltip("Blooming flower when fully grown")] protected GameObject flower;
+        [SerializeField] private float aliveTime = 20F;
+        //[SerializeField, Tooltip("Blooming flower when fully grown")] protected GameObject flower;
         [HideInInspector] public bool isBreeding = false;
-        [SerializeField, Tooltip("Distance to check/plant for nearby ones of same breed")] private float growthDistance = 2F;
+        [SerializeField] protected float growthRadius = 2F;
         [HideInInspector] private bool wasBred = false;
         // Start is called before the first frame update
         protected virtual void Start()
         {
+            transform.parent = PlantManager.PlantTransform;
             isGrown = false;
             animator = transform.GetComponentInChildren<Animator>();
             //float speed = Random.Range(0.005F, 0.100F);
@@ -62,7 +63,7 @@ namespace Planting {
             }
         }
 
-        private void FixedUpdate()
+        protected virtual void FixedUpdate()
         {
             if (isGrown && isBreeding)
             {
@@ -73,7 +74,7 @@ namespace Planting {
             }
         }
 
-        private void CheckForBreeding()
+        protected virtual void CheckForBreeding()
         {
             if(Resources.GetResourcesUsed() + PlantManager.resourceDict[id] > 1.0F)
             {
@@ -114,17 +115,17 @@ namespace Planting {
                     //Check for collision in each direction
                     foreach (Vector3 direction in directionList)
                     {                  
-                        Ray groundRay = new Ray(midpoint + (direction * growthDistance), Vector3.down);
+                        Ray groundRay = new Ray(midpoint + (direction * growthRadius), Vector3.down);
                         if (!Physics.Raycast(groundRay, out hit, Mathf.Infinity, LayerMask.GetMask("Ground")))
                         {
                             continue;
                         }
                         Ray ray = new Ray(midpoint, direction);
-                        if (!Physics.Raycast(ray, out hit, growthDistance, LayerMask.GetMask("Plant")))
+                        if (!Physics.Raycast(ray, out hit, growthRadius, LayerMask.GetMask("Plant")))
                         {
                             if (PlantManager.CanSpawnPlantBreed(id))
                             {
-                                Breed(otherPlant, direction, growthDistance);
+                                Breed(otherPlant, direction, growthRadius);
                                 break;
                             }
                         }
@@ -133,7 +134,7 @@ namespace Planting {
             }
         }
 
-        protected void Breed(Plant otherPlant, Vector3 direction, float distance)
+        protected virtual void Breed(Plant otherPlant, Vector3 direction, float distance)
         {
             Vector3 newPlantPosition = transform.position + direction * distance;
             GameObject newPlant = GameObject.Instantiate(plantPrefab,newPlantPosition,quaternion.identity);

@@ -11,6 +11,15 @@ namespace Planting
     }
     public class PlantManager : MonoBehaviour
     {
+        public static PlantManager instance;
+        public static Transform PlantTransform { get; private set; }
+        public static Transform SpikeTransform { get; private set; }
+        private void Awake()
+        {
+            instance = this;
+            PlantTransform = GameObject.FindGameObjectWithTag("Plants").transform;
+            SpikeTransform = GameObject.FindGameObjectWithTag("Spikes").transform;
+        }
         private UnlockablePlants unlockablePlants;
         private void Start()
         {
@@ -18,15 +27,16 @@ namespace Planting
             unlockablePlants = GetComponent<UnlockablePlants>();
         }
         public static Dictionary<PlantType, int> plantCounter = new Dictionary<PlantType, int>();
-        public static Dictionary<PlantType, float> resourceDict = new 
-            Dictionary<PlantType, float>() { 
-                { PlantType.MushroomDarkGreen, 0.1F }, 
+        public static Dictionary<PlantType, float> resourceDict = new
+            Dictionary<PlantType, float>() {
+                { PlantType.MushroomDarkGreen, 0.1F },
                 { PlantType.MushroomPink, 0.05F },
                 { PlantType.Fungus_Green , 0.1f},
                 { PlantType.Fungus_Jelly , 0.05f },
                 { PlantType.Fungus_Purple, 0.05f},
                 { PlantType.Plant_Peach, 0.1F},
-                { PlantType.Plant_Drum, 0.3F}
+                { PlantType.Plant_Drum, 0.3F },
+                { PlantType.Plant_Spike, 0.0F }
             };
 
         //public static int num_MushroomDarkGreen = 0;
@@ -44,7 +54,8 @@ namespace Planting
             { PlantType.Fungus_Jelly , 20 },
             { PlantType.Fungus_Purple, 20 },
             { PlantType.Plant_Peach, 20},
-            { PlantType.Plant_Drum, 5}
+            { PlantType.Plant_Drum, 5 },
+            { PlantType.Plant_Spike, 100}
         };
         public static List<Plant> allPlants = new List<Plant>();
 

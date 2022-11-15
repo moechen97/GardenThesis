@@ -38,7 +38,6 @@ namespace Planting {
             }
 
             slider.value = sliderValue;
-            Debug.Log("RESOURCES USED: " + GetResourcesUsed());
 
             if (!slider.gameObject.activeSelf)
             {

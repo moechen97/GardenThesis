@@ -11,6 +11,8 @@ TagManager:
   - ResourceBar
   - SpeedManager
   - PlantManager
+  - Plants
+  - Spikes
   layers:
   - Default
   - TransparentFX
