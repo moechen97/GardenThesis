@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77201812a3b3d8247a331d7bf4e3e20a, type: 3}
   m_Name: UnlockableIcons
   m_EditorClassIdentifier: 
-  keys: 04000000
+  keys: 040000000500000006000000
   values:
   - {fileID: 4155947344800111990, guid: 043f02d8c9e981e45b4faf9b450acb1d, type: 3}
+  - {fileID: 679129545733926650, guid: 6265ec42bb80049e18aa0c5bb8456611, type: 3}
+  - {fileID: 3522947560168453660, guid: 41ce63514b4104a89b0e450ac413549d, type: 3}

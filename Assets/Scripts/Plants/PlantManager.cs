@@ -4,7 +4,11 @@ using UnityEngine;
 
 namespace Planting
 {
-    public enum PlantType { MushroomDarkGreen, MushroomPink, Fungus_Green, Fungus_Jelly, Fungus_Purple }
+    public enum PlantType
+    {
+        MushroomDarkGreen, MushroomPink, Fungus_Green, Fungus_Jelly, Fungus_Purple, Plant_Peach,
+        Plant_Drum
+    }
     public class PlantManager : MonoBehaviour
     {
         private UnlockablePlants unlockablePlants;
@@ -20,7 +24,9 @@ namespace Planting
                 { PlantType.MushroomPink, 0.05F },
                 { PlantType.Fungus_Green , 0.1f},
                 { PlantType.Fungus_Jelly , 0.05f },
-                { PlantType.Fungus_Purple, 0.05f}
+                { PlantType.Fungus_Purple, 0.05f},
+                { PlantType.Plant_Peach, 0.1F},
+                { PlantType.Plant_Drum, 0.3F}
             };
 
         //public static int num_MushroomDarkGreen = 0;
@@ -36,7 +42,9 @@ namespace Planting
             { PlantType.MushroomPink, 20 },
             { PlantType.Fungus_Green , 10 },
             { PlantType.Fungus_Jelly , 20 },
-            { PlantType.Fungus_Purple, 20 }
+            { PlantType.Fungus_Purple, 20 },
+            { PlantType.Plant_Peach, 20},
+            { PlantType.Plant_Drum, 5}
         };
         public static List<Plant> allPlants = new List<Plant>();
 

@@ -40,6 +40,30 @@ namespace Planting {
                         unlocks.Add(PlantType.Fungus_Purple);
                     }
                 }
+                if(unlockable.Key == PlantType.Plant_Peach)
+                {
+                    if(PlantManager.plantedPlantCounter[PlantType.Fungus_Green] >= 2 && 
+                       PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 1)
+                    {
+                        GameObject fungusPurpleIcon = GameObject.Instantiate(unlockable_icons[unlockable.Key]);
+                        fungusPurpleIcon.name = plantNames[unlockable.Key];
+                        fungusPurpleIcon.transform.parent = seedPanel.transform;
+                        fungusPurpleIcon.transform.localScale = new Vector3(1.440003F, 1.440003F, 1.440003F);
+                        unlocks.Add(PlantType.Plant_Peach);
+                    }
+                }
+                if(unlockable.Key == PlantType.Plant_Drum)
+                {
+                    if(PlantManager.plantedPlantCounter[PlantType.Plant_Peach] >= 3 && 
+                       PlantManager.bredPlantCounter[PlantType.Plant_Peach] >= 1)
+                    {
+                        GameObject fungusPurpleIcon = GameObject.Instantiate(unlockable_icons[unlockable.Key]);
+                        fungusPurpleIcon.name = plantNames[unlockable.Key];
+                        fungusPurpleIcon.transform.parent = seedPanel.transform;
+                        fungusPurpleIcon.transform.localScale = new Vector3(1.440003F, 1.440003F, 1.440003F);
+                        unlocks.Add(PlantType.Plant_Drum);
+                    }
+                }
             }
             foreach(PlantType type in unlocks)
             {
