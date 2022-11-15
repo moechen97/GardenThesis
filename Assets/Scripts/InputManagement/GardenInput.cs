@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
 using UnityEngine.UI;
 using Cinemachine;
+using DG.Tweening;
 
 namespace Planting
 {
@@ -72,15 +73,18 @@ namespace Planting
 
         public void ResetPosition()
         {
-            camFocusPoint.transform.position = startCamPosition;
-            camFocusPoint.transform.eulerAngles = startCamRotation;
+            //camFocusPoint.transform.position = startCamPosition;
+            //camFocusPoint.transform.eulerAngles = startCamRotation;
             StopRotating();
+            camFocusPoint.transform.DORotate(startCamRotation, 2f);
+            camFocusPoint.transform.DOMove(startCamPosition, 2f);
         }
         public void SetTopView()
         {
             Vector3 rot = camFocusPoint.transform.eulerAngles;
-            camFocusPoint.transform.eulerAngles = new Vector3(85F, rot.y, rot.z);
+            //camFocusPoint.transform.eulerAngles = new Vector3(85F, rot.y, rot.z);
             StopRotating();
+            camFocusPoint.transform.DORotate(new Vector3(85F, rot.y, rot.z), 1.5f);
         }
 
         private void StopRotating()
