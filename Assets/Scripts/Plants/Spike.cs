@@ -56,9 +56,7 @@ namespace Planting
         private IEnumerator CircleSpread()
         {
             yield return new WaitForSeconds(breedAppearTimer);
-            Debug.Log("NEXT GENERATION : " + nextGeneration);
             int numSpikes = generationSpread[nextGeneration];
-            Debug.Log("NUM SPIKES: " + numSpikes);
             float radius = growthRadius * (nextGeneration - 1);
             for(int i = 0; i < numSpikes; i++)
             {
@@ -76,7 +74,6 @@ namespace Planting
                 Quaternion rot = Quaternion.Euler(0F, angleDegrees, 0F);
                 GameObject newSpike = Instantiate(plantPrefab, pos, rot);
                 newSpike.GetComponent<Spike>().generation = nextGeneration;
-                Debug.Log("SPAWN SPIKE");
                 yield return new WaitForSeconds(breedAppearTimer);
             }
             nextGeneration++;
