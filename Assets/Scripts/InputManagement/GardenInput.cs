@@ -81,9 +81,9 @@ namespace Planting
         }
         public void SetTopView()
         {
+            StopRotating();
             Vector3 rot = camFocusPoint.transform.eulerAngles;
             //camFocusPoint.transform.eulerAngles = new Vector3(85F, rot.y, rot.z);
-            StopRotating();
             camFocusPoint.transform.DORotate(new Vector3(85F, rot.y, rot.z), 1.5f);
         }
 
@@ -475,6 +475,7 @@ namespace Planting
                 rotatingScreen = true;
                 StartCoroutine(SaveStartDragPosition());
                 StopRotating();
+                camFocusPoint.transform.DOKill();
                 //rotateStep = rotateSpeed / 2F;
                 previousRotatePosition = screenCoordinates;
             }
