@@ -7,7 +7,7 @@ namespace Planting
     public enum PlantType
     {
         MushroomDarkGreen, MushroomPink, Fungus_Green, Fungus_Jelly, Fungus_Purple, Plant_Peach,
-        Plant_Drum
+        Plant_Drum, Plant_Spike
     }
     public class PlantManager : MonoBehaviour
     {

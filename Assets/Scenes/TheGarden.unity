@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.7767887, g: 0.78232056, b: 0.6001355, a: 1}
+  m_IndirectSpecularColor: {r: 0.7766022, g: 0.7821403, b: 0.59991217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -530,7 +530,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88122235}
-  m_LocalRotation: {x: 0.064167075, y: 9.861571e-24, z: 6.34095e-25, w: 0.99793917}
+  m_LocalRotation: {x: 0.064167075, y: 1.0234667e-15, z: 6.580852e-17, w: 0.99793917}
   m_LocalPosition: {x: 0, y: 9.823851, z: -52.533802}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6910,7 +6910,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 875453221}
-  m_LocalRotation: {x: 0.62713015, y: -0.2810131, z: 0.25976586, w: 0.67842555}
+  m_LocalRotation: {x: 0.6271301, y: -0.28101313, z: 0.25976583, w: 0.6784256}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7848,7 +7848,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 954583513}
-  m_LocalRotation: {x: 0.064167075, y: 9.861571e-24, z: 6.34095e-25, w: 0.99793917}
+  m_LocalRotation: {x: 0.064167075, y: 1.0234667e-15, z: 6.580852e-17, w: 0.99793917}
   m_LocalPosition: {x: 0, y: 9.823851, z: -52.533802}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -16400,7 +16400,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2114448415}
   - component: {fileID: 2114448416}
-  - component: {fileID: 2114448418}
   - component: {fileID: 2114448419}
   - component: {fileID: 2114448420}
   - component: {fileID: 2114448417}
@@ -16451,29 +16450,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seedPanel: {fileID: 218345613}
---- !u!114 &2114448418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2114448414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8119cdeea593368488417b66ff7bb03d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dictionaryData: {fileID: 11400000, guid: fb45f34e316aefa419647eb115c4e682, type: 2}
-  keys: 00000000010000000200000003000000040000000500000006000000
-  values:
-  - MushroomDarkGreen
-  - MushroomPink
-  - Fungus_Green
-  - Fungus_Jelly
-  - Fungus_Purple
-  - Plant_Peach
-  - Plant_Drum
-  modifyValues: 0
 --- !u!114 &2114448419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16487,7 +16463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dictionaryData: {fileID: 11400000, guid: 5ceb1491a6c62f8489653107383a3b1e, type: 2}
-  keys: 00000000010000000200000003000000040000000500000006000000
+  keys: 0000000001000000020000000300000004000000050000000600000007000000
   values:
   - {fileID: 7178698840623816203, guid: b2c4a4fd7c5a04827bf2fd98e549707e, type: 3}
   - {fileID: 9033520164648056915, guid: ee86437b885f04b04b59f84c17e0dffe, type: 3}
@@ -16496,6 +16472,7 @@ MonoBehaviour:
   - {fileID: 9193809187864115647, guid: 9a0211bb8d7654489822a2d890ae28c9, type: 3}
   - {fileID: 6892907956964551267, guid: 3ab0b4047e3834e46a3b8132e4d9f41f, type: 3}
   - {fileID: 4487841935939912684, guid: c3b3a3f518868440f8b3f997dfa2a32d, type: 3}
+  - {fileID: 3076601888909928530, guid: 829f88ae245d349169f32d5517b0b700, type: 3}
   modifyValues: 0
 --- !u!114 &2114448420
 MonoBehaviour:

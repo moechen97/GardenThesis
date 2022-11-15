@@ -7,12 +7,10 @@ namespace Planting {
     public class UnlockablePlants : MonoBehaviour
     {
         private Dictionary<PlantType, GameObject> unlockable_icons;
-        private Dictionary<PlantType, string> plantNames;
         [SerializeField] GameObject seedPanel;
         // Start is called before the first frame update
         void Start()
-        {
-            plantNames = GetComponent<PlantNameDictionaryScript>().DeserializeDictionary();
+        { 
             unlockable_icons = GetComponent<UnlockableIconDictionaryScript>().DeserializeDictionary();
         }
 
@@ -34,7 +32,7 @@ namespace Planting {
                         PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 4)
                     {
                         GameObject fungusPurpleIcon = GameObject.Instantiate(unlockable_icons[unlockable.Key]);
-                        fungusPurpleIcon.name = plantNames[unlockable.Key];
+                        fungusPurpleIcon.name = PlantType.Fungus_Purple.ToString();
                         fungusPurpleIcon.transform.parent = seedPanel.transform;
                         fungusPurpleIcon.transform.localScale = new Vector3(1.440003F, 1.440003F, 1.440003F);
                         unlocks.Add(PlantType.Fungus_Purple);
@@ -46,7 +44,7 @@ namespace Planting {
                        PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 1)
                     {
                         GameObject fungusPurpleIcon = GameObject.Instantiate(unlockable_icons[unlockable.Key]);
-                        fungusPurpleIcon.name = plantNames[unlockable.Key];
+                        fungusPurpleIcon.name = PlantType.Plant_Peach.ToString();
                         fungusPurpleIcon.transform.parent = seedPanel.transform;
                         fungusPurpleIcon.transform.localScale = new Vector3(1.440003F, 1.440003F, 1.440003F);
                         unlocks.Add(PlantType.Plant_Peach);
@@ -58,7 +56,7 @@ namespace Planting {
                        PlantManager.bredPlantCounter[PlantType.Plant_Peach] >= 1)
                     {
                         GameObject fungusPurpleIcon = GameObject.Instantiate(unlockable_icons[unlockable.Key]);
-                        fungusPurpleIcon.name = plantNames[unlockable.Key];
+                        fungusPurpleIcon.name = PlantType.Plant_Drum.ToString();
                         fungusPurpleIcon.transform.parent = seedPanel.transform;
                         fungusPurpleIcon.transform.localScale = new Vector3(1.440003F, 1.440003F, 1.440003F);
                         unlocks.Add(PlantType.Plant_Drum);

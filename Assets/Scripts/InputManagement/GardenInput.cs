@@ -13,7 +13,6 @@ namespace Planting
     public class GardenInput : MonoBehaviour
     {
         private Dictionary<PlantType, GameObject> seeds;
-        private Dictionary<PlantType, string> plantNames;
         private GardenControl gardenControl;
         Camera cameraMain;
         [SerializeField] PlantManager plantManager;
@@ -61,7 +60,6 @@ namespace Planting
             startCamPosition = camFocusPoint.transform.position;
             startCamRotation = camFocusPoint.transform.eulerAngles;
             seeds = plantManager.GetComponent<SeedDictionaryScript>().DeserializeDictionary();
-            plantNames = plantManager.GetComponent<PlantNameDictionaryScript>().DeserializeDictionary();
             graphicRaycaster = plantMenu_Canvas.GetComponent<GraphicRaycaster>();
             gardenControl = new GardenControl();
             cameraMain = Camera.main;
@@ -453,9 +451,9 @@ namespace Planting
             UIgraphicRaycaster.Raycast(pointerEventData, UIresults);
             foreach (RaycastResult result in UIresults)
             {
-                foreach(KeyValuePair<PlantType, string> plant in plantNames)
+                foreach(KeyValuePair<PlantType, GameObject> plant in seeds)
                 {
-                    if(result.gameObject.name.Equals(plant.Value))
+                    if(result.gameObject.name.Equals(plant.Key.ToString()))
                     {
                         isDraggingSeed = true;
                         currSeed = plant.Key;
