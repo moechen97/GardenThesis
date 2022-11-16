@@ -60,7 +60,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _GlowMask:
-        m_Texture: {fileID: 2800000, guid: 489e8cbba552a47e7bad78adbc4c8ced, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -152,9 +152,9 @@ Material:
     - _AmbientColor: {r: 0.3773585, g: 0.20113918, b: 0.21841566, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DarkColor: {r: 0.05808899, g: 0.048860796, b: 0.16981131, a: 0}
+    - _DarkColor: {r: 0.5377358, g: 0.44234174, b: 0.09892311, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GlowColor: {r: 0.95440835, g: 0.72236025, b: 1.9162612, a: 0}
+    - _GlowColor: {r: 1.6412115, g: 0.7013211, b: 0.25547162, a: 0}
     - _GradientBottomColor: {r: 0.9098039, g: 0.4930184, b: 0.09019605, a: 1}
     - _HighlightColor: {r: 1, g: 0.4575472, b: 0.6092391, a: 0}
     - _MainColor: {r: 0.9433962, g: 0.60951924, b: 0.26254895, a: 1}
@@ -162,5 +162,5 @@ Material:
     - _ShadowColor: {r: 0.9529412, g: 0.5296757, b: 0.5254902, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _Specular_Color: {r: 1, g: 0.7028302, b: 0.78949744, a: 0}
-    - _WitheredColor: {r: 0.31132078, g: 0.20691302, b: 0.048460316, a: 0}
+    - _WitheredColor: {r: 0.6132076, g: 0.47415087, b: 0.09545213, a: 0}
   m_BuildTextureStacks: []

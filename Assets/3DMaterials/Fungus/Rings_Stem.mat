@@ -139,9 +139,9 @@ Material:
     - _AmbientColor: {r: 0.3773585, g: 0.20113918, b: 0.21841566, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DarkColor: {r: 0.05808899, g: 0.048860796, b: 0.16981131, a: 0}
+    - _DarkColor: {r: 0.6415094, g: 0.37933376, b: 0.069597736, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GlowColor: {r: 0.95440835, g: 0.72236025, b: 1.9162612, a: 0}
+    - _GlowColor: {r: 0.7830189, g: 0.28023833, b: 0, a: 0}
     - _GradientBottomColor: {r: 0.12842648, g: 0.15903175, b: 0.24528301, a: 1}
     - _HighlightColor: {r: 1, g: 0.4575472, b: 0.6092391, a: 0}
     - _MainColor: {r: 0.2287736, g: 0.29970974, b: 0.5, a: 1}
@@ -149,7 +149,7 @@ Material:
     - _ShadowColor: {r: 0.507913, g: 0.4295123, b: 0.7169812, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _Specular_Color: {r: 1, g: 0.7028302, b: 0.78949744, a: 0}
-    - _WitheredColor: {r: 0.31132078, g: 0.20691302, b: 0.048460316, a: 0}
+    - _WitheredColor: {r: 0.5377358, g: 0.28256905, b: 0.088777125, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &417798984791406644
 MonoBehaviour:

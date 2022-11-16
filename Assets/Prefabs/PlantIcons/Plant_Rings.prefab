@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3081079396399085159}
   m_Layer: 5
-  m_Name: Plant_Ring
+  m_Name: Plant_Rings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 3081079396478497673}
   - component: {fileID: 3081079396478497672}
   m_Layer: 5
-  m_Name: Plant_Ring
+  m_Name: Plant_Rings
   m_TagString: Seed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
