@@ -76,6 +76,8 @@ public class Fungus_MaterialChange : MonoBehaviour
 
     public void Withered()
     {
+        if (!fungusAnimator)
+            return;
         fungusAnimator.SetBool("isWithered",true);
     }
 

@@ -74,6 +74,30 @@ namespace Planting {
                         unlocks.Add(PlantType.Plant_Spike);
                     }
                 }
+                if(unlockable.Key == PlantType.Plant_Bubble)
+                {
+                    if(PlantManager.plantedPlantCounter[PlantType.Fungus_Green] >= 5 && 
+                       PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 4)
+                    {
+                        GameObject fungusPurpleIcon = GameObject.Instantiate(unlockable_icons[unlockable.Key]);
+                        fungusPurpleIcon.name = PlantType.Plant_Bubble.ToString();
+                        fungusPurpleIcon.transform.parent = seedPanel.transform;
+                        fungusPurpleIcon.transform.localScale = new Vector3(1.440003F, 1.440003F, 1.440003F);
+                        unlocks.Add(PlantType.Plant_Bubble);
+                    }
+                }
+                if(unlockable.Key == PlantType.Plant_Capture)
+                {
+                    if(PlantManager.plantedPlantCounter[PlantType.Plant_Bubble] >= 5 && 
+                       PlantManager.bredPlantCounter[PlantType.Plant_Bubble] >= 3)
+                    {
+                        GameObject fungusPurpleIcon = GameObject.Instantiate(unlockable_icons[unlockable.Key]);
+                        fungusPurpleIcon.name = PlantType.Plant_Capture.ToString();
+                        fungusPurpleIcon.transform.parent = seedPanel.transform;
+                        fungusPurpleIcon.transform.localScale = new Vector3(1.440003F, 1.440003F, 1.440003F);
+                        unlocks.Add(PlantType.Plant_Capture);
+                    }
+                }
             }
             foreach(PlantType type in unlocks)
             {

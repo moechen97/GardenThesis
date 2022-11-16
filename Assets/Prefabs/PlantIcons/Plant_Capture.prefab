@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8240288084518359098}
   m_Layer: 5
-  m_Name: Plant_Flycatch
+  m_Name: Plant_Capture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 8240288085760382805}
   - component: {fileID: 8240288085760382806}
   m_Layer: 5
-  m_Name: Plant_Flycatch
+  m_Name: Plant_Capture
   m_TagString: Seed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

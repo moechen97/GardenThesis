@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b42eca6bbea122c4f9645895a76687c2, type: 3}
   m_Name: PlantNames
   m_EditorClassIdentifier: 
-  keys: 00000000010000000200000003000000040000000500000006000000
+  keys: 000000000100000002000000030000000400000005000000060000000800000009000000
   values:
   - MushroomDarkGreen
   - MushroomPink
@@ -20,4 +20,5 @@ MonoBehaviour:
   - Fungus_Jelly
   - Fungus_Purple
   - Plant_Peach
-  - Plant_Drum
+  - Plant_Bubble
+  - Plant_Capture
