@@ -176,13 +176,13 @@ MonoBehaviour:
   id: 0
   isGrown: 0
   plantPrefab: {fileID: 1796477626891198168}
+  breedingSpeed: 1.25
   growthSpeed_minRange: 1
   growthSpeed_maxRange: 1
-  aliveTime: 20
+  aliveTime: 10
   isBreeding: 0
   growthRadius: 1
   generation: 1
-  breedAppearTimer: 1
 --- !u!1 &1796477627752160538
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,14 +8,13 @@ namespace Planting
     {
         [HideInInspector] public int generation = 1;
         private int nextGeneration;
-        [field: SerializeField] public float breedAppearTimer = 0.3F;
         private Coroutine circleSpread = null;
-        private Dictionary<int, int> generationSpread = new Dictionary<int, int>() { {2, 5}, {3, 8}, {4, 12}, {5, 16} };
+        private Dictionary<int, int> generationSpread = new Dictionary<int, int>() { {2, 6}, {3, 10}, {4, 14}, {5, 18}, {6, 22}, {7, 26} };
         protected override void Start()
         {
+            base.Start();
             id = PlantType.Plant_Spike;
             finishGrowAnimationName = "Spike_Tem_FullyGrow";
-            base.Start();
             transform.parent = PlantManager.SpikeTransform;
             nextGeneration = generation + 1;
         }
@@ -55,7 +54,7 @@ namespace Planting
         }
         private IEnumerator CircleSpread()
         {
-            yield return new WaitForSeconds(breedAppearTimer);
+            yield return new WaitForSeconds(breedingSpeed);
             int numSpikes = generationSpread[nextGeneration];
             float radius = growthRadius * (nextGeneration - 1);
             for(int i = 0; i < numSpikes; i++)
@@ -74,9 +73,9 @@ namespace Planting
                 Quaternion rot = Quaternion.Euler(0F, angleDegrees, 0F);
                 GameObject newSpike = Instantiate(plantPrefab, pos, rot);
                 newSpike.GetComponent<Spike>().generation = nextGeneration;
-                yield return new WaitForSeconds(breedAppearTimer);
             }
             nextGeneration++;
+            yield return new WaitForSeconds(breedingSpeed);
             circleSpread = null;
         }
     }

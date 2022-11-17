@@ -12,10 +12,13 @@ namespace Planting {
         protected Animator animator;
         [HideInInspector] public bool isGrown;
         [SerializeField] protected GameObject plantPrefab;
+        [SerializeField] protected float breedingSpeed = 1F;
+        private float breedingTimer = 0F;
         [SerializeField, Tooltip("Minimum growth speed")] private float growthSpeed_minRange = 0.05F;
         [SerializeField, Tooltip("Maximum growth speed")] private float growthSpeed_maxRange = 0.1F;
         private float speed;
         [SerializeField] private float aliveTime = 20F;
+        private float aliveTimer;
         //[SerializeField, Tooltip("Blooming flower when fully grown")] protected GameObject flower;
         [HideInInspector] public bool isBreeding = false;
         [SerializeField] protected float growthRadius = 2F;
@@ -23,6 +26,7 @@ namespace Planting {
         // Start is called before the first frame update
         protected virtual void Start()
         {
+            aliveTimer = 0F;
             transform.parent = PlantManager.PlantTransform;
             isGrown = false;
             animator = transform.GetComponentInChildren<Animator>();
@@ -47,9 +51,10 @@ namespace Planting {
                 //Debug.Log(name+"isGrown");
             }
             else if (isGrown)
-            {            
-                aliveTime -= Time.deltaTime;
-                if (aliveTime <= 0.0F)
+            {
+                breedingTimer += Time.deltaTime;
+                aliveTimer += Time.deltaTime;
+                if (aliveTimer >= aliveTime)
                 {
                     if (GetComponent<Fungus_MaterialChange>())
                     {
@@ -67,8 +72,9 @@ namespace Planting {
         {
             if (isGrown && isBreeding)
             {
-                if (Random.Range(0, (int)(1F / Time.deltaTime) * 5) == 0)
+                if (breedingTimer >= breedingSpeed)
                 {
+                    breedingTimer = 0F;
                     CheckForBreeding();
                 }
             }
