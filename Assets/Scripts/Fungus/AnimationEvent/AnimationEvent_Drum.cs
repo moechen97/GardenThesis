@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class AnimationEvent_Drum : MonoBehaviour
 {
-    [SerializeField] Fungus_MaterialChange MaterialChange;
+    [SerializeField] Fungus_MaterialChange[] materials;
     
     public void Withered()
     {
-        MaterialChange.MaterialWithered();
+        foreach (var material in materials)
+        {
+            material.MaterialWithered();
+        }
     }
     
     public void Die()
     {
-        MaterialChange.Die();
+        foreach (var material in materials)
+        {
+            material.Die();
+        }
     }
 }

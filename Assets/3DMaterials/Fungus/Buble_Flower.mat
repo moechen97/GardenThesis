@@ -60,7 +60,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _GlowMask:
-        m_Texture: {fileID: 2800000, guid: 489e8cbba552a47e7bad78adbc4c8ced, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -111,7 +111,7 @@ Material:
     - _DeformExtent: 0.005
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DissolveExtent: -1
+    - _DissolveExtent: -0.17
     - _DissolveNoiseScale: 8.25
     - _DstBlend: 0
     - _EnvironmentReflections: 1
@@ -154,7 +154,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DarkColor: {r: 0.05808899, g: 0.048860796, b: 0.16981131, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GlowColor: {r: 0.95440835, g: 0.72236025, b: 1.9162612, a: 0}
+    - _GlowColor: {r: 0.043907437, g: 0.68056524, b: 1.163547, a: 0}
     - _GradientBottomColor: {r: 0.24296904, g: 0.41250274, b: 0.7924528, a: 1}
     - _HighlightColor: {r: 1, g: 0.4575472, b: 0.6092391, a: 0}
     - _MainColor: {r: 0.45882356, g: 0.6217501, b: 1, a: 1}
@@ -162,5 +162,5 @@ Material:
     - _ShadowColor: {r: 0.4285333, g: 0.54926527, b: 0.8490566, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _Specular_Color: {r: 1, g: 0.7028302, b: 0.78949744, a: 0}
-    - _WitheredColor: {r: 0.31132078, g: 0.20691302, b: 0.048460316, a: 0}
+    - _WitheredColor: {r: 0.28484336, g: 0.2905905, b: 0.3490566, a: 0}
   m_BuildTextureStacks: []

@@ -7,7 +7,7 @@ namespace Planting
     public enum PlantType
     {
         MushroomDarkGreen, MushroomPink, Fungus_Green, Fungus_Jelly, Fungus_Purple, Plant_Peach,
-        Plant_Drum, Plant_Spike
+        Plant_Drum, Plant_Spike, Plant_Bubble, Plant_Capture, Plant_Rings, Plant_Lotus
     }
     public class PlantManager : MonoBehaviour
     {
@@ -36,7 +36,11 @@ namespace Planting
                 { PlantType.Fungus_Purple, 0.05f},
                 { PlantType.Plant_Peach, 0.1F},
                 { PlantType.Plant_Drum, 0.3F },
-                { PlantType.Plant_Spike, 0.0F }
+                { PlantType.Plant_Spike, 0.0F },
+                { PlantType.Plant_Bubble, 0.2F },
+                { PlantType.Plant_Capture, 0.1F },
+                { PlantType.Plant_Rings, 0.1F },
+                { PlantType.Plant_Lotus, 0.3F }
             };
 
         //public static int num_MushroomDarkGreen = 0;
@@ -55,7 +59,11 @@ namespace Planting
             { PlantType.Fungus_Purple, 20 },
             { PlantType.Plant_Peach, 20},
             { PlantType.Plant_Drum, 5 },
-            { PlantType.Plant_Spike, 100}
+            { PlantType.Plant_Spike, 100},
+            { PlantType.Plant_Bubble, 6 },
+            { PlantType.Plant_Capture, 10 },
+            { PlantType.Plant_Rings, 10 },
+            { PlantType.Plant_Lotus, 3 }
         };
         public static List<Plant> allPlants = new List<Plant>();
 

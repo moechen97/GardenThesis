@@ -74,6 +74,54 @@ namespace Planting {
                         unlocks.Add(PlantType.Plant_Spike);
                     }
                 }
+                if(unlockable.Key == PlantType.Plant_Bubble)
+                {
+                    if(PlantManager.plantedPlantCounter[PlantType.Fungus_Green] >= 5 && 
+                       PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 4)
+                    {
+                        GameObject fungusPurpleIcon = GameObject.Instantiate(unlockable_icons[unlockable.Key]);
+                        fungusPurpleIcon.name = PlantType.Plant_Bubble.ToString();
+                        fungusPurpleIcon.transform.parent = seedPanel.transform;
+                        fungusPurpleIcon.transform.localScale = new Vector3(1.440003F, 1.440003F, 1.440003F);
+                        unlocks.Add(PlantType.Plant_Bubble);
+                    }
+                }
+                if(unlockable.Key == PlantType.Plant_Capture)
+                {
+                    if(PlantManager.plantedPlantCounter[PlantType.Plant_Bubble] >= 5 && 
+                       PlantManager.bredPlantCounter[PlantType.Plant_Bubble] >= 3)
+                    {
+                        GameObject fungusPurpleIcon = GameObject.Instantiate(unlockable_icons[unlockable.Key]);
+                        fungusPurpleIcon.name = PlantType.Plant_Capture.ToString();
+                        fungusPurpleIcon.transform.parent = seedPanel.transform;
+                        fungusPurpleIcon.transform.localScale = new Vector3(1.440003F, 1.440003F, 1.440003F);
+                        unlocks.Add(PlantType.Plant_Capture);
+                    }
+                }
+                if(unlockable.Key == PlantType.Plant_Rings)
+                {
+                    if(PlantManager.plantedPlantCounter[PlantType.Plant_Peach] >= 5 && 
+                       PlantManager.bredPlantCounter[PlantType.Plant_Peach] >= 2)
+                    {
+                        GameObject fungusPurpleIcon = GameObject.Instantiate(unlockable_icons[unlockable.Key]);
+                        fungusPurpleIcon.name = PlantType.Plant_Rings.ToString();
+                        fungusPurpleIcon.transform.parent = seedPanel.transform;
+                        fungusPurpleIcon.transform.localScale = new Vector3(1.440003F, 1.440003F, 1.440003F);
+                        unlocks.Add(PlantType.Plant_Rings);
+                    }
+                }
+                if(unlockable.Key == PlantType.Plant_Lotus)
+                {
+                    if(PlantManager.plantedPlantCounter[PlantType.Fungus_Green] >= 1 && 
+                       PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 0)
+                    {
+                        GameObject fungusPurpleIcon = GameObject.Instantiate(unlockable_icons[unlockable.Key]);
+                        fungusPurpleIcon.name = PlantType.Plant_Lotus.ToString();
+                        fungusPurpleIcon.transform.parent = seedPanel.transform;
+                        fungusPurpleIcon.transform.localScale = new Vector3(1.440003F, 1.440003F, 1.440003F);
+                        unlocks.Add(PlantType.Plant_Lotus);
+                    }
+                }
             }
             foreach(PlantType type in unlocks)
             {
