@@ -89,7 +89,7 @@ namespace Planting {
                 if(unlockable.Key == PlantType.Plant_Capture)
                 {
                     if(PlantManager.plantedPlantCounter[PlantType.Plant_Bubble] >= 5 && 
-                       PlantManager.bredPlantCounter[PlantType.Plant_Bubble] >= 3)
+                       PlantManager.bredPlantCounter[PlantType.Plant_Bubble] >= 1)
                     {
                         GameObject fungusPurpleIcon = GameObject.Instantiate(unlockable_icons[unlockable.Key]);
                         fungusPurpleIcon.name = PlantType.Plant_Capture.ToString();
@@ -112,7 +112,7 @@ namespace Planting {
                 }
                 if(unlockable.Key == PlantType.Plant_Lotus)
                 {
-                    if(PlantManager.plantedPlantCounter[PlantType.Fungus_Green] >= 1 && 
+                    if(PlantManager.plantedPlantCounter[PlantType.Plant_Drum] >= 4 && 
                        PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 0)
                     {
                         GameObject fungusPurpleIcon = GameObject.Instantiate(unlockable_icons[unlockable.Key]);
