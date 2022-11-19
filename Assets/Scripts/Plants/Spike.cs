@@ -12,8 +12,8 @@ namespace Planting
         private Dictionary<int, int> generationSpread = new Dictionary<int, int>() { {2, 6}, {3, 10}, {4, 14}, {5, 18}, {6, 22}, {7, 26} };
         protected override void Start()
         {
-            base.Start();
             id = PlantType.Plant_Spike;
+            base.Start();
             finishGrowAnimationName = "Spike_Tem_FullyGrow";
             transform.parent = PlantManager.SpikeTransform;
             nextGeneration = generation + 1;

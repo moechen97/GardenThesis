@@ -54,14 +54,14 @@ namespace Planting {
             }
         }
 
-        public static void IncrementProgress(float newProgress)
+        public static void IncrementResources(float newProgress)
         {
             resourcesUsed += newProgress;
             resourcesUsed = float.Parse(resourcesUsed.ToString("F2"));
             incrementProgress = true;
         }
 
-        public static void DecrementProgress(float newProgress)
+        public static void DecrementResources(float newProgress)
         {
             resourcesUsed -= newProgress;
             resourcesUsed = float.Parse(resourcesUsed.ToString("F2"));

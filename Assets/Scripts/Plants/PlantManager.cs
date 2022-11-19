@@ -113,13 +113,13 @@ namespace Planting
             allPlants.Add(plant);
             //Debug.Log("Plant counter - " + type + ": " + plantCounter[type]);
             plantCounter[type]++;
-            Resources.IncrementProgress(resourceDict[type]);
+            Resources.IncrementResources(resourceDict[type]);
         }
         public static void DecrementPlant(PlantType type, Plant plant)
         {
-            //plantCounter[type]--;
             allPlants.Remove(plant);
-            Resources.DecrementProgress(resourceDict[type]);
+            plantCounter[type]--;
+            Resources.DecrementResources(resourceDict[type]);
         }
 
         //tracker for unlocking
