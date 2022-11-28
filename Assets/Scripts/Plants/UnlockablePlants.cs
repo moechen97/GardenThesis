@@ -8,6 +8,8 @@ namespace Planting {
     {
         private Dictionary<PlantType, GameObject> unlockable_icons;
         [SerializeField] GameObject seedPanel;
+
+        private int indexcount = 0;
         // Start is called before the first frame update
         void Start()
         { 
@@ -31,10 +33,17 @@ namespace Planting {
                     if(PlantManager.plantedPlantCounter[PlantType.Fungus_Green] >= 3 && 
                         PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 4)
                     {
+                        indexcount++;
                         GameObject fungusPurpleIcon = GameObject.Instantiate(unlockable_icons[unlockable.Key]);
                         fungusPurpleIcon.name = PlantType.Fungus_Purple.ToString();
                         fungusPurpleIcon.transform.parent = seedPanel.transform;
-                        fungusPurpleIcon.transform.localScale = new Vector3(1.440003F, 1.440003F, 1.440003F);
+                        fungusPurpleIcon.transform.SetSiblingIndex(indexcount);
+                       
+                        //delete last child
+                        int a = seedPanel.transform.childCount - 1;
+                        Object.Destroy(seedPanel.transform.GetChild(a).gameObject);
+                        
+                        fungusPurpleIcon.transform.localScale = new Vector3(1F, 1F, 1F);
                         unlocks.Add(PlantType.Fungus_Purple);
                     }
                 }
@@ -43,10 +52,17 @@ namespace Planting {
                     if(PlantManager.plantedPlantCounter[PlantType.Fungus_Green] >= 2 && 
                        PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 1)
                     {
+                        indexcount++;
                         GameObject fungusPurpleIcon = GameObject.Instantiate(unlockable_icons[unlockable.Key]);
                         fungusPurpleIcon.name = PlantType.Plant_Peach.ToString();
                         fungusPurpleIcon.transform.parent = seedPanel.transform;
-                        fungusPurpleIcon.transform.localScale = new Vector3(1.440003F, 1.440003F, 1.440003F);
+                        fungusPurpleIcon.transform.SetSiblingIndex(indexcount);
+                        
+                        //delete last child
+                        int a = seedPanel.transform.childCount - 1;
+                        Object.Destroy(seedPanel.transform.GetChild(a).gameObject);
+                        
+                        fungusPurpleIcon.transform.localScale = new Vector3(1F, 1F, 1F);
                         unlocks.Add(PlantType.Plant_Peach);
                     }
                 }
@@ -55,10 +71,17 @@ namespace Planting {
                     if(PlantManager.plantedPlantCounter[PlantType.Plant_Peach] >= 3 && 
                        PlantManager.bredPlantCounter[PlantType.Plant_Peach] >= 1)
                     {
+                        indexcount++;
                         GameObject fungusPurpleIcon = GameObject.Instantiate(unlockable_icons[unlockable.Key]);
                         fungusPurpleIcon.name = PlantType.Plant_Drum.ToString();
                         fungusPurpleIcon.transform.parent = seedPanel.transform;
-                        fungusPurpleIcon.transform.localScale = new Vector3(1.440003F, 1.440003F, 1.440003F);
+                        fungusPurpleIcon.transform.SetSiblingIndex(indexcount);
+                        
+                        //delete last child
+                        int a = seedPanel.transform.childCount - 1;
+                        Object.Destroy(seedPanel.transform.GetChild(a).gameObject);
+                        
+                        fungusPurpleIcon.transform.localScale = new Vector3(1F, 1F, 1F);
                         unlocks.Add(PlantType.Plant_Drum);
                     }
                 }
@@ -67,10 +90,17 @@ namespace Planting {
                     if (PlantManager.plantedPlantCounter[PlantType.Fungus_Green] >= 1 &&
                        PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 0)
                     {
+                        indexcount++;
                         GameObject spikeIcon = GameObject.Instantiate(unlockable_icons[unlockable.Key]);
                         spikeIcon.name = PlantType.Plant_Spike.ToString();
                         spikeIcon.transform.parent = seedPanel.transform;
-                        spikeIcon.transform.localScale = new Vector3(1.440003F, 1.440003F, 1.440003F);
+                        spikeIcon.transform.SetSiblingIndex(indexcount);
+                        
+                        //delete last child
+                        int a = seedPanel.transform.childCount - 1;
+                        Object.Destroy(seedPanel.transform.GetChild(a).gameObject);
+                        
+                        spikeIcon.transform.localScale = new Vector3(1F, 1F, 1F);
                         unlocks.Add(PlantType.Plant_Spike);
                     }
                 }
@@ -79,10 +109,17 @@ namespace Planting {
                     if(PlantManager.plantedPlantCounter[PlantType.Fungus_Green] >= 5 && 
                        PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 4)
                     {
+                        indexcount++;
                         GameObject fungusPurpleIcon = GameObject.Instantiate(unlockable_icons[unlockable.Key]);
                         fungusPurpleIcon.name = PlantType.Plant_Bubble.ToString();
                         fungusPurpleIcon.transform.parent = seedPanel.transform;
-                        fungusPurpleIcon.transform.localScale = new Vector3(1.440003F, 1.440003F, 1.440003F);
+                        fungusPurpleIcon.transform.SetSiblingIndex(indexcount);
+                        
+                        //delete last child
+                        int a = seedPanel.transform.childCount - 1;
+                        Object.Destroy(seedPanel.transform.GetChild(a).gameObject);
+                        
+                        fungusPurpleIcon.transform.localScale = new Vector3(1F, 1F, 1F);
                         unlocks.Add(PlantType.Plant_Bubble);
                     }
                 }
@@ -91,10 +128,17 @@ namespace Planting {
                     if(PlantManager.plantedPlantCounter[PlantType.Plant_Bubble] >= 5 && 
                        PlantManager.bredPlantCounter[PlantType.Plant_Bubble] >= 1)
                     {
+                        indexcount++;
                         GameObject fungusPurpleIcon = GameObject.Instantiate(unlockable_icons[unlockable.Key]);
                         fungusPurpleIcon.name = PlantType.Plant_Capture.ToString();
                         fungusPurpleIcon.transform.parent = seedPanel.transform;
-                        fungusPurpleIcon.transform.localScale = new Vector3(1.440003F, 1.440003F, 1.440003F);
+                        fungusPurpleIcon.transform.SetSiblingIndex(indexcount);
+                        
+                        //delete last child
+                        int a = seedPanel.transform.childCount - 1;
+                        Object.Destroy(seedPanel.transform.GetChild(a).gameObject);
+                        
+                        fungusPurpleIcon.transform.localScale = new Vector3(1F, 1F, 1F);
                         unlocks.Add(PlantType.Plant_Capture);
                     }
                 }
@@ -103,10 +147,15 @@ namespace Planting {
                     if(PlantManager.plantedPlantCounter[PlantType.Plant_Peach] >= 5 && 
                        PlantManager.bredPlantCounter[PlantType.Plant_Peach] >= 2)
                     {
+                        indexcount++;
                         GameObject fungusPurpleIcon = GameObject.Instantiate(unlockable_icons[unlockable.Key]);
                         fungusPurpleIcon.name = PlantType.Plant_Rings.ToString();
                         fungusPurpleIcon.transform.parent = seedPanel.transform;
-                        fungusPurpleIcon.transform.localScale = new Vector3(1.440003F, 1.440003F, 1.440003F);
+                        fungusPurpleIcon.transform.SetSiblingIndex(indexcount);
+                        //delete last child
+                        int a = seedPanel.transform.childCount - 1;
+                        Object.Destroy(seedPanel.transform.GetChild(a).gameObject);
+                        fungusPurpleIcon.transform.localScale = new Vector3(1F, 1F, 1F);
                         unlocks.Add(PlantType.Plant_Rings);
                     }
                 }
@@ -115,10 +164,15 @@ namespace Planting {
                     if(PlantManager.plantedPlantCounter[PlantType.Plant_Drum] >= 4 && 
                        PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 0)
                     {
+                        indexcount++;
                         GameObject fungusPurpleIcon = GameObject.Instantiate(unlockable_icons[unlockable.Key]);
                         fungusPurpleIcon.name = PlantType.Plant_Lotus.ToString();
                         fungusPurpleIcon.transform.parent = seedPanel.transform;
-                        fungusPurpleIcon.transform.localScale = new Vector3(1.440003F, 1.440003F, 1.440003F);
+                        fungusPurpleIcon.transform.SetSiblingIndex(indexcount);
+                        //delete last child
+                        int a = seedPanel.transform.childCount - 1;
+                        Object.Destroy(seedPanel.transform.GetChild(a).gameObject);
+                        fungusPurpleIcon.transform.localScale = new Vector3(1F, 1F, 1F);
                         unlocks.Add(PlantType.Plant_Lotus);
                     }
                 }
