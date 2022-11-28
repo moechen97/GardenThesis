@@ -54,6 +54,7 @@ namespace Planting
         private Coroutine panToZoomEndDelay = null;
         private Vector3 startCamPosition;
         private Vector3 startCamRotation;
+        private bool enableControl = false;
         void Awake()
         {
             startCamPosition = camFocusPoint.transform.position;
@@ -337,6 +338,8 @@ namespace Planting
 
         private void Update()
         {
+            if (!enableControl)
+                return;
             if (isDraggingSeed)
             {
                 //Set square indicator when user is dragging object
@@ -586,6 +589,11 @@ namespace Planting
                     traverse = traverse.parent;
                 }
             }
+        }
+
+        public void EnableControl()
+        {
+            enableControl = true;
         }
     }
 }
