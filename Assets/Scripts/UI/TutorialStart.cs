@@ -10,6 +10,7 @@ public class TutorialStart : MonoBehaviour
     [SerializeField] private GameObject TutorialCamera;
     [SerializeField] private CanvasGroup gameCanvas;
     [SerializeField] private CanvasGroup startCanvas;
+    [SerializeField] private CanvasGroup CameraInstruction;
     [SerializeField] private GardenInput _input;
 
     private void Start()
@@ -30,7 +31,13 @@ public class TutorialStart : MonoBehaviour
         startCanvas.DOFade(0, 2f);
         yield return new WaitForSeconds(2f);
         gameCanvas.DOFade(1, 2f);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.8f);
+        CameraInstruction.DOFade(1, 1.5f);
+        
+    }
+
+    public void EnableCameraControl()
+    {
         _input.EnableControl();
     }
 }

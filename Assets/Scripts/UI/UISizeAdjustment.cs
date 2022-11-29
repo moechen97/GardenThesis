@@ -47,7 +47,7 @@ public class UISizeAdjustment : MonoBehaviour
         //on the left
         if (PanelPosition.x+rectPosition.x <= offset)
         {
-            float ratio = (PanelPosition.x + rectPosition.x) / (offset-20f);
+            float ratio = (PanelPosition.x + rectPosition.x) / (offset);
             float multiple = Mathf.Lerp(0f, 1f, ratio);
             transform.localScale = Vector3.one*multiple;
             _canvas.alpha = multiple;

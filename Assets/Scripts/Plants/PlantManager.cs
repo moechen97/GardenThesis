@@ -29,18 +29,18 @@ namespace Planting
         public static Dictionary<PlantType, int> plantCounter = new Dictionary<PlantType, int>();
         public static Dictionary<PlantType, float> resourceDict = new
             Dictionary<PlantType, float>() {
-                { PlantType.MushroomDarkGreen, 0.1F },
-                { PlantType.MushroomPink, 0.05F },
-                { PlantType.Fungus_Green , 0.1f},
+                { PlantType.MushroomDarkGreen, 0.05F },
+                { PlantType.MushroomPink, 0.01F },
+                { PlantType.Fungus_Green , 0.05f},
                 { PlantType.Fungus_Jelly , 0.05f },
-                { PlantType.Fungus_Purple, 0.05f},
-                { PlantType.Plant_Peach, 0.1F},
+                { PlantType.Fungus_Purple, 0.01f},
+                { PlantType.Plant_Peach, 0.05F},
                 { PlantType.Plant_Drum, 0.3F },
                 { PlantType.Plant_Spike, 0.0F },
-                { PlantType.Plant_Bubble, 0.2F },
-                { PlantType.Plant_Capture, 0.1F },
-                { PlantType.Plant_Rings, 0.1F },
-                { PlantType.Plant_Lotus, 0.3F }
+                { PlantType.Plant_Bubble, 0.05F },
+                { PlantType.Plant_Capture, 0.05F },
+                { PlantType.Plant_Rings, 0.01F },
+                { PlantType.Plant_Lotus, 0.1F }
             };
 
         //public static int num_MushroomDarkGreen = 0;
@@ -52,18 +52,18 @@ namespace Planting
         public static Dictionary<PlantType, int> maxPlants = new
             Dictionary<PlantType, int>()
         {
-            { PlantType.MushroomDarkGreen, 10 },
+            { PlantType.MushroomDarkGreen, 20 },
             { PlantType.MushroomPink, 20 },
-            { PlantType.Fungus_Green , 10 },
-            { PlantType.Fungus_Jelly , 20 },
+            { PlantType.Fungus_Green , 20 },
+            { PlantType.Fungus_Jelly , 40 },
             { PlantType.Fungus_Purple, 20 },
             { PlantType.Plant_Peach, 20},
             { PlantType.Plant_Drum, 5 },
             { PlantType.Plant_Spike, 100},
-            { PlantType.Plant_Bubble, 6 },
-            { PlantType.Plant_Capture, 10 },
-            { PlantType.Plant_Rings, 10 },
-            { PlantType.Plant_Lotus, 3 }
+            { PlantType.Plant_Bubble, 20 },
+            { PlantType.Plant_Capture, 20 },
+            { PlantType.Plant_Rings, 20 },
+            { PlantType.Plant_Lotus, 10 }
         };
         public static List<Plant> allPlants = new List<Plant>();
 
