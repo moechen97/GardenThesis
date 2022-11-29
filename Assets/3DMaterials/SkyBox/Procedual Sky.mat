@@ -22,8 +22,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Procedual Sky
   m_Shader: {fileID: -6465566751694194690, guid: 33ec506fdb9ac406daa8cf3ecb1af09c, type: 3}
-  m_ValidKeywords:
-  - _SHOWSTAR
+  m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -122,7 +121,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _SHOWSTAR: 1
+    - _SHOWSTAR: 0
     - _Sky_and_Ground_Mask_Height: 0.91
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
@@ -141,7 +140,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BottomColor: {r: 0.3882353, g: 0.2117647, b: 0.5019608, a: 1}
-    - _Bottom_Color: {r: 0.62224406, g: 0.7507547, b: 0.4339913, a: 1}
+    - _Bottom_Color: {r: 0.63878125, g: 0.7640043, b: 0.44233075, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HorizonColor: {r: 0.9137255, g: 0.8509804, b: 0.7215686, a: 0}
@@ -151,5 +150,5 @@ Material:
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _StarColor: {r: 14.754423, g: 9.501539, b: 0.84973115, a: 1}
     - _TopColor: {r: 0.22516908, g: 0.36870036, b: 0.41509432, a: 1}
-    - _Top_Color: {r: 0.85037816, g: 0.7979339, b: 0.6779199, a: 1}
+    - _Top_Color: {r: 0.8619707, g: 0.7919553, b: 0.66052026, a: 1}
   m_BuildTextureStacks: []

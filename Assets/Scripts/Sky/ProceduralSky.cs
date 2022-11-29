@@ -10,7 +10,7 @@ public class ProceduralSky : MonoBehaviour
     [SerializeField] private LightingPreset _lightingPreset;
     [SerializeField] private Light DirectionLight;
     [SerializeField] private GameObject Ground;
-    
+
     //Variables
     [SerializeField,Range(0,24)] private float TimeOfDay;
     [SerializeField] private float timePassSpeed;
