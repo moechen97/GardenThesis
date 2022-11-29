@@ -101,7 +101,7 @@ namespace Planting
             {
                 StopCoroutine(afterRotate);
                 afterRotate = null;
-                rotatingScreen = false;
+                //rotatingScreen = false;
             }
         }
         private void ZoomStart()
