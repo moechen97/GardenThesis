@@ -8,6 +8,7 @@ namespace Planting {
     {
         private Dictionary<PlantType, GameObject> unlockable_icons;
         [SerializeField] GameObject seedPanel;
+        [SerializeField] private GameObject newSeedPanel;
 
         private int indexcount = 0;
         // Start is called before the first frame update
@@ -45,6 +46,10 @@ namespace Planting {
                         
                         fungusPurpleIcon.transform.localScale = new Vector3(1F, 1F, 1F);
                         unlocks.Add(PlantType.Fungus_Purple);
+                        
+                        //new seed panel appear
+                        GameObject newPanel = Instantiate(newSeedPanel);
+                        newPanel.GetComponent<UINewSeedPanel>().GetNewSeedInfo(fungusPurpleIcon);
                     }
                 }
                 if(unlockable.Key == PlantType.Plant_Peach)
@@ -64,6 +69,10 @@ namespace Planting {
                         
                         fungusPurpleIcon.transform.localScale = new Vector3(1F, 1F, 1F);
                         unlocks.Add(PlantType.Plant_Peach);
+                        
+                        //new seed panel appear
+                        GameObject newPanel = Instantiate(newSeedPanel);
+                        newPanel.GetComponent<UINewSeedPanel>().GetNewSeedInfo(fungusPurpleIcon);
                     }
                 }
                 if(unlockable.Key == PlantType.Plant_Drum)
@@ -83,6 +92,10 @@ namespace Planting {
                         
                         fungusPurpleIcon.transform.localScale = new Vector3(1F, 1F, 1F);
                         unlocks.Add(PlantType.Plant_Drum);
+                        
+                        //new seed panel appear
+                        GameObject newPanel = Instantiate(newSeedPanel);
+                        newPanel.GetComponent<UINewSeedPanel>().GetNewSeedInfo(fungusPurpleIcon);
                     }
                 }
                 if(unlockable.Key == PlantType.Plant_Spike)
@@ -102,6 +115,10 @@ namespace Planting {
                         
                         spikeIcon.transform.localScale = new Vector3(1F, 1F, 1F);
                         unlocks.Add(PlantType.Plant_Spike);
+                        
+                        //new seed panel appear
+                        GameObject newPanel = Instantiate(newSeedPanel);
+                        newPanel.GetComponent<UINewSeedPanel>().GetNewSeedInfo(spikeIcon);
                     }
                 }
                 if(unlockable.Key == PlantType.Plant_Bubble)
@@ -121,6 +138,10 @@ namespace Planting {
                         
                         fungusPurpleIcon.transform.localScale = new Vector3(1F, 1F, 1F);
                         unlocks.Add(PlantType.Plant_Bubble);
+                        
+                        //new seed panel appear
+                        GameObject newPanel = Instantiate(newSeedPanel);
+                        newPanel.GetComponent<UINewSeedPanel>().GetNewSeedInfo(fungusPurpleIcon);
                     }
                 }
                 if(unlockable.Key == PlantType.Plant_Capture)
@@ -140,6 +161,10 @@ namespace Planting {
                         
                         fungusPurpleIcon.transform.localScale = new Vector3(1F, 1F, 1F);
                         unlocks.Add(PlantType.Plant_Capture);
+                        
+                        //new seed panel appear
+                        GameObject newPanel = Instantiate(newSeedPanel);
+                        newPanel.GetComponent<UINewSeedPanel>().GetNewSeedInfo(fungusPurpleIcon);
                     }
                 }
                 if(unlockable.Key == PlantType.Plant_Rings)
@@ -157,6 +182,10 @@ namespace Planting {
                         Object.Destroy(seedPanel.transform.GetChild(a).gameObject);
                         fungusPurpleIcon.transform.localScale = new Vector3(1F, 1F, 1F);
                         unlocks.Add(PlantType.Plant_Rings);
+                        
+                        //new seed panel appear
+                        GameObject newPanel = Instantiate(newSeedPanel);
+                        newPanel.GetComponent<UINewSeedPanel>().GetNewSeedInfo(fungusPurpleIcon);
                     }
                 }
                 if(unlockable.Key == PlantType.Plant_Lotus)
@@ -174,6 +203,10 @@ namespace Planting {
                         Object.Destroy(seedPanel.transform.GetChild(a).gameObject);
                         fungusPurpleIcon.transform.localScale = new Vector3(1F, 1F, 1F);
                         unlocks.Add(PlantType.Plant_Lotus);
+                        
+                        //new seed panel appear
+                        GameObject newPanel = Instantiate(newSeedPanel);
+                        newPanel.GetComponent<UINewSeedPanel>().GetNewSeedInfo(fungusPurpleIcon);
                     }
                 }
             }
