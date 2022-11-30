@@ -518,10 +518,10 @@ namespace Planting
                 {
                     rotateStep = Mathf.Abs(Mathf.Clamp(dragRotationLength.x, -400F, 400F)) / 300F;
                     //rotateStep = 0.1F * Mathf.Abs(Mathf.Clamp(dragRotationLength.x, -7F, 7F));
-                    if (rotateStep < 0.25F)
-                    {
-                        rotateStep = 0.25F;
-                    }
+                    //if (rotateStep < 0.25F)
+                    //{
+                    //    rotateStep = 0.25F;
+                    //}
                     afterRotate = StartCoroutine(SpinAfterRotate(dragRotationLength));
                 }
                 else
