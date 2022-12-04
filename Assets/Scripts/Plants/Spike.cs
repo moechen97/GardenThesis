@@ -10,6 +10,9 @@ namespace Planting
         private int nextGeneration;
         private Coroutine circleSpread = null;
         private Dictionary<int, int> generationSpread = new Dictionary<int, int>() { {2, 6}, {3, 10}, {4, 14}, {5, 18}, {6, 22}, {7, 26} };
+        [SerializeField] private float breedRadius;
+        
+        
         protected override void Start()
         {
             id = PlantType.Plant_Spike;
@@ -17,6 +20,8 @@ namespace Planting
             finishGrowAnimationName = "Spike_Tem_FullyGrow";
             transform.parent = PlantManager.SpikeTransform;
             nextGeneration = generation + 1;
+            
+
         }
 
         private void CheckForSpikeDestroy()
@@ -56,7 +61,7 @@ namespace Planting
         {
             yield return new WaitForSeconds(breedingSpeed);
             int numSpikes = generationSpread[nextGeneration];
-            float radius = growthRadius * (nextGeneration - 1);
+            float radius = breedRadius * (nextGeneration - 1);
             for(int i = 0; i < numSpikes; i++)
             {
                 float angle = i * Mathf.PI * 2 / numSpikes;

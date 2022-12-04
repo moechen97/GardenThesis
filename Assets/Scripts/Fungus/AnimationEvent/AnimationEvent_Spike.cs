@@ -7,16 +7,13 @@ public class AnimationEvent_Spike : MonoBehaviour
     [SerializeField] private GameObject SpikeFlower;
     [SerializeField] private Transform SpikeFlowerPosition;
     [SerializeField] private Fungus_MaterialChange _materialChange;
-    [SerializeField] private AudioSource spike_audiosource;
-    [SerializeField] private AudioClip grow;
-    [SerializeField] private AudioClip bloom;
-    [SerializeField] private AudioClip withered;
+    
     private GameObject spikeFlower;
     
     private void Start()
     {
         StartCoroutine(InstantiateJellyHead());
-
+        
     }
 
     private IEnumerator InstantiateJellyHead()
@@ -28,22 +25,20 @@ public class AnimationEvent_Spike : MonoBehaviour
         
     }
 
-    public void Grow()
-    {
-        spike_audiosource.PlayOneShot(grow);
-    }
+
     
     public void Bloom()
     {
         spikeFlower.GetComponent<SpikeFlower>().SpikeFlowerBloom();
-        spike_audiosource.PlayOneShot(bloom);
+        
     }
     
     public void Withered()
     {
+        
         spikeFlower.GetComponent<SpikeFlower>().SpikeFlowerWithered();
         _materialChange.MaterialWithered();
-        spike_audiosource.PlayOneShot(withered);
+       
     }
 
     public void Dead()

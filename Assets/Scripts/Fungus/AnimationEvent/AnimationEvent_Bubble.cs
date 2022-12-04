@@ -17,7 +17,12 @@ public class AnimationEvent_Bubble : MonoBehaviour
         int num = Random.Range(0, bloomAudios.Length);
         Bubble_AudioSource.PlayOneShot(bloomAudios[num]);
     }
-    
+
+    void Breath()
+    {
+        int num = Random.Range(0, bloomAudios.Length);
+        Bubble_AudioSource.PlayOneShot(bloomAudios[num]);
+    }
     
     public void Withered()
     {

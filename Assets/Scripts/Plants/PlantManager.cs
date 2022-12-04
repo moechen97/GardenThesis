@@ -35,7 +35,7 @@ namespace Planting
                 { PlantType.Fungus_Jelly , 0.05f },
                 { PlantType.Fungus_Purple, 0.01f},
                 { PlantType.Plant_Peach, 0.05F},
-                { PlantType.Plant_Drum, 0.3F },
+                { PlantType.Plant_Drum, 0.1F },
                 { PlantType.Plant_Spike, 0.0F },
                 { PlantType.Plant_Bubble, 0.05F },
                 { PlantType.Plant_Capture, 0.05F },
