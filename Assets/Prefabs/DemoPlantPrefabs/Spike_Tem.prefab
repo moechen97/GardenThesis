@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 1796477626891198171}
   - component: {fileID: 1796477626891198170}
   - component: {fileID: 1518518059730778626}
+  - component: {fileID: 1808201775484911576}
   m_Layer: 9
   m_Name: Spike_Tem
   m_TagString: Untagged
@@ -183,6 +184,102 @@ MonoBehaviour:
   isBreeding: 0
   growthRadius: 1
   generation: 1
+--- !u!82 &1808201775484911576
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796477626891198168}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 4140914957635396015, guid: 4b59bae56bc30486ab3e3653e826e613, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1796477627752160538
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,6 +382,10 @@ MonoBehaviour:
   SpikeFlower: {fileID: 6889345324730982263, guid: ad0762ded69544eccbf137e2c1192b1e, type: 3}
   SpikeFlowerPosition: {fileID: 1796477627752160541}
   _materialChange: {fileID: 1796477626891198170}
+  spike_audiosource: {fileID: 1808201775484911576}
+  grow: {fileID: 8300000, guid: c23f60d41dec142e4bc2562e666c7eca, type: 3}
+  bloom: {fileID: 8300000, guid: 82952afaef87c4543822db1752e8098b, type: 3}
+  withered: {fileID: 8300000, guid: b4760743f8a8a4190b2eb590a60e8761, type: 3}
 --- !u!1001 &1796477627000052667
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 6892907956964551268}
   - component: {fileID: 6892907956964551269}
   - component: {fileID: 4667141530196728109}
+  - component: {fileID: 558174244560949268}
   m_Layer: 9
   m_Name: Plant_Peach
   m_TagString: Untagged
@@ -176,6 +177,7 @@ MonoBehaviour:
   id: 0
   isGrown: 0
   plantPrefab: {fileID: 6892907956964551267}
+  breedingSpeed: 1
   growthSpeed_minRange: 0.8
   growthSpeed_maxRange: 1
   aliveTime: 5
@@ -184,6 +186,102 @@ MonoBehaviour:
   height_minRange: 0.8
   height_maxRange: 1.1
   XZScale: 1
+--- !u!82 &558174244560949268
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6892907956964551267}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -1861097430350208132, guid: 4b59bae56bc30486ab3e3653e826e613, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &6892907956529098230
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -553,6 +651,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaterialChange: {fileID: 6892907956964551269}
+  peach_audiosource: {fileID: 558174244560949268}
+  grow: {fileID: 8300000, guid: b0a568a9acd76435a9a85b42b6aaa80f, type: 3}
+  fullygrow: {fileID: 8300000, guid: c4023b3adec244c12a36730e0c7bc095, type: 3}
+  bloom: {fileID: 8300000, guid: ff17abd56a41143ae941a76004449125, type: 3}
+  withered: {fileID: 8300000, guid: a8cbdab6a0a9344fdaa363c6f859c525, type: 3}
+  killed: {fileID: 8300000, guid: f6d4acc592274424c8643bdeb69e10df, type: 3}
 --- !u!4 &6350706840503585309 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1e275e2e1638b4879998f8f84d03c1e4, type: 3}
