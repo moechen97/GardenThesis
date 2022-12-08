@@ -25,7 +25,7 @@ public class Fungus_JellyHead : MonoBehaviour
             transform.rotation = rotationT.rotation;
         }
 
-        if (parentState.returnKilledState() && !iskilled)
+        if (parentState && parentState.returnKilledState() && !iskilled)
         {
             _materialChange.Killed();
             iskilled = true;

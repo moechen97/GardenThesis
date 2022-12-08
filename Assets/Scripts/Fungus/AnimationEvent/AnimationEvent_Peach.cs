@@ -40,7 +40,7 @@ public class AnimationEvent_Peach : MonoBehaviour
     {
         foreach (var MaterialChange in MaterialChanges)
         {
-            MaterialChange.MaterialWithered();
+            MaterialChange.Die();
         }
     }
     
