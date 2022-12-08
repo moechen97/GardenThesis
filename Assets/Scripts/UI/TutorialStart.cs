@@ -32,6 +32,7 @@ public class TutorialStart : MonoBehaviour
         yield return new WaitForSeconds(2f);
         gameCanvas.DOFade(1, 2f);
         yield return new WaitForSeconds(1.8f);
+        startCanvas.gameObject.SetActive(false);
         CameraInstruction.DOFade(1, 1.5f);
         
     }
