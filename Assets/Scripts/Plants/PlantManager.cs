@@ -39,7 +39,7 @@ namespace Planting
                 { PlantType.Plant_Spike, 0.0F },
                 { PlantType.Plant_Bubble, 0.05F },
                 { PlantType.Plant_Capture, 0.05F },
-                { PlantType.Plant_Rings, 0.01F },
+                { PlantType.Plant_Rings, 0.05F },
                 { PlantType.Plant_Lotus, 0.1F }
             };
 

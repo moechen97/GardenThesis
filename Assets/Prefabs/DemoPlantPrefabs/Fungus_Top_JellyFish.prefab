@@ -203,6 +203,8 @@ MonoBehaviour:
   DieSpeed: 2.2
   particleGeneratePosition: {fileID: 0}
   Shadow: {fileID: 0}
+  beenKilledSpeed: 3
+  killedExtent: 25
 --- !u!1 &3713698122302278038
 GameObject:
   m_ObjectHideFlags: 0

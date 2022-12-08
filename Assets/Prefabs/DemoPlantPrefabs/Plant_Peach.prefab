@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 6892907956964551269}
   - component: {fileID: 4667141530196728109}
   - component: {fileID: 558174244560949268}
+  - component: {fileID: 5154770941461377646}
   m_Layer: 9
   m_Name: Plant_Peach
   m_TagString: Untagged
@@ -146,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bda1a4de7f85542a2b8623cadf8055cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fungusRenderer: {fileID: 4491596446587793393}
+  fungusRenderer: {fileID: 5217722422215831922}
   changeSpeed: 1
   glowExtentMax: 1
   witheredSpeed: 0.1
@@ -159,9 +160,11 @@ MonoBehaviour:
   fungusAnimator: {fileID: 6892907956529098233}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
-  DieSpeed: 0.3
+  DieSpeed: 1.3
   particleGeneratePosition: {fileID: 0}
   Shadow: {fileID: 6892907956754063701}
+  beenKilledSpeed: 2.5
+  killedExtent: 5
 --- !u!114 &4667141530196728109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,6 +285,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5154770941461377646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6892907956964551267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 687e1e6b240d7433b8837269e3e3fcd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fungusAnimator: {fileID: 6892907956529098233}
+  MaterialControls:
+  - {fileID: 6892907956964551269}
+  - {fileID: 4457213721814616388}
+  - {fileID: 2517486900819180885}
+  - {fileID: 7357747619786819092}
+  - {fileID: 8478936628703841285}
+  - {fileID: 8867908763007546201}
 --- !u!1001 &6892907956529098230
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -595,11 +618,171 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e275e2e1638b4879998f8f84d03c1e4, type: 3}
+--- !u!23 &135763580477446274 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -2428897026395966092, guid: 1e275e2e1638b4879998f8f84d03c1e4, type: 3}
+  m_PrefabInstance: {fileID: 6892907956529098230}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &895259563170789089 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6035983006537194263, guid: 1e275e2e1638b4879998f8f84d03c1e4, type: 3}
+  m_PrefabInstance: {fileID: 6892907956529098230}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7357747619786819092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895259563170789089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda1a4de7f85542a2b8623cadf8055cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fungusRenderer: {fileID: 4074929091890618345}
+  changeSpeed: 1
+  glowExtentMax: 1
+  witheredSpeed: 0.1
+  witheredExtent: 0.8
+  explodeSpeed: 0.5
+  explodeExtent: 1.11
+  hightLightExtent: 0.2
+  hightLightBreathInSpeed: 0.3
+  hightLightBreathOutSpeed: 0.4
+  fungusAnimator: {fileID: 0}
+  explodeParticle: {fileID: 0}
+  DieParticle: {fileID: 0}
+  DieSpeed: 1.3
+  particleGeneratePosition: {fileID: 0}
+  Shadow: {fileID: 0}
+  beenKilledSpeed: 2.5
+  killedExtent: 5
+--- !u!23 &2050335588513769764 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4890001131558995154, guid: 1e275e2e1638b4879998f8f84d03c1e4, type: 3}
+  m_PrefabInstance: {fileID: 6892907956529098230}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2400987579386158840 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9149768802887447310, guid: 1e275e2e1638b4879998f8f84d03c1e4, type: 3}
+  m_PrefabInstance: {fileID: 6892907956529098230}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8478936628703841285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2400987579386158840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda1a4de7f85542a2b8623cadf8055cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fungusRenderer: {fileID: 135763580477446274}
+  changeSpeed: 1
+  glowExtentMax: 1
+  witheredSpeed: 0.1
+  witheredExtent: 0.8
+  explodeSpeed: 0.5
+  explodeExtent: 1.11
+  hightLightExtent: 0.2
+  hightLightBreathInSpeed: 0.3
+  hightLightBreathOutSpeed: 0.4
+  fungusAnimator: {fileID: 0}
+  explodeParticle: {fileID: 0}
+  DieParticle: {fileID: 0}
+  DieSpeed: 1.3
+  particleGeneratePosition: {fileID: 0}
+  Shadow: {fileID: 0}
+  beenKilledSpeed: 2.5
+  killedExtent: 5
+--- !u!23 &4074929091890618345 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1790874440151928289, guid: 1e275e2e1638b4879998f8f84d03c1e4, type: 3}
+  m_PrefabInstance: {fileID: 6892907956529098230}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &4491596446587793393 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 7061042162689163783, guid: 1e275e2e1638b4879998f8f84d03c1e4, type: 3}
   m_PrefabInstance: {fileID: 6892907956529098230}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &5217722422215831922 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 1e275e2e1638b4879998f8f84d03c1e4, type: 3}
+  m_PrefabInstance: {fileID: 6892907956529098230}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5298620267205947881 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1594551668754586655, guid: 1e275e2e1638b4879998f8f84d03c1e4, type: 3}
+  m_PrefabInstance: {fileID: 6892907956529098230}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8867908763007546201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5298620267205947881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda1a4de7f85542a2b8623cadf8055cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fungusRenderer: {fileID: 4491596446587793393}
+  changeSpeed: 1
+  glowExtentMax: 1
+  witheredSpeed: 0.1
+  witheredExtent: 0.8
+  explodeSpeed: 0.5
+  explodeExtent: 1.11
+  hightLightExtent: 0.2
+  hightLightBreathInSpeed: 0.3
+  hightLightBreathOutSpeed: 0.4
+  fungusAnimator: {fileID: 0}
+  explodeParticle: {fileID: 0}
+  DieParticle: {fileID: 0}
+  DieSpeed: 1.3
+  particleGeneratePosition: {fileID: 0}
+  Shadow: {fileID: 0}
+  beenKilledSpeed: 2.5
+  killedExtent: 5
+--- !u!1 &5624003046297317364 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7951949854746000894, guid: 1e275e2e1638b4879998f8f84d03c1e4, type: 3}
+  m_PrefabInstance: {fileID: 6892907956529098230}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2517486900819180885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5624003046297317364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda1a4de7f85542a2b8623cadf8055cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fungusRenderer: {fileID: 2050335588513769764}
+  changeSpeed: 1
+  glowExtentMax: 1
+  witheredSpeed: 0.1
+  witheredExtent: 0.8
+  explodeSpeed: 0.5
+  explodeExtent: 1.11
+  hightLightExtent: 0.2
+  hightLightBreathInSpeed: 0.3
+  hightLightBreathOutSpeed: 0.4
+  fungusAnimator: {fileID: 0}
+  explodeParticle: {fileID: 0}
+  DieParticle: {fileID: 0}
+  DieSpeed: 1.3
+  particleGeneratePosition: {fileID: 0}
+  Shadow: {fileID: 0}
+  beenKilledSpeed: 2.5
+  killedExtent: 5
 --- !u!1 &6010597504883380391 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1e275e2e1638b4879998f8f84d03c1e4, type: 3}
@@ -650,13 +833,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55f65db3362854a558f4bc58a6ddc894, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaterialChange: {fileID: 6892907956964551269}
+  MaterialChanges:
+  - {fileID: 6892907956964551269}
+  - {fileID: 4457213721814616388}
+  - {fileID: 2517486900819180885}
+  - {fileID: 7357747619786819092}
+  - {fileID: 8478936628703841285}
+  - {fileID: 8867908763007546201}
   peach_audiosource: {fileID: 558174244560949268}
   grow: {fileID: 8300000, guid: b0a568a9acd76435a9a85b42b6aaa80f, type: 3}
   fullygrow: {fileID: 8300000, guid: c4023b3adec244c12a36730e0c7bc095, type: 3}
   bloom: {fileID: 8300000, guid: ff17abd56a41143ae941a76004449125, type: 3}
   withered: {fileID: 8300000, guid: a8cbdab6a0a9344fdaa363c6f859c525, type: 3}
   killed: {fileID: 8300000, guid: f6d4acc592274424c8643bdeb69e10df, type: 3}
+--- !u!1 &6076002756655566341 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 863225567617393651, guid: 1e275e2e1638b4879998f8f84d03c1e4, type: 3}
+  m_PrefabInstance: {fileID: 6892907956529098230}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4457213721814616388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6076002756655566341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda1a4de7f85542a2b8623cadf8055cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fungusRenderer: {fileID: 6257513703708432089}
+  changeSpeed: 1
+  glowExtentMax: 1
+  witheredSpeed: 0.1
+  witheredExtent: 0.8
+  explodeSpeed: 0.5
+  explodeExtent: 1.11
+  hightLightExtent: 0.2
+  hightLightBreathInSpeed: 0.3
+  hightLightBreathOutSpeed: 0.4
+  fungusAnimator: {fileID: 0}
+  explodeParticle: {fileID: 0}
+  DieParticle: {fileID: 0}
+  DieSpeed: 1.3
+  particleGeneratePosition: {fileID: 0}
+  Shadow: {fileID: 0}
+  beenKilledSpeed: 2.5
+  killedExtent: 5
+--- !u!23 &6257513703708432089 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -8538929573041046737, guid: 1e275e2e1638b4879998f8f84d03c1e4, type: 3}
+  m_PrefabInstance: {fileID: 6892907956529098230}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6350706840503585309 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1e275e2e1638b4879998f8f84d03c1e4, type: 3}

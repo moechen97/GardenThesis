@@ -83,6 +83,11 @@ namespace Planting
         {
             resourceValue = resourceUsed;
         }
+
+        if (resourceValue < 0)
+        {
+            resourceValue = 0;
+        }
         Debug.Log("resourceValue"+resourceValue);
         _propertyBlock.SetFloat("_MaskDistance",resourceValue*4);
         mossRenderer.SetPropertyBlock(_propertyBlock);

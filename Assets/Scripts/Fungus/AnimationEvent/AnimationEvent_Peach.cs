@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AnimationEvent_Peach : MonoBehaviour
 {
-    [SerializeField] Fungus_MaterialChange MaterialChange;
+    [SerializeField] Fungus_MaterialChange[] MaterialChanges;
     [SerializeField] private AudioSource peach_audiosource;
     [SerializeField] private AudioClip grow;
     [SerializeField] private AudioClip fullygrow;
@@ -29,13 +29,19 @@ public class AnimationEvent_Peach : MonoBehaviour
     
     public void Withered()
     {
-        MaterialChange.MaterialWithered();
+        foreach (var MaterialChange in MaterialChanges)
+        {
+            MaterialChange.MaterialWithered();
+        }
         peach_audiosource.PlayOneShot(withered);
     }
     
     public void Die()
     {
-        MaterialChange.Die();
+        foreach (var MaterialChange in MaterialChanges)
+        {
+            MaterialChange.MaterialWithered();
+        }
     }
     
 }

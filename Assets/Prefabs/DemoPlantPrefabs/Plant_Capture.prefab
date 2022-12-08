@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4001862292912469413}
   - component: {fileID: 5640703673995185912}
   - component: {fileID: 8013297623875845808}
+  - component: {fileID: 1416064105311558618}
   m_Layer: 9
   m_Name: Plant_Capture
   m_TagString: Untagged
@@ -60,9 +61,11 @@ MonoBehaviour:
   fungusAnimator: {fileID: 4001862292893215806}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
-  DieSpeed: 0.3
+  DieSpeed: 1
   particleGeneratePosition: {fileID: 0}
   Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 25
 --- !u!114 &5640703673995185912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,6 +186,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1416064105311558618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4001862292912469415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 687e1e6b240d7433b8837269e3e3fcd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fungusAnimator: {fileID: 4001862292893215806}
+  MaterialControls:
+  - {fileID: 4001862292912469413}
 --- !u!1001 &4001862292893215779
 PrefabInstance:
   m_ObjectHideFlags: 0

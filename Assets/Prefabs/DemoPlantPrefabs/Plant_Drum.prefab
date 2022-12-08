@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4487841935939912674}
   - component: {fileID: 1319283965564145769}
   - component: {fileID: 4233561850750978624}
+  - component: {fileID: 6048580143230332465}
   m_Layer: 9
   m_Name: Plant_Drum
   m_TagString: Untagged
@@ -61,9 +62,11 @@ MonoBehaviour:
   fungusAnimator: {fileID: 4487841936454412810}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
-  DieSpeed: 0
+  DieSpeed: 3
   particleGeneratePosition: {fileID: 0}
   Shadow: {fileID: 4487841936918274490}
+  beenKilledSpeed: 3
+  killedExtent: 3
 --- !u!114 &1319283965564145769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,6 +187,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6048580143230332465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4487841935939912684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 687e1e6b240d7433b8837269e3e3fcd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fungusAnimator: {fileID: 4487841936454412810}
+  MaterialControls:
+  - {fileID: 4487841935939912674}
+  - {fileID: 4487841936314259279}
+  - {fileID: 4487841936314259278}
 --- !u!1 &4487841936918274469
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,9 +461,11 @@ MonoBehaviour:
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
-  DieSpeed: 0.3
+  DieSpeed: 3
   particleGeneratePosition: {fileID: 0}
   Shadow: {fileID: 0}
+  beenKilledSpeed: 3
+  killedExtent: 3
 --- !u!23 &2993083782062798579 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 7d5cda100092249ada6946b165eb1fa3, type: 3}
@@ -551,6 +573,8 @@ MonoBehaviour:
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
-  DieSpeed: 0.3
+  DieSpeed: 3
   particleGeneratePosition: {fileID: 0}
   Shadow: {fileID: 0}
+  beenKilledSpeed: 3
+  killedExtent: 3

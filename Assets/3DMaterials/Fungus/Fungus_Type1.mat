@@ -116,6 +116,7 @@ Material:
     - _HeightMask: 1
     - _HeightWaveFrequency: 2
     - _HighlightExtent: 0
+    - _Killed_Extent: 0.1
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005

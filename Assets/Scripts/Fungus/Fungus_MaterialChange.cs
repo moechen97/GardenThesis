@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using Unity.Mathematics;
+using UnityEditor.Build;
 using UnityEngine;
 
 public class Fungus_MaterialChange : MonoBehaviour
@@ -23,12 +24,16 @@ public class Fungus_MaterialChange : MonoBehaviour
     [SerializeField] private float DieSpeed;
     [SerializeField] private Transform particleGeneratePosition;
     [SerializeField] private Transform Shadow;
+    [SerializeField] private float beenKilledSpeed;
+    [SerializeField] private float killedExtent;
 
     private Material m_Material;
     private MaterialPropertyBlock _propertyBlock;
     
     //state = 0 = night , state = 1 = day , state = 2 = dusk
     private float currentTime;
+    private bool iskilled = false;
+    
     
     private void OnEnable()
     {
@@ -166,6 +171,43 @@ public class Fungus_MaterialChange : MonoBehaviour
         });
         //m_Material.DOFloat(hightLightExtent,"_HighlightExtent",hightLightBreathOutSpeed);
     }
+
+    public void Killed()
+    {
+        if (iskilled)
+            return;
+        StartCoroutine(Death());
+        iskilled = true;
+    }
+
+    IEnumerator Death()
+    {
+        float currentkillExtent = _propertyBlock.GetFloat("_Killed_Extent");
+        DOVirtual.Float(currentkillExtent, killedExtent, beenKilledSpeed, (float value) => {
+            _propertyBlock.SetFloat("_Killed_Extent", value);
+            fungusRenderer.SetPropertyBlock(_propertyBlock);
+        });
+        yield return new WaitForSeconds(beenKilledSpeed + 1f);
+       
+        float currentDissolveExtent = _propertyBlock.GetFloat("_DissolveExtent");
+        DOVirtual.Float(currentDissolveExtent, explodeExtent, DieSpeed, (float value) => {
+            _propertyBlock.SetFloat("_DissolveExtent", value);
+            fungusRenderer.SetPropertyBlock(_propertyBlock);
+        });
+        
+        //m_Material.DOFloat(explodeExtent, "_DissolveExtent", explodeSpeed);
+        if(Shadow)
+            Shadow.gameObject.SetActive(false);
+        yield return new WaitForSeconds(DieSpeed * 0.2f);
+        
+        if(DieParticle)
+            Instantiate(DieParticle, particleGeneratePosition.position,quaternion.identity);
+        Destroy(this.gameObject,DieSpeed*0.8f+0.1f);
+        yield return null;
+
+    }
+
+    
 
     private void OnDestroy()
     {

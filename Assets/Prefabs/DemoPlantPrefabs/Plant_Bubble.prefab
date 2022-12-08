@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4047820464642229650}
   - component: {fileID: 7328449669764053714}
   - component: {fileID: 36128816550541662}
+  - component: {fileID: 3274699889325612675}
   m_Layer: 9
   m_Name: Plant_Bubble
   m_TagString: Untagged
@@ -61,9 +62,11 @@ MonoBehaviour:
   fungusAnimator: {fileID: 4047820465008707625}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
-  DieSpeed: 0.3
+  DieSpeed: 1.5
   particleGeneratePosition: {fileID: 0}
   Shadow: {fileID: 4047820465673205492}
+  beenKilledSpeed: 4
+  killedExtent: 18
 --- !u!114 &7328449669764053714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,6 +187,35 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3274699889325612675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4047820464642229644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 687e1e6b240d7433b8837269e3e3fcd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fungusAnimator: {fileID: 4047820465008707625}
+  MaterialControls:
+  - {fileID: 4047820465672796618}
+  - {fileID: 4047820464788572698}
+  - {fileID: 4047820465020973112}
+  - {fileID: 4047820465903556405}
+  - {fileID: 4047820465687415193}
+  - {fileID: 4047820464237630044}
+  - {fileID: 4047820463919592855}
+  - {fileID: 4047820465837754997}
+  - {fileID: 4047820465789323770}
+  - {fileID: 4047820465477330939}
+  - {fileID: 4047820465999001808}
+  - {fileID: 4047820464968743259}
+  - {fileID: 4047820464907507668}
+  - {fileID: 4047820465291560363}
+  - {fileID: 4047820464642229650}
 --- !u!1 &4047820465673205495
 GameObject:
   m_ObjectHideFlags: 0
@@ -745,9 +777,11 @@ MonoBehaviour:
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
-  DieSpeed: 0.3
+  DieSpeed: 1.5
   particleGeneratePosition: {fileID: 0}
   Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 18
 --- !u!1 &799351777273513232 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -5531720581255164614, guid: af96957e5a15e4a56a1350cc926b2f21, type: 3}
@@ -778,9 +812,11 @@ MonoBehaviour:
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
-  DieSpeed: 0.3
+  DieSpeed: 1.5
   particleGeneratePosition: {fileID: 0}
   Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 18
 --- !u!23 &860118974155551904 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 3729964425998498954, guid: af96957e5a15e4a56a1350cc926b2f21, type: 3}
@@ -816,9 +852,11 @@ MonoBehaviour:
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
-  DieSpeed: 0.3
+  DieSpeed: 1.5
   particleGeneratePosition: {fileID: 0}
   Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 18
 --- !u!23 &1386725702209493464 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 3103574882722468338, guid: af96957e5a15e4a56a1350cc926b2f21, type: 3}
@@ -854,9 +892,11 @@ MonoBehaviour:
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
-  DieSpeed: 0.3
+  DieSpeed: 1.5
   particleGeneratePosition: {fileID: 0}
   Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 18
 --- !u!1 &1469795644082001758 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6032153759297429644, guid: af96957e5a15e4a56a1350cc926b2f21, type: 3}
@@ -887,9 +927,11 @@ MonoBehaviour:
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
-  DieSpeed: 0.3
+  DieSpeed: 1.5
   particleGeneratePosition: {fileID: 0}
   Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 18
 --- !u!23 &2044310830808258878 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -6597097688982236908, guid: af96957e5a15e4a56a1350cc926b2f21, type: 3}
@@ -930,9 +972,11 @@ MonoBehaviour:
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
-  DieSpeed: 0.3
+  DieSpeed: 1.5
   particleGeneratePosition: {fileID: 0}
   Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 18
 --- !u!1 &3210794707751834689 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1487234071760608363, guid: af96957e5a15e4a56a1350cc926b2f21, type: 3}
@@ -963,9 +1007,11 @@ MonoBehaviour:
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
-  DieSpeed: 0.3
+  DieSpeed: 1.5
   particleGeneratePosition: {fileID: 0}
   Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 18
 --- !u!23 &3250639635972951064 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 1526765091555345458, guid: af96957e5a15e4a56a1350cc926b2f21, type: 3}
@@ -1001,9 +1047,11 @@ MonoBehaviour:
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
-  DieSpeed: 0.3
+  DieSpeed: 1.5
   particleGeneratePosition: {fileID: 0}
   Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 18
 --- !u!23 &3453463654744462510 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: af96957e5a15e4a56a1350cc926b2f21, type: 3}
@@ -1039,9 +1087,11 @@ MonoBehaviour:
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
-  DieSpeed: 0.3
+  DieSpeed: 1.5
   particleGeneratePosition: {fileID: 0}
   Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 18
 --- !u!1 &3813940397700003195 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: af96957e5a15e4a56a1350cc926b2f21, type: 3}
@@ -1143,9 +1193,11 @@ MonoBehaviour:
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
-  DieSpeed: 0.3
+  DieSpeed: 1.5
   particleGeneratePosition: {fileID: 0}
   Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 18
 --- !u!23 &3980569309990655849 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -8137602144884351165, guid: af96957e5a15e4a56a1350cc926b2f21, type: 3}
@@ -1186,9 +1238,11 @@ MonoBehaviour:
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
-  DieSpeed: 0.3
+  DieSpeed: 1.5
   particleGeneratePosition: {fileID: 0}
   Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 18
 --- !u!4 &4586360113444155329 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: af96957e5a15e4a56a1350cc926b2f21, type: 3}
@@ -1239,9 +1293,11 @@ MonoBehaviour:
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
-  DieSpeed: 0.3
+  DieSpeed: 1.5
   particleGeneratePosition: {fileID: 0}
   Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 18
 --- !u!23 &7123873255395084535 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 6553207770162413789, guid: af96957e5a15e4a56a1350cc926b2f21, type: 3}
@@ -1282,9 +1338,11 @@ MonoBehaviour:
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
-  DieSpeed: 0.3
+  DieSpeed: 1.5
   particleGeneratePosition: {fileID: 0}
   Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 18
 --- !u!23 &8318144373062378543 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 5423252559524178949, guid: af96957e5a15e4a56a1350cc926b2f21, type: 3}
@@ -1320,9 +1378,11 @@ MonoBehaviour:
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
-  DieSpeed: 0.3
+  DieSpeed: 1.5
   particleGeneratePosition: {fileID: 0}
   Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 18
 --- !u!23 &8675281100056461588 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -4591290669818967746, guid: af96957e5a15e4a56a1350cc926b2f21, type: 3}

@@ -35,7 +35,15 @@ namespace Planting
                     continue;
                 }
                 GameObject plantObject = hit.transform.parent.gameObject;
-                Destroy(plantObject);
+                if (plantObject.GetComponent<Plant_StateControl>())
+                {
+                    plantObject.GetComponent<Plant_StateControl>().BeingKilled();
+                }
+                else
+                {
+                    Destroy(plantObject);
+                }
+                
             }
         }
         protected override void Update()

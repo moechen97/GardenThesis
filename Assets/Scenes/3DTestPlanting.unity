@@ -9317,6 +9317,7 @@ Material:
     - _HeightMask: 0.19
     - _HeightWaveFrequency: 0
     - _HighlightExtent: 0
+    - _Killed_Extent: 0.1
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -22963,7 +22964,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4047820464642229644, guid: 639dad879d3664687906762b060d3451, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4047820464642229645, guid: 639dad879d3664687906762b060d3451, type: 3}
       propertyPath: m_RootOrder

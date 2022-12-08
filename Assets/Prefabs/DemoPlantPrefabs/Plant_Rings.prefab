@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 8624723986980811882}
   - component: {fileID: 3909738285618861213}
   - component: {fileID: 2243270773412484090}
+  - component: {fileID: 6112492257834613751}
   m_Layer: 9
   m_Name: Plant_Rings
   m_TagString: Untagged
@@ -159,9 +160,11 @@ MonoBehaviour:
   fungusAnimator: {fileID: 8624723986645375118}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
-  DieSpeed: 0.3
+  DieSpeed: 1
   particleGeneratePosition: {fileID: 0}
   Shadow: {fileID: 0}
+  beenKilledSpeed: 2
+  killedExtent: 13
 --- !u!114 &3909738285618861213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,6 +285,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6112492257834613751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8624723986980811880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 687e1e6b240d7433b8837269e3e3fcd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fungusAnimator: {fileID: 8624723986645375118}
+  MaterialControls:
+  - {fileID: 8624723986645375158}
+  - {fileID: 8624723986645375157}
+  - {fileID: 8624723986645375156}
+  - {fileID: 8624723986645375155}
+  - {fileID: 8624723986980811882}
 --- !u!1001 &8624723986645375115
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -533,9 +555,11 @@ MonoBehaviour:
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
-  DieSpeed: 0.3
+  DieSpeed: 1
   particleGeneratePosition: {fileID: 0}
   Shadow: {fileID: 0}
+  beenKilledSpeed: 2
+  killedExtent: 13
 --- !u!1 &3273979039313184306 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2675509460635509063, guid: c2a3427140af24d87bfe674221a5cd1b, type: 3}
@@ -566,9 +590,11 @@ MonoBehaviour:
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
-  DieSpeed: 0.3
+  DieSpeed: 1
   particleGeneratePosition: {fileID: 0}
   Shadow: {fileID: 0}
+  beenKilledSpeed: 2
+  killedExtent: 13
 --- !u!23 &3947994487317037360 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 4718423122866493883, guid: c2a3427140af24d87bfe674221a5cd1b, type: 3}
@@ -609,9 +635,11 @@ MonoBehaviour:
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
-  DieSpeed: 0.3
+  DieSpeed: 1
   particleGeneratePosition: {fileID: 0}
   Shadow: {fileID: 0}
+  beenKilledSpeed: 2
+  killedExtent: 13
 --- !u!23 &6685272447262978345 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -6091128272436254302, guid: c2a3427140af24d87bfe674221a5cd1b, type: 3}
@@ -647,9 +675,11 @@ MonoBehaviour:
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
-  DieSpeed: 0.3
+  DieSpeed: 1
   particleGeneratePosition: {fileID: 0}
   Shadow: {fileID: 0}
+  beenKilledSpeed: 2
+  killedExtent: 13
 --- !u!23 &6949258068331545615 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: c2a3427140af24d87bfe674221a5cd1b, type: 3}
@@ -716,11 +746,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   materials:
-  - {fileID: 8624723986980811882}
-  - {fileID: 8624723986645375157}
   - {fileID: 8624723986645375158}
+  - {fileID: 8624723986645375157}
   - {fileID: 8624723986645375156}
   - {fileID: 8624723986645375155}
+  - {fileID: 8624723986980811882}
   ring_audiosource: {fileID: 2243270773412484090}
   grow: {fileID: 8300000, guid: 0850d787d467c43b18ab3cf1b9547c45, type: 3}
   bloom: {fileID: 8300000, guid: d0f4ebf73f52f4675a8e57759dffed89, type: 3}

@@ -9,8 +9,10 @@ public class Fungus_JellyHead : MonoBehaviour
     [SerializeField] private Animator jellyAnimator;
     [SerializeField] private Fungus_MaterialChange _materialChange;
     [SerializeField] private Transform Mesh;
-
+    private Plant_StateControl parentState;
+    
     private bool canMove = false;
+    private bool iskilled = false;
 
     // Update is called once per frame
     void Update()
@@ -22,15 +24,22 @@ public class Fungus_JellyHead : MonoBehaviour
             transform.position = followT.position;
             transform.rotation = rotationT.rotation;
         }
+
+        if (parentState.returnKilledState() && !iskilled)
+        {
+            _materialChange.Killed();
+            iskilled = true;
+        }
         
     }
 
-    public void GetPosition(Transform followP, Transform rotationP)
+    public void GetPosition(Transform followP, Transform rotationP, Transform PParent)
     {
         followT = followP;
         rotationT = rotationP;
         Mesh.gameObject.SetActive(true);
         canMove = true;
+        parentState = PParent.GetComponent<Plant_StateControl>();
     }
 
     public void JellyBloom()

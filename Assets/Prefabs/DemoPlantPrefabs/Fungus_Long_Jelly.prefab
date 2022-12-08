@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9193809187864115644}
   - component: {fileID: 9193809187864115645}
   - component: {fileID: 1038148707329456005}
+  - component: {fileID: 8996836772241860287}
   m_Layer: 9
   m_Name: Fungus_Long_Jelly
   m_TagString: Untagged
@@ -63,6 +64,8 @@ MonoBehaviour:
   DieSpeed: 3
   particleGeneratePosition: {fileID: 1898856704153231243}
   Shadow: {fileID: 9193809188030954976}
+  beenKilledSpeed: 3
+  killedExtent: 25
 --- !u!114 &1038148707329456005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,16 +78,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aac4569772c747c187b6588a44ebdd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
+  isGrown: 0
   plantPrefab: {fileID: 9193809187864115647}
+  breedingSpeed: 1
   growthSpeed_minRange: 0.5
   growthSpeed_maxRange: 1.2
   aliveTime: 15
-  flower: {fileID: 0}
   isBreeding: 0
-  growthDistance: 1.8
+  growthRadius: 2
   height_minRange: 0.6
   height_maxRange: 1.2
   XZScale: 1
+--- !u!114 &8996836772241860287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9193809187864115647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 687e1e6b240d7433b8837269e3e3fcd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fungusAnimator: {fileID: 9193809187648853069}
+  MaterialControls:
+  - {fileID: 9193809187864115645}
 --- !u!1 &9193809188030954979
 GameObject:
   m_ObjectHideFlags: 0
