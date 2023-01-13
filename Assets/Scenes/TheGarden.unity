@@ -17665,6 +17665,7 @@ MonoBehaviour:
   panZoomSpeed: 20
   cameraZoomSpeed: 100
   rotationSlowDownSpeed: 0.3
+  PrepareSeed: {fileID: 8666119034136309329, guid: 30596f3699afe4ccba76f0e98f651442, type: 3}
 --- !u!4 &1480540003
 Transform:
   m_ObjectHideFlags: 0
@@ -19371,8 +19372,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2101802968}
   m_HandleRect: {fileID: 2101802967}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 0.7185178
+  m_Value: -0.000000031774796
+  m_Size: 0.5149326
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

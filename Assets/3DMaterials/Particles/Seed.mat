@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-1268868514923818151
+--- !u!114 &-3600106834167560799
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,15 +20,16 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Procedual Sky
-  m_Shader: {fileID: -6465566751694194690, guid: 33ec506fdb9ac406daa8cf3ecb1af09c, type: 3}
+  m_Name: Seed
+  m_Shader: {fileID: 4800000, guid: 650dd9526735d5b46b79224bc6e94025, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap: {}
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -92,8 +93,8 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClip: 0
-    - _AlphaCutoff: 0.5
     - _Blend: 0
+    - _BlendOp: 0
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
@@ -106,49 +107,22 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Gradient_Height: 0.5
-    - _HorizonGlowIntensity: 0.59
-    - _HorizonMinAmountAlways: 0
-    - _HorizonSharpness: 5.7
-    - _HorizonSunGlowSpreadMax: 0
-    - _HorizonSunGlowSpreadMin: 5.075109
-    - _HorizonTintSunPower: 0
     - _Metallic: 0
-    - _NightTransitionHorizonDelay: 0
-    - _NightTransitionScale: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.005
-    - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _SHOWSTAR: 0
-    - _Sky_and_Ground_Mask_Height: 0.91
+    - _SampleGI: 0
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _StarDensity: 20
-    - _StarMask_MovingSpeed: 0.3
-    - _StarSize: 0.02
-    - _Star_Mask_Noise_Scale: 2
-    - _SunDiskSharpness: 0
-    - _SunDiskSize: 0
-    - _SunDiskSizeAdjust: 0
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _BottomColor: {r: 0.3882353, g: 0.2117647, b: 0.5019608, a: 1}
-    - _Bottom_Color: {r: 0.63878125, g: 0.7640043, b: 0.44233075, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HorizonColor: {r: 0.9137255, g: 0.8509804, b: 0.7215686, a: 0}
-    - _NightColor: {r: 0, g: 0, b: 0, a: 0}
-    - _SkyColor: {r: 0.3764706, g: 0.6039216, b: 1, a: 0}
-    - _Sky_MovingSpeed: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-    - _StarColor: {r: 14.754423, g: 9.501539, b: 0.84973115, a: 1}
-    - _TopColor: {r: 0.22516908, g: 0.36870036, b: 0.41509432, a: 1}
-    - _Top_Color: {r: 0.8619707, g: 0.7919553, b: 0.66052026, a: 1}
   m_BuildTextureStacks: []

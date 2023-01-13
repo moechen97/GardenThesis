@@ -42,6 +42,7 @@ namespace Planting
         [SerializeField] float panZoomSpeed = 10F;
         [SerializeField] float cameraZoomSpeed = 4F;
         [SerializeField] private float rotationSlowDownSpeed = 1 / 2f;
+        [SerializeField] private GameObject PrepareSeed;
         private Coroutine zoomEndDelay = null;
         private CinemachineVirtualCamera _virtualCamera;
         private bool twoFingers = false;
@@ -55,6 +56,7 @@ namespace Planting
         private Vector3 startCamPosition;
         private Vector3 startCamRotation;
         private bool enableControl = false;
+        
         void Awake()
         {
             startCamPosition = camFocusPoint.transform.position;
@@ -564,14 +566,24 @@ namespace Planting
                 Collider[] collisions = Physics.OverlapSphere(hit.point, radius);
                 if (hit.transform.gameObject.name.Equals("Ground") && collisions.Length == 1)
                 {
-                    GameObject newPlant = GameObject.Instantiate(seeds[currSeed]);
-                    newPlant.transform.position = hit.point;
+                    //GameObject newPlant = GameObject.Instantiate(seeds[currSeed]);
+                    //newPlant.transform.position = hit.point;
+                    StartCoroutine(PlantSeed(hit.point));
                     success = true;
                 }
             }
             //seed.ResetPosition();
             return success;
         }
+
+        IEnumerator PlantSeed(Vector3 instantiateP)
+        {
+            Instantiate(PrepareSeed, instantiateP, Quaternion.identity);
+            yield return new WaitForSeconds(2.5f);
+            GameObject newPlant = GameObject.Instantiate(seeds[currSeed]);
+            newPlant.transform.position = instantiateP;
+        }
+        
         private void OnEnable()
         {
             Debug.Log("Enabled garden input control");
