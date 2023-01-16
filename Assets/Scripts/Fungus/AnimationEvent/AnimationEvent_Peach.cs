@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class AnimationEvent_Peach : MonoBehaviour
 {
@@ -11,10 +12,40 @@ public class AnimationEvent_Peach : MonoBehaviour
     [SerializeField] private AudioClip bloom;
     [SerializeField] private AudioClip withered;
     [SerializeField] private AudioClip killed;
+    
+    [SerializeField] private GameObject emitParticle;
+    [SerializeField] private Transform emitPosition;
+    public void GrowColorChange()
+    {
+        MaterialPropertyBlock _shadowPropertyBlock = new MaterialPropertyBlock();
+        
+        
+    }
 
+    public void Glow()
+    {
+        foreach (var materialChange in MaterialChanges)
+        {
+            materialChange.Glow();
+        }
+    }
+
+    public void Dim()
+    {
+        foreach (var materialChange in MaterialChanges)
+        {
+            materialChange.Dim();
+        }
+    }
+    
     public void Grow()
     {
         peach_audiosource.PlayOneShot(grow);
+    }
+
+    public void EmitParticle()
+    {
+        Instantiate(emitParticle, emitPosition.position,Quaternion.identity,emitPosition);
     }
 
     public void Bloom()

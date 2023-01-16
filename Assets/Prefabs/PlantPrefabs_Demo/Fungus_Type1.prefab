@@ -66,6 +66,7 @@ MonoBehaviour:
   Shadow: {fileID: 2434433554330377030}
   beenKilledSpeed: 2
   killedExtent: 8
+  shadowRenderer: {fileID: 2434433554330377028}
 --- !u!114 &7072614448206257579
 MonoBehaviour:
   m_ObjectHideFlags: 0

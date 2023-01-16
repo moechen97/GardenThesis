@@ -41,7 +41,7 @@ namespace Planting
                 }
                 else
                 {
-                    Destroy(plantObject);
+                    Destroy(plantObject.gameObject);
                 }
                 
             }

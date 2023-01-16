@@ -56,13 +56,13 @@ namespace Planting {
                 aliveTimer += Time.deltaTime;
                 if (aliveTimer >= aliveTime)
                 {
-                    if (GetComponent<Fungus_MaterialChange>())
+                    if (GetComponent<Plant_StateControl>())
                     {
-                        transform.GetComponent<Fungus_MaterialChange>().Withered();
+                        transform.GetComponent<Plant_StateControl>().Withered();
                     }
                     else
                     {
-                        Destroy(transform.parent.gameObject);
+                        Destroy(transform.gameObject);
                     }
                 }
             }

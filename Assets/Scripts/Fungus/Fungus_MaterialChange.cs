@@ -25,6 +25,18 @@ public class Fungus_MaterialChange : MonoBehaviour
     [SerializeField] private Transform Shadow;
     [SerializeField] private float beenKilledSpeed;
     [SerializeField] private float killedExtent;
+    [SerializeField] private Renderer shadowRenderer;
+    [SerializeField] private bool canChangeInitialColor;
+    [SerializeField] private Color initialColor;
+    [SerializeField] private Color matureColor;
+    [SerializeField] private float growTime;
+    [SerializeField] private bool canGlow;
+    [ColorUsage(true, true)]
+    [SerializeField] private Color glowColor;
+    [ColorUsage(true, true)]
+    [SerializeField] private Color dimColor;
+    [SerializeField] private float glowSpeed;
+    [SerializeField] private Transform BigParent;
 
     private Material m_Material;
     private MaterialPropertyBlock _propertyBlock;
@@ -48,6 +60,7 @@ public class Fungus_MaterialChange : MonoBehaviour
 
     private void Start()
     {
+        
         _propertyBlock = new MaterialPropertyBlock();
         m_Material = fungusRenderer.material;
         currentTime = TimeEventManager.state;
@@ -56,6 +69,34 @@ public class Fungus_MaterialChange : MonoBehaviour
         {
             _propertyBlock.SetFloat("_GlowExtent",glowExtentMax);
             fungusRenderer.SetPropertyBlock(_propertyBlock);
+        }
+
+        if (shadowRenderer)
+        {
+            Debug.Log("ShadowChange");
+            MaterialPropertyBlock _shadowPropertyBlock = new MaterialPropertyBlock();
+            Color originalColor = shadowRenderer.material.color;
+            Color transparentColor = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
+            _shadowPropertyBlock.SetColor("_BaseColor", transparentColor);
+            shadowRenderer.SetPropertyBlock(_shadowPropertyBlock);
+            DOVirtual.Color(transparentColor, originalColor, 1f, (Color value) =>
+            {
+                _shadowPropertyBlock.SetColor("_BaseColor", value);
+                shadowRenderer.SetPropertyBlock(_shadowPropertyBlock);
+            });
+            
+            if(!canChangeInitialColor)
+                return;
+            
+            _propertyBlock.SetColor("_MainColor", initialColor);
+            fungusRenderer.SetPropertyBlock(_propertyBlock);
+        
+            DOVirtual.Color(initialColor, matureColor, growTime, (Color value) =>
+            {
+                _propertyBlock.SetColor("_MainColor", value);
+                fungusRenderer.SetPropertyBlock(_propertyBlock);
+            });
+
         }
     }
 
@@ -122,6 +163,12 @@ public class Fungus_MaterialChange : MonoBehaviour
         {
             Instantiate(explodeParticle, particleGeneratePosition.position,quaternion.identity);
         }
+
+        if (BigParent)
+        {
+            Destroy(BigParent.gameObject,explodeSpeed*0.8f+0.1f);
+        }
+        
         Destroy(this.gameObject,explodeSpeed*0.8f+0.1f);
         yield return null;
         
@@ -147,6 +194,12 @@ public class Fungus_MaterialChange : MonoBehaviour
         
         if(DieParticle)
             Instantiate(DieParticle, particleGeneratePosition.position,quaternion.identity);
+       
+        if (BigParent)
+        {
+            Destroy(BigParent.gameObject,DieSpeed*0.8f+0.1f);
+        }
+        
         Destroy(this.gameObject,DieSpeed*0.8f+0.1f);
         yield return null;
     }
@@ -201,11 +254,39 @@ public class Fungus_MaterialChange : MonoBehaviour
         
         if(DieParticle)
             Instantiate(DieParticle, particleGeneratePosition.position,quaternion.identity);
+        
+        if (BigParent)
+        {
+            Destroy(BigParent.gameObject,DieSpeed*0.8f+0.1f);
+        }
+        
         Destroy(this.gameObject,DieSpeed*0.8f+0.1f);
         yield return null;
 
     }
 
+    public void Glow()
+    {
+        if (!canGlow)
+            return;
+
+        DOVirtual.Color(dimColor, glowColor, glowSpeed, (Color value) =>
+        {
+            _propertyBlock.SetColor("_GlowColor", value);
+            fungusRenderer.SetPropertyBlock(_propertyBlock);
+        });
+    }
+
+    public void Dim()
+    {
+        if (!canGlow)
+            return;
+        DOVirtual.Color(glowColor, dimColor, glowSpeed, (Color value) =>
+        {
+            _propertyBlock.SetColor("_GlowColor", value);
+            fungusRenderer.SetPropertyBlock(_propertyBlock);
+        });
+    }
     
 
     private void OnDestroy()
