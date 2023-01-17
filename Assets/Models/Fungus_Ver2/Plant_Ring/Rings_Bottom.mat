@@ -47,7 +47,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _GlowMask:
-        m_Texture: {fileID: 2800000, guid: be144de731ee44f23adca5d0fc64c596, type: 3}
+        m_Texture: {fileID: 2800000, guid: 489e8cbba552a47e7bad78adbc4c8ced, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -98,8 +98,9 @@ Material:
     - _DeformExtent: 0.065
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
+    - _DissolveEdgeThickness: 0.4
     - _DissolveExtent: -1
-    - _DissolveNoiseScale: 8.25
+    - _DissolveNoiseScale: 3
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
@@ -141,10 +142,11 @@ Material:
     - _AmbientColor: {r: 0.3773585, g: 0.20113918, b: 0.21841566, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DarkColor: {r: 0.5566038, g: 0.22722118, b: 0.06563723, a: 0}
+    - _DarkColor: {r: 0.21698111, g: 0.03991634, b: 0.050092477, a: 0}
+    - _DissolveEdgeColor: {r: 23.968628, g: 15.058824, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GlowColor: {r: 1.0842539, g: 0.3748255, b: 0.107857734, a: 0}
-    - _GradientBottomColor: {r: 0.8207547, g: 0.27977318, b: 0.12001601, a: 1}
+    - _GlowColor: {r: 1.0592737, g: 0.4120624, b: 0.14974023, a: 0}
+    - _GradientBottomColor: {r: 0.7169812, g: 0.28612506, b: 0.16571736, a: 1}
     - _HighlightColor: {r: 1, g: 0.4575472, b: 0.6092391, a: 0}
     - _MainColor: {r: 0.9056604, g: 0.41746768, b: 0.10679956, a: 1}
     - _RimColor: {r: 0.9339623, g: 0.4273318, b: 0.4273318, a: 0}
@@ -153,7 +155,7 @@ Material:
     - _Specular_Color: {r: 1, g: 0.7028302, b: 0.78949744, a: 0}
     - _WitheredColor: {r: 0.509434, g: 0.12688957, b: 0.0504628, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &5111328107140302786
+--- !u!114 &2109899922272321989
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

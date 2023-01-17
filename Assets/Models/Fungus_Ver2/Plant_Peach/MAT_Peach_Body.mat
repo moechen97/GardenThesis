@@ -111,7 +111,8 @@ Material:
     - _DeformExtent: 0.032
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DissolveExtent: -0.14
+    - _DissolveEdgeThickness: 0.54
+    - _DissolveExtent: -1
     - _DissolveNoiseScale: 8.25
     - _DstBlend: 0
     - _EnvironmentReflections: 1
@@ -119,7 +120,7 @@ Material:
     - _Glossiness: 0
     - _Glossness: 36.3
     - _GlossyReflections: 0
-    - _GlowExtent: 0
+    - _GlowExtent: 1
     - _GradientHeightTheshold: 0.43
     - _GradientSmoothness: 2.16
     - _GradientSmoothnessTheshold: 8.7
@@ -154,7 +155,8 @@ Material:
     - _AmbientColor: {r: 0.3773585, g: 0.20113918, b: 0.21841566, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DarkColor: {r: 0.9245283, g: 0.3270737, b: 0.36523396, a: 0}
+    - _DarkColor: {r: 0.8018868, g: 0.5386621, b: 0.5182004, a: 0}
+    - _DissolveEdgeColor: {r: 10.680627, g: 3.0537872, b: 0.25190154, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GlowColor: {r: 2.724628, g: 0.2698924, b: 0.61465883, a: 0}
     - _GradientBottomColor: {r: 1, g: 0.75212324, b: 0.504717, a: 1}

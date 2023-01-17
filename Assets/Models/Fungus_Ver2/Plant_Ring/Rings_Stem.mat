@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-718823829086628770
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 5
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -20,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MAT_Peach_Stem
+  m_Name: Rings_Stem
   m_Shader: {fileID: -6465566751694194690, guid: 5c50c883e3871439d853e6c837ed04d0, type: 3}
   m_ValidKeywords:
   - _HAVEVERTEXPOSITIONADJUSTMENG
@@ -108,12 +95,12 @@ Material:
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
-    - _DeformExtent: 0.01
+    - _DeformExtent: 0.065
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DissolveEdgeThickness: 0.54
+    - _DissolveEdgeThickness: 0.4
     - _DissolveExtent: -1
-    - _DissolveNoiseScale: 8.25
+    - _DissolveNoiseScale: 3
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
@@ -127,8 +114,8 @@ Material:
     - _HASRIM: 0
     - _HASSPECULAR: 0
     - _HAVEVERTEXPOSITIONADJUSTMENG: 1
-    - _HeightMask: 1.09
-    - _HeightWaveFrequency: 1.71
+    - _HeightMask: 1.67
+    - _HeightWaveFrequency: 2.11
     - _HighlightExtent: 0
     - _Killed_Extent: 0.1
     - _Metallic: 0
@@ -147,7 +134,7 @@ Material:
     - _SrcBlend: 1
     - _StartPosition: 0.15
     - _Surface: 0
-    - _WaveSpeed: 1.8
+    - _WaveSpeed: 2
     - _WitheredExtent: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
@@ -155,16 +142,29 @@ Material:
     - _AmbientColor: {r: 0.3773585, g: 0.20113918, b: 0.21841566, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DarkColor: {r: 0.16981131, g: 0.0969206, b: 0.15186161, a: 0}
-    - _DissolveEdgeColor: {r: 0.5678329, g: 0.9150943, b: 0.3582681, a: 0}
+    - _DarkColor: {r: 0.16607842, g: 0.082352936, b: 0.3019608, a: 0}
+    - _DissolveEdgeColor: {r: 23.968628, g: 15.058824, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GlowColor: {r: 0.764151, g: 0.24870951, b: 0.48086968, a: 0}
-    - _GradientBottomColor: {r: 0.44650134, g: 0.25161436, b: 0.24599957, a: 1}
+    - _GlowColor: {r: 0.8980392, g: 0.70980394, b: 0.07450981, a: 0}
+    - _GradientBottomColor: {r: 0.41871214, g: 0.23415524, b: 0.22835605, a: 1}
     - _HighlightColor: {r: 1, g: 0.4575472, b: 0.6092391, a: 0}
-    - _MainColor: {r: 0.5, g: 0.30347878, b: 0.26179245, a: 1}
+    - _MainColor: {r: 0.6886792, g: 0.3178183, b: 0.19166073, a: 1}
     - _RimColor: {r: 0.9339623, g: 0.4273318, b: 0.4273318, a: 0}
-    - _ShadowColor: {r: 0.7893092, g: 0.76495194, b: 0.8490566, a: 0}
+    - _ShadowColor: {r: 0.507913, g: 0.4295123, b: 0.7169812, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _Specular_Color: {r: 1, g: 0.7028302, b: 0.78949744, a: 0}
-    - _WitheredColor: {r: 0.31132078, g: 0.20691302, b: 0.048460316, a: 0}
+    - _WitheredColor: {r: 0.5377358, g: 0.28256905, b: 0.088777125, a: 0}
   m_BuildTextureStacks: []
+--- !u!114 &417798984791406644
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 5

@@ -21,6 +21,22 @@ public class AnimationEvent_Rings : MonoBehaviour
         ring_audiosource.PlayOneShot(bloom);
     }
 
+    public void Glow()
+    {
+        foreach (var material in materials)
+        {
+            material.Glow();
+        }
+    }
+
+    public void Dim()
+    {
+        foreach (var material in materials)
+        {
+            material.Dim();
+        }
+    }
+
     public void Breath()
     {
         ring_audiosource.PlayOneShot(breath);

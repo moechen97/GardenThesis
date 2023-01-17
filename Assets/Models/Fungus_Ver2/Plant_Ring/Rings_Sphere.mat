@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-5081595332019603819
+--- !u!114 &-4449466163159505420
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Rings_Middle
+  m_Name: Rings_Sphere
   m_Shader: {fileID: -6465566751694194690, guid: 5c50c883e3871439d853e6c837ed04d0, type: 3}
   m_ValidKeywords:
   - _HAVEVERTEXPOSITIONADJUSTMENG
@@ -60,7 +60,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _GlowMask:
-        m_Texture: {fileID: 2800000, guid: 489e8cbba552a47e7bad78adbc4c8ced, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -108,19 +108,20 @@ Material:
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
-    - _DeformExtent: 0.065
+    - _DeformExtent: 0.02
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
+    - _DissolveEdgeThickness: 0.4
     - _DissolveExtent: -1
-    - _DissolveNoiseScale: 8.25
+    - _DissolveNoiseScale: 3
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _Glossness: 36.3
     - _GlossyReflections: 0
-    - _GlowExtent: 0
-    - _GradientHeightTheshold: 0.59
+    - _GlowExtent: 1
+    - _GradientHeightTheshold: 0.5
     - _GradientSmoothness: 0.68
     - _GradientSmoothnessTheshold: 2.4
     - _HASRIM: 0
@@ -154,15 +155,16 @@ Material:
     - _AmbientColor: {r: 0.3773585, g: 0.20113918, b: 0.21841566, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DarkColor: {r: 0.4716981, g: 0.19017275, b: 0.051174805, a: 0}
+    - _DarkColor: {r: 0.5377358, g: 0.44234174, b: 0.09892311, a: 0}
+    - _DissolveEdgeColor: {r: 23.968628, g: 15.058824, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GlowColor: {r: 1.4239924, g: 0.5387341, b: 0.32913032, a: 0}
-    - _GradientBottomColor: {r: 0.9490197, g: 0.5568628, b: 0.14509805, a: 1}
+    - _GlowColor: {r: 4.237095, g: 1.6194133, b: 0.19965369, a: 0}
+    - _GradientBottomColor: {r: 0.9137255, g: 0.6762272, b: 0.47843134, a: 1}
     - _HighlightColor: {r: 1, g: 0.4575472, b: 0.6092391, a: 0}
-    - _MainColor: {r: 0.9803922, g: 0.65882355, b: 0.14509805, a: 1}
+    - _MainColor: {r: 0.9433962, g: 0.8160676, b: 0.25364897, a: 1}
     - _RimColor: {r: 0.9339623, g: 0.4273318, b: 0.4273318, a: 0}
-    - _ShadowColor: {r: 0.9056604, g: 0.56134796, b: 0.252047, a: 0}
+    - _ShadowColor: {r: 1, g: 0.891006, b: 0.504717, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _Specular_Color: {r: 1, g: 0.7028302, b: 0.78949744, a: 0}
-    - _WitheredColor: {r: 0.5, g: 0.35447758, b: 0.125, a: 0}
+    - _WitheredColor: {r: 0.6132076, g: 0.47415087, b: 0.09545213, a: 0}
   m_BuildTextureStacks: []

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.78986144, g: 0.7826748, b: 0.5906407, a: 1}
+  m_IndirectSpecularColor: {r: 0.73749524, g: 0.78142524, b: 0.6288972, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8724,7 +8724,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.9447897, b: 0.7603927, a: 1}
+  m_Color: {r: 1, g: 0.94437706, b: 0.7598687, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -8782,7 +8782,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 875453221}
-  m_LocalRotation: {x: 0.67015857, y: -0.26342192, z: 0.27758878, w: 0.6359567}
+  m_LocalRotation: {x: 0.48272574, y: -0.32629132, z: 0.19995156, w: 0.78773683}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -16328,7 +16328,7 @@ MonoBehaviour:
   _lightingPreset: {fileID: 11400000, guid: 289512b4994cb4e49b400d9b298f3f2f, type: 2}
   DirectionLight: {fileID: 875453222}
   Ground: {fileID: 1963439135}
-  TimeOfDay: 12.2
+  TimeOfDay: 10.2
   timePassSpeed: 0.2
 --- !u!4 &1411803759
 Transform:
@@ -19372,8 +19372,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2101802968}
   m_HandleRect: {fileID: 2101802967}
   m_Direction: 0
-  m_Value: -0.000000031774796
-  m_Size: 0.5149326
+  m_Value: 0
+  m_Size: 0.7185178
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -25266,7 +25266,7 @@ MonoBehaviour:
   - {fileID: 2434433552892972562, guid: 1b39b747ccd9e48ec97115c337f236b4, type: 3}
   - {fileID: 9193809187864115647, guid: 9a0211bb8d7654489822a2d890ae28c9, type: 3}
   - {fileID: 9193809187864115647, guid: 9a0211bb8d7654489822a2d890ae28c9, type: 3}
-  - {fileID: 6892907956964551267, guid: 3ab0b4047e3834e46a3b8132e4d9f41f, type: 3}
+  - {fileID: 3738483157145793606, guid: 6ce42dd52994f464bb110413df99547c, type: 3}
   - {fileID: 4487841935939912684, guid: c3b3a3f518868440f8b3f997dfa2a32d, type: 3}
   - {fileID: 1796477626891198168, guid: 4f94848b729e249b9b0285584521fa66, type: 3}
   - {fileID: 4047820464642229644, guid: 639dad879d3664687906762b060d3451, type: 3}
