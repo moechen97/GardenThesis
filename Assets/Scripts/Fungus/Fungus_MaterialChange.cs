@@ -136,9 +136,9 @@ public class Fungus_MaterialChange : MonoBehaviour
             fungusRenderer.SetPropertyBlock(_propertyBlock);
         });
         
-        float currentDeformExtent = _propertyBlock.GetFloat("_WaveSpeed");
-        DOVirtual.Float(currentDeformExtent, 0.1f, witheredSpeed, (float value) => {
-            _propertyBlock.SetFloat("_WaveSpeed", value);
+        float currentDeformExtent = _propertyBlock.GetFloat("_HeightMask");
+        DOVirtual.Float(currentDeformExtent, 0.01f, witheredSpeed, (float value) => {
+            _propertyBlock.SetFloat("_HeightMask", value);
             fungusRenderer.SetPropertyBlock(_propertyBlock);
         });
         /*m_Material.DOFloat(witheredExtent,"_WitheredExtent",witheredSpeed);
@@ -241,6 +241,15 @@ public class Fungus_MaterialChange : MonoBehaviour
             _propertyBlock.SetFloat("_Killed_Extent", value);
             fungusRenderer.SetPropertyBlock(_propertyBlock);
         });
+
+        if (fungusAnimator)
+        {
+            DOVirtual.Float(fungusAnimator.speed, 0.2f, beenKilledSpeed, (float value) =>
+            {
+                fungusAnimator.speed = value;
+            });
+        }
+        
         yield return new WaitForSeconds(beenKilledSpeed + 1f);
        
         float currentDissolveExtent = _propertyBlock.GetFloat("_DissolveExtent");
@@ -271,8 +280,11 @@ public class Fungus_MaterialChange : MonoBehaviour
     {
         if (!canGlow)
             return;
+
+        fungusRenderer.GetPropertyBlock(_propertyBlock);
+        Color initialColor = _propertyBlock.GetColor("_GlowColor");
        
-        DOVirtual.Color(dimColor, glowColor, glowSpeed, (Color value) =>
+        DOVirtual.Color(initialColor, glowColor, glowSpeed, (Color value) =>
         {
             _propertyBlock.SetColor("_GlowColor", value);
             fungusRenderer.SetPropertyBlock(_propertyBlock);
@@ -283,6 +295,10 @@ public class Fungus_MaterialChange : MonoBehaviour
     {
         if (!canGlow)
             return;
+        
+        fungusRenderer.GetPropertyBlock(_propertyBlock);
+        Color initialColor = _propertyBlock.GetColor("_GlowColor");
+        
         Color currentGlow = fungusRenderer.material.GetColor("_GlowColor");
         DOVirtual.Color(currentGlow, dimColor, dimSpeed, (Color value) =>
         {

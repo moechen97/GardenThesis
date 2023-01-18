@@ -10,6 +10,8 @@ public class AnimationEvent_Rings : MonoBehaviour
     [SerializeField] private AudioClip bloom;
     [SerializeField] private AudioClip breath;
     [SerializeField] private AudioClip withered;
+    [SerializeField] private GameObject emitParticle;
+    [SerializeField] private Transform emitPosition;
 
     public void Grow()
     {
@@ -56,5 +58,10 @@ public class AnimationEvent_Rings : MonoBehaviour
         {
             material.Die();
         }
+    }
+
+    public void EmitParticle()
+    {
+        Instantiate(emitParticle, emitPosition.position, Quaternion.identity);
     }
 }

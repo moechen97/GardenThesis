@@ -1274,7 +1274,7 @@ MonoBehaviour:
   hightLightExtent: 0.2
   hightLightBreathInSpeed: 0.3
   hightLightBreathOutSpeed: 0.4
-  fungusAnimator: {fileID: 0}
+  fungusAnimator: {fileID: 3738483157071005120}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 6213727640098325240, guid: 2434c4d7316394795bae7c4bbb5996bc, type: 3}
   DieSpeed: 1

@@ -565,7 +565,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8509031443901051161, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0.00042689536
+      value: 0.00042693104
       objectReference: {fileID: 0}
     - target: {fileID: -8509031443901051161, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -629,7 +629,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5950650859257575463, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0.12792557
+      value: 0.12792452
       objectReference: {fileID: 0}
     - target: {fileID: -5950650859257575463, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -637,7 +637,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5905842151546411643, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0.0000035557373
+      value: 0.000003194087
       objectReference: {fileID: 0}
     - target: {fileID: -5905842151546411643, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -649,7 +649,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4627679712454081082, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0.0000034690133
+      value: 0.0000033618755
       objectReference: {fileID: 0}
     - target: {fileID: -4627679712454081082, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -685,11 +685,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -295132476609652011, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -89.99999
+      value: -90.00005
       objectReference: {fileID: 0}
     - target: {fileID: -295132476609652011, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0.8065632
+      value: 0.8065423
       objectReference: {fileID: 0}
     - target: {fileID: -295132476609652011, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -701,7 +701,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3781924582509596556, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.000010384548
+      value: -0.000010776635
       objectReference: {fileID: 0}
     - target: {fileID: 3781924582509596556, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -717,7 +717,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 7a38914d10c9c4eb7b094c61b20377a3, type: 2}
     - target: {fileID: 5455991248486979903, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0.0000035412845
+      value: 0.0000032564215
       objectReference: {fileID: 0}
     - target: {fileID: 5455991248486979903, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -757,7 +757,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6672592580491144823, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -0.0006734655
       objectReference: {fileID: 0}
     - target: {fileID: 6672592580491144823, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -769,7 +769,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6949267668826249373, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -0.0006734655
       objectReference: {fileID: 0}
     - target: {fileID: 6949267668826249373, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -801,7 +801,7 @@ MonoBehaviour:
   fungusRenderer: {fileID: 1925734084410877338}
   changeSpeed: 1
   glowExtentMax: 1
-  witheredSpeed: 10
+  witheredSpeed: 3.5
   witheredExtent: 1
   explodeSpeed: 0.2
   explodeExtent: 1.2
@@ -823,8 +823,8 @@ MonoBehaviour:
   growTime: 8
   canGlow: 1
   glowColor: {r: 1.0592737, g: 0.4120624, b: 0.14974023, a: 0}
-  dimColor: {r: 0.52963686, g: 0.20797259, b: 0.07487013, a: 0}
-  glowSpeed: 1.74
+  dimColor: {r: 0.37435067, g: 0.14696729, b: 0.05268639, a: 0}
+  glowSpeed: 1.6
   dimSpeed: 0.5
   BigParent: {fileID: 0}
 --- !u!137 &1440442423578712023 stripped
@@ -890,6 +890,8 @@ MonoBehaviour:
   bloom: {fileID: 8300000, guid: d0f4ebf73f52f4675a8e57759dffed89, type: 3}
   breath: {fileID: 8300000, guid: f41457e00b1144b6e8b880fd80e55275, type: 3}
   withered: {fileID: 8300000, guid: c1b608ac70c2d4c25b6c3ddedee58c37, type: 3}
+  emitParticle: {fileID: 7182645755328016063, guid: 1f5c707c3dd8a49f38c188e59f0963f4, type: 3}
+  emitPosition: {fileID: 8220185618946086841}
 --- !u!4 &4065981097826869289 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
@@ -915,7 +917,7 @@ MonoBehaviour:
   fungusRenderer: {fileID: 1440442423578712023}
   changeSpeed: 1
   glowExtentMax: 1
-  witheredSpeed: 10
+  witheredSpeed: 3.5
   witheredExtent: 1
   explodeSpeed: 0.2
   explodeExtent: 1.2
@@ -937,8 +939,8 @@ MonoBehaviour:
   growTime: 8
   canGlow: 1
   glowColor: {r: 1.4980392, g: 0.53528976, b: 0.25098035, a: 0}
-  dimColor: {r: 0.65205944, g: 0.23556076, b: 0.10924557, a: 0}
-  glowSpeed: 1.74
+  dimColor: {r: 0.46031266, g: 0.16637807, b: 0.0776431, a: 0}
+  glowSpeed: 1.6
   dimSpeed: 0.5
   BigParent: {fileID: 0}
 --- !u!137 &6275606972630279862 stripped
@@ -966,7 +968,7 @@ MonoBehaviour:
   fungusRenderer: {fileID: 6275606972630279862}
   changeSpeed: 1
   glowExtentMax: 1
-  witheredSpeed: 10
+  witheredSpeed: 3.5
   witheredExtent: 1
   explodeSpeed: 0.2
   explodeExtent: 1.2
@@ -1012,7 +1014,7 @@ MonoBehaviour:
   fungusRenderer: {fileID: 2683487411727846074}
   changeSpeed: 1
   glowExtentMax: 1
-  witheredSpeed: 10
+  witheredSpeed: 3.5
   witheredExtent: 1
   explodeSpeed: 0.2
   explodeExtent: 1.2
@@ -1034,8 +1036,8 @@ MonoBehaviour:
   growTime: 5
   canGlow: 1
   glowColor: {r: 4.237095, g: 2.1296391, b: 0.22183743, a: 0}
-  dimColor: {r: 0.32432276, g: 0.16386835, b: 0.01706962, a: 0}
-  glowSpeed: 1.74
+  dimColor: {r: 0.23015633, g: 0.116464645, b: 0.011091871, a: 0}
+  glowSpeed: 1.6
   dimSpeed: 0.5
   BigParent: {fileID: 0}
 --- !u!1 &7785364986081160989 stripped
@@ -1058,7 +1060,7 @@ MonoBehaviour:
   fungusRenderer: {fileID: 8753114827337647582}
   changeSpeed: 1
   glowExtentMax: 1
-  witheredSpeed: 10
+  witheredSpeed: 3.5
   witheredExtent: 1
   explodeSpeed: 0.2
   explodeExtent: 1.2
@@ -1080,8 +1082,8 @@ MonoBehaviour:
   growTime: 8
   canGlow: 1
   glowColor: {r: 1.4980392, g: 0.7529412, b: 0.078431375, a: 0}
-  dimColor: {r: 0.7490196, g: 0.3764706, b: 0.039215688, a: 0}
-  glowSpeed: 1.74
+  dimColor: {r: 0.52963686, g: 0.2662049, b: 0.027729679, a: 0}
+  glowSpeed: 1.6
   dimSpeed: 0.5
   BigParent: {fileID: 0}
 --- !u!4 &8220185618946086841 stripped

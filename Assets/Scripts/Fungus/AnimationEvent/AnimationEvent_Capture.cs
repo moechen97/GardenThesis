@@ -10,6 +10,8 @@ public class AnimationEvent_Capture : MonoBehaviour
     [SerializeField] private AudioClip bloom;
     [SerializeField] private AudioClip breath;
     [SerializeField] private AudioClip withered;
+    [SerializeField] private GameObject emitParticle;
+    [SerializeField] private Transform emitPosition;
 
     public void Grow()
     {
@@ -35,5 +37,20 @@ public class AnimationEvent_Capture : MonoBehaviour
     public void Die()
     {
         MaterialChange.Die();
+    }
+
+    public void Glow()
+    {
+        MaterialChange.Glow();
+    }
+
+    public void Dim()
+    {
+        MaterialChange.Dim();
+    }
+
+    public void EmitParticle()
+    {
+        Instantiate(emitParticle, emitPosition.position, emitPosition.rotation,emitPosition);
     }
 }

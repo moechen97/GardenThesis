@@ -17,7 +17,7 @@ namespace Planting
         {
             id = PlantType.Plant_Spike;
             base.Start();
-            finishGrowAnimationName = "Spike_Tem_FullyGrow";
+            finishGrowAnimationName = "Spike_Breath";
             transform.parent = PlantManager.SpikeTransform;
             nextGeneration = generation + 1;
             
@@ -49,7 +49,7 @@ namespace Planting
         protected override void Update()
         {
             base.Update();
-            if(animator.GetCurrentAnimatorStateInfo(0).IsName("Spike_Tem_Grow"))
+            if(animator.GetCurrentAnimatorStateInfo(0).IsName("Spike_Growth"))
             {
                 CheckForSpikeDestroy();
             }
