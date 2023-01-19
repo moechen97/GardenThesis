@@ -875,10 +875,10 @@ MonoBehaviour:
   id: 0
   isGrown: 0
   plantPrefab: {fileID: 3738483157145793606}
-  breedingSpeed: 1
+  breedingSpeed: 0.2
   growthSpeed_minRange: 0.8
   growthSpeed_maxRange: 1
-  aliveTime: 9
+  aliveTime: 4
   isBreeding: 0
   growthRadius: 2.2
   height_minRange: 0.8

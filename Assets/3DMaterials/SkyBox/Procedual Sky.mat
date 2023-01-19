@@ -140,7 +140,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BottomColor: {r: 0.3882353, g: 0.2117647, b: 0.5019608, a: 1}
-    - _Bottom_Color: {r: 0.098039225, g: 0.52156866, b: 0.8000001, a: 1}
+    - _Bottom_Color: {r: 0.094562106, g: 0.5206115, b: 0.8018868, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HorizonColor: {r: 0.9137255, g: 0.8509804, b: 0.7215686, a: 0}
@@ -150,5 +150,5 @@ Material:
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _StarColor: {r: 14.754423, g: 9.501539, b: 0.84973115, a: 1}
     - _TopColor: {r: 0.22516908, g: 0.36870036, b: 0.41509432, a: 1}
-    - _Top_Color: {r: 0.07058823, g: 0.11372549, b: 0.23529412, a: 1}
+    - _Top_Color: {r: 0.07058824, g: 0.1137255, b: 0.23529413, a: 1}
   m_BuildTextureStacks: []

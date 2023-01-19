@@ -8,7 +8,7 @@ using UnityEngine;
 public class Fungus_MaterialChange : MonoBehaviour
 {
     [SerializeField] private Renderer fungusRenderer;
-    [SerializeField] private float changeSpeed = 1f;
+    [SerializeField] private float changeSpeed = 2f;
     [SerializeField] private float glowExtentMax;
     [SerializeField] private float witheredSpeed;
     [SerializeField] private float witheredExtent;
@@ -136,8 +136,14 @@ public class Fungus_MaterialChange : MonoBehaviour
             fungusRenderer.SetPropertyBlock(_propertyBlock);
         });
         
+        float deformSpeed = _propertyBlock.GetFloat("_WaveSpeed");
+        DOVirtual.Float(deformSpeed, Mathf.Clamp(deformSpeed-0.2f,0f,1f), witheredSpeed, (float value) => {
+            _propertyBlock.SetFloat("_WaveSpeed", value);
+            fungusRenderer.SetPropertyBlock(_propertyBlock);
+        });
+        
         float currentDeformExtent = _propertyBlock.GetFloat("_HeightMask");
-        DOVirtual.Float(currentDeformExtent, 0.01f, witheredSpeed, (float value) => {
+        DOVirtual.Float(currentDeformExtent, 0.02f, witheredSpeed, (float value) => {
             _propertyBlock.SetFloat("_HeightMask", value);
             fungusRenderer.SetPropertyBlock(_propertyBlock);
         });

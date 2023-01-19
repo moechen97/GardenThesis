@@ -8,6 +8,8 @@ public class AnimationEvent_Drum : MonoBehaviour
     [SerializeField] private AudioSource drum_audiosource;
     [SerializeField] private AudioClip bloom;
     [SerializeField] private AudioClip breath;
+    [SerializeField] private GameObject emitParticle;
+    [SerializeField] private Transform emitPosition;
 
     public void Bloom()
     {
@@ -34,5 +36,26 @@ public class AnimationEvent_Drum : MonoBehaviour
         {
             material.Die();
         }
+    }
+
+    public void Glow()
+    {
+        foreach (var material in materials)
+        {
+            material.Glow();
+        }
+    }
+    
+    public void Dim()
+    {
+        foreach (var material in materials)
+        {
+            material.Dim();
+        }
+    }
+
+    public void Emit()
+    {
+        Instantiate(emitParticle, emitPosition.position, Quaternion.identity);
     }
 }
