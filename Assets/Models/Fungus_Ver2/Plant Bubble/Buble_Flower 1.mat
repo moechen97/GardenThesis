@@ -109,7 +109,7 @@ Material:
     - _GlossyReflections: 0
     - _GlowExtent: 0
     - _GradientHeightTheshold: -0.64
-    - _GradientSmoothness: 3.03
+    - _GradientSmoothness: 0.001
     - _GradientSmoothnessTheshold: 3.13
     - _HASRIM: 0
     - _HASSPECULAR: 0
