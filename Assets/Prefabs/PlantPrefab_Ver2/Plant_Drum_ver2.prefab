@@ -910,6 +910,7 @@ MonoBehaviour:
   initialColor: {r: 0, g: 0, b: 0, a: 0}
   matureColor: {r: 0, g: 0, b: 0, a: 0}
   growTime: 0
+  growWaitingTime: 0
   canGlow: 1
   glowColor: {r: 1.0159727, g: 0.41693226, b: 0.6950583, a: 0}
   dimColor: {r: 0.3745098, g: 0.15490197, b: 0.25686276, a: 0}
@@ -966,6 +967,7 @@ MonoBehaviour:
   initialColor: {r: 0.76884943, g: 0.73700607, b: 0.9245283, a: 1}
   matureColor: {r: 0.41960785, g: 0.34901962, b: 0.54901963, a: 1}
   growTime: 8
+  growWaitingTime: 0
   canGlow: 1
   glowColor: {r: 0.40426707, g: 0.65444875, b: 1.4049939, a: 0}
   dimColor: {r: 0.21568628, g: 0.34901962, b: 0.7490196, a: 0}
@@ -1012,6 +1014,7 @@ MonoBehaviour:
   initialColor: {r: 0.76884943, g: 0.73700607, b: 0.9245283, a: 1}
   matureColor: {r: 0.41960785, g: 0.34901962, b: 0.54901963, a: 1}
   growTime: 8
+  growWaitingTime: 0
   canGlow: 1
   glowColor: {r: 0.40426707, g: 0.65444875, b: 1.4049939, a: 0}
   dimColor: {r: 0.21568628, g: 0.34901962, b: 0.7490196, a: 0}
@@ -1068,6 +1071,7 @@ MonoBehaviour:
   initialColor: {r: 0.76884943, g: 0.73700607, b: 0.9245283, a: 1}
   matureColor: {r: 0.41960785, g: 0.34901962, b: 0.54901963, a: 1}
   growTime: 8
+  growWaitingTime: 0
   canGlow: 1
   glowColor: {r: 0.40426707, g: 0.65444875, b: 1.4049939, a: 0}
   dimColor: {r: 0.21568628, g: 0.34901962, b: 0.7490196, a: 0}
@@ -1174,6 +1178,7 @@ MonoBehaviour:
   initialColor: {r: 0.76884943, g: 0.73700607, b: 0.9245283, a: 1}
   matureColor: {r: 0.41960785, g: 0.34901962, b: 0.54901963, a: 1}
   growTime: 8
+  growWaitingTime: 0
   canGlow: 1
   glowColor: {r: 0.40426707, g: 0.65444875, b: 1.4049939, a: 0}
   dimColor: {r: 0.21568628, g: 0.34901962, b: 0.7490196, a: 0}
@@ -1220,6 +1225,7 @@ MonoBehaviour:
   initialColor: {r: 0.76884943, g: 0.73700607, b: 0.9245283, a: 1}
   matureColor: {r: 0.41960785, g: 0.34901962, b: 0.54901963, a: 1}
   growTime: 8
+  growWaitingTime: 0
   canGlow: 1
   glowColor: {r: 0.40426707, g: 0.65444875, b: 1.4049939, a: 0}
   dimColor: {r: 0.21568628, g: 0.34901962, b: 0.7490196, a: 0}
@@ -1266,6 +1272,7 @@ MonoBehaviour:
   initialColor: {r: 0.76884943, g: 0.73700607, b: 0.9245283, a: 1}
   matureColor: {r: 0.41960785, g: 0.34901962, b: 0.54901963, a: 1}
   growTime: 8
+  growWaitingTime: 0
   canGlow: 1
   glowColor: {r: 0.40426707, g: 0.65444875, b: 1.4049939, a: 0}
   dimColor: {r: 0.21568628, g: 0.34901962, b: 0.7490196, a: 0}
@@ -1317,6 +1324,7 @@ MonoBehaviour:
   initialColor: {r: 0.76884943, g: 0.73700607, b: 0.9245283, a: 1}
   matureColor: {r: 0.41960785, g: 0.34901962, b: 0.54901963, a: 1}
   growTime: 8
+  growWaitingTime: 0
   canGlow: 1
   glowColor: {r: 0.40426707, g: 0.65444875, b: 1.4049939, a: 0}
   dimColor: {r: 0.21568628, g: 0.34901962, b: 0.7490196, a: 0}
@@ -1368,6 +1376,7 @@ MonoBehaviour:
   initialColor: {r: 0, g: 0, b: 0, a: 0}
   matureColor: {r: 0, g: 0, b: 0, a: 0}
   growTime: 0
+  growWaitingTime: 0
   canGlow: 1
   glowColor: {r: 1.9766747, g: 0.81650317, b: 0.16558528, a: 0}
   dimColor: {r: 0.7490196, g: 0.30980393, b: 0.0627451, a: 0}
@@ -1414,6 +1423,7 @@ MonoBehaviour:
   initialColor: {r: 0.76884943, g: 0.73700607, b: 0.9245283, a: 1}
   matureColor: {r: 0.41960785, g: 0.34901962, b: 0.54901963, a: 1}
   growTime: 8
+  growWaitingTime: 0
   canGlow: 1
   glowColor: {r: 0.40426707, g: 0.65444875, b: 1.4049939, a: 0}
   dimColor: {r: 0.21568628, g: 0.34901962, b: 0.7490196, a: 0}
@@ -1460,6 +1470,7 @@ MonoBehaviour:
   initialColor: {r: 0.76884943, g: 0.73700607, b: 0.9245283, a: 1}
   matureColor: {r: 0.41960785, g: 0.34901962, b: 0.54901963, a: 1}
   growTime: 8
+  growWaitingTime: 0
   canGlow: 1
   glowColor: {r: 0.40426707, g: 0.65444875, b: 1.4049939, a: 0}
   dimColor: {r: 0.21568628, g: 0.34901962, b: 0.7490196, a: 0}
@@ -1531,6 +1542,7 @@ MonoBehaviour:
   initialColor: {r: 0.76884943, g: 0.73700607, b: 0.9245283, a: 1}
   matureColor: {r: 0.41960785, g: 0.34901962, b: 0.54901963, a: 1}
   growTime: 8
+  growWaitingTime: 0
   canGlow: 1
   glowColor: {r: 0.40426707, g: 0.65444875, b: 1.4049939, a: 0}
   dimColor: {r: 0.21568628, g: 0.34901962, b: 0.7490196, a: 0}

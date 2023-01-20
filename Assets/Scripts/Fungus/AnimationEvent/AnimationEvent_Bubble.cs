@@ -11,6 +11,8 @@ public class AnimationEvent_Bubble : MonoBehaviour
     [SerializeField] private AudioSource Bubble_AudioSource;
 
     [SerializeField] private AudioClip[] bloomAudios;
+    [SerializeField] private GameObject dieParticle;
+    [SerializeField] private Transform dieParticlePosition;
 
     public void Bloom()
     {
@@ -54,5 +56,10 @@ public class AnimationEvent_Bubble : MonoBehaviour
         {
             material.Glow();
         }
+    }
+
+    public void EmitDieParticle()
+    {
+        Instantiate(dieParticle, dieParticlePosition.position, Quaternion.identity);
     }
 }

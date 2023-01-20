@@ -27,4 +27,20 @@ public class AnimationEvent_Lotus : MonoBehaviour
             material.Die();
         }
     }
+    
+    public void Glow()
+    {
+        foreach (var material in materials)
+        {
+            material.BreathOut();
+        }
+    }
+    
+    public void Dim()
+    {
+        foreach (var material in materials)
+        {
+            material.BreathIn();
+        }
+    }
 }

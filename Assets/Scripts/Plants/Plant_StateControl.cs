@@ -16,6 +16,11 @@ public class Plant_StateControl : MonoBehaviour
         fungusAnimator.SetBool("isWithered",true);
     }
 
+    public void Interact()
+    {
+        
+    }
+
     public void BeingKilled()
     {
         iskilled = true;

@@ -474,7 +474,8 @@ namespace Planting
             {
                 RaycastHit hit;
                 Ray ray = cameraMain.ScreenPointToRay(screenCoordinates);
-                int layer_mask = LayerMask.GetMask("Plant");
+                //Touch Plant
+                int layer_mask = LayerMask.GetMask("PlantTouch");
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, layer_mask))
                 {
                     touchPlantDrag = true;
