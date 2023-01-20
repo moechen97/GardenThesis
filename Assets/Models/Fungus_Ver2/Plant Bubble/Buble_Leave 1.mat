@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8835126133908223971
+--- !u!114 &-8805659981505514030
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,10 +20,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Thick_Petal_Out 1
+  m_Name: Buble_Leave 1
   m_Shader: {fileID: -6465566751694194690, guid: 5c50c883e3871439d853e6c837ed04d0, type: 3}
   m_ValidKeywords:
-  - _HASSPECULAR
   - _HAVEVERTEXPOSITIONADJUSTMENG
   m_InvalidKeywords:
   - _ALPHATEST_ON
@@ -109,24 +108,24 @@ Material:
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
-    - _DeformExtent: 0.065
+    - _DeformExtent: 0.01
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DissolveEdgeThickness: 0.5
+    - _DissolveEdgeThickness: 0.52
     - _DissolveExtent: -1
-    - _DissolveNoiseScale: 10
+    - _DissolveNoiseScale: 4
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
-    - _Glossness: -36.7
+    - _Glossness: 36.3
     - _GlossyReflections: 0
     - _GlowExtent: 0
-    - _GradientHeightTheshold: 0.12
-    - _GradientSmoothness: 1.8
-    - _GradientSmoothnessTheshold: 3.91
+    - _GradientHeightTheshold: 0.44
+    - _GradientSmoothness: 1.1
+    - _GradientSmoothnessTheshold: 3.13
     - _HASRIM: 0
-    - _HASSPECULAR: 1
+    - _HASSPECULAR: 0
     - _HAVEVERTEXPOSITIONADJUSTMENG: 1
     - _HeightMask: 1.67
     - _HeightWaveFrequency: 1
@@ -138,8 +137,8 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _RimAmount: 0.88
-    - _RimTheshold: 0
+    - _RimAmount: 0.49
+    - _RimTheshold: 1
     - _ShadowEdgeSmoothness: 1
     - _ShadowSmooth: 0.001
     - _Smoothness: 0.5
@@ -148,7 +147,7 @@ Material:
     - _SrcBlend: 1
     - _StartPosition: 0.15
     - _Surface: 0
-    - _WaveSpeed: 1.3
+    - _WaveSpeed: 2
     - _WitheredExtent: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
@@ -156,16 +155,16 @@ Material:
     - _AmbientColor: {r: 0.3773585, g: 0.20113918, b: 0.21841566, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DarkColor: {r: 0.071646914, g: 0.07035422, b: 0.16037738, a: 0}
-    - _DissolveEdgeColor: {r: 0.627451, g: 0.72156864, b: 5.992157, a: 0}
+    - _DarkColor: {r: 0.05808899, g: 0.048860796, b: 0.16981131, a: 0}
+    - _DissolveEdgeColor: {r: 0.1315681, g: 0.4556323, b: 5.5784883, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GlowColor: {r: 0.40426707, g: 0.65444875, b: 1.4049939, a: 0}
-    - _GradientBottomColor: {r: 0.77914476, g: 0.63318795, b: 0.8773585, a: 1}
+    - _GlowColor: {r: 0.23244753, g: 0.32108262, b: 0.92979014, a: 0}
+    - _GradientBottomColor: {r: 0.43137258, g: 0.37647063, b: 0.54509807, a: 1}
     - _HighlightColor: {r: 1, g: 0.4575472, b: 0.6092391, a: 0}
-    - _MainColor: {r: 0.41776013, g: 0.34843358, b: 0.5471698, a: 1}
-    - _RimColor: {r: 0.3813261, g: 0.27467737, b: 0.50888145, a: 1}
-    - _ShadowColor: {r: 0.7075472, g: 0.51063544, b: 0.55192345, a: 0}
+    - _MainColor: {r: 0.46057314, g: 0.8490566, b: 0.83055735, a: 1}
+    - _RimColor: {r: 0.9339623, g: 0.4273318, b: 0.4273318, a: 0}
+    - _ShadowColor: {r: 0.507913, g: 0.4295123, b: 0.7169812, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-    - _Specular_Color: {r: 0.4828091, g: 0.4269758, b: 0.9528302, a: 0}
-    - _WitheredColor: {r: 0.22071913, g: 0.26225126, b: 0.3018868, a: 0}
+    - _Specular_Color: {r: 1, g: 0.7028302, b: 0.78949744, a: 0}
+    - _WitheredColor: {r: 0.15081479, g: 0.0244749, b: 0.20754719, a: 0}
   m_BuildTextureStacks: []

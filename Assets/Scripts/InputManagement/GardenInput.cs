@@ -568,7 +568,7 @@ namespace Planting
                 {
                     //GameObject newPlant = GameObject.Instantiate(seeds[currSeed]);
                     //newPlant.transform.position = hit.point;
-                    StartCoroutine(PlantSeed(hit.point));
+                    StartCoroutine(PlantSeed(hit.point,seeds[currSeed]));
                     success = true;
                 }
             }
@@ -576,11 +576,11 @@ namespace Planting
             return success;
         }
 
-        IEnumerator PlantSeed(Vector3 instantiateP)
+        IEnumerator PlantSeed(Vector3 instantiateP,GameObject seed)
         {
             Instantiate(PrepareSeed, instantiateP, Quaternion.identity);
             yield return new WaitForSeconds(2.5f);
-            GameObject newPlant = GameObject.Instantiate(seeds[currSeed]);
+            GameObject newPlant = GameObject.Instantiate(seed);
             newPlant.transform.position = instantiateP;
         }
         

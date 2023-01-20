@@ -39,4 +39,20 @@ public class AnimationEvent_Bubble : MonoBehaviour
             material.Die();
         }
     }
+    
+    public void Dim()
+    {
+        foreach (var material in _materials)
+        {
+            material.Dim();
+        }
+    }
+    
+    public void Glow()
+    {
+        foreach (var material in _materials)
+        {
+            material.Glow();
+        }
+    }
 }

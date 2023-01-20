@@ -1,0 +1,2058 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &204825766393873451
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 204825766393873450}
+  - component: {fileID: 204825766393873445}
+  - component: {fileID: 204825766393873444}
+  - component: {fileID: 5296102840759131666}
+  m_Layer: 0
+  m_Name: Plant_Bubble_Ver2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &204825766393873450
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204825766393873451}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.95, y: 0, z: 2.49}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 386489944030583985}
+  - {fileID: 204825768102560732}
+  - {fileID: 204825767086275268}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &204825766393873445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204825766393873451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 687e1e6b240d7433b8837269e3e3fcd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fungusAnimator: {fileID: 204825766574783319}
+  MaterialControls:
+  - {fileID: 204825766574783353}
+  - {fileID: 204825766574783358}
+  - {fileID: 204825766574783359}
+  - {fileID: 204825766574783356}
+  - {fileID: 204825766574783357}
+  - {fileID: 204825767896933484}
+  - {fileID: 204825767377001536}
+  - {fileID: 204825766525505085}
+  - {fileID: 204825767642926107}
+  - {fileID: 204825766998879077}
+  - {fileID: 204825767294515343}
+  - {fileID: 204825766817027476}
+  - {fileID: 204825766514334439}
+  - {fileID: 204825767364461220}
+  - {fileID: 204825767084837953}
+  - {fileID: 204825768294651370}
+  - {fileID: 204825767151803927}
+  - {fileID: 204825768187007034}
+  - {fileID: 204825766554843833}
+  - {fileID: 204825767930293082}
+  - {fileID: 204825767805376873}
+--- !u!82 &204825766393873444
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204825766393873451}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &5296102840759131666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204825766393873451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aea5788c1a02401ab563ac5eb9b66e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  isGrown: 0
+  plantPrefab: {fileID: 204825766393873451}
+  breedingSpeed: 1
+  growthSpeed_minRange: 0.7
+  growthSpeed_maxRange: 1
+  aliveTime: 20
+  isBreeding: 0
+  growthRadius: 2.5
+  height_minRange: 0.9
+  height_maxRange: 1.3
+  XZScale: 1
+--- !u!1 &204825766494152492
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 204825766494152495}
+  - component: {fileID: 204825766494152494}
+  m_Layer: 12
+  m_Name: Touch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &204825766494152495
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204825766494152492}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 204825768416245992}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &204825766494152494
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204825766494152492}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &204825767086275269
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 204825767086275268}
+  - component: {fileID: 204825767086275265}
+  - component: {fileID: 204825767086275270}
+  - component: {fileID: 204825767086275271}
+  m_Layer: 9
+  m_Name: FakeShadow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &204825767086275268
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204825767086275269}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.012, z: 0}
+  m_LocalScale: {x: 0.19292295, y: 0.19292295, z: 0.19292295}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 204825766393873450}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &204825767086275265
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204825767086275269}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &204825767086275270
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204825767086275269}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: b019c45636d9b434586e2639f813c79e, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &204825767086275271
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204825767086275269}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &204825768102560733
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 204825768102560732}
+  - component: {fileID: 204825768102560729}
+  - component: {fileID: 204825768102560734}
+  - component: {fileID: 204825768102560735}
+  m_Layer: 9
+  m_Name: Plant_Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &204825768102560732
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204825768102560733}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 4.94, z: 0}
+  m_LocalScale: {x: 3.011875, y: 11.114128, z: 2.2440627}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 204825766393873450}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &204825768102560729
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204825768102560733}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &204825768102560734
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204825768102560733}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &204825768102560735
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204825768102560733}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &204825768416245993
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 204825768416245992}
+  m_Layer: 0
+  m_Name: TouchCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &204825768416245992
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204825768416245993}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.57049, y: 2.5409372, z: 0.57999}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 204825766494152495}
+  m_Father: {fileID: 386489944030583985}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &204825766574783322
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 204825766393873450}
+    m_Modifications:
+    - target: {fileID: -8695150952186316214, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.98021
+      objectReference: {fileID: 0}
+    - target: {fileID: -8695150952186316214, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0.0000029281018
+      objectReference: {fileID: 0}
+    - target: {fileID: -8695150952186316214, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5570898
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5570898
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5570898
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8615340678173246879, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3764c02c600994e498239bcc59bb6027, type: 2}
+    - target: {fileID: -8339370428465321009, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.98021
+      objectReference: {fileID: 0}
+    - target: {fileID: -8339370428465321009, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -179.99998
+      objectReference: {fileID: 0}
+    - target: {fileID: -8339370428465321009, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8242088472476785886, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3764c02c600994e498239bcc59bb6027, type: 2}
+    - target: {fileID: -8044493956722913883, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3764c02c600994e498239bcc59bb6027, type: 2}
+    - target: {fileID: -7642871525608588752, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3764c02c600994e498239bcc59bb6027, type: 2}
+    - target: {fileID: -5709728172167734608, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.99999
+      objectReference: {fileID: 0}
+    - target: {fileID: -5709728172167734608, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -120
+      objectReference: {fileID: 0}
+    - target: {fileID: -5709728172167734608, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5533988557539837134, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.99999
+      objectReference: {fileID: 0}
+    - target: {fileID: -5533988557539837134, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -120
+      objectReference: {fileID: 0}
+    - target: {fileID: -5533988557539837134, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5480709380780056853, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 19.522493
+      objectReference: {fileID: 0}
+    - target: {fileID: -5480709380780056853, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90.4244
+      objectReference: {fileID: 0}
+    - target: {fileID: -5480709380780056853, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0.14136627
+      objectReference: {fileID: 0}
+    - target: {fileID: -4737636124533381000, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 91a7024dd47524d12a5f87131c49f315, type: 2}
+    - target: {fileID: -4586847708518752880, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.99999
+      objectReference: {fileID: 0}
+    - target: {fileID: -4586847708518752880, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 60.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: -4586847708518752880, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3934347904718129350, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.99999
+      objectReference: {fileID: 0}
+    - target: {fileID: -3934347904718129350, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 60.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: -3934347904718129350, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3154953943842240526, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3764c02c600994e498239bcc59bb6027, type: 2}
+    - target: {fileID: -1981042361263986513, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.99999
+      objectReference: {fileID: 0}
+    - target: {fileID: -1981042361263986513, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -60.000004
+      objectReference: {fileID: 0}
+    - target: {fileID: -1981042361263986513, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1976756077053802302, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.98021
+      objectReference: {fileID: 0}
+    - target: {fileID: -1976756077053802302, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -179.99998
+      objectReference: {fileID: 0}
+    - target: {fileID: -1976756077053802302, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1374422983620111633, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -0.000013660376
+      objectReference: {fileID: 0}
+    - target: {fileID: -1213362349977447017, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3764c02c600994e498239bcc59bb6027, type: 2}
+    - target: {fileID: -1197206359340865002, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.99999
+      objectReference: {fileID: 0}
+    - target: {fileID: -1197206359340865002, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -120
+      objectReference: {fileID: 0}
+    - target: {fileID: -1197206359340865002, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -651801557076011248, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3764c02c600994e498239bcc59bb6027, type: 2}
+    - target: {fileID: -96603197912106976, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3764c02c600994e498239bcc59bb6027, type: 2}
+    - target: {fileID: 303887043444414826, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 89.98021
+      objectReference: {fileID: 0}
+    - target: {fileID: 363036743350648084, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.98021
+      objectReference: {fileID: 0}
+    - target: {fileID: 363036743350648084, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0.000016586746
+      objectReference: {fileID: 0}
+    - target: {fileID: 363036743350648084, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 411381960815311495, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -1.6284439e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 673502922769435057, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3764c02c600994e498239bcc59bb6027, type: 2}
+    - target: {fileID: 919132149155446097, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_Name
+      value: Plant_Bubble_ver5
+      objectReference: {fileID: 0}
+    - target: {fileID: 933135507050954639, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3764c02c600994e498239bcc59bb6027, type: 2}
+    - target: {fileID: 1219151600568441716, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.99999
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219151600568441716, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219151600568441716, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1224236408111554930, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3764c02c600994e498239bcc59bb6027, type: 2}
+    - target: {fileID: 1445787850039921616, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.99999
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445787850039921616, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0.0000029181597
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445787850039921616, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1714680515038649169, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3764c02c600994e498239bcc59bb6027, type: 2}
+    - target: {fileID: 1911568222304972305, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 28.490593
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911568222304972305, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90.22749
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911568222304972305, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -0.10901536
+      objectReference: {fileID: 0}
+    - target: {fileID: 2561280225053273900, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.99999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2561280225053273900, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 59.999985
+      objectReference: {fileID: 0}
+    - target: {fileID: 2561280225053273900, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220444169407042858, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -0.08434698
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220444169407042858, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -0.00012701003
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220444169407042858, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0.0003402889
+      objectReference: {fileID: 0}
+    - target: {fileID: 3324601400846300177, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.98021
+      objectReference: {fileID: 0}
+    - target: {fileID: 3324601400846300177, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 119.999985
+      objectReference: {fileID: 0}
+    - target: {fileID: 3324601400846300177, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139672212797613459, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.99999
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139672212797613459, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 119.999985
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139672212797613459, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180721324268081834, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.99999
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180721324268081834, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -120
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180721324268081834, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4574085077149887257, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3764c02c600994e498239bcc59bb6027, type: 2}
+    - target: {fileID: 5023964754662836841, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c2f9c56d2f9844e9681c798a302b1c01, type: 2}
+    - target: {fileID: 5476411375634758126, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3764c02c600994e498239bcc59bb6027, type: 2}
+    - target: {fileID: 6084231709461678797, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.99999
+      objectReference: {fileID: 0}
+    - target: {fileID: 6084231709461678797, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -59.999985
+      objectReference: {fileID: 0}
+    - target: {fileID: 6084231709461678797, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6632708001725355831, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.99999
+      objectReference: {fileID: 0}
+    - target: {fileID: 6632708001725355831, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 119.999985
+      objectReference: {fileID: 0}
+    - target: {fileID: 6632708001725355831, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7628685801591653175, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3764c02c600994e498239bcc59bb6027, type: 2}
+    - target: {fileID: 8471935288139978965, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3764c02c600994e498239bcc59bb6027, type: 2}
+    - target: {fileID: 8644873015654382109, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3764c02c600994e498239bcc59bb6027, type: 2}
+    - target: {fileID: 8729336827596571615, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0.15529498
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729336827596571615, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -0.000127802
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729336827596571615, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0.0010697113
+      objectReference: {fileID: 0}
+    - target: {fileID: 8739105348659943414, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3764c02c600994e498239bcc59bb6027, type: 2}
+    - target: {fileID: 8739627885488010164, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 91a7024dd47524d12a5f87131c49f315, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+--- !u!1 &57373373065057405 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 152131952580931367, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &204825767642926107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57373373065057405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda1a4de7f85542a2b8623cadf8055cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fungusRenderer: {fileID: 833003908041634539}
+  changeSpeed: 1
+  glowExtentMax: 1
+  witheredSpeed: 1
+  witheredExtent: 0.8
+  explodeSpeed: 0.2
+  explodeExtent: 1.3
+  hightLightExtent: 0
+  hightLightBreathInSpeed: 0
+  hightLightBreathOutSpeed: 0
+  fungusAnimator: {fileID: 0}
+  explodeParticle: {fileID: 0}
+  DieParticle: {fileID: 0}
+  DieSpeed: 2
+  particleGeneratePosition: {fileID: 0}
+  Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 18
+  shadowRenderer: {fileID: 0}
+  canChangeInitialColor: 1
+  initialColor: {r: 0.45882353, g: 0.8627451, b: 0.9254902, a: 1}
+  matureColor: {r: 0.45882353, g: 0.62352943, b: 1, a: 1}
+  growTime: 5
+  growWaitingTime: 9
+  canGlow: 1
+  glowColor: {r: 0.057335466, g: 0.9619617, b: 1.216786, a: 0}
+  dimColor: {r: 0.02495671, g: 0.41871813, b: 0.52963686, a: 0}
+  glowSpeed: 1
+  dimSpeed: 1
+  BigParent: {fileID: 0}
+--- !u!4 &386489944030583985 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &532034184658485725 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 411381960815311495, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &631022419595928891 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 726900876938829409, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &204825767084837953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631022419595928891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda1a4de7f85542a2b8623cadf8055cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fungusRenderer: {fileID: 1673297424076996970}
+  changeSpeed: 1
+  glowExtentMax: 1
+  witheredSpeed: 1
+  witheredExtent: 0.8
+  explodeSpeed: 0.2
+  explodeExtent: 1.3
+  hightLightExtent: 0
+  hightLightBreathInSpeed: 0
+  hightLightBreathOutSpeed: 0
+  fungusAnimator: {fileID: 0}
+  explodeParticle: {fileID: 0}
+  DieParticle: {fileID: 0}
+  DieSpeed: 2
+  particleGeneratePosition: {fileID: 0}
+  Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 18
+  shadowRenderer: {fileID: 0}
+  canChangeInitialColor: 1
+  initialColor: {r: 0.45882353, g: 0.8627451, b: 0.9254902, a: 1}
+  matureColor: {r: 0.45882353, g: 0.62352943, b: 1, a: 1}
+  growTime: 5
+  growWaitingTime: 9
+  canGlow: 1
+  glowColor: {r: 0.057335466, g: 0.9619617, b: 1.216786, a: 0}
+  dimColor: {r: 0.02495671, g: 0.41871813, b: 0.52963686, a: 0}
+  glowSpeed: 1
+  dimSpeed: 1
+  BigParent: {fileID: 0}
+--- !u!137 &767730418719637819 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -8615340678173246879, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &833003908041634539 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 673502922769435057, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &912055586107476989 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8178560793779785561, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &204825767364461220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912055586107476989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda1a4de7f85542a2b8623cadf8055cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fungusRenderer: {fileID: 8903658177512271020}
+  changeSpeed: 1
+  glowExtentMax: 1
+  witheredSpeed: 1
+  witheredExtent: 0.8
+  explodeSpeed: 0.2
+  explodeExtent: 1.3
+  hightLightExtent: 0
+  hightLightBreathInSpeed: 0
+  hightLightBreathOutSpeed: 0
+  fungusAnimator: {fileID: 0}
+  explodeParticle: {fileID: 0}
+  DieParticle: {fileID: 0}
+  DieSpeed: 2
+  particleGeneratePosition: {fileID: 0}
+  Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 18
+  shadowRenderer: {fileID: 0}
+  canChangeInitialColor: 1
+  initialColor: {r: 0.45882353, g: 0.8627451, b: 0.9254902, a: 1}
+  matureColor: {r: 0.45882353, g: 0.62352943, b: 1, a: 1}
+  growTime: 5
+  growWaitingTime: 9
+  canGlow: 1
+  glowColor: {r: 0.057335466, g: 0.9619617, b: 1.216786, a: 0}
+  dimColor: {r: 0.02495671, g: 0.41871813, b: 0.52963686, a: 0}
+  glowSpeed: 1
+  dimSpeed: 1
+  BigParent: {fileID: 0}
+--- !u!1 &1015216619468899851 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &204825766574783319
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015216619468899851}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: befc047d54e144f848173a5bf718ec42, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &204825767455086704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015216619468899851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b139caf84b9f84f01805137758b80fac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _materials:
+  - {fileID: 204825766574783353}
+  - {fileID: 204825766574783358}
+  - {fileID: 204825766574783359}
+  - {fileID: 204825766574783356}
+  - {fileID: 204825766574783357}
+  - {fileID: 204825767896933484}
+  - {fileID: 204825767377001536}
+  - {fileID: 204825766525505085}
+  - {fileID: 204825767642926107}
+  - {fileID: 204825766998879077}
+  - {fileID: 204825767294515343}
+  - {fileID: 204825766817027476}
+  - {fileID: 204825766514334439}
+  - {fileID: 204825767364461220}
+  - {fileID: 204825767084837953}
+  - {fileID: 204825768294651370}
+  - {fileID: 204825767151803927}
+  - {fileID: 204825768187007034}
+  - {fileID: 204825766554843833}
+  - {fileID: 204825767930293082}
+  - {fileID: 204825767805376873}
+  Bubble_AudioSource: {fileID: 204825766393873444}
+  bloomAudios: []
+--- !u!137 &1019087023662302421 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 933135507050954639, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1019934901325786769 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 932287525433808331, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &204825766554843833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019934901325786769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda1a4de7f85542a2b8623cadf8055cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fungusRenderer: {fileID: 8907779982295894254}
+  changeSpeed: 1
+  glowExtentMax: 1
+  witheredSpeed: 1
+  witheredExtent: 0.8
+  explodeSpeed: 0.2
+  explodeExtent: 1.3
+  hightLightExtent: 0
+  hightLightBreathInSpeed: 0
+  hightLightBreathOutSpeed: 0
+  fungusAnimator: {fileID: 0}
+  explodeParticle: {fileID: 0}
+  DieParticle: {fileID: 0}
+  DieSpeed: 2
+  particleGeneratePosition: {fileID: 0}
+  Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 18
+  shadowRenderer: {fileID: 0}
+  canChangeInitialColor: 0
+  initialColor: {r: 0, g: 0, b: 0, a: 0}
+  matureColor: {r: 0, g: 0, b: 0, a: 0}
+  growTime: 0
+  growWaitingTime: 0
+  canGlow: 0
+  glowColor: {r: 0, g: 0, b: 0, a: 0}
+  dimColor: {r: 0, g: 0, b: 0, a: 0}
+  glowSpeed: 0
+  dimSpeed: 0
+  BigParent: {fileID: 0}
+--- !u!137 &1101578438904682616 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -8242088472476785886, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1239171888655339291 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1433767249272566849, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &204825766574783359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239171888655339291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda1a4de7f85542a2b8623cadf8055cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fungusRenderer: {fileID: 5681203873375011508}
+  changeSpeed: 1
+  glowExtentMax: 1
+  witheredSpeed: 1
+  witheredExtent: 0.8
+  explodeSpeed: 0.2
+  explodeExtent: 1.3
+  hightLightExtent: 0
+  hightLightBreathInSpeed: 0
+  hightLightBreathOutSpeed: 0
+  fungusAnimator: {fileID: 0}
+  explodeParticle: {fileID: 0}
+  DieParticle: {fileID: 0}
+  DieSpeed: 2
+  particleGeneratePosition: {fileID: 0}
+  Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 18
+  shadowRenderer: {fileID: 0}
+  canChangeInitialColor: 1
+  initialColor: {r: 0.45882353, g: 0.8627451, b: 0.9254902, a: 1}
+  matureColor: {r: 0.45882353, g: 0.62352943, b: 1, a: 1}
+  growTime: 5
+  growWaitingTime: 9
+  canGlow: 1
+  glowColor: {r: 0.057335466, g: 0.9619617, b: 1.216786, a: 0}
+  dimColor: {r: 0.02495671, g: 0.41871813, b: 0.52963686, a: 0}
+  glowSpeed: 1
+  dimSpeed: 1
+  BigParent: {fileID: 0}
+--- !u!1 &1256542809119566622 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7807116449034678204, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &204825766514334439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256542809119566622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda1a4de7f85542a2b8623cadf8055cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fungusRenderer: {fileID: 6260273865790438568}
+  changeSpeed: 1
+  glowExtentMax: 1
+  witheredSpeed: 1
+  witheredExtent: 0.8
+  explodeSpeed: 0.2
+  explodeExtent: 1.3
+  hightLightExtent: 0
+  hightLightBreathInSpeed: 0
+  hightLightBreathOutSpeed: 0
+  fungusAnimator: {fileID: 0}
+  explodeParticle: {fileID: 0}
+  DieParticle: {fileID: 0}
+  DieSpeed: 2
+  particleGeneratePosition: {fileID: 0}
+  Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 18
+  shadowRenderer: {fileID: 0}
+  canChangeInitialColor: 1
+  initialColor: {r: 0.45882353, g: 0.8627451, b: 0.9254902, a: 1}
+  matureColor: {r: 0.45882353, g: 0.62352943, b: 1, a: 1}
+  growTime: 5
+  growWaitingTime: 9
+  canGlow: 1
+  glowColor: {r: 0.057335466, g: 0.9619617, b: 1.216786, a: 0}
+  dimColor: {r: 0.02495671, g: 0.41871813, b: 0.52963686, a: 0}
+  glowSpeed: 1
+  dimSpeed: 1
+  BigParent: {fileID: 0}
+--- !u!137 &1309126329620208168 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1224236408111554930, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1336329584287184639 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -8044493956722913883, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1521208580460568587 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1714680515038649169, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1673297424076996970 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7642871525608588752, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2442608112940865711 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6687198039635221515, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &204825766525505085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2442608112940865711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda1a4de7f85542a2b8623cadf8055cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fungusRenderer: {fileID: 1019087023662302421}
+  changeSpeed: 1
+  glowExtentMax: 1
+  witheredSpeed: 1
+  witheredExtent: 0.8
+  explodeSpeed: 0.2
+  explodeExtent: 1.3
+  hightLightExtent: 0
+  hightLightBreathInSpeed: 0
+  hightLightBreathOutSpeed: 0
+  fungusAnimator: {fileID: 0}
+  explodeParticle: {fileID: 0}
+  DieParticle: {fileID: 0}
+  DieSpeed: 2
+  particleGeneratePosition: {fileID: 0}
+  Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 18
+  shadowRenderer: {fileID: 0}
+  canChangeInitialColor: 1
+  initialColor: {r: 0.45882353, g: 0.8627451, b: 0.9254902, a: 1}
+  matureColor: {r: 0.45882353, g: 0.62352943, b: 1, a: 1}
+  growTime: 5
+  growWaitingTime: 9
+  canGlow: 1
+  glowColor: {r: 0.057335466, g: 0.9619617, b: 1.216786, a: 0}
+  dimColor: {r: 0.02495671, g: 0.41871813, b: 0.52963686, a: 0}
+  glowSpeed: 1
+  dimSpeed: 1
+  BigParent: {fileID: 0}
+--- !u!1 &2509787630169460553 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6916647776379800557, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &204825767930293082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2509787630169460553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda1a4de7f85542a2b8623cadf8055cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fungusRenderer: {fileID: 4366001213232665378}
+  changeSpeed: 1
+  glowExtentMax: 1
+  witheredSpeed: 1
+  witheredExtent: 0.8
+  explodeSpeed: 0.2
+  explodeExtent: 1.3
+  hightLightExtent: 0
+  hightLightBreathInSpeed: 0
+  hightLightBreathOutSpeed: 0
+  fungusAnimator: {fileID: 0}
+  explodeParticle: {fileID: 0}
+  DieParticle: {fileID: 0}
+  DieSpeed: 2
+  particleGeneratePosition: {fileID: 0}
+  Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 18
+  shadowRenderer: {fileID: 0}
+  canChangeInitialColor: 0
+  initialColor: {r: 0, g: 0, b: 0, a: 0}
+  matureColor: {r: 0, g: 0, b: 0, a: 0}
+  growTime: 0
+  growWaitingTime: 0
+  canGlow: 0
+  glowColor: {r: 0, g: 0, b: 0, a: 0}
+  dimColor: {r: 0, g: 0, b: 0, a: 0}
+  glowSpeed: 0
+  dimSpeed: 0
+  BigParent: {fileID: 0}
+--- !u!1 &2999922822997193581 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3131816050566154295, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &204825767294515343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2999922822997193581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda1a4de7f85542a2b8623cadf8055cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fungusRenderer: {fileID: 1309126329620208168}
+  changeSpeed: 1
+  glowExtentMax: 1
+  witheredSpeed: 1
+  witheredExtent: 0.8
+  explodeSpeed: 0.2
+  explodeExtent: 1.3
+  hightLightExtent: 0
+  hightLightBreathInSpeed: 0
+  hightLightBreathOutSpeed: 0
+  fungusAnimator: {fileID: 0}
+  explodeParticle: {fileID: 0}
+  DieParticle: {fileID: 0}
+  DieSpeed: 2
+  particleGeneratePosition: {fileID: 0}
+  Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 18
+  shadowRenderer: {fileID: 0}
+  canChangeInitialColor: 1
+  initialColor: {r: 0.45882353, g: 0.8627451, b: 0.9254902, a: 1}
+  matureColor: {r: 0.45882353, g: 0.62352943, b: 1, a: 1}
+  growTime: 5
+  growWaitingTime: 9
+  canGlow: 1
+  glowColor: {r: 0.057335466, g: 0.9619617, b: 1.216786, a: 0}
+  dimColor: {r: 0.02495671, g: 0.41871813, b: 0.52963686, a: 0}
+  glowSpeed: 1
+  dimSpeed: 1
+  BigParent: {fileID: 0}
+--- !u!1 &3015699773170991024 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6120878958715321110, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &204825766998879077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3015699773170991024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda1a4de7f85542a2b8623cadf8055cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fungusRenderer: {fileID: 1521208580460568587}
+  changeSpeed: 1
+  glowExtentMax: 1
+  witheredSpeed: 1
+  witheredExtent: 0.8
+  explodeSpeed: 0.2
+  explodeExtent: 1.3
+  hightLightExtent: 0
+  hightLightBreathInSpeed: 0
+  hightLightBreathOutSpeed: 0
+  fungusAnimator: {fileID: 0}
+  explodeParticle: {fileID: 0}
+  DieParticle: {fileID: 0}
+  DieSpeed: 2
+  particleGeneratePosition: {fileID: 0}
+  Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 18
+  shadowRenderer: {fileID: 0}
+  canChangeInitialColor: 1
+  initialColor: {r: 0.45882353, g: 0.8627451, b: 0.9254902, a: 1}
+  matureColor: {r: 0.45882353, g: 0.62352943, b: 1, a: 1}
+  growTime: 5
+  growWaitingTime: 9
+  canGlow: 1
+  glowColor: {r: 0.057335466, g: 0.9619617, b: 1.216786, a: 0}
+  dimColor: {r: 0.02495671, g: 0.41871813, b: 0.52963686, a: 0}
+  glowSpeed: 1
+  dimSpeed: 1
+  BigParent: {fileID: 0}
+--- !u!1 &3381629152371586999 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3186958913832471789, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &204825767151803927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3381629152371586999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda1a4de7f85542a2b8623cadf8055cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fungusRenderer: {fileID: 7712738316145571949}
+  changeSpeed: 1
+  glowExtentMax: 1
+  witheredSpeed: 1
+  witheredExtent: 0.8
+  explodeSpeed: 0.2
+  explodeExtent: 1.3
+  hightLightExtent: 0
+  hightLightBreathInSpeed: 0
+  hightLightBreathOutSpeed: 0
+  fungusAnimator: {fileID: 0}
+  explodeParticle: {fileID: 0}
+  DieParticle: {fileID: 0}
+  DieSpeed: 2
+  particleGeneratePosition: {fileID: 0}
+  Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 18
+  shadowRenderer: {fileID: 0}
+  canChangeInitialColor: 1
+  initialColor: {r: 0.45882353, g: 0.8627451, b: 0.9254902, a: 1}
+  matureColor: {r: 0.45882353, g: 0.62352943, b: 1, a: 1}
+  growTime: 5
+  growWaitingTime: 9
+  canGlow: 1
+  glowColor: {r: 0.057335466, g: 0.9619617, b: 1.216786, a: 0}
+  dimColor: {r: 0.02495671, g: 0.41871813, b: 0.52963686, a: 0}
+  glowSpeed: 1
+  dimSpeed: 1
+  BigParent: {fileID: 0}
+--- !u!1 &3452268612102837400 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3260399353647837122, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &204825766574783357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3452268612102837400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda1a4de7f85542a2b8623cadf8055cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fungusRenderer: {fileID: 8970999021179061114}
+  changeSpeed: 1
+  glowExtentMax: 1
+  witheredSpeed: 1
+  witheredExtent: 0.8
+  explodeSpeed: 0.2
+  explodeExtent: 1.3
+  hightLightExtent: 0
+  hightLightBreathInSpeed: 0
+  hightLightBreathOutSpeed: 0
+  fungusAnimator: {fileID: 0}
+  explodeParticle: {fileID: 0}
+  DieParticle: {fileID: 0}
+  DieSpeed: 2
+  particleGeneratePosition: {fileID: 0}
+  Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 18
+  shadowRenderer: {fileID: 0}
+  canChangeInitialColor: 1
+  initialColor: {r: 0.45882353, g: 0.8627451, b: 0.9254902, a: 1}
+  matureColor: {r: 0.45882353, g: 0.62352943, b: 1, a: 1}
+  growTime: 5
+  growWaitingTime: 9
+  canGlow: 1
+  glowColor: {r: 0.057335466, g: 0.9619617, b: 1.216786, a: 0}
+  dimColor: {r: 0.02495671, g: 0.41871813, b: 0.52963686, a: 0}
+  glowSpeed: 1
+  dimSpeed: 1
+  BigParent: {fileID: 0}
+--- !u!1 &3842409629047235876 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4000697027824443006, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &204825768187007034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3842409629047235876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda1a4de7f85542a2b8623cadf8055cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fungusRenderer: {fileID: 8594543406249108367}
+  changeSpeed: 1
+  glowExtentMax: 1
+  witheredSpeed: 1
+  witheredExtent: 0.8
+  explodeSpeed: 0.2
+  explodeExtent: 1.3
+  hightLightExtent: 0
+  hightLightBreathInSpeed: 0
+  hightLightBreathOutSpeed: 0
+  fungusAnimator: {fileID: 0}
+  explodeParticle: {fileID: 0}
+  DieParticle: {fileID: 0}
+  DieSpeed: 2
+  particleGeneratePosition: {fileID: 0}
+  Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 18
+  shadowRenderer: {fileID: 0}
+  canChangeInitialColor: 1
+  initialColor: {r: 0.45882353, g: 0.8627451, b: 0.9254902, a: 1}
+  matureColor: {r: 0.45882353, g: 0.62352943, b: 1, a: 1}
+  growTime: 5
+  growWaitingTime: 9
+  canGlow: 1
+  glowColor: {r: 0.057335466, g: 0.9619617, b: 1.216786, a: 0}
+  dimColor: {r: 0.02495671, g: 0.41871813, b: 0.52963686, a: 0}
+  glowSpeed: 1
+  dimSpeed: 1
+  BigParent: {fileID: 0}
+--- !u!137 &4366001213232665378 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4737636124533381000, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &4444425937486237763 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4574085077149887257, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4612211883721062795 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4407210156160580911, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &204825767896933484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4612211883721062795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda1a4de7f85542a2b8623cadf8055cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fungusRenderer: {fileID: 7926030418678886093}
+  changeSpeed: 1
+  glowExtentMax: 1
+  witheredSpeed: 1
+  witheredExtent: 0.8
+  explodeSpeed: 0.2
+  explodeExtent: 1.3
+  hightLightExtent: 0
+  hightLightBreathInSpeed: 0
+  hightLightBreathOutSpeed: 0
+  fungusAnimator: {fileID: 0}
+  explodeParticle: {fileID: 0}
+  DieParticle: {fileID: 0}
+  DieSpeed: 2
+  particleGeneratePosition: {fileID: 0}
+  Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 18
+  shadowRenderer: {fileID: 0}
+  canChangeInitialColor: 1
+  initialColor: {r: 0.45882353, g: 0.8627451, b: 0.9254902, a: 1}
+  matureColor: {r: 0.45882353, g: 0.62352943, b: 1, a: 1}
+  growTime: 5
+  growWaitingTime: 9
+  canGlow: 1
+  glowColor: {r: 0.057335466, g: 0.9619617, b: 1.216786, a: 0}
+  dimColor: {r: 0.02495671, g: 0.41871813, b: 0.52963686, a: 0}
+  glowSpeed: 1
+  dimSpeed: 1
+  BigParent: {fileID: 0}
+--- !u!1 &4729303560378398425 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4362172243001651837, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &204825766574783353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4729303560378398425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda1a4de7f85542a2b8623cadf8055cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fungusRenderer: {fileID: 8444088530425676103}
+  changeSpeed: 1
+  glowExtentMax: 1
+  witheredSpeed: 1
+  witheredExtent: 0.8
+  explodeSpeed: 0.2
+  explodeExtent: 1.3
+  hightLightExtent: 0
+  hightLightBreathInSpeed: 0
+  hightLightBreathOutSpeed: 0
+  fungusAnimator: {fileID: 0}
+  explodeParticle: {fileID: 0}
+  DieParticle: {fileID: 0}
+  DieSpeed: 2
+  particleGeneratePosition: {fileID: 0}
+  Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 18
+  shadowRenderer: {fileID: 0}
+  canChangeInitialColor: 1
+  initialColor: {r: 0.45882353, g: 0.8627451, b: 0.9254902, a: 1}
+  matureColor: {r: 0.45882353, g: 0.62352943, b: 1, a: 1}
+  growTime: 5
+  growWaitingTime: 9
+  canGlow: 1
+  glowColor: {r: 0.057335466, g: 0.9619617, b: 1.216786, a: 0}
+  dimColor: {r: 0.02495671, g: 0.41871813, b: 0.52963686, a: 0}
+  glowSpeed: 1
+  dimSpeed: 1
+  BigParent: {fileID: 0}
+--- !u!137 &5147362176092844339 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5023964754662836841, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &5681203873375011508 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5476411375634758126, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6070243545559600146 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2960420056393484472, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &204825766574783356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6070243545559600146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda1a4de7f85542a2b8623cadf8055cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fungusRenderer: {fileID: 4444425937486237763}
+  changeSpeed: 1
+  glowExtentMax: 1
+  witheredSpeed: 1
+  witheredExtent: 0.8
+  explodeSpeed: 0.2
+  explodeExtent: 1.3
+  hightLightExtent: 0
+  hightLightBreathInSpeed: 0
+  hightLightBreathOutSpeed: 0
+  fungusAnimator: {fileID: 0}
+  explodeParticle: {fileID: 0}
+  DieParticle: {fileID: 0}
+  DieSpeed: 2
+  particleGeneratePosition: {fileID: 0}
+  Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 18
+  shadowRenderer: {fileID: 0}
+  canChangeInitialColor: 1
+  initialColor: {r: 0.45882353, g: 0.8627451, b: 0.9254902, a: 1}
+  matureColor: {r: 0.45882353, g: 0.62352943, b: 1, a: 1}
+  growTime: 5
+  growWaitingTime: 9
+  canGlow: 1
+  glowColor: {r: 0.057335466, g: 0.9619617, b: 1.216786, a: 0}
+  dimColor: {r: 0.02495671, g: 0.41871813, b: 0.52963686, a: 0}
+  glowSpeed: 1
+  dimSpeed: 1
+  BigParent: {fileID: 0}
+--- !u!137 &6260273865790438568 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -3154953943842240526, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6826876462622408755 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6659205418794679145, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &204825768294651370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6826876462622408755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda1a4de7f85542a2b8623cadf8055cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fungusRenderer: {fileID: 767730418719637819}
+  changeSpeed: 1
+  glowExtentMax: 1
+  witheredSpeed: 1
+  witheredExtent: 0.8
+  explodeSpeed: 0.2
+  explodeExtent: 1.3
+  hightLightExtent: 0
+  hightLightBreathInSpeed: 0
+  hightLightBreathOutSpeed: 0
+  fungusAnimator: {fileID: 0}
+  explodeParticle: {fileID: 0}
+  DieParticle: {fileID: 0}
+  DieSpeed: 2
+  particleGeneratePosition: {fileID: 0}
+  Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 18
+  shadowRenderer: {fileID: 0}
+  canChangeInitialColor: 1
+  initialColor: {r: 0.45882353, g: 0.8627451, b: 0.9254902, a: 1}
+  matureColor: {r: 0.45882353, g: 0.62352943, b: 1, a: 1}
+  growTime: 5
+  growWaitingTime: 9
+  canGlow: 1
+  glowColor: {r: 0.057335466, g: 0.9619617, b: 1.216786, a: 0}
+  dimColor: {r: 0.02495671, g: 0.41871813, b: 0.52963686, a: 0}
+  glowSpeed: 1
+  dimSpeed: 1
+  BigParent: {fileID: 0}
+--- !u!1 &7213091873822338270 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7407756339908614020, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &204825767805376873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7213091873822338270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda1a4de7f85542a2b8623cadf8055cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fungusRenderer: {fileID: 5147362176092844339}
+  changeSpeed: 1
+  glowExtentMax: 1
+  witheredSpeed: 1
+  witheredExtent: 0.8
+  explodeSpeed: 0.2
+  explodeExtent: 1.3
+  hightLightExtent: 0
+  hightLightBreathInSpeed: 0
+  hightLightBreathOutSpeed: 0
+  fungusAnimator: {fileID: 204825766574783319}
+  explodeParticle: {fileID: 0}
+  DieParticle: {fileID: 3105234805027849063, guid: 001114f21d6c045faa7d021f847b87ae, type: 3}
+  DieSpeed: 2
+  particleGeneratePosition: {fileID: 532034184658485725}
+  Shadow: {fileID: 204825767086275268}
+  beenKilledSpeed: 4
+  killedExtent: 18
+  shadowRenderer: {fileID: 204825767086275270}
+  canChangeInitialColor: 0
+  initialColor: {r: 0, g: 0, b: 0, a: 0}
+  matureColor: {r: 0, g: 0, b: 0, a: 0}
+  growTime: 0
+  growWaitingTime: 0
+  canGlow: 0
+  glowColor: {r: 0, g: 0, b: 0, a: 0}
+  dimColor: {r: 0, g: 0, b: 0, a: 0}
+  glowSpeed: 0
+  dimSpeed: 0
+  BigParent: {fileID: 204825766393873450}
+--- !u!1 &7217858730201420996 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1802192230885953634, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &204825767377001536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7217858730201420996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda1a4de7f85542a2b8623cadf8055cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fungusRenderer: {fileID: 1101578438904682616}
+  changeSpeed: 1
+  glowExtentMax: 1
+  witheredSpeed: 1
+  witheredExtent: 0.8
+  explodeSpeed: 0.2
+  explodeExtent: 1.3
+  hightLightExtent: 0
+  hightLightBreathInSpeed: 0
+  hightLightBreathOutSpeed: 0
+  fungusAnimator: {fileID: 0}
+  explodeParticle: {fileID: 0}
+  DieParticle: {fileID: 0}
+  DieSpeed: 2
+  particleGeneratePosition: {fileID: 0}
+  Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 18
+  shadowRenderer: {fileID: 0}
+  canChangeInitialColor: 1
+  initialColor: {r: 0.45882353, g: 0.8627451, b: 0.9254902, a: 1}
+  matureColor: {r: 0.45882353, g: 0.62352943, b: 1, a: 1}
+  growTime: 5
+  growWaitingTime: 9
+  canGlow: 1
+  glowColor: {r: 0.057335466, g: 0.9619617, b: 1.216786, a: 0}
+  dimColor: {r: 0.02495671, g: 0.41871813, b: 0.52963686, a: 0}
+  glowSpeed: 1
+  dimSpeed: 1
+  BigParent: {fileID: 0}
+--- !u!137 &7712738316145571949 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7628685801591653175, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &7926030418678886093 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1213362349977447017, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8317576198450185230 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1028412219511570604, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &204825766574783358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8317576198450185230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda1a4de7f85542a2b8623cadf8055cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fungusRenderer: {fileID: 8368807535045078090}
+  changeSpeed: 1
+  glowExtentMax: 1
+  witheredSpeed: 1
+  witheredExtent: 0.8
+  explodeSpeed: 0.2
+  explodeExtent: 1.3
+  hightLightExtent: 0
+  hightLightBreathInSpeed: 0
+  hightLightBreathOutSpeed: 0
+  fungusAnimator: {fileID: 0}
+  explodeParticle: {fileID: 0}
+  DieParticle: {fileID: 0}
+  DieSpeed: 2
+  particleGeneratePosition: {fileID: 0}
+  Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 18
+  shadowRenderer: {fileID: 0}
+  canChangeInitialColor: 1
+  initialColor: {r: 0.45882353, g: 0.8627451, b: 0.9254902, a: 1}
+  matureColor: {r: 0.45882353, g: 0.62352943, b: 1, a: 1}
+  growTime: 5
+  growWaitingTime: 9
+  canGlow: 1
+  glowColor: {r: 0.057335466, g: 0.9619617, b: 1.216786, a: 0}
+  dimColor: {r: 0.02495671, g: 0.41871813, b: 0.52963686, a: 0}
+  glowSpeed: 1
+  dimSpeed: 1
+  BigParent: {fileID: 0}
+--- !u!137 &8368807535045078090 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -651801557076011248, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &8444088530425676103 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8644873015654382109, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &8594543406249108367 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8471935288139978965, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8847876961087658536 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8655450936895299954, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &204825766817027476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8847876961087658536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda1a4de7f85542a2b8623cadf8055cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fungusRenderer: {fileID: 1336329584287184639}
+  changeSpeed: 1
+  glowExtentMax: 1
+  witheredSpeed: 1
+  witheredExtent: 0.8
+  explodeSpeed: 0.2
+  explodeExtent: 1.3
+  hightLightExtent: 0
+  hightLightBreathInSpeed: 0
+  hightLightBreathOutSpeed: 0
+  fungusAnimator: {fileID: 0}
+  explodeParticle: {fileID: 0}
+  DieParticle: {fileID: 0}
+  DieSpeed: 2
+  particleGeneratePosition: {fileID: 0}
+  Shadow: {fileID: 0}
+  beenKilledSpeed: 4
+  killedExtent: 18
+  shadowRenderer: {fileID: 0}
+  canChangeInitialColor: 1
+  initialColor: {r: 0.45882353, g: 0.8627451, b: 0.9254902, a: 1}
+  matureColor: {r: 0.45882353, g: 0.62352943, b: 1, a: 1}
+  growTime: 5
+  growWaitingTime: 9
+  canGlow: 1
+  glowColor: {r: 0.057335466, g: 0.9619617, b: 1.216786, a: 0}
+  dimColor: {r: 0.02495671, g: 0.41871813, b: 0.52963686, a: 0}
+  glowSpeed: 1
+  dimSpeed: 1
+  BigParent: {fileID: 0}
+--- !u!137 &8903658177512271020 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8739105348659943414, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &8907779982295894254 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8739627885488010164, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &8970999021179061114 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -96603197912106976, guid: e104f164834b34b8186ac14871ba1997, type: 3}
+  m_PrefabInstance: {fileID: 204825766574783322}
+  m_PrefabAsset: {fileID: 0}

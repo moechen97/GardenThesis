@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: be59ab03158b840d594e22b9d7b754fc
+guid: 576bd489bcf7747c8b90b80f8ebb415f
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: -623603649343465320
-    second: Bubble_Default
+    second: Bubble Default
   - first:
       74: 4788607405563648775
     second: Bubble Grow
@@ -48,7 +48,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Bubble_Default
+      name: Bubble Default
       takeName: Scene
       internalID: 0
       firstFrame: 0
@@ -59,7 +59,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

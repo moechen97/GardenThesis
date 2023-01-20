@@ -30,6 +30,7 @@ public class Fungus_MaterialChange : MonoBehaviour
     [SerializeField] private Color initialColor;
     [SerializeField] private Color matureColor;
     [SerializeField] private float growTime;
+    [SerializeField] private float growWaitingTime = 0f;
     [SerializeField] private bool canGlow;
     [ColorUsage(true, true)]
     [SerializeField] private Color glowColor;
@@ -90,16 +91,25 @@ public class Fungus_MaterialChange : MonoBehaviour
         
         if(!canChangeInitialColor)
             return;
-            
+        
         _propertyBlock.SetColor("_MainColor", initialColor);
         fungusRenderer.SetPropertyBlock(_propertyBlock);
-        
+
+        StartCoroutine(GrowColorChange());
+
+
+    }
+
+
+    IEnumerator GrowColorChange()
+    {
+        yield return new WaitForSeconds(growWaitingTime);
+
         DOVirtual.Color(initialColor, matureColor, growTime, (Color value) =>
         {
             _propertyBlock.SetColor("_MainColor", value);
             fungusRenderer.SetPropertyBlock(_propertyBlock);
         });
-        
     }
 
     void GotoNight()

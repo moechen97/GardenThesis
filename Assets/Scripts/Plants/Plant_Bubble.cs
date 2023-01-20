@@ -15,7 +15,7 @@ namespace Planting
             transform.rotation = Quaternion.Euler(new Vector3(0,randomRotateY,0));
             transform.localScale = new Vector3(XZScale, Random.Range(height_minRange, height_maxRange), XZScale);
             id = PlantType.Plant_Bubble;
-            finishGrowAnimationName = "Plant_Bubble_FullyGrow";
+            finishGrowAnimationName = "Bubble Breath 1";
             base.Start(); 
             //Debug.Log("Mushroom Dark Green: " + PlantManager.plantCounter[id]);
         }
