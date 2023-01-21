@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Plant_StateControl : MonoBehaviour
 {
+    [SerializeField] private bool canBeInteract;
     [SerializeField] private Animator fungusAnimator;
     [SerializeField] private Fungus_MaterialChange[] MaterialControls;
     private bool iskilled = false;
@@ -18,7 +19,9 @@ public class Plant_StateControl : MonoBehaviour
 
     public void Interact()
     {
-        
+        if (!fungusAnimator || !canBeInteract)
+            return;
+        fungusAnimator.SetBool("isInteract",true);
     }
 
     public void BeingKilled()

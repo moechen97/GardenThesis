@@ -479,6 +479,10 @@ namespace Planting
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, layer_mask))
                 {
                     touchPlantDrag = true;
+                    if (hit.transform.GetComponent<TouchDetectBox>())
+                    {
+                        hit.transform.GetComponent<TouchDetectBox>().IsTouched();
+                    }
                     yield return null;
                 }
                 rotatingScreen = true;
