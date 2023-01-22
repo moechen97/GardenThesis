@@ -15,6 +15,9 @@ public class AnimationEvent_Peach : MonoBehaviour
     
     [SerializeField] private GameObject emitParticle;
     [SerializeField] private Transform emitPosition;
+
+    [SerializeField] private Plant_StateControl _stateControl;
+    
     public void GrowColorChange()
     {
         MaterialPropertyBlock _shadowPropertyBlock = new MaterialPropertyBlock();
@@ -73,6 +76,16 @@ public class AnimationEvent_Peach : MonoBehaviour
         {
             MaterialChange.Die();
         }
+    }
+    
+    public void CanInteract()
+    {
+        _stateControl.CanbeInteract();
+    }
+
+    public void CannotbeInteract()
+    {
+        _stateControl.CannotbeInteract();
     }
     
 }

@@ -324,16 +324,21 @@ namespace Planting
                 screenCoordinates.z = 0.0F;
                 RaycastHit hit;
                 Ray ray = cameraMain.ScreenPointToRay(screenCoordinates);
-                int layer_mask = LayerMask.GetMask("Plant");
+                int layer_mask = LayerMask.GetMask("PlantTouch");
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, layer_mask))
                 {
-                    //If true, create plant menu
-                    isOnPlantMenu = true;
-                    GameObject menuObject = GameObject.Instantiate(plantMenu);
-                    //Give y-height boost of 0.25F so the menu doesn't spawn partially inside the ground
-                    menuObject.transform.parent = plantMenu_Canvas.transform;
-                    menuObject.transform.position = screenCoordinates;
-                    menu = new PlantMenu(menuObject, hit.transform.gameObject);
+                    Debug.Log("tap plant");
+                    if (hit.transform.GetComponent<TouchDetectBox>())
+                    {
+                        hit.transform.GetComponent<TouchDetectBox>().IsTouched();
+                    }
+                    // //If true, create plant menu
+                    // isOnPlantMenu = true;
+                    // GameObject menuObject = GameObject.Instantiate(plantMenu);
+                    // //Give y-height boost of 0.25F so the menu doesn't spawn partially inside the ground
+                    // menuObject.transform.parent = plantMenu_Canvas.transform;
+                    // menuObject.transform.position = screenCoordinates;
+                    // menu = new PlantMenu(menuObject, hit.transform.gameObject);
                 }
             }
         }
@@ -474,15 +479,11 @@ namespace Planting
             {
                 RaycastHit hit;
                 Ray ray = cameraMain.ScreenPointToRay(screenCoordinates);
-                //Touch Plant
-                int layer_mask = LayerMask.GetMask("PlantTouch");
+                
+                int layer_mask = LayerMask.GetMask("Plant");
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, layer_mask))
                 {
                     touchPlantDrag = true;
-                    if (hit.transform.GetComponent<TouchDetectBox>())
-                    {
-                        hit.transform.GetComponent<TouchDetectBox>().IsTouched();
-                    }
                     yield return null;
                 }
                 rotatingScreen = true;

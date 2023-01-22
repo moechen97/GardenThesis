@@ -37,5 +37,16 @@ public class Plant_StateControl : MonoBehaviour
     {
         return iskilled;
     }
+
+    public void CanbeInteract()
+    {
+        canBeInteract = true;
+    }
+    
+    public void CannotbeInteract()
+    {
+        canBeInteract = false;
+        fungusAnimator.SetBool("isInteract",false);
+    }
     
 }

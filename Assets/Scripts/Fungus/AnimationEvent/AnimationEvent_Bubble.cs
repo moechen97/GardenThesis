@@ -13,6 +13,7 @@ public class AnimationEvent_Bubble : MonoBehaviour
     [SerializeField] private AudioClip[] bloomAudios;
     [SerializeField] private GameObject dieParticle;
     [SerializeField] private Transform dieParticlePosition;
+    [SerializeField] private Plant_StateControl _stateControl;
 
     public void Bloom()
     {
@@ -61,5 +62,15 @@ public class AnimationEvent_Bubble : MonoBehaviour
     public void EmitDieParticle()
     {
         Instantiate(dieParticle, dieParticlePosition.position, Quaternion.identity);
+    }
+
+    public void CanInteract()
+    {
+        _stateControl.CanbeInteract();
+    }
+
+    public void CannotbeInteract()
+    {
+        _stateControl.CannotbeInteract();
     }
 }

@@ -8,6 +8,7 @@ public class TouchDetectBox : MonoBehaviour
 
     public void IsTouched()
     {
+        Debug.Log("isTouched!");
         _stateControl.Interact();
     }
     

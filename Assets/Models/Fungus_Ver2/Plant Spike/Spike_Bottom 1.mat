@@ -97,7 +97,7 @@ Material:
     - _DeformExtent: 0.01
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DissolveEdgeThickness: 0.43
+    - _DissolveEdgeThickness: 0
     - _DissolveExtent: -1
     - _DissolveNoiseScale: 5
     - _DstBlend: 0

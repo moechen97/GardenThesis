@@ -10,6 +10,7 @@ public class AnimationEvent_Drum : MonoBehaviour
     [SerializeField] private AudioClip breath;
     [SerializeField] private GameObject emitParticle;
     [SerializeField] private Transform emitPosition;
+    [SerializeField] private Plant_StateControl _stateControl;
 
     public void Bloom()
     {
@@ -57,5 +58,15 @@ public class AnimationEvent_Drum : MonoBehaviour
     public void Emit()
     {
         Instantiate(emitParticle, emitPosition.position, Quaternion.identity);
+    }
+    
+    public void CanInteract()
+    {
+        _stateControl.CanbeInteract();
+    }
+
+    public void CannotbeInteract()
+    {
+        _stateControl.CannotbeInteract();
     }
 }

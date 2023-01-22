@@ -12,6 +12,7 @@ public class AnimationEvent_Capture : MonoBehaviour
     [SerializeField] private AudioClip withered;
     [SerializeField] private GameObject emitParticle;
     [SerializeField] private Transform emitPosition;
+    [SerializeField] private Plant_StateControl _stateControl;
 
     public void Grow()
     {
@@ -52,5 +53,15 @@ public class AnimationEvent_Capture : MonoBehaviour
     public void EmitParticle()
     {
         Instantiate(emitParticle, emitPosition.position, emitPosition.rotation,emitPosition);
+    }
+    
+    public void CanInteract()
+    {
+        _stateControl.CanbeInteract();
+    }
+
+    public void CannotbeInteract()
+    {
+        _stateControl.CannotbeInteract();
     }
 }

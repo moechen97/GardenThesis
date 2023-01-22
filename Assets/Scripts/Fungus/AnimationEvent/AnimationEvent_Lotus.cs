@@ -7,6 +7,7 @@ public class AnimationEvent_Lotus : MonoBehaviour
     [SerializeField] Fungus_MaterialChange[] materials;
     [SerializeField] private AudioSource lotus_audiosource;
     [SerializeField] private AudioClip bloom;
+    [SerializeField] private Plant_StateControl _stateControl;
 
     public void Bloom()
     {
@@ -43,4 +44,16 @@ public class AnimationEvent_Lotus : MonoBehaviour
             material.BreathIn();
         }
     }
+    
+    public void CanInteract()
+    {
+        _stateControl.CanbeInteract();
+    }
+
+    public void CannotbeInteract()
+    {
+        _stateControl.CannotbeInteract();
+    }
+    
+    
 }

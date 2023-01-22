@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 1100176410}
   - component: {fileID: 1100176409}
   - component: {fileID: 1100176408}
+  - component: {fileID: 2005987976}
   m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
@@ -194,6 +195,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2005987976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100176406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfdfcbc1aa00f4ffaac889cea5d08d7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateControl: {fileID: 4604927566023633414}
 --- !u!1 &1144897597
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,6 +387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 687e1e6b240d7433b8837269e3e3fcd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canBeInteract: 0
   fungusAnimator: {fileID: 1156525507}
   MaterialControls:
   - {fileID: 1156525520}
@@ -565,7 +580,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8509031443901051161, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0.00042693104
+      value: 0.0004268868
       objectReference: {fileID: 0}
     - target: {fileID: -8509031443901051161, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -629,7 +644,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5950650859257575463, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0.12792452
+      value: 0.12785564
       objectReference: {fileID: 0}
     - target: {fileID: -5950650859257575463, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -637,7 +652,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5905842151546411643, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0.000003194087
+      value: 0.0000036424626
       objectReference: {fileID: 0}
     - target: {fileID: -5905842151546411643, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -649,7 +664,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4627679712454081082, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0.0000033618755
+      value: 0.0000036424642
       objectReference: {fileID: 0}
     - target: {fileID: -4627679712454081082, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -685,11 +700,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -295132476609652011, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -90.00005
+      value: -89.98021
       objectReference: {fileID: 0}
     - target: {fileID: -295132476609652011, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0.8065423
+      value: 0.805127
       objectReference: {fileID: 0}
     - target: {fileID: -295132476609652011, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -701,15 +716,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3781924582509596556, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.000010776635
+      value: -0.000022198114
       objectReference: {fileID: 0}
     - target: {fileID: 3781924582509596556, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -89.8719
+      value: -89.87191
       objectReference: {fileID: 0}
     - target: {fileID: 3781924582509596556, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -89.99999
+      value: -89.99994
       objectReference: {fileID: 0}
     - target: {fileID: 5088701125079286300, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -717,7 +732,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 7a38914d10c9c4eb7b094c61b20377a3, type: 2}
     - target: {fileID: 5455991248486979903, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0.0000032564215
+      value: 0.0000036424442
       objectReference: {fileID: 0}
     - target: {fileID: 5455991248486979903, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -725,19 +740,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5455991248486979903, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -89.999985
+      value: -89.99991
       objectReference: {fileID: 0}
     - target: {fileID: 5617126171333316731, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 89.98021
       objectReference: {fileID: 0}
     - target: {fileID: 5617126171333316731, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -0.000013660382
       objectReference: {fileID: 0}
     - target: {fileID: 5617126171333316731, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -179.99998
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5674102253434444838, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -757,7 +772,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6672592580491144823, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -0.0006734655
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6672592580491144823, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -769,7 +784,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6949267668826249373, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -0.0006734655
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6949267668826249373, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -821,6 +836,7 @@ MonoBehaviour:
   initialColor: {r: 0.94509804, g: 0.81960785, b: 0.25490198, a: 0}
   matureColor: {r: 0.90588236, g: 0.41568628, b: 0.105882354, a: 0}
   growTime: 8
+  growWaitingTime: 0
   canGlow: 1
   glowColor: {r: 1.0592737, g: 0.4120624, b: 0.14974023, a: 0}
   dimColor: {r: 0.37435067, g: 0.14696729, b: 0.05268639, a: 0}
@@ -892,6 +908,7 @@ MonoBehaviour:
   withered: {fileID: 8300000, guid: c1b608ac70c2d4c25b6c3ddedee58c37, type: 3}
   emitParticle: {fileID: 7182645755328016063, guid: 1f5c707c3dd8a49f38c188e59f0963f4, type: 3}
   emitPosition: {fileID: 8220185618946086841}
+  _stateControl: {fileID: 4604927566023633414}
 --- !u!4 &4065981097826869289 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
@@ -937,6 +954,7 @@ MonoBehaviour:
   initialColor: {r: 0.94509804, g: 0.81960785, b: 0.25490198, a: 0}
   matureColor: {r: 1, g: 0.6862745, b: 0.18431373, a: 0}
   growTime: 8
+  growWaitingTime: 0
   canGlow: 1
   glowColor: {r: 1.4980392, g: 0.53528976, b: 0.25098035, a: 0}
   dimColor: {r: 0.46031266, g: 0.16637807, b: 0.0776431, a: 0}
@@ -988,6 +1006,7 @@ MonoBehaviour:
   initialColor: {r: 0, g: 0, b: 0, a: 0}
   matureColor: {r: 0, g: 0, b: 0, a: 0}
   growTime: 0
+  growWaitingTime: 0
   canGlow: 0
   glowColor: {r: 0, g: 0, b: 0, a: 0}
   dimColor: {r: 0, g: 0, b: 0, a: 0}
@@ -1034,6 +1053,7 @@ MonoBehaviour:
   initialColor: {r: 0.6792453, g: 0.5104694, b: 0.15699539, a: 0}
   matureColor: {r: 0.94509804, g: 0.81960785, b: 0.25490198, a: 0}
   growTime: 5
+  growWaitingTime: 0
   canGlow: 1
   glowColor: {r: 4.237095, g: 2.1296391, b: 0.22183743, a: 0}
   dimColor: {r: 0.23015633, g: 0.116464645, b: 0.011091871, a: 0}
@@ -1080,6 +1100,7 @@ MonoBehaviour:
   initialColor: {r: 0.94509804, g: 0.81960785, b: 0.25490198, a: 0}
   matureColor: {r: 1, g: 0.8039216, b: 0.25882354, a: 0}
   growTime: 8
+  growWaitingTime: 0
   canGlow: 1
   glowColor: {r: 1.4980392, g: 0.7529412, b: 0.078431375, a: 0}
   dimColor: {r: 0.52963686, g: 0.2662049, b: 0.027729679, a: 0}

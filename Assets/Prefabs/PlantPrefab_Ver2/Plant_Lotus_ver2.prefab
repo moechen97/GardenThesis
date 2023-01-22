@@ -266,6 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 687e1e6b240d7433b8837269e3e3fcd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canBeInteract: 0
   fungusAnimator: {fileID: 4408640369286013999}
   MaterialControls:
   - {fileID: 4408640369286014058}
@@ -297,7 +298,6 @@ MonoBehaviour:
   - {fileID: 4408640368637833152}
   - {fileID: 4408640368079640104}
   - {fileID: 4408640369241399940}
-  - {fileID: 0}
 --- !u!1001 &4408640369286013994
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -327,7 +327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2064bc982f97943b3b8d225fa8c26a97, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.55
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2064bc982f97943b3b8d225fa8c26a97, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2520,7 +2520,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3598317687319583099}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 6.438244, y: 5.928538, z: 5.879904}
@@ -2545,6 +2545,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &327910329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3598317687319583099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfdfcbc1aa00f4ffaac889cea5d08d7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateControl: {fileID: 2344558669442181748}
 --- !u!114 &297139926687317670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2631,6 +2644,7 @@ MonoBehaviour:
   - {fileID: 4408640369241399940}
   lotus_audiosource: {fileID: 8424324399804110831}
   bloom: {fileID: 8300000, guid: 2f8f8e038eeea4242921c4ca656f03c8, type: 3}
+  _stateControl: {fileID: 2344558669442181748}
 --- !u!23 &3639581759209885587 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 1129496810705857465, guid: 2064bc982f97943b3b8d225fa8c26a97, type: 3}
