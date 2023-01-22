@@ -56,6 +56,7 @@ namespace Planting
         private Vector3 startCamPosition;
         private Vector3 startCamRotation;
         private bool enableControl = false;
+        private Vector3 PreviousDragPosition;
         
         void Awake()
         {
@@ -480,7 +481,7 @@ namespace Planting
                 RaycastHit hit;
                 Ray ray = cameraMain.ScreenPointToRay(screenCoordinates);
                 
-                int layer_mask = LayerMask.GetMask("Plant");
+                int layer_mask = LayerMask.GetMask("PlantTouch");
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, layer_mask))
                 {
                     touchPlantDrag = true;
@@ -535,7 +536,7 @@ namespace Planting
                     //{
                     //    rotateStep = 0.25F;
                     //}
-                    afterRotate = StartCoroutine(SpinAfterRotate(dragRotationLength));
+                    afterRotate = StartCoroutine(SpinAfterRotate(-rotateDirection));
                 }
                 else
                 {
