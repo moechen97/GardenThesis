@@ -487,8 +487,12 @@ namespace Planting
                     touchPlantDrag = true;
                     yield return null;
                 }
-                rotatingScreen = true;
-                StartCoroutine(SaveStartDragPosition());
+                else
+                {
+                    rotatingScreen = true;
+                    StartCoroutine(SaveStartDragPosition());
+                }
+                
                 StopRotating();
                 camFocusPoint.transform.DOKill();
                 //rotateStep = rotateSpeed / 2F;
@@ -624,5 +628,6 @@ namespace Planting
         {
             enableControl = true;
         }
+        
     }
 }
