@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1499155291}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.66, z: 0}
-  m_LocalScale: {x: 3.88797, y: 2.1067185, z: 4.0489874}
+  m_LocalScale: {x: 3.88797, y: 2.1067185, z: 4.481824}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4408640368180581466}
@@ -327,7 +327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2064bc982f97943b3b8d225fa8c26a97, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.32
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2064bc982f97943b3b8d225fa8c26a97, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1855,9 +1855,9 @@ MonoBehaviour:
   witheredExtent: 1
   explodeSpeed: 0.3
   explodeExtent: 1.1
-  hightLightExtent: 1
-  hightLightBreathInSpeed: 3
-  hightLightBreathOutSpeed: 3
+  hightLightExtent: 0.3
+  hightLightBreathInSpeed: 1
+  hightLightBreathOutSpeed: 0.2
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
@@ -1907,9 +1907,9 @@ MonoBehaviour:
   witheredExtent: 1
   explodeSpeed: 0.3
   explodeExtent: 1.1
-  hightLightExtent: 1
-  hightLightBreathInSpeed: 3
-  hightLightBreathOutSpeed: 3
+  hightLightExtent: 0.3
+  hightLightBreathInSpeed: 1
+  hightLightBreathOutSpeed: 0.2
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
@@ -1959,9 +1959,9 @@ MonoBehaviour:
   witheredExtent: 1
   explodeSpeed: 0.3
   explodeExtent: 1.1
-  hightLightExtent: 1
-  hightLightBreathInSpeed: 3
-  hightLightBreathOutSpeed: 3
+  hightLightExtent: 0.3
+  hightLightBreathInSpeed: 1
+  hightLightBreathOutSpeed: 0.2
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
@@ -2006,9 +2006,9 @@ MonoBehaviour:
   witheredExtent: 1
   explodeSpeed: 0.3
   explodeExtent: 1.1
-  hightLightExtent: 1
-  hightLightBreathInSpeed: 3
-  hightLightBreathOutSpeed: 3
+  hightLightExtent: 0.3
+  hightLightBreathInSpeed: 1
+  hightLightBreathOutSpeed: 0.2
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
@@ -2053,9 +2053,9 @@ MonoBehaviour:
   witheredExtent: 1
   explodeSpeed: 0.3
   explodeExtent: 1.1
-  hightLightExtent: 0
-  hightLightBreathInSpeed: 0
-  hightLightBreathOutSpeed: 0
+  hightLightExtent: 0.3
+  hightLightBreathInSpeed: 1
+  hightLightBreathOutSpeed: 0.2
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
@@ -2070,11 +2070,11 @@ MonoBehaviour:
   matureColor: {r: 0, g: 0, b: 0, a: 0}
   growTime: 0
   growWaitingTime: 0
-  canGlow: 0
-  glowColor: {r: 0, g: 0, b: 0, a: 0}
-  dimColor: {r: 0, g: 0, b: 0, a: 0}
-  glowSpeed: 0
-  dimSpeed: 0
+  canGlow: 1
+  glowColor: {r: 0.14117648, g: 0.25882354, b: 0.6431373, a: 0}
+  dimColor: {r: 0.07058824, g: 0.12941177, b: 0.32156864, a: 0}
+  glowSpeed: 1
+  dimSpeed: 1
   BigParent: {fileID: 0}
 --- !u!1 &716611648597277373 stripped
 GameObject:
@@ -2100,9 +2100,9 @@ MonoBehaviour:
   witheredExtent: 1
   explodeSpeed: 0.3
   explodeExtent: 1.1
-  hightLightExtent: 0
-  hightLightBreathInSpeed: 0
-  hightLightBreathOutSpeed: 0
+  hightLightExtent: 0.3
+  hightLightBreathInSpeed: 1
+  hightLightBreathOutSpeed: 0.2
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
@@ -2117,11 +2117,11 @@ MonoBehaviour:
   matureColor: {r: 0, g: 0, b: 0, a: 0}
   growTime: 0
   growWaitingTime: 0
-  canGlow: 0
-  glowColor: {r: 0, g: 0, b: 0, a: 0}
-  dimColor: {r: 0, g: 0, b: 0, a: 0}
-  glowSpeed: 0
-  dimSpeed: 0
+  canGlow: 1
+  glowColor: {r: 0.14117648, g: 0.25882354, b: 0.6431373, a: 0}
+  dimColor: {r: 0.07058824, g: 0.12941177, b: 0.32156864, a: 0}
+  glowSpeed: 1
+  dimSpeed: 1
   BigParent: {fileID: 0}
 --- !u!23 &760182442537915441 stripped
 MeshRenderer:
@@ -2152,9 +2152,9 @@ MonoBehaviour:
   witheredExtent: 1
   explodeSpeed: 0.3
   explodeExtent: 1.1
-  hightLightExtent: 1
-  hightLightBreathInSpeed: 3
-  hightLightBreathOutSpeed: 3
+  hightLightExtent: 0.3
+  hightLightBreathInSpeed: 1
+  hightLightBreathOutSpeed: 0.2
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
@@ -2209,9 +2209,9 @@ MonoBehaviour:
   witheredExtent: 1
   explodeSpeed: 0.3
   explodeExtent: 1.1
-  hightLightExtent: 0
-  hightLightBreathInSpeed: 0
-  hightLightBreathOutSpeed: 0
+  hightLightExtent: 0.3
+  hightLightBreathInSpeed: 1
+  hightLightBreathOutSpeed: 0.2
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
@@ -2226,11 +2226,11 @@ MonoBehaviour:
   matureColor: {r: 0, g: 0, b: 0, a: 0}
   growTime: 0
   growWaitingTime: 0
-  canGlow: 0
-  glowColor: {r: 0, g: 0, b: 0, a: 0}
-  dimColor: {r: 0, g: 0, b: 0, a: 0}
-  glowSpeed: 0
-  dimSpeed: 0
+  canGlow: 1
+  glowColor: {r: 0.101960786, g: 0.18039216, b: 0.5647059, a: 0}
+  dimColor: {r: 0.050980393, g: 0.09019608, b: 0.28235295, a: 0}
+  glowSpeed: 1
+  dimSpeed: 1
   BigParent: {fileID: 0}
 --- !u!1 &1446687594502224259 stripped
 GameObject:
@@ -2256,9 +2256,9 @@ MonoBehaviour:
   witheredExtent: 1
   explodeSpeed: 0.3
   explodeExtent: 1.1
-  hightLightExtent: 1
-  hightLightBreathInSpeed: 3
-  hightLightBreathOutSpeed: 3
+  hightLightExtent: 0.3
+  hightLightBreathInSpeed: 1
+  hightLightBreathOutSpeed: 0.2
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
@@ -2308,9 +2308,9 @@ MonoBehaviour:
   witheredExtent: 1
   explodeSpeed: 0.3
   explodeExtent: 1.1
-  hightLightExtent: 1
-  hightLightBreathInSpeed: 3
-  hightLightBreathOutSpeed: 3
+  hightLightExtent: 0.3
+  hightLightBreathInSpeed: 1
+  hightLightBreathOutSpeed: 0.2
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
@@ -2355,9 +2355,9 @@ MonoBehaviour:
   witheredExtent: 1
   explodeSpeed: 0.3
   explodeExtent: 1.1
-  hightLightExtent: 1
-  hightLightBreathInSpeed: 3
-  hightLightBreathOutSpeed: 3
+  hightLightExtent: 0.3
+  hightLightBreathInSpeed: 1
+  hightLightBreathOutSpeed: 0.2
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
@@ -2407,9 +2407,9 @@ MonoBehaviour:
   witheredExtent: 1
   explodeSpeed: 0.3
   explodeExtent: 1.1
-  hightLightExtent: 1
-  hightLightBreathInSpeed: 3
-  hightLightBreathOutSpeed: 3
+  hightLightExtent: 0.3
+  hightLightBreathInSpeed: 1
+  hightLightBreathOutSpeed: 0.2
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
@@ -2459,9 +2459,9 @@ MonoBehaviour:
   witheredExtent: 1
   explodeSpeed: 0.3
   explodeExtent: 1.1
-  hightLightExtent: 1
-  hightLightBreathInSpeed: 3
-  hightLightBreathOutSpeed: 3
+  hightLightExtent: 0.3
+  hightLightBreathInSpeed: 1
+  hightLightBreathOutSpeed: 0.2
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
@@ -2577,9 +2577,9 @@ MonoBehaviour:
   witheredExtent: 1
   explodeSpeed: 0.3
   explodeExtent: 1.1
-  hightLightExtent: 0
-  hightLightBreathInSpeed: 0
-  hightLightBreathOutSpeed: 0
+  hightLightExtent: 0.3
+  hightLightBreathInSpeed: 0.8
+  hightLightBreathOutSpeed: 0.2
   fungusAnimator: {fileID: 4408640369286013999}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 8091857518063951547, guid: b898fd7e89e4742e9ac890835a6b21af, type: 3}
@@ -2674,9 +2674,9 @@ MonoBehaviour:
   witheredExtent: 1
   explodeSpeed: 0.3
   explodeExtent: 1.1
-  hightLightExtent: 1
-  hightLightBreathInSpeed: 3
-  hightLightBreathOutSpeed: 3
+  hightLightExtent: 0.3
+  hightLightBreathInSpeed: 1
+  hightLightBreathOutSpeed: 0.2
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
@@ -2721,9 +2721,9 @@ MonoBehaviour:
   witheredExtent: 1
   explodeSpeed: 0.3
   explodeExtent: 1.1
-  hightLightExtent: 1
-  hightLightBreathInSpeed: 3
-  hightLightBreathOutSpeed: 3
+  hightLightExtent: 0.3
+  hightLightBreathInSpeed: 1
+  hightLightBreathOutSpeed: 0.2
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
@@ -2788,9 +2788,9 @@ MonoBehaviour:
   witheredExtent: 1
   explodeSpeed: 0.3
   explodeExtent: 1.1
-  hightLightExtent: 0
-  hightLightBreathInSpeed: 0
-  hightLightBreathOutSpeed: 0
+  hightLightExtent: 0.3
+  hightLightBreathInSpeed: 1
+  hightLightBreathOutSpeed: 0.2
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
@@ -2805,11 +2805,11 @@ MonoBehaviour:
   matureColor: {r: 0, g: 0, b: 0, a: 0}
   growTime: 0
   growWaitingTime: 0
-  canGlow: 0
-  glowColor: {r: 0, g: 0, b: 0, a: 0}
-  dimColor: {r: 0, g: 0, b: 0, a: 0}
-  glowSpeed: 0
-  dimSpeed: 0
+  canGlow: 1
+  glowColor: {r: 0.101960786, g: 0.18039216, b: 0.5647059, a: 0}
+  dimColor: {r: 0.050980393, g: 0.09019608, b: 0.28235295, a: 0}
+  glowSpeed: 1
+  dimSpeed: 1
   BigParent: {fileID: 0}
 --- !u!1 &5012942444878398268 stripped
 GameObject:
@@ -2835,9 +2835,9 @@ MonoBehaviour:
   witheredExtent: 1
   explodeSpeed: 0.3
   explodeExtent: 1.1
-  hightLightExtent: 1
-  hightLightBreathInSpeed: 3
-  hightLightBreathOutSpeed: 3
+  hightLightExtent: 0.3
+  hightLightBreathInSpeed: 1
+  hightLightBreathOutSpeed: 0.2
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
@@ -2882,9 +2882,9 @@ MonoBehaviour:
   witheredExtent: 1
   explodeSpeed: 0.3
   explodeExtent: 1.1
-  hightLightExtent: 1
-  hightLightBreathInSpeed: 3
-  hightLightBreathOutSpeed: 3
+  hightLightExtent: 0.3
+  hightLightBreathInSpeed: 1
+  hightLightBreathOutSpeed: 0.2
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
@@ -2904,7 +2904,7 @@ MonoBehaviour:
   dimColor: {r: 0.7490196, g: 0.22745098, b: 0, a: 0}
   glowSpeed: 3
   dimSpeed: 3
-  BigParent: {fileID: 0}
+  BigParent: {fileID: 4408640368180581466}
 --- !u!1 &5544592168557214652 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1018664272722485354, guid: 2064bc982f97943b3b8d225fa8c26a97, type: 3}
@@ -2929,9 +2929,9 @@ MonoBehaviour:
   witheredExtent: 1
   explodeSpeed: 0.3
   explodeExtent: 1.1
-  hightLightExtent: 0
-  hightLightBreathInSpeed: 0
-  hightLightBreathOutSpeed: 0
+  hightLightExtent: 0.3
+  hightLightBreathInSpeed: 1
+  hightLightBreathOutSpeed: 0.2
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
@@ -2946,11 +2946,11 @@ MonoBehaviour:
   matureColor: {r: 0, g: 0, b: 0, a: 0}
   growTime: 0
   growWaitingTime: 0
-  canGlow: 0
-  glowColor: {r: 0, g: 0, b: 0, a: 0}
-  dimColor: {r: 0, g: 0, b: 0, a: 0}
-  glowSpeed: 0
-  dimSpeed: 0
+  canGlow: 1
+  glowColor: {r: 0.101960786, g: 0.18039216, b: 0.5647059, a: 0}
+  dimColor: {r: 0.050980393, g: 0.09019608, b: 0.28235295, a: 0}
+  glowSpeed: 1
+  dimSpeed: 1
   BigParent: {fileID: 0}
 --- !u!23 &5579041310705247513 stripped
 MeshRenderer:
@@ -2991,9 +2991,9 @@ MonoBehaviour:
   witheredExtent: 1
   explodeSpeed: 0.3
   explodeExtent: 1.1
-  hightLightExtent: 1
-  hightLightBreathInSpeed: 3
-  hightLightBreathOutSpeed: 3
+  hightLightExtent: 0.3
+  hightLightBreathInSpeed: 1
+  hightLightBreathOutSpeed: 0.2
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
@@ -3058,9 +3058,9 @@ MonoBehaviour:
   witheredExtent: 1
   explodeSpeed: 0.3
   explodeExtent: 1.1
-  hightLightExtent: 1
-  hightLightBreathInSpeed: 3
-  hightLightBreathOutSpeed: 3
+  hightLightExtent: 0.3
+  hightLightBreathInSpeed: 1
+  hightLightBreathOutSpeed: 0.2
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
@@ -3125,9 +3125,9 @@ MonoBehaviour:
   witheredExtent: 1
   explodeSpeed: 0.3
   explodeExtent: 1.1
-  hightLightExtent: 1
-  hightLightBreathInSpeed: 3
-  hightLightBreathOutSpeed: 3
+  hightLightExtent: 0.3
+  hightLightBreathInSpeed: 1
+  hightLightBreathOutSpeed: 0.2
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
@@ -3177,9 +3177,9 @@ MonoBehaviour:
   witheredExtent: 1
   explodeSpeed: 0.3
   explodeExtent: 1.1
-  hightLightExtent: 0
-  hightLightBreathInSpeed: 0
-  hightLightBreathOutSpeed: 0
+  hightLightExtent: 0.3
+  hightLightBreathInSpeed: 1
+  hightLightBreathOutSpeed: 0.2
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
@@ -3194,11 +3194,11 @@ MonoBehaviour:
   matureColor: {r: 0, g: 0, b: 0, a: 0}
   growTime: 0
   growWaitingTime: 0
-  canGlow: 0
-  glowColor: {r: 0, g: 0, b: 0, a: 0}
-  dimColor: {r: 0, g: 0, b: 0, a: 0}
-  glowSpeed: 0
-  dimSpeed: 0
+  canGlow: 1
+  glowColor: {r: 0.14117648, g: 0.25882354, b: 0.6431373, a: 0}
+  dimColor: {r: 0.07058824, g: 0.12941177, b: 0.32156864, a: 0}
+  glowSpeed: 1
+  dimSpeed: 1
   BigParent: {fileID: 0}
 --- !u!23 &7674748948831191376 stripped
 MeshRenderer:
@@ -3229,9 +3229,9 @@ MonoBehaviour:
   witheredExtent: 1
   explodeSpeed: 0.3
   explodeExtent: 1.1
-  hightLightExtent: 1
-  hightLightBreathInSpeed: 3
-  hightLightBreathOutSpeed: 3
+  hightLightExtent: 0.3
+  hightLightBreathInSpeed: 1
+  hightLightBreathOutSpeed: 0.2
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
@@ -3276,9 +3276,9 @@ MonoBehaviour:
   witheredExtent: 1
   explodeSpeed: 0.3
   explodeExtent: 1.1
-  hightLightExtent: 0
-  hightLightBreathInSpeed: 0
-  hightLightBreathOutSpeed: 0
+  hightLightExtent: 0.3
+  hightLightBreathInSpeed: 1
+  hightLightBreathOutSpeed: 0.2
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
@@ -3293,11 +3293,11 @@ MonoBehaviour:
   matureColor: {r: 0, g: 0, b: 0, a: 0}
   growTime: 0
   growWaitingTime: 0
-  canGlow: 0
-  glowColor: {r: 0, g: 0, b: 0, a: 0}
-  dimColor: {r: 0, g: 0, b: 0, a: 0}
-  glowSpeed: 0
-  dimSpeed: 0
+  canGlow: 1
+  glowColor: {r: 0.14117648, g: 0.25882354, b: 0.6431373, a: 0}
+  dimColor: {r: 0.07058824, g: 0.12941177, b: 0.32156864, a: 0}
+  glowSpeed: 1
+  dimSpeed: 1
   BigParent: {fileID: 0}
 --- !u!1 &8015842990829510997 stripped
 GameObject:
@@ -3323,9 +3323,9 @@ MonoBehaviour:
   witheredExtent: 1
   explodeSpeed: 0.3
   explodeExtent: 1.1
-  hightLightExtent: 0
-  hightLightBreathInSpeed: 0
-  hightLightBreathOutSpeed: 0
+  hightLightExtent: 0.3
+  hightLightBreathInSpeed: 1
+  hightLightBreathOutSpeed: 0.2
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
@@ -3340,11 +3340,11 @@ MonoBehaviour:
   matureColor: {r: 0, g: 0, b: 0, a: 0}
   growTime: 0
   growWaitingTime: 0
-  canGlow: 0
-  glowColor: {r: 0, g: 0, b: 0, a: 0}
-  dimColor: {r: 0, g: 0, b: 0, a: 0}
-  glowSpeed: 0
-  dimSpeed: 0
+  canGlow: 1
+  glowColor: {r: 0.101960786, g: 0.18039216, b: 0.5647059, a: 0}
+  dimColor: {r: 0.050980393, g: 0.09019608, b: 0.28235295, a: 0}
+  glowSpeed: 1
+  dimSpeed: 1
   BigParent: {fileID: 0}
 --- !u!1 &8256000902461802827 stripped
 GameObject:
@@ -3370,9 +3370,9 @@ MonoBehaviour:
   witheredExtent: 1
   explodeSpeed: 0.3
   explodeExtent: 1.1
-  hightLightExtent: 1
-  hightLightBreathInSpeed: 3
-  hightLightBreathOutSpeed: 3
+  hightLightExtent: 0.3
+  hightLightBreathInSpeed: 1
+  hightLightBreathOutSpeed: 0.2
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
@@ -3417,9 +3417,9 @@ MonoBehaviour:
   witheredExtent: 1
   explodeSpeed: 0.3
   explodeExtent: 1.1
-  hightLightExtent: 1
-  hightLightBreathInSpeed: 3
-  hightLightBreathOutSpeed: 3
+  hightLightExtent: 0.3
+  hightLightBreathInSpeed: 1
+  hightLightBreathOutSpeed: 0.2
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}
@@ -3464,9 +3464,9 @@ MonoBehaviour:
   witheredExtent: 1
   explodeSpeed: 0.3
   explodeExtent: 1.1
-  hightLightExtent: 1
-  hightLightBreathInSpeed: 3
-  hightLightBreathOutSpeed: 3
+  hightLightExtent: 0.3
+  hightLightBreathInSpeed: 1
+  hightLightBreathOutSpeed: 0.2
   fungusAnimator: {fileID: 0}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 0}

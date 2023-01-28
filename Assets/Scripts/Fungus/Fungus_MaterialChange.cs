@@ -88,7 +88,15 @@ public class Fungus_MaterialChange : MonoBehaviour
             });
             
         }
+
+        if (canGlow)
+        {
+            _propertyBlock.SetColor("_GlowColor", glowColor);
+            fungusRenderer.SetPropertyBlock(_propertyBlock);
+        }
         
+        
+        //change Initial Color
         if(!canChangeInitialColor)
             return;
         
@@ -241,6 +249,7 @@ public class Fungus_MaterialChange : MonoBehaviour
         });
         //m_Material.DOFloat(hightLightExtent,"_HighlightExtent",hightLightBreathOutSpeed);
     }
+    
 
     public void Killed()
     {
@@ -313,9 +322,8 @@ public class Fungus_MaterialChange : MonoBehaviour
             return;
         
         fungusRenderer.GetPropertyBlock(_propertyBlock);
-        Color initialColor = _propertyBlock.GetColor("_GlowColor");
-        
-        Color currentGlow = fungusRenderer.material.GetColor("_GlowColor");
+        Color currentGlow = _propertyBlock.GetColor("_GlowColor");
+       
         DOVirtual.Color(currentGlow, dimColor, dimSpeed, (Color value) =>
         {
             _propertyBlock.SetColor("_GlowColor", value);

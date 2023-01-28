@@ -160,7 +160,7 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GlowColor: {r: 0.049394805, g: 0.091523744, b: 0.2830189, a: 0}
     - _GradientBottomColor: {r: 0.9764706, g: 0.6784314, b: 0.95393324, a: 1}
-    - _HighlightColor: {r: 1, g: 0.4575472, b: 0.6092391, a: 0}
+    - _HighlightColor: {r: 0.9622642, g: 0.19517623, b: 0.4048471, a: 0}
     - _MainColor: {r: 0.94067633, g: 0.7746084, b: 0.9716981, a: 1}
     - _RimColor: {r: 0.9339623, g: 0.4273318, b: 0.4273318, a: 0}
     - _ShadowColor: {r: 0.8584906, g: 0.7410556, b: 0.8015543, a: 0}

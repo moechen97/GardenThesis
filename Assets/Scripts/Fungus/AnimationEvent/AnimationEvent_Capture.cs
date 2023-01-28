@@ -64,4 +64,14 @@ public class AnimationEvent_Capture : MonoBehaviour
     {
         _stateControl.CannotbeInteract();
     }
+
+    public void InteractLightUp()
+    {
+        MaterialChange.BreathOut();
+    }
+
+    public void InteractDim()
+    {
+        MaterialChange.BreathIn();
+    }
 }

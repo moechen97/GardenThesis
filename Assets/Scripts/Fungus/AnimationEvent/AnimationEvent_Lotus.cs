@@ -33,7 +33,7 @@ public class AnimationEvent_Lotus : MonoBehaviour
     {
         foreach (var material in materials)
         {
-            material.BreathOut();
+            material.Glow();
         }
     }
     
@@ -41,7 +41,7 @@ public class AnimationEvent_Lotus : MonoBehaviour
     {
         foreach (var material in materials)
         {
-            material.BreathIn();
+            material.Dim();
         }
     }
     
@@ -53,6 +53,22 @@ public class AnimationEvent_Lotus : MonoBehaviour
     public void CannotbeInteract()
     {
         _stateControl.CannotbeInteract();
+    }
+
+    public void InteractLightup()
+    {
+        foreach (var material in materials)
+        {
+            material.BreathOut();
+        }
+    }
+    
+    public void InteractDim()
+    {
+        foreach (var material in materials)
+        {
+            material.BreathIn();
+        }
     }
     
     

@@ -1135,7 +1135,10 @@ MonoBehaviour:
   - {fileID: 204825767805376873}
   - {fileID: 204825767930293082}
   Bubble_AudioSource: {fileID: 204825766393873444}
-  bloomAudios: []
+  bloomAudios:
+  - {fileID: 8300000, guid: ca6db866cd7964c54bf878346891da75, type: 3}
+  - {fileID: 8300000, guid: c3216cc2357844279a39fb7b8daace42, type: 3}
+  - {fileID: 8300000, guid: e82c0db19e0824c128f9efdfec875e3a, type: 3}
   dieParticle: {fileID: 3105234805027849063, guid: 001114f21d6c045faa7d021f847b87ae, type: 3}
   dieParticlePosition: {fileID: 532034184658485725}
   _stateControl: {fileID: 204825766393873445}

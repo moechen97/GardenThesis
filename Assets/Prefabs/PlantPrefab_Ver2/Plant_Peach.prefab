@@ -126,7 +126,7 @@ Transform:
   m_GameObject: {fileID: 1230821925997153379}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.02, z: 0}
-  m_LocalScale: {x: 1.4125, y: 2.5928705, z: 1.3696725}
+  m_LocalScale: {x: 1.7534511, y: 2.7873359, z: 1.6907548}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3738483157145793601}
@@ -324,13 +324,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fungusRenderer: {fileID: 3738483156017007455}
-  changeSpeed: 1
+  changeSpeed: 2.5
   glowExtentMax: 1
-  witheredSpeed: 4
+  witheredSpeed: 6
   witheredExtent: 0.8
   explodeSpeed: 0.5
   explodeExtent: 1.11
-  hightLightExtent: 0.2
+  hightLightExtent: 0.5
   hightLightBreathInSpeed: 0.3
   hightLightBreathOutSpeed: 0.4
   fungusAnimator: {fileID: 0}
@@ -450,13 +450,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fungusRenderer: {fileID: 3738483156051700337}
-  changeSpeed: 1
+  changeSpeed: 2.5
   glowExtentMax: 1
-  witheredSpeed: 4
+  witheredSpeed: 6
   witheredExtent: 0.8
   explodeSpeed: 0.5
   explodeExtent: 1.11
-  hightLightExtent: 0.2
+  hightLightExtent: 0.5
   hightLightBreathInSpeed: 0.3
   hightLightBreathOutSpeed: 0.4
   fungusAnimator: {fileID: 0}
@@ -576,13 +576,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fungusRenderer: {fileID: 3738483156284181841}
-  changeSpeed: 1
+  changeSpeed: 2.5
   glowExtentMax: 1
-  witheredSpeed: 4
+  witheredSpeed: 6
   witheredExtent: 0.8
   explodeSpeed: 0.5
   explodeExtent: 1.11
-  hightLightExtent: 0.2
+  hightLightExtent: 0.5
   hightLightBreathInSpeed: 0.3
   hightLightBreathOutSpeed: 0.4
   fungusAnimator: {fileID: 0}
@@ -702,13 +702,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fungusRenderer: {fileID: 3738483157020628906}
-  changeSpeed: 1
+  changeSpeed: 2.5
   glowExtentMax: 1
-  witheredSpeed: 4
+  witheredSpeed: 6
   witheredExtent: 0.8
   explodeSpeed: 0.5
   explodeExtent: 1.11
-  hightLightExtent: 0.2
+  hightLightExtent: 0.5
   hightLightBreathInSpeed: 0.3
   hightLightBreathOutSpeed: 0.4
   fungusAnimator: {fileID: 0}
@@ -1085,23 +1085,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6542411822308160841, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0.00000274968
+      value: 0.0000014414427
       objectReference: {fileID: 0}
     - target: {fileID: -6542411822308160841, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0.0000014387288
+      value: 0.0000014583147
       objectReference: {fileID: 0}
     - target: {fileID: -6542411822308160841, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -90.069
+      value: -90.11152
       objectReference: {fileID: 0}
     - target: {fileID: -5349650619961274072, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0.0000036175788
+      value: 0.0000023197422
       objectReference: {fileID: 0}
     - target: {fileID: -5349650619961274072, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -4.410369e-13
+      value: -2.8281118e-13
       objectReference: {fileID: 0}
     - target: {fileID: -5349650619961274072, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -1109,19 +1109,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5234448375175369897, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -5.880493e-13
+      value: -3.7708159e-13
       objectReference: {fileID: 0}
     - target: {fileID: -5234448375175369897, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -2.352197e-12
+      value: -1.5083268e-12
       objectReference: {fileID: 0}
     - target: {fileID: -5234448375175369897, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -7.010095e-20
+      value: -4.4951644e-20
       objectReference: {fileID: 0}
     - target: {fileID: -4385741382846228294, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.00000986583
+      value: -0.0000063318007
       objectReference: {fileID: 0}
     - target: {fileID: -4385741382846228294, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -1129,7 +1129,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4385741382846228294, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -90
+      value: -89.99857
       objectReference: {fileID: 0}
     - target: {fileID: -3656654598937493666, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1141,11 +1141,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3656654598937493666, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 89.9802
+      value: 89.98021
       objectReference: {fileID: 0}
     - target: {fileID: -3656654598937493666, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -1.1760987e-12
+      value: -7.541633e-13
       objectReference: {fileID: 0}
     - target: {fileID: -2771916008930399370, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1153,15 +1153,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 063552c1828af490b88bba2bd959781e, type: 2}
     - target: {fileID: -2639638324218457063, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 89.9802
+      value: 89.98021
       objectReference: {fileID: 0}
     - target: {fileID: -2639638324218457063, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -0.000012949975
+      value: -0.000013778282
       objectReference: {fileID: 0}
     - target: {fileID: -1251326991651219428, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.000013898611
+      value: -0.000009032564
       objectReference: {fileID: 0}
     - target: {fileID: -1251326991651219428, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -1169,15 +1169,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1251326991651219428, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -89.99999
+      value: -89.998566
       objectReference: {fileID: 0}
     - target: {fileID: -212581213004161906, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 89.9802
+      value: 89.98021
       objectReference: {fileID: 0}
     - target: {fileID: -212581213004161906, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -1.1760987e-12
+      value: -7.541633e-13
       objectReference: {fileID: 0}
     - target: {fileID: -37397355795517704, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1187,9 +1187,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plant_Peach_ver2_
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1411916421051813092, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.00000986583
+      value: -0.000006326379
       objectReference: {fileID: 0}
     - target: {fileID: 1411916421051813092, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -1201,31 +1205,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2854563699051640978, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -5.880493e-13
+      value: -3.7708159e-13
       objectReference: {fileID: 0}
     - target: {fileID: 2854563699051640978, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0.000012949967
+      value: 0.000013778276
       objectReference: {fileID: 0}
     - target: {fileID: 2854563699051640978, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -1.402018e-19
+      value: -8.990325e-20
       objectReference: {fileID: 0}
     - target: {fileID: 6627087315438279792, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -5.880493e-13
+      value: -3.7708159e-13
       objectReference: {fileID: 0}
     - target: {fileID: 6627087315438279792, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 4.2060557e-19
+      value: 2.6970976e-19
       objectReference: {fileID: 0}
     - target: {fileID: 6627087315438279792, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -7.0100927e-20
+      value: -4.4951615e-20
       objectReference: {fileID: 0}
     - target: {fileID: 7171878923826282781, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.00000986583
+      value: -0.000006326379
       objectReference: {fileID: 0}
     - target: {fileID: 7171878923826282781, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -1237,19 +1241,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7538919589998861289, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.000015294485
+      value: -0.000014278828
       objectReference: {fileID: 0}
     - target: {fileID: 7538919589998861289, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -179.99998
+      value: -179.47455
       objectReference: {fileID: 0}
     - target: {fileID: 7538919589998861289, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -90.06895
+      value: -90.1115
       objectReference: {fileID: 0}
     - target: {fileID: 7699293393863852614, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.000017993465
+      value: -0.000017012377
       objectReference: {fileID: 0}
     - target: {fileID: 7699293393863852614, guid: 3600972abd2ff45d3978f83534d5b463, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -1284,15 +1288,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fungusRenderer: {fileID: 7667923228429627057}
-  changeSpeed: 1
+  changeSpeed: 2.5
   glowExtentMax: 1
-  witheredSpeed: 4
+  witheredSpeed: 6
   witheredExtent: 0.8
   explodeSpeed: 0.5
   explodeExtent: 1.11
-  hightLightExtent: 0.2
+  hightLightExtent: 0.5
   hightLightBreathInSpeed: 0.3
-  hightLightBreathOutSpeed: 0.4
+  hightLightBreathOutSpeed: 0.6
   fungusAnimator: {fileID: 3738483157071005120}
   explodeParticle: {fileID: 0}
   DieParticle: {fileID: 6213727640098325240, guid: 2434c4d7316394795bae7c4bbb5996bc, type: 3}
@@ -1308,7 +1312,7 @@ MonoBehaviour:
   growTime: 5
   growWaitingTime: 0
   canGlow: 1
-  glowColor: {r: 2.7246282, g: 0.27103633, b: 0.627663, a: 0}
+  glowColor: {r: 1.8443027, g: 0.1931207, b: 0.42486554, a: 0}
   dimColor: {r: 0.8603976, g: 0.08558929, b: 0.19820678, a: 0}
   glowSpeed: 1.2
   dimSpeed: 1.2
@@ -1368,6 +1372,7 @@ MonoBehaviour:
   bloom: {fileID: 8300000, guid: ff17abd56a41143ae941a76004449125, type: 3}
   withered: {fileID: 8300000, guid: a8cbdab6a0a9344fdaa363c6f859c525, type: 3}
   killed: {fileID: 8300000, guid: f6d4acc592274424c8643bdeb69e10df, type: 3}
+  interact: {fileID: 8300000, guid: 917dbddb0c5ad495e8e411a9dd24fbee, type: 3}
   emitParticle: {fileID: 1077863660553860245, guid: 69ad40e4f2761481fa21a207c34fa748, type: 3}
   emitPosition: {fileID: 340657771117719184}
   _stateControl: {fileID: 3738483156969368570}
@@ -1399,13 +1404,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fungusRenderer: {fileID: 5519972586089048895}
-  changeSpeed: 1
+  changeSpeed: 2.5
   glowExtentMax: 1
-  witheredSpeed: 4
+  witheredSpeed: 6
   witheredExtent: 0.8
   explodeSpeed: 0.5
   explodeExtent: 1.11
-  hightLightExtent: 0.2
+  hightLightExtent: 0
   hightLightBreathInSpeed: 0.3
   hightLightBreathOutSpeed: 0.4
   fungusAnimator: {fileID: 0}

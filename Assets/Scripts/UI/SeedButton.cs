@@ -13,22 +13,37 @@ namespace Planting
         private bool isclosed = false;
         private bool canInteract = true;
         private bool hasPlanted = false;
+        private Coroutine fingerhint;
 
         public void TapButton()
         {
+            
             if (!canInteract)
+            {
+                if (fingerhint != null)
+                {
+                    StopCoroutine(fingerhint);
+                    fingerhint = null;
+                }
+                FingerHint.SetActive(false);
                 return;
+            }
+            
             isclosed = !isclosed;
             canInteract = false;
             uiAnimator.SetBool("IsClosed",isclosed);
             Seedbar.SetBool("IsShown",isclosed);
             if (isclosed && !hasPlanted)
             {
-                StartCoroutine(SetFingerHintActive());
+                 fingerhint = StartCoroutine(SetFingerHintActive());
             }
             else if (!isclosed && !hasPlanted)
             {
-                StopCoroutine(SetFingerHintActive());
+                if (fingerhint != null)
+                {
+                    StopCoroutine(fingerhint);
+                    fingerhint = null;
+                }
                 FingerHint.SetActive(false);
             }
             StartCoroutine(Colddown());

@@ -12,6 +12,7 @@ public class AnimationEvent_Peach : MonoBehaviour
     [SerializeField] private AudioClip bloom;
     [SerializeField] private AudioClip withered;
     [SerializeField] private AudioClip killed;
+    [SerializeField] private AudioClip interact;
     
     [SerializeField] private GameObject emitParticle;
     [SerializeField] private Transform emitPosition;
@@ -60,6 +61,11 @@ public class AnimationEvent_Peach : MonoBehaviour
     {
         peach_audiosource.PlayOneShot(fullygrow);
     }
+
+    public void InteractSoundPlay()
+    {
+        peach_audiosource.PlayOneShot(interact);
+    }
     
     public void Withered()
     {
@@ -87,5 +93,20 @@ public class AnimationEvent_Peach : MonoBehaviour
     {
         _stateControl.CannotbeInteract();
     }
+
+    public void InteractLightUp()
+    {
+        foreach (var MaterialChange in MaterialChanges)
+        {
+            MaterialChange.BreathOut();
+        }
+    }
     
+    public void InteractLightDim()
+    {
+        foreach (var MaterialChange in MaterialChanges)
+        {
+            MaterialChange.BreathIn();
+        }
+    }
 }

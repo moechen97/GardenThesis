@@ -146,7 +146,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _StartPosition: 0.15
+    - _StartPosition: 0.46
     - _Surface: 0
     - _WaveSpeed: 1.3
     - _WitheredExtent: 0
@@ -161,7 +161,7 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GlowColor: {r: 0.40426707, g: 0.65444875, b: 1.4049939, a: 0}
     - _GradientBottomColor: {r: 0.77914476, g: 0.63318795, b: 0.8773585, a: 1}
-    - _HighlightColor: {r: 1, g: 0.4575472, b: 0.6092391, a: 0}
+    - _HighlightColor: {r: 0.4749062, g: 0.36779106, b: 0.8962264, a: 0}
     - _MainColor: {r: 0.41776013, g: 0.34843358, b: 0.5471698, a: 1}
     - _RimColor: {r: 0.3813261, g: 0.27467737, b: 0.50888145, a: 1}
     - _ShadowColor: {r: 0.7075472, g: 0.51063544, b: 0.55192345, a: 0}

@@ -158,9 +158,9 @@ Material:
     - _DarkColor: {r: 0.8018868, g: 0.5386621, b: 0.5182004, a: 0}
     - _DissolveEdgeColor: {r: 10.680627, g: 3.0537872, b: 0.25190154, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GlowColor: {r: 2.724628, g: 0.2698924, b: 0.61465883, a: 0}
+    - _GlowColor: {r: 1.8443027, g: 0.1931207, b: 0.42486554, a: 0}
     - _GradientBottomColor: {r: 1, g: 0.75212324, b: 0.504717, a: 1}
-    - _HighlightColor: {r: 1, g: 0.4575472, b: 0.6092391, a: 0}
+    - _HighlightColor: {r: 4.182591, g: 0.34493706, b: 0.3065772, a: 0}
     - _MainColor: {r: 0.9528302, g: 0.47867832, b: 0.39101997, a: 1}
     - _RimColor: {r: 0.9339623, g: 0.4273318, b: 0.4273318, a: 0}
     - _ShadowColor: {r: 0.90588236, g: 0.7058824, b: 0.8765111, a: 0}
