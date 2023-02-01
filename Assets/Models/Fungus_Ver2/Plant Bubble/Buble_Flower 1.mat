@@ -103,6 +103,7 @@ Material:
     - _DissolveNoiseScale: 4
     - _DstBlend: 0
     - _EnvironmentReflections: 1
+    - _Float: 0
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _Glossness: 36.3
@@ -116,7 +117,9 @@ Material:
     - _HAVEVERTEXPOSITIONADJUSTMENG: 1
     - _HeightMask: 1.67
     - _HeightWaveFrequency: 1
+    - _HighLIghtMaskHeight: 4.53
     - _HighlightExtent: 0
+    - _HighlightMaskHight: 1
     - _Killed_Extent: 0.1
     - _Metallic: 0
     - _OcclusionStrength: 1
@@ -141,13 +144,14 @@ Material:
     m_Colors:
     - _AmbientColor: {r: 0.3773585, g: 0.20113918, b: 0.21841566, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BlendColor1: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DarkColor: {r: 0.05808899, g: 0.048860796, b: 0.16981131, a: 0}
     - _DissolveEdgeColor: {r: 0.1315681, g: 0.4556323, b: 5.5784883, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GlowColor: {r: 0.057335466, g: 0.9619617, b: 1.216786, a: 0}
     - _GradientBottomColor: {r: 0.24296904, g: 0.41250274, b: 0.7924528, a: 1}
-    - _HighlightColor: {r: 1, g: 0.4575472, b: 0.6092391, a: 0}
+    - _HighlightColor: {r: 0, g: 0.6436782, b: 1, a: 0}
     - _MainColor: {r: 0.45882356, g: 0.6217501, b: 1, a: 1}
     - _RimColor: {r: 0.9339623, g: 0.4273318, b: 0.4273318, a: 0}
     - _ShadowColor: {r: 0.5281239, g: 0.6256592, b: 0.8679245, a: 0}

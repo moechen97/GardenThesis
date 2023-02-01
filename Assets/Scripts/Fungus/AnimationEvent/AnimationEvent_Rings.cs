@@ -75,4 +75,20 @@ public class AnimationEvent_Rings : MonoBehaviour
     {
         _stateControl.CannotbeInteract();
     }
+
+    public void InteractLightUp()
+    {
+        foreach (var material in materials)
+        {
+            material.BreathOut();
+        }
+    }
+
+    public void InteractDim()
+    {
+        foreach (var material in materials)
+        {
+            material.BreathIn();
+        }
+    }
 }

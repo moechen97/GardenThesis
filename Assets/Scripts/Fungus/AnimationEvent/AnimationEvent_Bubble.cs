@@ -73,4 +73,20 @@ public class AnimationEvent_Bubble : MonoBehaviour
     {
         _stateControl.CannotbeInteract();
     }
+
+    public void InteractLightup()
+    {
+        foreach (var material in _materials)
+        {
+            material.BreathOut();
+        }
+    }
+
+    public void InteractDim()
+    {
+        foreach (var material in _materials)
+        {
+            material.BreathIn();
+        }
+    }
 }
