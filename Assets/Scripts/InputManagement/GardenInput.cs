@@ -359,7 +359,7 @@ namespace Planting
                 indicator.transform.position = screenCoordinates;
                 if (Resources.GetResourcesUsed() + PlantManager.resourceDict[currSeed] > 1.0F)
                 {
-                    indicator.color = Color.red;
+                    //indicator.color = Color.red;
                 }
                 else
                 {
@@ -553,10 +553,10 @@ namespace Planting
 
         private bool AttemptPlant(PlantType type)
         {
-            if (Resources.GetResourcesUsed() + PlantManager.resourceDict[type] > 1.0F)
+            /*if (Resources.GetResourcesUsed() + PlantManager.resourceDict[type] > 1.0F)
             {
                 return false;
-            }
+            }*/
             bool success = false;
             Vector2 finger = gardenControl.Plant.FirstFingerPosition.ReadValue<Vector2>();
             Vector3 screenCoordinates = new Vector3(finger.x, finger.y, cameraMain.nearClipPlane);

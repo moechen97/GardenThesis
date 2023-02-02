@@ -66,6 +66,18 @@ MonoBehaviour:
   Shadow: {fileID: 9193809188030954976}
   beenKilledSpeed: 3
   killedExtent: 25
+  shadowRenderer: {fileID: 0}
+  canChangeInitialColor: 0
+  initialColor: {r: 0, g: 0, b: 0, a: 0}
+  matureColor: {r: 0, g: 0, b: 0, a: 0}
+  growTime: 0
+  growWaitingTime: 0
+  canGlow: 0
+  glowColor: {r: 0, g: 0, b: 0, a: 0}
+  dimColor: {r: 0, g: 0, b: 0, a: 0}
+  glowSpeed: 0
+  dimSpeed: 0
+  BigParent: {fileID: 0}
 --- !u!114 &1038148707329456005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,6 +99,7 @@ MonoBehaviour:
   aliveTime: 15
   isBreeding: 0
   growthRadius: 2
+  hueValue: 0.05
   height_minRange: 0.6
   height_maxRange: 1.2
   XZScale: 1
@@ -102,6 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 687e1e6b240d7433b8837269e3e3fcd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canBeInteract: 0
   fungusAnimator: {fileID: 9193809187648853069}
   MaterialControls:
   - {fileID: 9193809187864115645}

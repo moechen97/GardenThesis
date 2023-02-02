@@ -23,6 +23,8 @@ namespace Planting {
         [HideInInspector] public bool isBreeding = false;
         [SerializeField] protected float growthRadius = 2F;
         [HideInInspector] private bool wasBred = false;
+        [SerializeField] protected float hueValue;
+        
         // Start is called before the first frame update
         protected virtual void Start()
         {
@@ -176,6 +178,11 @@ namespace Planting {
         public void WasBred()
         {
             wasBred = true;
+        }
+
+        public float ReturnHue()
+        {
+            return hueValue;
         }
     }
 }

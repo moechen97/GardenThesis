@@ -120,6 +120,7 @@ Material:
     - _GlossyReflections: 0
     - _Height_Gradient: -0.71
     - _Height_Scale: 0.38
+    - _HueExtent: 0
     - _Mask2Distance: 0.43
     - _MaskDistance: 1.45
     - _MaskGradient: 12.4

@@ -155,6 +155,7 @@ MonoBehaviour:
   aliveTime: 20
   isBreeding: 0
   growthRadius: 6
+  hueValue: -0.09
   height_minRange: 1
   height_maxRange: 1.2
   XZScale: 1

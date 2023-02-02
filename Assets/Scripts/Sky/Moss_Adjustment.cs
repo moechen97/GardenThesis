@@ -18,6 +18,7 @@ namespace Planting
     [SerializeField] private float colorChangingSpeed;
     [SerializeField] private float expandExtent;
     [SerializeField] private float expandSpeed;
+    [SerializeField] private float changingColorSeed;
 
     private Material m_Material;
     private MaterialPropertyBlock _propertyBlock;
@@ -27,6 +28,9 @@ namespace Planting
 
     private float resourceUsed=0f;
     private float resourceValue = 0f;
+
+    private float hueValue = 0f;
+    private float currentHue = 0f;
     
     private void OnEnable()
     {
@@ -46,6 +50,7 @@ namespace Planting
         m_Material = mossRenderer.material;
         currentTime = TimeEventManager.state;
         _propertyBlock.SetFloat("_MaskDistance",0);
+        _propertyBlock.SetFloat("_HueExtent",0);
         mossRenderer.SetPropertyBlock(_propertyBlock);
         if (currentTime == 0)
         {
@@ -70,6 +75,21 @@ namespace Planting
     private void Update()
     {
         resourceUsed = Resources.GetResourcesUsed();
+        hueValue = Resources.GetHueValue();
+
+        if (hueValue > 1f)
+        {
+            hueValue = 1f;
+        }
+        else if (hueValue < -1f)
+        {
+            hueValue = -1f;
+        }
+
+        if (resourceUsed > 1f)
+        {
+            resourceUsed = 1f;
+        }
        
         if (resourceValue < resourceUsed)
         {
@@ -79,6 +99,21 @@ namespace Planting
         {
             resourceValue -= expandSpeed * Time.deltaTime;
         }
+
+        if (currentHue < hueValue)
+        {
+            currentHue += changingColorSeed * Time.deltaTime;
+        }
+        else if (currentHue > hueValue)
+        {
+            currentHue -= changingColorSeed * Time.deltaTime;
+        }
+            
+        if (Mathf.Abs(currentHue - hueValue) < 0.00125F)//Mathf.Approximately(sliderValue, resourcesUsed) || )
+        {
+            currentHue = hueValue;
+        }
+        
         if (Mathf.Abs(resourceValue - resourceUsed) < 0.00125F)//Mathf.Approximately(sliderValue, resourcesUsed) || )
         {
             resourceValue = resourceUsed;
@@ -90,6 +125,7 @@ namespace Planting
         }
         //Debug.Log("resourceValue"+resourceValue);
         _propertyBlock.SetFloat("_MaskDistance",resourceValue*4);
+        _propertyBlock.SetFloat("_HueExtent",currentHue);
         mossRenderer.SetPropertyBlock(_propertyBlock);
         
         

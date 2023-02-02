@@ -11,6 +11,8 @@ namespace Planting {
         private static bool incrementProgress = true;
         private GameObject fillBar;
         private static float sliderValue;
+        public static float mossHue =0;
+        
         // Start is called before the first frame update
         void Start()
         {
@@ -54,22 +56,29 @@ namespace Planting {
             }
         }
 
-        public static void IncrementResources(float newProgress)
+        public static void IncrementResources(float newProgress, float hue)
         {
             resourcesUsed += newProgress;
+            mossHue += hue;
             resourcesUsed = float.Parse(resourcesUsed.ToString("F2"));
             incrementProgress = true;
         }
 
-        public static void DecrementResources(float newProgress)
+        public static void DecrementResources(float newProgress, float hue)
         {
             resourcesUsed -= newProgress;
+            mossHue -= hue;
             resourcesUsed = float.Parse(resourcesUsed.ToString("F2"));
             incrementProgress = false;
         }
         public static float GetResourcesUsed()
         {
             return resourcesUsed;
+        }
+
+        public static float GetHueValue()
+        {
+            return mossHue;
         }
     }
 }
