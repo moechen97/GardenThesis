@@ -57,6 +57,7 @@ namespace Planting
         private Vector3 startCamRotation;
         private bool enableControl = false;
         private Vector3 PreviousDragPosition;
+        private Vector2 fingerPositionOffset = new Vector2(0f, 20f);
         
         void Awake()
         {
@@ -65,6 +66,7 @@ namespace Planting
             graphicRaycaster = plantMenu_Canvas.GetComponent<GraphicRaycaster>();
             gardenControl = new GardenControl();
             cameraMain = Camera.main;
+            fingerPositionOffset = new Vector2(0f,Screen.height / 45f);
         }
 
         private void Start()
@@ -354,6 +356,7 @@ namespace Planting
                 indicator.gameObject.SetActive(true);
                 //Convert finger to screen coordinates
                 Vector2 finger = gardenControl.Plant.FirstFingerPosition.ReadValue<Vector2>();
+                finger += fingerPositionOffset;
                 Vector3 screenCoordinates = new Vector3(finger.x, finger.y, cameraMain.nearClipPlane);
                 screenCoordinates.z = 0.0F;
                 indicator.transform.position = screenCoordinates;
@@ -559,6 +562,7 @@ namespace Planting
             }*/
             bool success = false;
             Vector2 finger = gardenControl.Plant.FirstFingerPosition.ReadValue<Vector2>();
+            finger += fingerPositionOffset;
             Vector3 screenCoordinates = new Vector3(finger.x, finger.y, cameraMain.nearClipPlane);
             screenCoordinates.z = 0.0F;
             RaycastHit hit;
