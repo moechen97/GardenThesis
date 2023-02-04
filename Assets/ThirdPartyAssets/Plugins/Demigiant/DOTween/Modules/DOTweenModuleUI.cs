@@ -1,4 +1,4 @@
-﻿// Author: Daniele Giardini - http://www.demigiant.com
+// Author: Daniele Giardini - http://www.demigiant.com
 // Created: 2018/07/13
 
 #if true && (UNITY_4_6 || UNITY_5 || UNITY_2017_1_OR_NEWER) // MODULE_MARKER
@@ -63,12 +63,8 @@ namespace DG.Tweening
 
         /// <summary>Tweens an Image's color to the given value.
         /// Also stores the image as the tween's target so it can be used for filtered operations</summary>
-        /// <param name="target"></param>
-        /// <param name="cannotPlantColor"></param>
-        /// <param name="endValue">The end value to reach</param>
-        /// <param name="duration">The duration of the tween</param>
-        public static TweenerCore<Color, Color, ColorOptions> DOColor(this Image target, Color cannotPlantColor,
-            Color endValue, float duration)
+        /// <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
+               public static TweenerCore<Color, Color, ColorOptions> DOColor(this Image target, Color endValue, float duration)
         {
             TweenerCore<Color, Color, ColorOptions> t = DOTween.To(() => target.color, x => target.color = x, endValue, duration);
             t.SetTarget(target);

@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: GradientSprite
-  m_Shader: {fileID: -6465566751694194690, guid: feb3014246afd4405b0a0a1e2ed27b4f, type: 3}
+  m_Shader: {fileID: 4800000, guid: da526b50d4f744f33aef26c1cb152639, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -109,10 +109,11 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Gradient_Height: 3.92
+    - _Gradient_Height: 1.02
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
+    - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
