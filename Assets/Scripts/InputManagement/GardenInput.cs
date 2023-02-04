@@ -17,6 +17,7 @@ namespace Planting
         Camera cameraMain;
         [SerializeField] GameObject cam;
         [SerializeField] Image indicator;
+        [SerializeField] private UIIndicator _uiIndicator;
         [SerializeField] GameObject plantMenu;
         [SerializeField] GameObject plantMenu_Canvas;
         [SerializeField] EventSystem eventSystem;
@@ -353,13 +354,13 @@ namespace Planting
             if (isDraggingSeed)
             {
                 //Set square indicator when user is dragging object
-                indicator.gameObject.SetActive(true);
+                _uiIndicator.gameObject.SetActive(true);
                 //Convert finger to screen coordinates
                 Vector2 finger = gardenControl.Plant.FirstFingerPosition.ReadValue<Vector2>();
                 finger += fingerPositionOffset;
                 Vector3 screenCoordinates = new Vector3(finger.x, finger.y, cameraMain.nearClipPlane);
                 screenCoordinates.z = 0.0F;
-                indicator.transform.position = screenCoordinates;
+                _uiIndicator.transform.position = screenCoordinates;
                 if (Resources.GetResourcesUsed() + PlantManager.resourceDict[currSeed] > 1.0F)
                 {
                     //indicator.color = Color.red;
@@ -383,16 +384,16 @@ namespace Planting
                         Collider[] collisions = Physics.OverlapSphere(hit.point, radius, LayerMask.GetMask("Plant"));//activeSeeds[0].plantRadius);
                         if (hit.transform.gameObject.name.Equals("Ground") && collisions.Length == 0)
                         {
-                            indicator.color = Color.green;
+                            _uiIndicator.CanPlant();
                         }
                         else
                         {
-                            indicator.color = Color.red;
+                            _uiIndicator.CannotPlant();
                         }
                     }
                     else
                     {
-                        indicator.color = Color.red;
+                        _uiIndicator.CannotPlant();
                     }
                 }
             }
@@ -523,7 +524,7 @@ namespace Planting
             if(twoFingers)
             {
                 rotatingScreen = false;
-                indicator.gameObject.SetActive(false);
+                _uiIndicator.gameObject.SetActive(false);
                 return;
             }
 
@@ -551,7 +552,7 @@ namespace Planting
                 }
             }
             rotatingScreen = false;
-            indicator.gameObject.SetActive(false);
+            _uiIndicator.gameObject.SetActive(false);
         }
 
         private bool AttemptPlant(PlantType type)
