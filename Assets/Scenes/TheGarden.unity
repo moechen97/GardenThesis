@@ -8575,6 +8575,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 828516294}
+  - component: {fileID: 828516295}
   m_Layer: 5
   m_Name: NewIndicatorP
   m_TagString: Untagged
@@ -8603,6 +8604,21 @@ RectTransform:
   m_AnchoredPosition: {x: -950.2, y: 218.6}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &828516295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828516293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af5f049e119eb4ef28658446bbac85dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canPlantColor: {r: 0.41037738, g: 1, b: 0.4314503, a: 1}
+  cannotPlantColor: {r: 0.735849, g: 0.24644002, b: 0.24644002, a: 1}
+  _image: {fileID: 1508287765}
 --- !u!1 &844173592
 GameObject:
   m_ObjectHideFlags: 0
@@ -17888,6 +17904,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 88122235}
   indicator: {fileID: 257995851}
+  _uiIndicator: {fileID: 828516295}
   plantMenu: {fileID: 555271177162985868, guid: 8ec96ba418583d24ea95c5f54df8e2bc, type: 3}
   plantMenu_Canvas: {fileID: 1439167986}
   eventSystem: {fileID: 2092049947}
@@ -18461,7 +18478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: e0b3cc9a2cebc445689a130b9093f547, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.98039216}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
