@@ -47,7 +47,6 @@ public class Fungus_MaterialChange : MonoBehaviour
     private float currentTime;
     private bool iskilled = false;
     
-    
     private void OnEnable()
     {
         TimeEventManager.NightStart += GotoNight;
@@ -62,7 +61,6 @@ public class Fungus_MaterialChange : MonoBehaviour
 
     private void Start()
     {
-        
         _propertyBlock = new MaterialPropertyBlock();
         m_Material = fungusRenderer.material;
         currentTime = TimeEventManager.state;
@@ -104,8 +102,6 @@ public class Fungus_MaterialChange : MonoBehaviour
         fungusRenderer.SetPropertyBlock(_propertyBlock);
 
         StartCoroutine(GrowColorChange());
-
-
     }
 
 
@@ -169,6 +165,27 @@ public class Fungus_MaterialChange : MonoBehaviour
         m_Material.DOFloat(0, "_DeformExtent", witheredSpeed);*/
     }
 
+    public void PlantTouchedWiggle()
+    {
+        float deformSpeed = 30f;
+        float duration = 0.125f; //.25
+        DOVirtual.Float(deformSpeed, Mathf.Clamp(deformSpeed - 0.2f, 0f, 30f), duration, (float value) => {
+            _propertyBlock.SetFloat("_WaveSpeed", value);
+            fungusRenderer.SetPropertyBlock(_propertyBlock);
+        });
+
+        StartCoroutine(StopWiggle(duration));
+    }
+
+    private IEnumerator StopWiggle(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        float deformSpeed = _propertyBlock.GetFloat("_WaveSpeed");
+        DOVirtual.Float(deformSpeed, Mathf.Clamp(deformSpeed - 0.2f, 0f, 1f), witheredSpeed, (float value) => {
+            _propertyBlock.SetFloat("_WaveSpeed", value);
+            fungusRenderer.SetPropertyBlock(_propertyBlock);
+        });
+    }
     public void Exploded()
     {
         StartCoroutine(Explosion());
