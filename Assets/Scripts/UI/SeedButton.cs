@@ -66,7 +66,6 @@ namespace Planting
             if(hasPlanted)
                 return;
             float  resourceUsed = Resources.GetResourcesUsed();
-            Debug.Log("resourceUsed:" + resourceUsed);
             if (resourceUsed > 0)
             {
                 hasPlanted = true;

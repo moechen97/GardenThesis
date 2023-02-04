@@ -328,14 +328,14 @@ namespace Planting
                 screenCoordinates.z = 0.0F;
                 RaycastHit hit;
                 Ray ray = cameraMain.ScreenPointToRay(screenCoordinates);
-                int layer_mask = LayerMask.GetMask("PlantTouch");
+                int layer_mask = LayerMask.GetMask("Plant"); //not "PlantTouch" anymore
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, layer_mask))
                 {
-                    Debug.Log("tap plant");
                     if (hit.transform.GetComponent<TouchDetectBox>())
                     {
                         hit.transform.GetComponent<TouchDetectBox>().IsTouched();
                     }
+                    DeformPlant(hit);
                     // //If true, create plant menu
                     // isOnPlantMenu = true;
                     // GameObject menuObject = GameObject.Instantiate(plantMenu);
@@ -344,6 +344,14 @@ namespace Planting
                     // menuObject.transform.position = screenCoordinates;
                     // menu = new PlantMenu(menuObject, hit.transform.gameObject);
                 }
+            }
+        }
+        private void DeformPlant(RaycastHit plant)
+        {
+            Fungus_MaterialChange plantModifier = plant.collider.GetComponentInParent<Fungus_MaterialChange>();
+            if (plantModifier != null)
+            {
+                plantModifier.PlantTouchedWiggle();
             }
         }
 
