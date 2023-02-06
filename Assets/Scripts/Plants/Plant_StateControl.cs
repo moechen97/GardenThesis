@@ -48,5 +48,13 @@ public class Plant_StateControl : MonoBehaviour
         canBeInteract = false;
         fungusAnimator.SetBool("isInteract",false);
     }
+
+    public void Wiggle()
+    {
+        foreach (var materialChange in MaterialControls)
+        {
+            materialChange.PlantTouchedWiggle();
+        }
+    }
     
 }

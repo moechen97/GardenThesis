@@ -78,6 +78,8 @@ MonoBehaviour:
   glowSpeed: 0
   dimSpeed: 0
   BigParent: {fileID: 0}
+  wiggleDuration: 0.2
+  deformSpeed: 20
 --- !u!114 &7072614448206257579
 MonoBehaviour:
   m_ObjectHideFlags: 0

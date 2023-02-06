@@ -353,6 +353,12 @@ namespace Planting
             {
                 plantModifier.PlantTouchedWiggle();
             }
+
+            Plant_StateControl plantStateControl = plant.collider.GetComponent<Plant_StateControl>();
+            if (plantStateControl != null) 
+            {
+                plantStateControl.Wiggle();
+            }
         }
 
         private void Update()
