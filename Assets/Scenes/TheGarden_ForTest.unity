@@ -22846,6 +22846,7 @@ MonoBehaviour:
   startCanvas: {fileID: 39787956}
   CameraInstruction: {fileID: 631336313}
   _input: {fileID: 383640890}
+  _renderer: {fileID: 1582914981}
 --- !u!114 &1641688957
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -19,7 +19,13 @@ public class TutorialStart : MonoBehaviour
         TutorialCamera.SetActive(true);
         gameCanvas.alpha = 0;
         startCanvas.alpha = 1;
-        _renderer.GetMaterial().DOFloat(0f, "_StepEdge", 0f);
+        StartCoroutine(ChangeTitleColor());
+    }
+
+    IEnumerator ChangeTitleColor()
+    {
+        yield return new WaitForSeconds(0.5f);
+        _renderer.GetMaterial().DOFloat(0f, "_StepEdge", 0.1f);
     }
 
     public void StartGame()
@@ -30,7 +36,8 @@ public class TutorialStart : MonoBehaviour
     IEnumerator TapStart()
     {
         TutorialCamera.SetActive(false);
-        _renderer.GetMaterial().DOFloat(1.03f, "_StepEdge", 1.5f);
+        yield return new WaitForSeconds(0.2f);
+        _renderer.GetMaterial().DOFloat(1.03f, "_StepEdge", 1.8f);
         startCanvas.DOFade(0, 2f);
         yield return new WaitForSeconds(2f);
         gameCanvas.DOFade(1, 2f);
