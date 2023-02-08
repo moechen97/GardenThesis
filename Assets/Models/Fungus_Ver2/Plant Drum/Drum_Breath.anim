@@ -23651,7 +23651,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.5833333
+  - time: 1.1666666
     functionName: ParticleSound
     data: 
     objectReferenceParameter: {fileID: 0}

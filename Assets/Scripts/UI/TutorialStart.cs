@@ -41,6 +41,7 @@ public class TutorialStart : MonoBehaviour
         startCanvas.DOFade(0, 2f);
         yield return new WaitForSeconds(2f);
         gameCanvas.DOFade(1, 2f);
+        _renderer.GetMaterial().SetFloat("_StepEdge", 0f);
         yield return new WaitForSeconds(1.8f);
         startCanvas.gameObject.SetActive(false);
         CameraInstruction.DOFade(1, 1.5f);
