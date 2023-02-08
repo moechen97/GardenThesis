@@ -14,6 +14,9 @@ namespace Planting
         public static PlantManager instance;
         public static Transform PlantTransform { get; private set; }
         public static Transform SpikeTransform { get; private set; }
+
+        public static float plantLifeFactor = 1;
+        
         private void Awake()
         {
             instance = this;
@@ -143,6 +146,15 @@ namespace Planting
             foreach(Plant plant in allPlants)
             {
                 plant.UpdateAnimationSpeed(speedFactor);
+            }
+        }
+        
+        public static void UpdatePlantsLifeSpeed(float speedFactor)
+        {
+            plantLifeFactor = speedFactor;
+            foreach(Plant plant in allPlants)
+            {
+                plant.UpdateLifeTime(speedFactor);
             }
         }
     }

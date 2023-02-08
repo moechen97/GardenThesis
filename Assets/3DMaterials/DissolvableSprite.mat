@@ -108,7 +108,7 @@ Material:
     - _GlossyReflections: 0
     - _Gradient_Height: 0.85
     - _Metallic: 0
-    - _NoiseSize: 13.54
+    - _NoiseSize: 4.6
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
@@ -118,7 +118,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _StepEdge: -2.22
+    - _StepEdge: 1.03
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1

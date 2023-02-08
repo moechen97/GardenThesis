@@ -17,7 +17,10 @@ namespace Planting {
         [SerializeField, Tooltip("Minimum growth speed")] private float growthSpeed_minRange = 0.05F;
         [SerializeField, Tooltip("Maximum growth speed")] private float growthSpeed_maxRange = 0.1F;
         private float speed;
+        [SerializeField] private float aliveTimeRandomRange;
         [SerializeField] private float aliveTime = 20F;
+        private float lifetime;
+        private float currentlifetime;
         private float aliveTimer;
         //[SerializeField, Tooltip("Blooming flower when fully grown")] protected GameObject flower;
         [HideInInspector] public bool isBreeding = false;
@@ -33,8 +36,13 @@ namespace Planting {
             isGrown = false;
             animator = transform.GetComponentInChildren<Animator>();
             //float speed = Random.Range(0.005F, 0.100F);
-            speed = Random.Range(growthSpeed_minRange, growthSpeed_maxRange);
-            animator.speed = speed * GameObject.FindGameObjectWithTag("SpeedManager").GetComponent<SpeedManager>().speed;
+            //speed = Random.Range(growthSpeed_minRange, growthSpeed_maxRange);
+            //animator.speed = speed * GameObject.FindGameObjectWithTag("SpeedManager").GetComponent<SpeedManager>().speed;
+
+            //random lifetime
+            lifetime = Random.Range(aliveTime - aliveTimeRandomRange, aliveTime + aliveTimeRandomRange);
+            currentlifetime = PlantManager.plantLifeFactor * lifetime;
+
             //Notify growth manager of new plant
             PlantManager.IncrementPlant(id, this);          
             //flower.SetActive(false);
@@ -56,7 +64,7 @@ namespace Planting {
             {
                 breedingTimer += Time.deltaTime;
                 aliveTimer += Time.deltaTime;
-                if (aliveTimer >= aliveTime)
+                if (aliveTimer >= currentlifetime)
                 {
                     if (GetComponent<Plant_StateControl>())
                     {
@@ -173,6 +181,11 @@ namespace Planting {
         public void UpdateAnimationSpeed(float speedFactor)
         {
             animator.speed = speed * speedFactor;
+        }
+
+        public void UpdateLifeTime(float lifetimeFactor)
+        {
+            currentlifetime = lifetime * lifetimeFactor;
         }
 
         public void WasBred()

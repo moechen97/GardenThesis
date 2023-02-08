@@ -25,7 +25,7 @@ public class TutorialStart : MonoBehaviour
     IEnumerator ChangeTitleColor()
     {
         yield return new WaitForSeconds(0.5f);
-        _renderer.GetMaterial().DOFloat(0f, "_StepEdge", 0.1f);
+        _renderer.GetMaterial().DOFloat(0f, "_StepEdge", 0f);
     }
 
     public void StartGame()

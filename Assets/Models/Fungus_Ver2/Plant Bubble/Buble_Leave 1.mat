@@ -103,6 +103,8 @@ Material:
     m_Floats:
     - _AlphaClip: 1
     - _Blend: 0
+    - _Blend1Extent: 0
+    - _Blend2Extent: 0
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
@@ -158,6 +160,7 @@ Material:
     - _AmbientColor: {r: 0.3773585, g: 0.20113918, b: 0.21841566, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BlendColor1: {r: 0, g: 0, b: 0, a: 0}
+    - _BlendColor2: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DarkColor: {r: 0.05808899, g: 0.048860796, b: 0.16981131, a: 0}
     - _DissolveEdgeColor: {r: 0.1315681, g: 0.4556323, b: 5.5784883, a: 0}
