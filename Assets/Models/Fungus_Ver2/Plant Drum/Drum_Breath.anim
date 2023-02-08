@@ -23630,6 +23630,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0
+    functionName: BreathSound
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.16666667
     functionName: Dim
     data: 
@@ -23639,6 +23646,13 @@ AnimationClip:
     messageOptions: 0
   - time: 0.5833333
     functionName: Emit
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.5833333
+    functionName: ParticleSound
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
