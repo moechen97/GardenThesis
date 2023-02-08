@@ -9522,6 +9522,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0
+    functionName: Breathe
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.041666668
     functionName: EmitParticle
     data: 
@@ -9531,13 +9538,6 @@ AnimationClip:
     messageOptions: 0
   - time: 0.125
     functionName: Dim
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.16666667
-    functionName: Breath
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

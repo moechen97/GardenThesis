@@ -41,9 +41,13 @@ public class Fungus_MaterialChange : MonoBehaviour
     [SerializeField] private Transform BigParent;
     [SerializeField] private float wiggleDuration = 0.125f;
     [SerializeField] private float deformSpeed = 20f;
+    [SerializeField] private float originalDeformSpeed;
+    
 
     private Material m_Material;
     private MaterialPropertyBlock _propertyBlock;
+
+    
     
     //state = 0 = night , state = 1 = day , state = 2 = dusk
     private float currentTime;
@@ -95,7 +99,9 @@ public class Fungus_MaterialChange : MonoBehaviour
             fungusRenderer.SetPropertyBlock(_propertyBlock);
         }
         
-        
+       
+
+
         //change Initial Color
         if(!canChangeInitialColor)
             return;
@@ -152,11 +158,11 @@ public class Fungus_MaterialChange : MonoBehaviour
             fungusRenderer.SetPropertyBlock(_propertyBlock);
         });
         
-        float deformSpeed = _propertyBlock.GetFloat("_WaveSpeed");
+        /*float deformSpeed = _propertyBlock.GetFloat("_WaveSpeed");
         DOVirtual.Float(deformSpeed, Mathf.Clamp(deformSpeed-0.2f,0f,1f), witheredSpeed, (float value) => {
             _propertyBlock.SetFloat("_WaveSpeed", value);
             fungusRenderer.SetPropertyBlock(_propertyBlock);
-        });
+        });*/
         
         float currentDeformExtent = _propertyBlock.GetFloat("_HeightMask");
         DOVirtual.Float(currentDeformExtent, 0.02f, witheredSpeed, (float value) => {
@@ -171,7 +177,7 @@ public class Fungus_MaterialChange : MonoBehaviour
     {
         //float deformSpeed = 30f;
         //float duration = 0.125f; //.25
-        DOVirtual.Float(deformSpeed, Mathf.Clamp(deformSpeed - 0.2f, 0f, 30f), wiggleDuration, (float value) => {
+        DOVirtual.Float(originalDeformSpeed, deformSpeed, wiggleDuration, (float value) => {
             _propertyBlock.SetFloat("_WaveSpeed", value);
             fungusRenderer.SetPropertyBlock(_propertyBlock);
         });
@@ -183,7 +189,7 @@ public class Fungus_MaterialChange : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
         float deformSpeed = _propertyBlock.GetFloat("_WaveSpeed");
-        DOVirtual.Float(deformSpeed, Mathf.Clamp(deformSpeed - 0.2f, 0f, 1f), wiggleDuration, (float value) => {
+        DOVirtual.Float(deformSpeed, originalDeformSpeed, wiggleDuration, (float value) => {
             _propertyBlock.SetFloat("_WaveSpeed", value);
             fungusRenderer.SetPropertyBlock(_propertyBlock);
         });

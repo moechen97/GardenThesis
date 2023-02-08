@@ -29,7 +29,7 @@ namespace Planting {
             List<PlantType> unlocks = new List<PlantType>();
             foreach(KeyValuePair<PlantType, GameObject> unlockable in unlockable_icons)
             {
-                if(unlockable.Key == PlantType.Fungus_Purple)
+                /*if(unlockable.Key == PlantType.Fungus_Purple)
                 {
                     if(PlantManager.plantedPlantCounter[PlantType.Fungus_Green] >= 3 && 
                         PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 4)
@@ -51,7 +51,7 @@ namespace Planting {
                         GameObject newPanel = Instantiate(newSeedPanel);
                         newPanel.GetComponent<UINewSeedPanel>().GetNewSeedInfo(fungusPurpleIcon);
                     }
-                }
+                }*/
                 if(unlockable.Key == PlantType.Plant_Peach)
                 {
                     if(PlantManager.plantedPlantCounter[PlantType.Fungus_Green] >= 2 && 
@@ -100,8 +100,7 @@ namespace Planting {
                 }
                 if(unlockable.Key == PlantType.Plant_Spike)
                 {
-                    if (PlantManager.plantedPlantCounter[PlantType.Fungus_Green] >= 1 &&
-                       PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 0)
+                    if (PlantManager.allPlants.Count>10)
                     {
                         indexcount++;
                         GameObject spikeIcon = GameObject.Instantiate(unlockable_icons[unlockable.Key]);

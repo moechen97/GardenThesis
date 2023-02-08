@@ -79,7 +79,7 @@ AudioSource:
   m_GameObject: {fileID: 204825766393873451}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1706473401402141251, guid: 4b59bae56bc30486ab3e3653e826e613, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -182,7 +182,7 @@ MonoBehaviour:
   isGrown: 0
   plantPrefab: {fileID: 204825766393873451}
   breedingSpeed: 1
-  growthSpeed_minRange: 0.7
+  growthSpeed_minRange: 1
   growthSpeed_maxRange: 1
   aliveTime: 20
   isBreeding: 0
@@ -965,6 +965,9 @@ MonoBehaviour:
   glowSpeed: 1
   dimSpeed: 1
   BigParent: {fileID: 0}
+  wiggleDuration: 0.125
+  deformSpeed: 20
+  originalDeformSpeed: 0
 --- !u!4 &386489944030583985 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e104f164834b34b8186ac14871ba1997, type: 3}
@@ -1022,6 +1025,9 @@ MonoBehaviour:
   glowSpeed: 1
   dimSpeed: 1
   BigParent: {fileID: 0}
+  wiggleDuration: 0.125
+  deformSpeed: 20
+  originalDeformSpeed: 0
 --- !u!137 &767730418719637819 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -8615340678173246879, guid: e104f164834b34b8186ac14871ba1997, type: 3}
@@ -1079,6 +1085,9 @@ MonoBehaviour:
   glowSpeed: 1
   dimSpeed: 1
   BigParent: {fileID: 0}
+  wiggleDuration: 0.125
+  deformSpeed: 20
+  originalDeformSpeed: 0
 --- !u!1 &1015216619468899851 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e104f164834b34b8186ac14871ba1997, type: 3}
@@ -1136,10 +1145,34 @@ MonoBehaviour:
   - {fileID: 204825767805376873}
   - {fileID: 204825767930293082}
   Bubble_AudioSource: {fileID: 204825766393873444}
-  bloomAudios:
-  - {fileID: 8300000, guid: ca6db866cd7964c54bf878346891da75, type: 3}
-  - {fileID: 8300000, guid: c3216cc2357844279a39fb7b8daace42, type: 3}
-  - {fileID: 8300000, guid: e82c0db19e0824c128f9efdfec875e3a, type: 3}
+  growthAudios:
+  - {fileID: 8300000, guid: ef566772688d349e3ba9204aad7c8af7, type: 3}
+  - {fileID: 8300000, guid: 103ad0814f8534ba8bf05efddae86a96, type: 3}
+  - {fileID: 8300000, guid: ad2fa8959b4ed4029b247449f24fbbac, type: 3}
+  - {fileID: 8300000, guid: e1f85f860ca104d06b2bc2067d27f6fa, type: 3}
+  - {fileID: 8300000, guid: 5d6ff9523df4d4c4c9efb415d0326dbd, type: 3}
+  - {fileID: 8300000, guid: bc3d33634d8d146c39a94dbd8e6dcc97, type: 3}
+  breatheAudios:
+  - {fileID: 8300000, guid: b8dbf154ecd134423af07449e7e0017c, type: 3}
+  - {fileID: 8300000, guid: 321b3f29e2cd74f3d83194b9d2504ddb, type: 3}
+  - {fileID: 8300000, guid: 1626f648150d848c3ae64696916cde05, type: 3}
+  - {fileID: 8300000, guid: c02be12fe879d43c98a5bc83154b2f6f, type: 3}
+  - {fileID: 8300000, guid: 8777b344879c5442c95c6774822a2610, type: 3}
+  - {fileID: 8300000, guid: bd56af135e05b4914a99ddb0f144cd95, type: 3}
+  interactAudios:
+  - {fileID: 8300000, guid: aacd3950214c74d7294bc01367850e16, type: 3}
+  - {fileID: 8300000, guid: cd3aaf701884b4fdc804b57590f6fb40, type: 3}
+  - {fileID: 8300000, guid: 09aba11e34924423abd997609f52bf2a, type: 3}
+  - {fileID: 8300000, guid: 70035541716964b1f924552c60acce1b, type: 3}
+  - {fileID: 8300000, guid: 491c3316b92934163b2aebe75211e13c, type: 3}
+  - {fileID: 8300000, guid: 317005300b5494b708a84b3219f429c7, type: 3}
+  witheredAudios:
+  - {fileID: 8300000, guid: b751db07bcf9044ae8ca7a7560a1c578, type: 3}
+  - {fileID: 8300000, guid: 22c0cd840f66741a6b529fee6a016f4d, type: 3}
+  - {fileID: 8300000, guid: 80cbee82612634ade8facb23f6806a2f, type: 3}
+  - {fileID: 8300000, guid: f2ba35a7caa634aeb9e37d6a8151c237, type: 3}
+  - {fileID: 8300000, guid: 545f033adb50e41dba49b9b602c366c9, type: 3}
+  - {fileID: 8300000, guid: 71f30edc6ea4c4f7f938ceb4bc063e6e, type: 3}
   dieParticle: {fileID: 3105234805027849063, guid: 001114f21d6c045faa7d021f847b87ae, type: 3}
   dieParticlePosition: {fileID: 532034184658485725}
   _stateControl: {fileID: 204825766393873445}
@@ -1195,6 +1228,9 @@ MonoBehaviour:
   glowSpeed: 0
   dimSpeed: 0
   BigParent: {fileID: 0}
+  wiggleDuration: 0.125
+  deformSpeed: 20
+  originalDeformSpeed: 0
 --- !u!137 &1101578438904682616 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -8242088472476785886, guid: e104f164834b34b8186ac14871ba1997, type: 3}
@@ -1247,6 +1283,9 @@ MonoBehaviour:
   glowSpeed: 1
   dimSpeed: 1
   BigParent: {fileID: 0}
+  wiggleDuration: 0.125
+  deformSpeed: 20
+  originalDeformSpeed: 0
 --- !u!1 &1256542809119566622 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7807116449034678204, guid: e104f164834b34b8186ac14871ba1997, type: 3}
@@ -1294,6 +1333,9 @@ MonoBehaviour:
   glowSpeed: 1
   dimSpeed: 1
   BigParent: {fileID: 0}
+  wiggleDuration: 0.125
+  deformSpeed: 20
+  originalDeformSpeed: 0
 --- !u!137 &1309126329620208168 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 1224236408111554930, guid: e104f164834b34b8186ac14871ba1997, type: 3}
@@ -1361,6 +1403,9 @@ MonoBehaviour:
   glowSpeed: 1
   dimSpeed: 1
   BigParent: {fileID: 0}
+  wiggleDuration: 0.125
+  deformSpeed: 20
+  originalDeformSpeed: 0
 --- !u!1 &2509787630169460553 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6916647776379800557, guid: e104f164834b34b8186ac14871ba1997, type: 3}
@@ -1408,6 +1453,9 @@ MonoBehaviour:
   glowSpeed: 0
   dimSpeed: 0
   BigParent: {fileID: 0}
+  wiggleDuration: 0.125
+  deformSpeed: 20
+  originalDeformSpeed: 0
 --- !u!1 &2999922822997193581 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3131816050566154295, guid: e104f164834b34b8186ac14871ba1997, type: 3}
@@ -1455,6 +1503,9 @@ MonoBehaviour:
   glowSpeed: 1
   dimSpeed: 1
   BigParent: {fileID: 0}
+  wiggleDuration: 0.125
+  deformSpeed: 20
+  originalDeformSpeed: 0
 --- !u!1 &3015699773170991024 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6120878958715321110, guid: e104f164834b34b8186ac14871ba1997, type: 3}
@@ -1502,6 +1553,9 @@ MonoBehaviour:
   glowSpeed: 1
   dimSpeed: 1
   BigParent: {fileID: 0}
+  wiggleDuration: 0.125
+  deformSpeed: 20
+  originalDeformSpeed: 0
 --- !u!1 &3381629152371586999 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3186958913832471789, guid: e104f164834b34b8186ac14871ba1997, type: 3}
@@ -1549,6 +1603,9 @@ MonoBehaviour:
   glowSpeed: 1
   dimSpeed: 1
   BigParent: {fileID: 0}
+  wiggleDuration: 0.125
+  deformSpeed: 20
+  originalDeformSpeed: 0
 --- !u!1 &3452268612102837400 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3260399353647837122, guid: e104f164834b34b8186ac14871ba1997, type: 3}
@@ -1596,6 +1653,9 @@ MonoBehaviour:
   glowSpeed: 1
   dimSpeed: 1
   BigParent: {fileID: 0}
+  wiggleDuration: 0.125
+  deformSpeed: 20
+  originalDeformSpeed: 0
 --- !u!1 &3842409629047235876 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4000697027824443006, guid: e104f164834b34b8186ac14871ba1997, type: 3}
@@ -1643,6 +1703,9 @@ MonoBehaviour:
   glowSpeed: 1
   dimSpeed: 1
   BigParent: {fileID: 0}
+  wiggleDuration: 0.125
+  deformSpeed: 20
+  originalDeformSpeed: 0
 --- !u!137 &4366001213232665378 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -4737636124533381000, guid: e104f164834b34b8186ac14871ba1997, type: 3}
@@ -1700,6 +1763,9 @@ MonoBehaviour:
   glowSpeed: 1
   dimSpeed: 1
   BigParent: {fileID: 0}
+  wiggleDuration: 0.125
+  deformSpeed: 20
+  originalDeformSpeed: 0
 --- !u!1 &4729303560378398425 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4362172243001651837, guid: e104f164834b34b8186ac14871ba1997, type: 3}
@@ -1747,6 +1813,9 @@ MonoBehaviour:
   glowSpeed: 1
   dimSpeed: 1
   BigParent: {fileID: 0}
+  wiggleDuration: 0.125
+  deformSpeed: 20
+  originalDeformSpeed: 0
 --- !u!137 &5147362176092844339 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 5023964754662836841, guid: e104f164834b34b8186ac14871ba1997, type: 3}
@@ -1804,6 +1873,9 @@ MonoBehaviour:
   glowSpeed: 1
   dimSpeed: 1
   BigParent: {fileID: 0}
+  wiggleDuration: 0.125
+  deformSpeed: 20
+  originalDeformSpeed: 0
 --- !u!137 &6260273865790438568 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -3154953943842240526, guid: e104f164834b34b8186ac14871ba1997, type: 3}
@@ -1856,6 +1928,9 @@ MonoBehaviour:
   glowSpeed: 1
   dimSpeed: 1
   BigParent: {fileID: 0}
+  wiggleDuration: 0.125
+  deformSpeed: 20
+  originalDeformSpeed: 0
 --- !u!1 &7213091873822338270 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7407756339908614020, guid: e104f164834b34b8186ac14871ba1997, type: 3}
@@ -1903,6 +1978,9 @@ MonoBehaviour:
   glowSpeed: 0
   dimSpeed: 0
   BigParent: {fileID: 204825766393873450}
+  wiggleDuration: 0.125
+  deformSpeed: 20
+  originalDeformSpeed: 0
 --- !u!1 &7217858730201420996 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1802192230885953634, guid: e104f164834b34b8186ac14871ba1997, type: 3}
@@ -1950,6 +2028,9 @@ MonoBehaviour:
   glowSpeed: 1
   dimSpeed: 1
   BigParent: {fileID: 0}
+  wiggleDuration: 0.125
+  deformSpeed: 20
+  originalDeformSpeed: 0
 --- !u!137 &7712738316145571949 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 7628685801591653175, guid: e104f164834b34b8186ac14871ba1997, type: 3}
@@ -2007,6 +2088,9 @@ MonoBehaviour:
   glowSpeed: 1
   dimSpeed: 1
   BigParent: {fileID: 0}
+  wiggleDuration: 0.125
+  deformSpeed: 20
+  originalDeformSpeed: 0
 --- !u!137 &8368807535045078090 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -651801557076011248, guid: e104f164834b34b8186ac14871ba1997, type: 3}
@@ -2069,6 +2153,9 @@ MonoBehaviour:
   glowSpeed: 1
   dimSpeed: 1
   BigParent: {fileID: 0}
+  wiggleDuration: 0.125
+  deformSpeed: 20
+  originalDeformSpeed: 0
 --- !u!137 &8903658177512271020 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 8739105348659943414, guid: e104f164834b34b8186ac14871ba1997, type: 3}

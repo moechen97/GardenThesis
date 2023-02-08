@@ -328,7 +328,7 @@ namespace Planting
                 screenCoordinates.z = 0.0F;
                 RaycastHit hit;
                 Ray ray = cameraMain.ScreenPointToRay(screenCoordinates);
-                int layer_mask = LayerMask.GetMask("Plant"); //not "PlantTouch" anymore
+                int layer_mask = LayerMask.GetMask("PlantTouch"); //I change it to plantTouch because that collider is changing according to plants' height.
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, layer_mask))
                 {
                     if (hit.transform.GetComponent<TouchDetectBox>())

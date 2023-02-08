@@ -10,21 +10,37 @@ public class AnimationEvent_Bubble : MonoBehaviour
 
     [SerializeField] private AudioSource Bubble_AudioSource;
 
-    [SerializeField] private AudioClip[] bloomAudios;
+    [SerializeField] private AudioClip[] growthAudios;
+    [SerializeField] private AudioClip[] breatheAudios;
+    [SerializeField] private AudioClip[] interactAudios;
+    [SerializeField] private AudioClip[] witheredAudios;
+    
     [SerializeField] private GameObject dieParticle;
     [SerializeField] private Transform dieParticlePosition;
     [SerializeField] private Plant_StateControl _stateControl;
 
-    public void Bloom()
+    public void GrowSound()
     {
-        int num = Random.Range(0, bloomAudios.Length);
-        Bubble_AudioSource.PlayOneShot(bloomAudios[num]);
+        int num = Random.Range(0, growthAudios.Length);
+        Bubble_AudioSource.PlayOneShot(growthAudios[num]);
     }
 
-    void Breath()
+    void BreathSound()
     {
-        int num = Random.Range(0, bloomAudios.Length);
-        Bubble_AudioSource.PlayOneShot(bloomAudios[num]);
+        int num = Random.Range(0, breatheAudios.Length);
+        Bubble_AudioSource.PlayOneShot(breatheAudios[num]);
+    }
+    
+    void WitheredSound()
+    {
+        int num = Random.Range(0, witheredAudios.Length);
+        Bubble_AudioSource.PlayOneShot(witheredAudios[num]);
+    }
+    
+    void InteractSound()
+    {
+        int num = Random.Range(0, interactAudios.Length);
+        Bubble_AudioSource.PlayOneShot(interactAudios[num]);
     }
     
     public void Withered()

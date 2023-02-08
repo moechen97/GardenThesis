@@ -10,10 +10,14 @@ public class AnimationEvent_Rings : MonoBehaviour
     [SerializeField] private AudioClip bloom;
     [SerializeField] private AudioClip breath;
     [SerializeField] private AudioClip withered;
+    [SerializeField] private AudioClip interact;
     [SerializeField] private GameObject emitParticle;
     [SerializeField] private Transform emitPosition;
     [SerializeField] private Plant_StateControl _stateControl;
+    [SerializeField] private Animator ringsAnimator;
 
+    
+    
     public void Grow()
     {
         ring_audiosource.PlayOneShot(grow);
@@ -22,6 +26,37 @@ public class AnimationEvent_Rings : MonoBehaviour
     public void Bloom()
     {
         ring_audiosource.PlayOneShot(bloom);
+    }
+    
+    public void Breathe()
+    {
+        ring_audiosource.PlayOneShot(breath);
+    }
+
+    public void Interact()
+    {
+        ring_audiosource.PlayOneShot(interact);
+    }
+
+    public void WitheredSound()
+    {
+        ring_audiosource.PlayOneShot(withered);
+    }
+
+    public void DoRandomBreath()
+    {
+        float i = Random.Range(0f, 1f);
+        if (i > 0.5f)
+        {
+            ringsAnimator.SetBool("CanBreathe",true);
+            StartCoroutine(DisableCanBreathe());
+        }
+    }
+
+    IEnumerator DisableCanBreathe()
+    {
+        yield return new WaitForSeconds(2f);
+        ringsAnimator.SetBool("CanBreathe",false);
     }
 
     public void Glow()
@@ -40,17 +75,13 @@ public class AnimationEvent_Rings : MonoBehaviour
         }
     }
 
-    public void Breath()
-    {
-        ring_audiosource.PlayOneShot(breath);
-    }
+    
     public void Withered()
     {
         foreach (var material in materials)
         {
             material.MaterialWithered();
         }
-        ring_audiosource.PlayOneShot(withered);
     }
     
     public void Die()

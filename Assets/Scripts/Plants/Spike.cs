@@ -7,6 +7,7 @@ namespace Planting
     public class Spike : Plant
     {
         [HideInInspector] public int generation = 1;
+        [HideInInspector] public int generation_seed = 0;
         private int nextGeneration;
         private Coroutine circleSpread = null;
         private Dictionary<int, int> generationSpread = new Dictionary<int, int>() { {2, 6}, {3, 10}, {4, 14}, {5, 18}, {6, 22}, {7, 26} };
@@ -86,6 +87,7 @@ namespace Planting
                 Quaternion rot = Quaternion.Euler(0F, angleDegrees, 0F);
                 GameObject newSpike = Instantiate(plantPrefab, pos, rot);
                 newSpike.GetComponent<Spike>().generation = nextGeneration;
+                newSpike.GetComponent<Spike>().generation_seed = i;
             }
             nextGeneration++;
             yield return new WaitForSeconds(breedingSpeed);
