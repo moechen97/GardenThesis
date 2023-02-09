@@ -27,6 +27,7 @@ namespace Planting
         private PlantMenu menu;
         [HideInInspector] public PlantType currSeed;
         [HideInInspector] public bool isDraggingSeed = false;
+        private bool isDragging_InScrollbar = false;
         [SerializeField] GraphicRaycaster UIgraphicRaycaster;
         private Vector3 previousRotatePosition;
         private Vector3 currentRotatePosition;
@@ -367,47 +368,65 @@ namespace Planting
                 return;
             if (isDraggingSeed)
             {
-                //Set square indicator when user is dragging object
-                _uiIndicator.gameObject.SetActive(true);
                 //Convert finger to screen coordinates
                 Vector2 finger = gardenControl.Plant.FirstFingerPosition.ReadValue<Vector2>();
                 finger += fingerPositionOffset;
                 Vector3 screenCoordinates = new Vector3(finger.x, finger.y, cameraMain.nearClipPlane);
                 screenCoordinates.z = 0.0F;
-                _uiIndicator.transform.position = screenCoordinates;
-                if (Resources.GetResourcesUsed() + PlantManager.resourceDict[currSeed] > 1.0F)
+
+                //Check if drag is still in scrollbar
+                if (isDragging_InScrollbar)
                 {
-                    //indicator.color = Color.red;
+                    PointerEventData pointerEventData = new PointerEventData(eventSystem);
+                    pointerEventData.position = screenCoordinates;
+                    List<RaycastResult> UIresults = new List<RaycastResult>();
+                    UIgraphicRaycaster.Raycast(pointerEventData, UIresults);
+                    if (UIresults.Count == 0)
+                    {
+                        isDragging_InScrollbar = false;
+                        PlantManager.SelectPlantIcon(currSeed, true);
+                    }
                 }
                 else
                 {
-                    RaycastHit hit;
-                    Ray ray = cameraMain.ScreenPointToRay(screenCoordinates);
-                    int layer_mask = LayerMask.GetMask("Ground");
-                    if (Physics.Raycast(ray, out hit, Mathf.Infinity, layer_mask))
+
+                    //Set square indicator when user is dragging object
+                    _uiIndicator.gameObject.SetActive(true);
+                    _uiIndicator.transform.position = screenCoordinates;
+                    if (Resources.GetResourcesUsed() + PlantManager.resourceDict[currSeed] > 1.0F)
                     {
-                        Transform objectHit = hit.transform;
-                        //Debug.Log("Hit transform: " + hit.point);
-                        //Debug.Log("Hit name: " + hit.transform);
-                        //Don't let plants plant on top of each other
-                        float radius = 0.5f;
-                        if (currSeed == PlantType.Plant_Spike)
+                        //indicator.color = Color.red;
+                    }
+                    else
+                    {
+                        RaycastHit hit;
+                        Ray ray = cameraMain.ScreenPointToRay(screenCoordinates);
+                        int layer_mask = LayerMask.GetMask("Ground");
+                        if (Physics.Raycast(ray, out hit, Mathf.Infinity, layer_mask))
                         {
-                            radius = 0.05f;
-                        }
-                        Collider[] collisions = Physics.OverlapSphere(hit.point, radius, LayerMask.GetMask("Plant"));//activeSeeds[0].plantRadius);
-                        if (hit.transform.gameObject.name.Equals("Ground") && collisions.Length == 0)
-                        {
-                            _uiIndicator.CanPlant();
+                            Transform objectHit = hit.transform;
+                            //Debug.Log("Hit transform: " + hit.point);
+                            //Debug.Log("Hit name: " + hit.transform);
+                            //Don't let plants plant on top of each other
+                            float radius = 0.5f;
+                            if (currSeed == PlantType.Plant_Spike)
+                            {
+                                radius = 0.05f;
+                            }
+                            Collider[] collisions = Physics.OverlapSphere(hit.point, radius, LayerMask.GetMask("Plant"));//activeSeeds[0].plantRadius);
+                            if (hit.transform.gameObject.name.Equals("Ground") && collisions.Length == 0)
+                            {
+                                _uiIndicator.CanPlant();
+                            }
+                            else
+                            {
+                                _uiIndicator.CannotPlant();
+                            }
                         }
                         else
                         {
                             _uiIndicator.CannotPlant();
                         }
-                    }
-                    else
-                    {
-                        _uiIndicator.CannotPlant();
                     }
                 }
             }
@@ -490,8 +509,9 @@ namespace Planting
                     if(result.gameObject.name.Equals(plant.Key.ToString()))
                     {
                         isDraggingSeed = true;
+                        isDragging_InScrollbar = true;
                         currSeed = plant.Key;
-                        PlantManager.SelectPlantIcon(currSeed, true);
+                        //PlantManager.SelectPlantIcon(currSeed, true);
                     }
                 }
             }
@@ -548,6 +568,7 @@ namespace Planting
                 AttemptPlant(currSeed);
             }
             isDraggingSeed = false;
+            isDragging_InScrollbar = false;
             if(rotatingScreen)
             {
                 Vector3 dragRotationLength = currentRotatePosition - startDragPosition;
