@@ -15,6 +15,7 @@ namespace Planting {
         void Start()
         { 
             unlockable_icons = GetComponent<UnlockableIconDictionaryScript>().DeserializeDictionary();
+            SpawnPlantIcon(PlantType.Fungus_Green, indexcount, false);
         }
 
         // Update is called once per frame
@@ -23,196 +24,96 @@ namespace Planting {
 
 
         }
-
         public void Unlock_Progress()
         {
             List<PlantType> unlocks = new List<PlantType>();
-            foreach(KeyValuePair<PlantType, GameObject> unlockable in unlockable_icons)
+            foreach (KeyValuePair<PlantType, GameObject> unlockable in unlockable_icons)
             {
-                /*if(unlockable.Key == PlantType.Fungus_Purple)
+                //if (unlockable.Key == PlantType.Fungus_Purple)
+                //{
+                //    if (PlantManager.plantedPlantCounter[PlantType.Fungus_Green] >= 3 &&
+                //        PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 4)
+                //    {
+                //        SpawnPlantIcon(PlantType.Fungus_Purple, ++indexcount);
+                //    }
+                //}
+                if (unlockable.Key == PlantType.Plant_Peach)
                 {
-                    if(PlantManager.plantedPlantCounter[PlantType.Fungus_Green] >= 3 && 
-                        PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 4)
-                    {
-                        indexcount++;
-                        GameObject fungusPurpleIcon = GameObject.Instantiate(unlockable_icons[unlockable.Key]);
-                        fungusPurpleIcon.name = PlantType.Fungus_Purple.ToString();
-                        fungusPurpleIcon.transform.parent = seedPanel.transform;
-                        fungusPurpleIcon.transform.SetSiblingIndex(indexcount);
-                       
-                        //delete last child
-                        int a = seedPanel.transform.childCount - 1;
-                        Object.Destroy(seedPanel.transform.GetChild(a).gameObject);
-                        
-                        fungusPurpleIcon.transform.localScale = new Vector3(1F, 1F, 1F);
-                        unlocks.Add(PlantType.Fungus_Purple);
-                        
-                        //new seed panel appear
-                        GameObject newPanel = Instantiate(newSeedPanel);
-                        newPanel.GetComponent<UINewSeedPanel>().GetNewSeedInfo(fungusPurpleIcon);
-                    }
-                }*/
-                if(unlockable.Key == PlantType.Plant_Peach)
-                {
-                    if(PlantManager.plantedPlantCounter[PlantType.Fungus_Green] >= 2 && 
+                    if (PlantManager.plantedPlantCounter[PlantType.Fungus_Green] >= 2 &&
                        PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 1)
                     {
-                        indexcount++;
-                        GameObject fungusPurpleIcon = GameObject.Instantiate(unlockable_icons[unlockable.Key]);
-                        fungusPurpleIcon.name = PlantType.Plant_Peach.ToString();
-                        fungusPurpleIcon.transform.parent = seedPanel.transform;
-                        fungusPurpleIcon.transform.SetSiblingIndex(indexcount);
-                        
-                        //delete last child
-                        int a = seedPanel.transform.childCount - 1;
-                        Object.Destroy(seedPanel.transform.GetChild(a).gameObject);
-                        
-                        fungusPurpleIcon.transform.localScale = new Vector3(1F, 1F, 1F);
-                        unlocks.Add(PlantType.Plant_Peach);
-                        
-                        //new seed panel appear
-                        GameObject newPanel = Instantiate(newSeedPanel);
-                        newPanel.GetComponent<UINewSeedPanel>().GetNewSeedInfo(fungusPurpleIcon);
+                        SpawnPlantIcon(PlantType.Plant_Peach, ++indexcount);
                     }
                 }
-                if(unlockable.Key == PlantType.Plant_Drum)
+                else if (unlockable.Key == PlantType.Plant_Drum)
                 {
-                    if(PlantManager.plantedPlantCounter[PlantType.Plant_Peach] >= 3 && 
+                    if (PlantManager.plantedPlantCounter[PlantType.Plant_Peach] >= 3 &&
                        PlantManager.bredPlantCounter[PlantType.Plant_Peach] >= 1)
                     {
-                        indexcount++;
-                        GameObject fungusPurpleIcon = GameObject.Instantiate(unlockable_icons[unlockable.Key]);
-                        fungusPurpleIcon.name = PlantType.Plant_Drum.ToString();
-                        fungusPurpleIcon.transform.parent = seedPanel.transform;
-                        fungusPurpleIcon.transform.SetSiblingIndex(indexcount);
-                        
-                        //delete last child
-                        int a = seedPanel.transform.childCount - 1;
-                        Object.Destroy(seedPanel.transform.GetChild(a).gameObject);
-                        
-                        fungusPurpleIcon.transform.localScale = new Vector3(1F, 1F, 1F);
-                        unlocks.Add(PlantType.Plant_Drum);
-                        
-                        //new seed panel appear
-                        GameObject newPanel = Instantiate(newSeedPanel);
-                        newPanel.GetComponent<UINewSeedPanel>().GetNewSeedInfo(fungusPurpleIcon);
+                        SpawnPlantIcon(PlantType.Plant_Drum, ++indexcount);
                     }
                 }
-                if(unlockable.Key == PlantType.Plant_Spike)
+                else if (unlockable.Key == PlantType.Plant_Spike)
                 {
-                    if (PlantManager.allPlants.Count>10)
-                    {
-                        indexcount++;
-                        GameObject spikeIcon = GameObject.Instantiate(unlockable_icons[unlockable.Key]);
-                        spikeIcon.name = PlantType.Plant_Spike.ToString();
-                        spikeIcon.transform.parent = seedPanel.transform;
-                        spikeIcon.transform.SetSiblingIndex(indexcount);
-                        
-                        //delete last child
-                        int a = seedPanel.transform.childCount - 1;
-                        Object.Destroy(seedPanel.transform.GetChild(a).gameObject);
-                        
-                        spikeIcon.transform.localScale = new Vector3(1F, 1F, 1F);
-                        unlocks.Add(PlantType.Plant_Spike);
-                        
-                        //new seed panel appear
-                        GameObject newPanel = Instantiate(newSeedPanel);
-                        newPanel.GetComponent<UINewSeedPanel>().GetNewSeedInfo(spikeIcon);
-                    }
-                }
-                if(unlockable.Key == PlantType.Plant_Bubble)
-                {
-                    if(PlantManager.plantedPlantCounter[PlantType.Fungus_Green] >= 5 && 
-                       PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 3)
-                    {
-                        indexcount++;
-                        GameObject fungusPurpleIcon = GameObject.Instantiate(unlockable_icons[unlockable.Key]);
-                        fungusPurpleIcon.name = PlantType.Plant_Bubble.ToString();
-                        fungusPurpleIcon.transform.parent = seedPanel.transform;
-                        fungusPurpleIcon.transform.SetSiblingIndex(indexcount);
-                        
-                        //delete last child
-                        int a = seedPanel.transform.childCount - 1;
-                        Object.Destroy(seedPanel.transform.GetChild(a).gameObject);
-                        
-                        fungusPurpleIcon.transform.localScale = new Vector3(1F, 1F, 1F);
-                        unlocks.Add(PlantType.Plant_Bubble);
-                        
-                        //new seed panel appear
-                        GameObject newPanel = Instantiate(newSeedPanel);
-                        newPanel.GetComponent<UINewSeedPanel>().GetNewSeedInfo(fungusPurpleIcon);
-                    }
-                }
-                if(unlockable.Key == PlantType.Plant_Capture)
-                {
-                    if(PlantManager.plantedPlantCounter[PlantType.Plant_Bubble] >= 5 && 
-                       PlantManager.bredPlantCounter[PlantType.Plant_Bubble] >= 1)
-                    {
-                        indexcount++;
-                        GameObject fungusPurpleIcon = GameObject.Instantiate(unlockable_icons[unlockable.Key]);
-                        fungusPurpleIcon.name = PlantType.Plant_Capture.ToString();
-                        fungusPurpleIcon.transform.parent = seedPanel.transform;
-                        fungusPurpleIcon.transform.SetSiblingIndex(indexcount);
-                        
-                        //delete last child
-                        int a = seedPanel.transform.childCount - 1;
-                        Object.Destroy(seedPanel.transform.GetChild(a).gameObject);
-                        
-                        fungusPurpleIcon.transform.localScale = new Vector3(1F, 1F, 1F);
-                        unlocks.Add(PlantType.Plant_Capture);
-                        
-                        //new seed panel appear
-                        GameObject newPanel = Instantiate(newSeedPanel);
-                        newPanel.GetComponent<UINewSeedPanel>().GetNewSeedInfo(fungusPurpleIcon);
-                    }
-                }
-                if(unlockable.Key == PlantType.Plant_Rings)
-                {
-                    if(PlantManager.plantedPlantCounter[PlantType.Plant_Peach] >= 5 && 
-                       PlantManager.bredPlantCounter[PlantType.Plant_Peach] >= 2)
-                    {
-                        indexcount++;
-                        GameObject fungusPurpleIcon = GameObject.Instantiate(unlockable_icons[unlockable.Key]);
-                        fungusPurpleIcon.name = PlantType.Plant_Rings.ToString();
-                        fungusPurpleIcon.transform.parent = seedPanel.transform;
-                        fungusPurpleIcon.transform.SetSiblingIndex(indexcount);
-                        //delete last child
-                        int a = seedPanel.transform.childCount - 1;
-                        Object.Destroy(seedPanel.transform.GetChild(a).gameObject);
-                        fungusPurpleIcon.transform.localScale = new Vector3(1F, 1F, 1F);
-                        unlocks.Add(PlantType.Plant_Rings);
-                        
-                        //new seed panel appear
-                        GameObject newPanel = Instantiate(newSeedPanel);
-                        newPanel.GetComponent<UINewSeedPanel>().GetNewSeedInfo(fungusPurpleIcon);
-                    }
-                }
-                if(unlockable.Key == PlantType.Plant_Lotus)
-                {
-                    if(PlantManager.plantedPlantCounter[PlantType.Plant_Drum] >= 4 && 
+                    if (PlantManager.plantedPlantCounter[PlantType.Fungus_Green] >= 1 &&
                        PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 0)
                     {
-                        indexcount++;
-                        GameObject fungusPurpleIcon = GameObject.Instantiate(unlockable_icons[unlockable.Key]);
-                        fungusPurpleIcon.name = PlantType.Plant_Lotus.ToString();
-                        fungusPurpleIcon.transform.parent = seedPanel.transform;
-                        fungusPurpleIcon.transform.SetSiblingIndex(indexcount);
-                        //delete last child
-                        int a = seedPanel.transform.childCount - 1;
-                        Object.Destroy(seedPanel.transform.GetChild(a).gameObject);
-                        fungusPurpleIcon.transform.localScale = new Vector3(1F, 1F, 1F);
-                        unlocks.Add(PlantType.Plant_Lotus);
-                        
-                        //new seed panel appear
-                        GameObject newPanel = Instantiate(newSeedPanel);
-                        newPanel.GetComponent<UINewSeedPanel>().GetNewSeedInfo(fungusPurpleIcon);
+                        SpawnPlantIcon(PlantType.Plant_Spike, ++indexcount);
+                    }
+                }
+                else if (unlockable.Key == PlantType.Plant_Bubble)
+                {
+                    if (PlantManager.plantedPlantCounter[PlantType.Fungus_Jelly] >= 5 &&
+                       PlantManager.bredPlantCounter[PlantType.Fungus_Jelly] >= 3)
+                    {
+                        SpawnPlantIcon(PlantType.Plant_Bubble, ++indexcount);
+                    }
+                }
+                else if (unlockable.Key == PlantType.Plant_Capture)
+                {
+                    if (PlantManager.plantedPlantCounter[PlantType.Plant_Bubble] >= 5 &&
+                       PlantManager.bredPlantCounter[PlantType.Plant_Bubble] >= 1)
+                    {
+                        SpawnPlantIcon(PlantType.Plant_Capture, ++indexcount);
+                    }
+                }
+                else if (unlockable.Key == PlantType.Plant_Rings)
+                {
+                    if (PlantManager.plantedPlantCounter[PlantType.Plant_Peach] >= 5 &&
+                       PlantManager.bredPlantCounter[PlantType.Plant_Peach] >= 2)
+                    {
+                        SpawnPlantIcon(PlantType.Plant_Rings, ++indexcount);
+                    }
+                }
+                else if (unlockable.Key == PlantType.Plant_Lotus)
+                {
+                    if (PlantManager.plantedPlantCounter[PlantType.Plant_Drum] >= 4 &&
+                       PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 0)
+                    {
+                        SpawnPlantIcon(PlantType.Plant_Lotus, ++indexcount);
                     }
                 }
             }
-            foreach(PlantType type in unlocks)
+        }
+        private void SpawnPlantIcon(PlantType plant, int index, bool showUnlockPanel = true)
+        {
+            GameObject icon = GameObject.Instantiate(unlockable_icons[plant]);
+            icon.name = plant.ToString();
+            icon.transform.parent = seedPanel.transform;
+            icon.transform.SetSiblingIndex(index);
+            icon.transform.localScale = new Vector3(1F, 1F, 1F);
+            unlockable_icons.Remove(plant);
+            //delete gray icon gameobject
+            int i = seedPanel.transform.childCount - 1;
+            Object.Destroy(seedPanel.transform.GetChild(i).gameObject);
+            if (showUnlockPanel)
             {
-                unlockable_icons.Remove(type);
+                //new seed unlock panel appear
+                GameObject newPanel = Instantiate(newSeedPanel);
+                newPanel.GetComponent<UINewSeedPanel>().GetNewSeedInfo(icon);
             }
+            //add icon to PlantManager
+            PlantManager.AddPlantIconBG(plant, icon.transform.GetChild(0).GetComponent<UnityEngine.UI.Image>());
         }
     }
 }

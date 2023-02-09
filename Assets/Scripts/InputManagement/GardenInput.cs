@@ -491,6 +491,7 @@ namespace Planting
                     {
                         isDraggingSeed = true;
                         currSeed = plant.Key;
+                        PlantManager.SelectPlantIcon(currSeed, true);
                     }
                 }
             }
@@ -603,6 +604,7 @@ namespace Planting
                 }
             }
             //seed.ResetPosition();
+            PlantManager.SelectPlantIcon(currSeed, false);
             return success;
         }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Planting
 {
@@ -16,7 +17,6 @@ namespace Planting
         public static Transform SpikeTransform { get; private set; }
 
         public static float plantLifeFactor = 1;
-        
         private void Awake()
         {
             instance = this;
@@ -46,12 +46,13 @@ namespace Planting
                 { PlantType.Plant_Lotus, 0.1F }
             };
 
+        public static Dictionary<PlantType, Image> seedIconBGs = new Dictionary<PlantType, Image>();
         //public static int num_MushroomDarkGreen = 0;
         //public static int max_MushroomDarkGreen = 10;
         //public static int num_MushroomPink = 0;
         //public static int max_Fungus_Green = 10;
         //public static int max_Fungus_Jelly = 15;
-        
+
         public static Dictionary<PlantType, int> maxPlants = new
             Dictionary<PlantType, int>()
         {
@@ -155,6 +156,26 @@ namespace Planting
             foreach(Plant plant in allPlants)
             {
                 plant.UpdateLifeTime(speedFactor);
+            }
+        }
+
+        public static void AddPlantIconBG(PlantType plant, Image icon)
+        {
+            seedIconBGs.Add(plant, icon);
+        }
+
+        public static Color iconGray = new Color(127F / 255F, 127F / 255F, 127F / 255F);
+        public static Color iconWhite = new Color(243F / 255F, 234F / 255F, 219F / 255F);
+        public static void SelectPlantIcon(PlantType plant, bool selected)
+        {
+            Image bg = seedIconBGs[plant];
+            if(selected)
+            {
+                bg.color = iconGray;
+            }
+            else
+            {
+                bg.color = iconWhite;
             }
         }
     }
