@@ -55,16 +55,15 @@ namespace Planting {
                 }
                 else if (unlockable.Key == PlantType.Plant_Spike)
                 {
-                    if (PlantManager.plantedPlantCounter[PlantType.Fungus_Green] >= 1 &&
-                       PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 0)
+                    if (PlantManager.allPlants.Count > 15)
                     {
                         SpawnPlantIcon(PlantType.Plant_Spike, ++indexcount);
                     }
                 }
                 else if (unlockable.Key == PlantType.Plant_Bubble)
                 {
-                    if (PlantManager.plantedPlantCounter[PlantType.Fungus_Jelly] >= 5 &&
-                       PlantManager.bredPlantCounter[PlantType.Fungus_Jelly] >= 3)
+                    if (PlantManager.plantedPlantCounter[PlantType.Fungus_Green] >= 5 &&
+                       PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 3)
                     {
                         SpawnPlantIcon(PlantType.Plant_Bubble, ++indexcount);
                     }
