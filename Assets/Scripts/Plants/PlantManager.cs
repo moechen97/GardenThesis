@@ -164,7 +164,7 @@ namespace Planting
             seedIconBGs.Add(plant, icon);
         }
 
-        public static Color iconGray = new Color(127F / 255F, 127F / 255F, 127F / 255F);
+        public static Color iconGray = new Color(243F / 255F, 234F / 255F, 219F / 255F,0.5f);
         public static Color iconWhite = new Color(243F / 255F, 234F / 255F, 219F / 255F);
         public static void SelectPlantIcon(PlantType plant, bool selected)
         {

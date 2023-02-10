@@ -24,6 +24,7 @@ public class UIIndicator : MonoBehaviour
 
     public void CanPlant()
     {
+        DOTween.ClearCachedTweens();
         _animator.SetBool("expanded",true);
 
         _image.DOColor(canPlantColor, 1f);
@@ -32,7 +33,7 @@ public class UIIndicator : MonoBehaviour
     public void CannotPlant()
     {
         _animator.SetBool("expanded",false);
-       
+        DOTween.ClearCachedTweens();
         _image.DOColor(cannotPlantColor, 1f);
     }
 }

@@ -2215,8 +2215,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 385148289}
   m_HandleRect: {fileID: 385148288}
   m_Direction: 0
-  m_Value: -0.00000004457402
-  m_Size: 0.36898667
+  m_Value: 0
+  m_Size: 0.6043359
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7256,6 +7256,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plant_Drum_ver2
       objectReference: {fileID: 0}
+    - target: {fileID: 4074416643147679536, guid: 9b13f8382566843dd9c374f4e1696fe4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4074416643147679539, guid: 9b13f8382566843dd9c374f4e1696fe4, type: 3}
       propertyPath: m_RootOrder
       value: 34
@@ -8672,7 +8676,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -14.800064, y: -20.005127}
+  m_AnchoredPosition: {x: -14.800049, y: -20.005127}
   m_SizeDelta: {x: -29.6, y: -40.0104}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &546266062
@@ -13880,8 +13884,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dictionaryData: {fileID: 11400000, guid: c605c73438075ab4691a7bc02b0f4e26, type: 2}
-  keys: 0400000005000000060000000700000008000000090000000a0000000b000000
+  keys: 020000000400000005000000060000000700000008000000090000000a0000000b000000
   values:
+  - {fileID: 4725914610858026706, guid: 3a828af6f006bfe488feec6bc425301e, type: 3}
   - {fileID: 4155947344800111990, guid: 043f02d8c9e981e45b4faf9b450acb1d, type: 3}
   - {fileID: 679129545733926650, guid: 6265ec42bb80049e18aa0c5bb8456611, type: 3}
   - {fileID: 3522947560168453660, guid: 41ce63514b4104a89b0e450ac413549d, type: 3}
@@ -25868,7 +25873,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efaa767f387a5294eb2bd7ce1c866ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDragging: 0
 --- !u!1 &1841144907
 GameObject:
   m_ObjectHideFlags: 0

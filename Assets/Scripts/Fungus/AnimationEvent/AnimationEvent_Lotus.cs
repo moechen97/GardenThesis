@@ -6,12 +6,41 @@ public class AnimationEvent_Lotus : MonoBehaviour
 {
     [SerializeField] Fungus_MaterialChange[] materials;
     [SerializeField] private AudioSource lotus_audiosource;
-    [SerializeField] private AudioClip bloom;
+    [SerializeField] private AudioClip[] bloomSound;
+    [SerializeField] private AudioClip[] growSound;
+    [SerializeField] private AudioClip[] breathSound;
+    [SerializeField] private AudioClip[] interactSound;
+    [SerializeField] private AudioClip[] witheredSound;
     [SerializeField] private Plant_StateControl _stateControl;
 
-    public void Bloom()
+    public void BloomSound()
     {
-        lotus_audiosource.PlayOneShot(bloom);
+        int num = Random.Range(0, bloomSound.Length);
+        lotus_audiosource.PlayOneShot(bloomSound[num]);
+    }
+    
+    public void GrowSound()
+    {
+        int num = Random.Range(0, growSound.Length);
+        lotus_audiosource.PlayOneShot(growSound[num]);
+    }
+    
+    public void BreathSound()
+    {
+        int num = Random.Range(0, breathSound.Length);
+        lotus_audiosource.PlayOneShot(breathSound[num]);
+    }
+    
+    public void InteractSound()
+    {
+        int num = Random.Range(0, interactSound.Length);
+        lotus_audiosource.PlayOneShot(interactSound[num]);
+    }
+    
+    public void WitheredSound()
+    {
+        int num = Random.Range(0, witheredSound.Length);
+        lotus_audiosource.PlayOneShot(witheredSound[num]);
     }
     public void Withered()
     {

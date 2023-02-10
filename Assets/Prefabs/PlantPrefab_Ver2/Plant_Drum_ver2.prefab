@@ -1170,7 +1170,7 @@ MonoBehaviour:
   breathSound:
   - {fileID: 8300000, guid: eb09f8483488a444ebb86965241e6e34, type: 3}
   witheredSound:
-  - {fileID: 8300000, guid: f1210c3354cc1413cb739583c3cd178e, type: 3}
+  - {fileID: 8300000, guid: 71cd9c3beb07f419b80c43c15d9ef7b5, type: 3}
   particleSound:
   - {fileID: 8300000, guid: f1210c3354cc1413cb739583c3cd178e, type: 3}
   emitParticle: {fileID: 3948436799340536499, guid: cc155d5a7345449e7a497f4eab4c8d34, type: 3}
