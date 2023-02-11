@@ -509,6 +509,7 @@ MonoBehaviour:
   breedingSpeed: 1
   growthSpeed_minRange: 0.7
   growthSpeed_maxRange: 1
+  aliveTimeRandomRange: 0
   aliveTime: 12
   isBreeding: 0
   growthRadius: 2
@@ -662,6 +663,10 @@ PrefabInstance:
     - target: {fileID: -5905842151546411643, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -89.999985
+      objectReference: {fileID: 0}
+    - target: {fileID: -5231939475589460030, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4627679712454081082, guid: 7eec79525c7eb47a4b62998bb1a12e58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

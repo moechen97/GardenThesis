@@ -112,6 +112,7 @@ MonoBehaviour:
   BigParent: {fileID: 0}
   wiggleDuration: 0.2
   deformSpeed: 20
+  originalDeformSpeed: 0
 --- !u!114 &7072614448206257579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +131,7 @@ MonoBehaviour:
   breedingSpeed: 1
   growthSpeed_minRange: 0.8
   growthSpeed_maxRange: 1
+  aliveTimeRandomRange: 0
   aliveTime: 20
   isBreeding: 0
   growthRadius: 2
@@ -614,8 +616,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b3052a5f6715f47e98380c1b7af39da1, type: 3}
   - {fileID: 8300000, guid: c2e9edf5b5af8404bae349c4269ec971, type: 3}
   - {fileID: 8300000, guid: 238259cae77d74111bf80bd384ffd7a1, type: 3}
-  breathSound1: {fileID: 8300000, guid: 4e648734929ab4219af468e1784b6a89, type: 3}
-  breathSound2: {fileID: 8300000, guid: 16b79b0c79b644200829d015f9bedaf6, type: 3}
+  breathSound:
+  - {fileID: 8300000, guid: 4e648734929ab4219af468e1784b6a89, type: 3}
+  - {fileID: 8300000, guid: 16b79b0c79b644200829d015f9bedaf6, type: 3}
   growthSounds:
   - {fileID: 8300000, guid: 6627408aa7a074fbb9ece283aa386fe7, type: 3}
   - {fileID: 8300000, guid: 7d9e83c820d974868a2040e34e96f6eb, type: 3}

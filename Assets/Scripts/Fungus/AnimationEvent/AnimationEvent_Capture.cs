@@ -10,6 +10,7 @@ public class AnimationEvent_Capture : MonoBehaviour
     [SerializeField] private AudioClip bloom;
     [SerializeField] private AudioClip breath;
     [SerializeField] private AudioClip withered;
+    [SerializeField] private AudioClip[] interactSound;
     [SerializeField] private GameObject emitParticle;
     [SerializeField] private Transform emitPosition;
     [SerializeField] private Plant_StateControl _stateControl;
@@ -27,6 +28,12 @@ public class AnimationEvent_Capture : MonoBehaviour
     public void Breath()
     {
         capture_Audiosource.PlayOneShot(breath);
+    }
+    
+    public void InteractSound()
+    {
+        int num = Random.Range(0, interactSound.Length);
+        capture_Audiosource.PlayOneShot(interactSound[num]);
     }
     
     public void Withered()

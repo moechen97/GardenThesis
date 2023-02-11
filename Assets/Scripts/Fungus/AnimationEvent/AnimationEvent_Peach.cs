@@ -73,7 +73,7 @@ public class AnimationEvent_Peach : MonoBehaviour
         {
             MaterialChange.MaterialWithered();
         }
-        peach_audiosource.PlayOneShot(withered);
+        //peach_audiosource.PlayOneShot(withered);
     }
     
     public void Die()

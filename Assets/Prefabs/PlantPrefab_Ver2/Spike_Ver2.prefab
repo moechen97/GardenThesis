@@ -169,6 +169,7 @@ MonoBehaviour:
   breedingSpeed: 1.25
   growthSpeed_minRange: 1
   growthSpeed_maxRange: 1
+  aliveTimeRandomRange: 0
   aliveTime: 4.5
   isBreeding: 0
   growthRadius: 1

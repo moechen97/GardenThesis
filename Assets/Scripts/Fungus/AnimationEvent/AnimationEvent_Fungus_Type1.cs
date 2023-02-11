@@ -7,8 +7,7 @@ using Random = UnityEngine.Random;
 public class AnimationEvent_Fungus_Type1 : MonoBehaviour
 {
     public AudioClip[] bloomSounds;
-    public AudioClip breathSound1;
-    public AudioClip breathSound2;
+    public AudioClip[] breathSound;
     public AudioClip[] growthSounds;
     public AudioClip[] witheredSounds;
     public GameObject BreathParticle;
@@ -17,13 +16,14 @@ public class AnimationEvent_Fungus_Type1 : MonoBehaviour
 
     public void Breath1()
     {
-        SoundEffectManager.Instance.PlayOneClip(breathSound1);
+        int num = Random.Range(0, breathSound.Length);
+        SoundEffectManager.Instance.PlayOneClip(breathSound[num]);
         Instantiate(BreathParticle, particleInstantiatePosition.position, quaternion.identity);
         MaterialChange.BreathIn();
     }
     public void Breath2()
     {
-        SoundEffectManager.Instance.PlayOneClip(breathSound2);
+        
         Instantiate(BreathParticle, particleInstantiatePosition.position, quaternion.identity);
         MaterialChange.BreathIn();
     }
@@ -42,8 +42,8 @@ public class AnimationEvent_Fungus_Type1 : MonoBehaviour
     
     public void Withered()
     {
-        int x = Random.Range(0, witheredSounds.Length);
-        SoundEffectManager.Instance.PlayOneClip(witheredSounds[x]);
+        //int x = Random.Range(0, witheredSounds.Length);
+        //SoundEffectManager.Instance.PlayOneClip(witheredSounds[x]);
         MaterialChange.MaterialWithered();
     }
 
