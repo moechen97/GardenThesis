@@ -60,6 +60,7 @@ namespace Planting
         private bool enableControl = false;
         private Vector3 PreviousDragPosition;
         private Vector2 fingerPositionOffset = new Vector2(0f, 20f);
+        private UIButtonCooldown presseButtonCooldown;
         
         void Awake()
         {
@@ -68,7 +69,7 @@ namespace Planting
             graphicRaycaster = plantMenu_Canvas.GetComponent<GraphicRaycaster>();
             gardenControl = new GardenControl();
             cameraMain = Camera.main;
-            fingerPositionOffset = new Vector2(0f,Screen.height / 45f);
+            fingerPositionOffset = new Vector2(0f,Screen.height / 42f);
         }
 
         private void Start()
@@ -508,9 +509,14 @@ namespace Planting
                 {
                     if(result.gameObject.name.Equals(plant.Key.ToString()))
                     {
-                        isDraggingSeed = true;
-                        isDragging_InScrollbar = true;
-                        currSeed = plant.Key;
+                        if (!result.gameObject.GetComponentInParent<UIButtonCooldown>().GetCountDownState())
+                        {
+                            presseButtonCooldown =
+                                result.gameObject.GetComponentInParent<UIButtonCooldown>();
+                            isDraggingSeed = true;
+                            isDragging_InScrollbar = true;
+                            currSeed = plant.Key;
+                        }
                         //PlantManager.SelectPlantIcon(currSeed, true);
                     }
                 }
@@ -631,6 +637,8 @@ namespace Planting
 
         IEnumerator PlantSeed(Vector3 instantiateP,GameObject seed)
         {
+            presseButtonCooldown.StartCountDown();
+            presseButtonCooldown = null;
             Instantiate(PrepareSeed, instantiateP, Quaternion.identity);
             yield return new WaitForSeconds(2.5f);
             GameObject newPlant = GameObject.Instantiate(seed);

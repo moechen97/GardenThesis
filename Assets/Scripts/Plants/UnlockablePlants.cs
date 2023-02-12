@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Planting {
@@ -27,7 +28,7 @@ namespace Planting {
         public void Unlock_Progress()
         {
             List<PlantType> unlocks = new List<PlantType>();
-            foreach (KeyValuePair<PlantType, GameObject> unlockable in unlockable_icons)
+            foreach (KeyValuePair<PlantType, GameObject> unlockable in unlockable_icons.ToList())
             {
                 //if (unlockable.Key == PlantType.Fungus_Purple)
                 //{
