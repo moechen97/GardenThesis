@@ -20,7 +20,7 @@ public class UIButtonCooldown : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("isCountingdown"+isCountingdown);
+        //Debug.Log("isCountingdown"+isCountingdown);
         if (isCountingdown)
         {
             currentTime = Time.time - countdownTime;

@@ -61,7 +61,9 @@ namespace Planting
         private Vector3 PreviousDragPosition;
         private Vector2 fingerPositionOffset = new Vector2(0f, 20f);
         private UIButtonCooldown presseButtonCooldown;
-        
+        [SerializeField] ScrollRect scrollbar;
+        private bool isScrolling = false;
+
         void Awake()
         {
             startCamPosition = camFocusPoint.transform.position;
@@ -367,7 +369,28 @@ namespace Planting
         {
             if (!enableControl)
                 return;
-            if (isDraggingSeed)
+
+            if(isScrolling && !isDraggingSeed)
+            {
+                Vector2 finger = gardenControl.Plant.FirstFingerPosition.ReadValue<Vector2>();
+                finger += fingerPositionOffset;
+                Vector3 screenCoordinates = new Vector3(finger.x, finger.y, cameraMain.nearClipPlane);
+                screenCoordinates.z = 0.0F;
+                PointerEventData pointerEventData = new PointerEventData(eventSystem);
+                pointerEventData.position = screenCoordinates;
+                List<RaycastResult> UIresults = new List<RaycastResult>();
+                UIgraphicRaycaster.Raycast(pointerEventData, UIresults);
+                if (UIresults.Count == 0)
+                {
+                    scrollbar.enabled = false;
+                }
+                else
+                {
+                    scrollbar.enabled = true;
+                    scrollbar.OnBeginDrag(pointerEventData);
+                }
+            }
+            else if (isDraggingSeed)
             {
                 //Convert finger to screen coordinates
                 Vector2 finger = gardenControl.Plant.FirstFingerPosition.ReadValue<Vector2>();
@@ -385,12 +408,12 @@ namespace Planting
                     if (UIresults.Count == 0)
                     {
                         isDragging_InScrollbar = false;
+                        scrollbar.enabled = false;
                         PlantManager.SelectPlantIcon(currSeed, true);
                     }
                 }
                 else
                 {
-
                     //Set square indicator when user is dragging object
                     _uiIndicator.gameObject.SetActive(true);
                     _uiIndicator.transform.position = screenCoordinates;
@@ -505,7 +528,8 @@ namespace Planting
             UIgraphicRaycaster.Raycast(pointerEventData, UIresults);
             foreach (RaycastResult result in UIresults)
             {
-                foreach(KeyValuePair<PlantType, GameObject> plant in seeds)
+                isScrolling = true;
+                foreach (KeyValuePair<PlantType, GameObject> plant in seeds)
                 {
                     if(result.gameObject.name.Equals(plant.Key.ToString()))
                     {
@@ -515,7 +539,7 @@ namespace Planting
                                 result.gameObject.GetComponentInParent<UIButtonCooldown>();
                             isDraggingSeed = true;
                             isDragging_InScrollbar = true;
-                            currSeed = plant.Key;
+                            currSeed = plant.Key;  
                         }
                         //PlantManager.SelectPlantIcon(currSeed, true);
                     }
@@ -557,6 +581,8 @@ namespace Planting
         }
         private void EndDrag(InputAction.CallbackContext context)
         {
+            scrollbar.enabled = true;
+            isScrolling = false;
             if(touchPlantDrag)
             {
                 StartCoroutine(WaitForEndDrag());
