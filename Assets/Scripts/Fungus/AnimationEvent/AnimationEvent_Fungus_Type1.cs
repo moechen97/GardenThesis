@@ -6,18 +6,20 @@ using Random = UnityEngine.Random;
 
 public class AnimationEvent_Fungus_Type1 : MonoBehaviour
 {
-    public AudioClip[] bloomSounds;
-    public AudioClip[] breathSound;
-    public AudioClip[] growthSounds;
-    public AudioClip[] witheredSounds;
-    public GameObject BreathParticle;
-    public Transform particleInstantiatePosition;
-    public Fungus_MaterialChange MaterialChange;
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] AudioClip[] bloomSounds;
+    [SerializeField] AudioClip[] breathSound;
+    [SerializeField] AudioClip[] growthSounds;
+    [SerializeField] AudioClip[] witheredSounds;
+    [SerializeField] GameObject BreathParticle;
+    [SerializeField] Transform particleInstantiatePosition;
+    [SerializeField] Fungus_MaterialChange MaterialChange;
+    
 
     public void Breath1()
     {
         int num = Random.Range(0, breathSound.Length);
-        SoundEffectManager.Instance.PlayOneClip(breathSound[num]);
+        _audioSource.PlayOneShot(breathSound[num]);
         Instantiate(BreathParticle, particleInstantiatePosition.position, quaternion.identity);
         MaterialChange.BreathIn();
     }
@@ -31,13 +33,13 @@ public class AnimationEvent_Fungus_Type1 : MonoBehaviour
     public void Growth()
     {
         int x = Random.Range(0, growthSounds.Length);
-        SoundEffectManager.Instance.PlayOneClip(growthSounds[x]);
+        _audioSource.PlayOneShot(growthSounds[x]);
     }
     
     public void Bloom()
     {
         int x = Random.Range(0, bloomSounds.Length);
-        SoundEffectManager.Instance.PlayOneClip(bloomSounds[x]);
+        _audioSource.PlayOneShot(bloomSounds[x]);
     }
     
     public void Withered()

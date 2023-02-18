@@ -44,6 +44,7 @@ public class AnimationEvent_Peach : MonoBehaviour
     
     public void Grow()
     {
+        peach_audiosource.pitch = Random.Range(0.9f, 1.1f);
         peach_audiosource.PlayOneShot(grow);
     }
 
@@ -54,16 +55,19 @@ public class AnimationEvent_Peach : MonoBehaviour
 
     public void Bloom()
     {
+        peach_audiosource.pitch = Random.Range(0.9f, 1.1f);
         peach_audiosource.PlayOneShot(bloom);
     }
 
     public void Breath()
     {
+        peach_audiosource.pitch = Random.Range(0.9f, 1.1f);
         peach_audiosource.PlayOneShot(fullygrow);
     }
 
     public void InteractSoundPlay()
     {
+        peach_audiosource.pitch = Random.Range(0.9f, 1.1f);
         peach_audiosource.PlayOneShot(interact);
     }
     

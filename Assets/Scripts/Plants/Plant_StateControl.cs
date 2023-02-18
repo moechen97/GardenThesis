@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using DG.Tweening;
 using UnityEngine;
 
 public class Plant_StateControl : MonoBehaviour
@@ -8,6 +9,8 @@ public class Plant_StateControl : MonoBehaviour
     [SerializeField] private bool canBeInteract;
     [SerializeField] private Animator fungusAnimator;
     [SerializeField] private Fungus_MaterialChange[] MaterialControls;
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private float beingKilledDuration;
     private bool iskilled = false;
 
     public void Withered()
@@ -26,11 +29,16 @@ public class Plant_StateControl : MonoBehaviour
 
     public void BeingKilled()
     {
-        iskilled = true;
-        foreach (var materialChange in MaterialControls)
+        if (!iskilled)
         {
-            materialChange.Killed();
+            _audioSource.DOPitch(_audioSource.pitch - 0.02f, beingKilledDuration);
+            _audioSource.DOFade(0.5f, beingKilledDuration);
+            foreach (var materialChange in MaterialControls)
+            {
+                materialChange.Killed();
+            }
         }
+        iskilled = true;
     }
     
     public bool returnKilledState()
