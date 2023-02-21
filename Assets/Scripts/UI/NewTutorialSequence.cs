@@ -30,7 +30,10 @@ namespace Planting
     private bool barOpened = false;
     private bool seedPlanted = false;
     private bool settingshowup = false;
-    
+    private bool isRotating;
+    private bool isZooming;
+    private bool isPanning;
+
 
     private void Awake()
     {
@@ -72,32 +75,32 @@ namespace Planting
         }
 
         //rotation Camera tutorial
-        if (!rotationFinishd)
+        if (!rotationFinishd&&!isRotating)
         {
             if (GardenInput.isRotatingCamera)
             {
                 StartCoroutine(RotateCameraFinished());
-                rotationFinishd = true;
+                isRotating = true;
             }
         }
         
         //zoom Camera tutorial;
-        if (!zoomFinished && rotationFinishd)
+        if (!zoomFinished && rotationFinishd && !isZooming)
         {
             if (GardenInput.isZoomingCamera)
             {
                 StartCoroutine(ZoomCameraFinished());
-                zoomFinished = true;
+                isZooming = true;
             }
         }
         
         //pan CameraTutorial
-        if (!panFinished && zoomFinished)
+        if (!panFinished && zoomFinished &&!isPanning)
         {
             if (GardenInput.isPanningCamera)
             {
                 StartCoroutine(PanCameraFinished());
-                panFinished = true;
+                isPanning = true;
             }
         }
 
@@ -121,6 +124,7 @@ namespace Planting
         RotationCanvas.DOFade(0, 1.5f);
         yield return new WaitForSeconds(3f);
         ZoomCanvas.DOFade(1, 2f);
+        rotationFinishd = true;
     }
 
     IEnumerator ZoomCameraFinished()
@@ -129,7 +133,7 @@ namespace Planting
         ZoomCanvas.DOFade(0, 1.5f);
         yield return new WaitForSeconds(3f);
         PanCanvas.DOFade(1, 2f);
-        
+        zoomFinished = true;
     }
 
     IEnumerator PanCameraFinished()
@@ -139,6 +143,7 @@ namespace Planting
         yield return new WaitForSeconds(3f);
         HUDAnimation.instance.SeedFadeIn();
         SeedtoolCanvas.DOFade(1, 1.5f);
+        panFinished = true;
     }
     
     public void StartGame()

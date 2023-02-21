@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 namespace Planting {
 
@@ -12,6 +13,8 @@ namespace Planting {
         [SerializeField] private GameObject newSeedPanel;
 
         private int indexcount = 0;
+
+
         // Start is called before the first frame update
         void Start()
         { 
@@ -44,6 +47,7 @@ namespace Planting {
                        PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 1)
                     {
                         SpawnPlantIcon(PlantType.Plant_Peach, ++indexcount);
+                        RecordAnalyticsData(Time.time, "Peach");
                     }
                 }
                 else if (unlockable.Key == PlantType.Plant_Drum)
@@ -52,6 +56,7 @@ namespace Planting {
                        PlantManager.bredPlantCounter[PlantType.Plant_Peach] >= 1)
                     {
                         SpawnPlantIcon(PlantType.Plant_Drum, ++indexcount);
+                        RecordAnalyticsData(Time.time, "Drum");
                     }
                 }
                 else if (unlockable.Key == PlantType.Plant_Spike)
@@ -59,6 +64,7 @@ namespace Planting {
                     if (PlantManager.allPlants.Count > 15)
                     {
                         SpawnPlantIcon(PlantType.Plant_Spike, ++indexcount);
+                        RecordAnalyticsData(Time.time, "Spike");
                     }
                 }
                 else if (unlockable.Key == PlantType.Plant_Bubble)
@@ -67,6 +73,7 @@ namespace Planting {
                        PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 3)
                     {
                         SpawnPlantIcon(PlantType.Plant_Bubble, ++indexcount);
+                        RecordAnalyticsData(Time.time, "Bubble");
                     }
                 }
                 else if (unlockable.Key == PlantType.Plant_Capture)
@@ -75,6 +82,7 @@ namespace Planting {
                        PlantManager.bredPlantCounter[PlantType.Plant_Bubble] >= 1)
                     {
                         SpawnPlantIcon(PlantType.Plant_Capture, ++indexcount);
+                        RecordAnalyticsData(Time.time, "Capture");
                     }
                 }
                 else if (unlockable.Key == PlantType.Plant_Rings)
@@ -83,6 +91,7 @@ namespace Planting {
                        PlantManager.bredPlantCounter[PlantType.Plant_Peach] >= 2)
                     {
                         SpawnPlantIcon(PlantType.Plant_Rings, ++indexcount);
+                        RecordAnalyticsData(Time.time, "Rings");
                     }
                 }
                 else if (unlockable.Key == PlantType.Plant_Lotus)
@@ -91,6 +100,7 @@ namespace Planting {
                        PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 0)
                     {
                         SpawnPlantIcon(PlantType.Plant_Lotus, ++indexcount);
+                        RecordAnalyticsData(Time.time, "Lotus");
                     }
                 }
             }
@@ -114,6 +124,16 @@ namespace Planting {
             }
             //add icon to PlantManager
             PlantManager.AddPlantIconBG(plant, icon.transform.GetChild(0).GetComponent<UnityEngine.UI.Image>());
+        }
+
+        void RecordAnalyticsData(float time, string name)
+        {
+            Dictionary<string, object> analyticsData = new Dictionary<string, object>()
+            {
+                { "Plant name", name },
+                { "Time", time }
+            };
+            AnalyticsResult a = Analytics.CustomEvent("unlockPlant",analyticsData);
         }
     }
 }
