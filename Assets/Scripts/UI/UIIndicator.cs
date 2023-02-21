@@ -14,6 +14,7 @@ public class UIIndicator : MonoBehaviour
     
     private Animator _animator;
     private MaterialPropertyBlock _propertyBlock;
+    private bool canPlant = false;
 
     private void Start()
     {
@@ -24,16 +25,22 @@ public class UIIndicator : MonoBehaviour
 
     public void CanPlant()
     {
+        if (canPlant)
+            return;
         DOTween.ClearCachedTweens();
         _animator.SetBool("expanded",true);
 
         _image.DOColor(canPlantColor, 1f);
+        canPlant = true;
     }
 
     public void CannotPlant()
     {
+        if (!canPlant)
+            return;
         _animator.SetBool("expanded",false);
         DOTween.ClearCachedTweens();
         _image.DOColor(cannotPlantColor, 1f);
+        canPlant = false;
     }
 }

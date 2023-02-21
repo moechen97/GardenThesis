@@ -1016,12 +1016,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaterialChange: {fileID: 4569493715534659917}
   capture_Audiosource: {fileID: 4569493714470857910}
-  grow: {fileID: 8300000, guid: 55d44f73ad1ba4be38f6f3cd8b050d9b, type: 3}
+  grow: {fileID: 8300000, guid: 047fe5eaac3d748408a0c0293151edbe, type: 3}
   bloom: {fileID: 8300000, guid: 60924a76f69e246acbb82465cdd61e43, type: 3}
   breath: {fileID: 8300000, guid: 341cd07092e1b4f1aa9b27053b5d6555, type: 3}
-  withered: {fileID: 8300000, guid: 1c1f7106387994a7ab459279ed3e2917, type: 3}
+  withered: {fileID: 8300000, guid: 68c84cbbf727548f09ed5ab08afd3901, type: 3}
   interactSound:
-  - {fileID: 8300000, guid: d9777097674a04f6daf936c496c11385, type: 3}
+  - {fileID: 8300000, guid: 04328facc94f0491da316665bcee6eee, type: 3}
   emitParticle: {fileID: 458109797782953899, guid: 83b70db4d7f94456b8f461d64154ac49, type: 3}
   emitPosition: {fileID: 2969477839598638514}
   _stateControl: {fileID: 4569493714470857911}

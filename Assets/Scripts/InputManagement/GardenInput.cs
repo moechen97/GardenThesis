@@ -14,6 +14,7 @@ namespace Planting
     {
         private Dictionary<PlantType, GameObject> seeds;
         private GardenControl gardenControl;
+        public static GardenInput instance;
         Camera cameraMain;
         [SerializeField] GameObject cam;
         [SerializeField] Image indicator;
@@ -63,9 +64,18 @@ namespace Planting
         private UIButtonCooldown presseButtonCooldown;
         [SerializeField] ScrollRect scrollbar;
         private bool isScrolling = false;
+        [SerializeField] private float idleTime;
+        private float stoptouchTime;
+        private float currentTime;
+        private bool stoptouch = true;
+        public static bool isIdle=false;
 
         void Awake()
         {
+            if(instance == null)
+            {
+                instance = this;
+            }
             startCamPosition = camFocusPoint.transform.position;
             startCamRotation = camFocusPoint.transform.eulerAngles;
             graphicRaycaster = plantMenu_Canvas.GetComponent<GraphicRaycaster>();
@@ -141,7 +151,7 @@ namespace Planting
             float previousDistance = 0f, distance = 0f;
             isZooming = false;
             bool doneZooming = false;
-            float minZoom = -61.48944F;
+            float minZoom = -63F;
             float maxZoom = -9.917652F;
             float maxZoomDistance = minZoom - maxZoom;
             yield return new WaitForSeconds(0.05F);
@@ -319,6 +329,9 @@ namespace Planting
             {
                 StartCoroutine(WaitForTap());
             }
+
+            stoptouch = false;
+            isIdle = false;
         }
 
         private IEnumerator WaitForTap()
@@ -367,6 +380,17 @@ namespace Planting
 
         private void Update()
         {
+            //Idle Check
+            if (stoptouch && !isIdle)
+            {
+                currentTime = Time.time - stoptouchTime;
+                if (currentTime >= idleTime)
+                {
+                    isIdle = true;
+                }
+            }
+            Debug.Log("isIdle"+isIdle);
+            
             if (!enableControl)
                 return;
 
@@ -476,6 +500,8 @@ namespace Planting
                 camFocusPoint.transform.localEulerAngles = rot;
                 previousRotatePosition = currentRotatePosition;
             }
+            
+           
         }
         
         float ClampAngle(float angle, float from, float to)
@@ -510,6 +536,8 @@ namespace Planting
         {
             //Check for taps on UI seeds
             StartCoroutine(WaitForDrag());
+            stoptouch = false;
+            isIdle = false;
         }
 
         private IEnumerator WaitForDrag()
@@ -583,6 +611,8 @@ namespace Planting
         {
             scrollbar.enabled = true;
             isScrolling = false;
+            stoptouch = true;
+            stoptouchTime = Time.time;
             if(touchPlantDrag)
             {
                 StartCoroutine(WaitForEndDrag());
