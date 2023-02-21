@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 
 public class HUDAnimation : MonoBehaviour
 {
+    public static HUDAnimation instance;
     [SerializeField] private RectTransform SettingUI;
     [SerializeField] private Vector2 settingStartAnchorPose;
     [SerializeField] private Vector2 settingEndAnchorPose;
@@ -20,6 +21,18 @@ public class HUDAnimation : MonoBehaviour
     [SerializeField] private float fadeInSpeed;
     [SerializeField] private float fadeOutSpeed;
     private bool isIdle = false;
+
+    private void Awake()
+    {
+        if (instance != null && instance != this) 
+        { 
+            Destroy(this); 
+        } 
+        else 
+        { 
+            instance = this; 
+        } 
+    }
 
     private void Update()
     {
@@ -70,5 +83,12 @@ public class HUDAnimation : MonoBehaviour
         SeedBarUI.DOKill();
         SeedToggleUI.DOKill();
         SettingUI.DOAnchorPos(settingEndAnchorPose, fadeInSpeed);
+    }
+
+    public void SetUpTutorialFormat()
+    {
+        SeedBarUI.anchoredPosition = barStartAnchorPose;
+        SettingUI.anchoredPosition = settingStartAnchorPose;
+        SeedToggleUI.anchoredPosition = seedStartAnchorPose;
     }
 }

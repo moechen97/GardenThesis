@@ -69,13 +69,20 @@ namespace Planting
         private float currentTime;
         private bool stoptouch = true;
         public static bool isIdle=false;
+        public static bool isRotatingCamera = false;
+        public static bool isZoomingCamera = false;
+        public static bool isPanningCamera = false;
 
         void Awake()
         {
-            if(instance == null)
-            {
-                instance = this;
-            }
+            if (instance != null && instance != this) 
+            { 
+                Destroy(this); 
+            } 
+            else 
+            { 
+                instance = this; 
+            } 
             startCamPosition = camFocusPoint.transform.position;
             startCamRotation = camFocusPoint.transform.eulerAngles;
             graphicRaycaster = plantMenu_Canvas.GetComponent<GraphicRaycaster>();
@@ -290,7 +297,7 @@ namespace Planting
         }
         private void StartSecondTouch(InputAction.CallbackContext context)
         {
-            Debug.Log("Second Touch Information");
+            //Debug.Log("Second Touch Information");
         }
         private void StartSecondaryFinger(InputAction.CallbackContext context)
         {
@@ -389,7 +396,7 @@ namespace Planting
                     isIdle = true;
                 }
             }
-            Debug.Log("isIdle"+isIdle);
+            //Debug.Log("isIdle"+isIdle);
             
             if (!enableControl)
                 return;
@@ -500,8 +507,12 @@ namespace Planting
                 camFocusPoint.transform.localEulerAngles = rot;
                 previousRotatePosition = currentRotatePosition;
             }
+
+            // tutorial parameters
+            isRotatingCamera = rotatingScreen;
+            isZoomingCamera = isZooming;
+            isPanningCamera = isPanning;
             
-           
         }
         
         float ClampAngle(float angle, float from, float to)
@@ -703,7 +714,7 @@ namespace Planting
         
         private void OnEnable()
         {
-            Debug.Log("Enabled garden input control");
+            //Debug.Log("Enabled garden input control");
             gardenControl.Enable();
         }
 

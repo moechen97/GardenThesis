@@ -35,6 +35,7 @@ namespace Planting
             Seedbar.SetBool("IsShown",isclosed);
             if (isclosed && !hasPlanted)
             {
+                NewTutorialSequence.instance.ToggleSeedButton();
                  fingerhint = StartCoroutine(SetFingerHintActive());
             }
             else if (!isclosed && !hasPlanted)
