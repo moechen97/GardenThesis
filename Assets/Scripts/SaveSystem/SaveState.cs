@@ -8,33 +8,32 @@ public class SaveState
 {
     public List<string> plants;
     public bool tutorialFinished;
+    private DateTime currLoginTime;
     public SaveState()
     {
         CreateNewSaveState();
     }
     private void CreateNewSaveState()
     {
-        if(PlayerPrefs.HasKey("save"))
-        {
-            Debug.Log("YOOYO");
-        }
-        else 
+        currLoginTime = DateTime.Now;
+        if (!PlayerPrefs.HasKey("save"))
         {
             plants = new List<string>();
             tutorialFinished = false;
-            PlayerPrefs.SetString("lastLoginTime", DateTime.Now.ToBinary().ToString());
+            PlayerPrefs.SetString("firstLoginTime", currLoginTime.ToBinary().ToString());
+            PlayerPrefs.SetString("prevLoginTime", currLoginTime.ToBinary().ToString());
         }
-
+        CheckTimeReset();
     }
     public void AddPlant(PlantType plant)
     {
-        Debug.Log("Add plant " + plant);
+        Debug.Log("Add plant to save system: " + plant);
         plants.Add(plant.ToString());
         SaveManager.Instance.Save();
     }
     public void PrintState()
     {
-        Debug.Log("SaveState");
+        Debug.Log("~SaveState~");
         Debug.Log("Tutorial Complete: " + tutorialFinished);
         for (int i = 0; i < plants.Count; i++)
         {
@@ -43,22 +42,23 @@ public class SaveState
     }
     public void CheckTimeReset()
     {
-        Debug.Log("Check time in save state");
-        DateTime currLogin = DateTime.Now;
-        DateTime prevLogin = DateTime.FromBinary(Convert.ToInt64(PlayerPrefs.GetString("lastLoginTime")));
-        TimeSpan difference = currLogin.Subtract(prevLogin);
-        if(difference.Days >= 7)
+        DateTime firstLoginTime = DateTime.FromBinary(Convert.ToInt64(PlayerPrefs.GetString("firstLoginTime")));
+        DateTime prevLoginTime = DateTime.FromBinary(Convert.ToInt64(PlayerPrefs.GetString("prevLoginTime")));
+        Debug.Log("FIRST LOGIN: " + firstLoginTime);
+        Debug.Log("PREV LOGIN: " + prevLoginTime);
+        Debug.Log("CURR LOGIN: " + currLoginTime);
+        TimeSpan timeSinceLastLogin = currLoginTime.Subtract(prevLoginTime);
+
+        //Reset tutorial if time since last login >= 7 days
+        if (timeSinceLastLogin.Days >= 7)
         {
-            //Reset tutorial
-            ResetSaveState();
+            tutorialFinished = false;
         }
-        //Reset plants after 4am
-        Debug.Log("Difference since last login: " + difference);
-        Debug.Log("Difference in seconds: " + difference.TotalSeconds);
-    }
-    private void ResetSaveState()
-    {
-        PlayerPrefs.DeleteAll();
-        CreateNewSaveState();
+        //Reset stored plants 12 hours after last login
+        if(timeSinceLastLogin.Hours >= 12)
+        {
+            plants.Clear();
+        }
+        PlayerPrefs.SetString("prevLoginTime", currLoginTime.ToBinary().ToString());
     }
 }

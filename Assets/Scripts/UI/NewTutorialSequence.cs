@@ -9,7 +9,6 @@ namespace Planting
 {
     public class NewTutorialSequence : MonoBehaviour
 {
-    public static bool finishedTutorial = false;
     public static NewTutorialSequence instance { get; private set; }
     [SerializeField] private GameObject TutorialCamera;
     [SerializeField] private CanvasGroup startCanvas;
@@ -25,6 +24,7 @@ namespace Planting
     [SerializeField] private CanvasRenderer _renderer;
     [SerializeField] private GameObject tutorialGroup;
     [SerializeField] private GameObject creditButton;
+    [SerializeField] private TMPro.TextMeshProUGUI skipTutorialButtonText;
     private bool rotationFinishd = false;
     private bool zoomFinished = false;
     private bool panFinished = false;
@@ -38,8 +38,9 @@ namespace Planting
     private bool isCamera2Toggle = false;
     private bool iscameraResetFinished = false;
     private bool cameraReset = false;
-
-
+    private bool buttonPressed = false;
+    private bool watchTutorial = false;
+    private bool completedSequence = false;
     private void Awake()
     {
         if (instance != null && instance != this) 
@@ -48,26 +49,30 @@ namespace Planting
         } 
         else 
         { 
-            instance = this; 
+            instance = this;
         } 
     }
-    
+
     void Start()
     {
         TutorialCamera.SetActive(true);
         startCanvas.alpha = 1;
         gameCanvas.alpha = 0;
         StartCoroutine(ChangeTitleColor());
-        
-        
-        if (!finishedTutorial)
+        if (SaveManager.Instance.state.tutorialFinished)
         {
-            HUDAnimation.instance.SetUpTutorialFormat();
-            creditButton.SetActive(false);
-            gameCanvas.alpha = 1;
+            //Turn skip tutorial into watch tutorial button
+            CreateTutorialButton();
         }
+
+        HUDAnimation.instance.SetUpTutorialFormat();
+        creditButton.SetActive(false);
+        gameCanvas.alpha = 1;
     }
-    
+    private void CreateTutorialButton()
+    {
+        skipTutorialButtonText.text = "Watch Tutorial";
+    }
     IEnumerator ChangeTitleColor()
     {
         yield return new WaitForSeconds(0.5f);
@@ -76,7 +81,7 @@ namespace Planting
     
     void Update()
     {
-        if (finishedTutorial)
+        if (completedSequence)
         {
             return;
         }
@@ -127,9 +132,7 @@ namespace Planting
         {
             StartCoroutine(CameraResetFinished());
             cameraReset = true;
-        }
-        
-        
+        }  
     }
 
     IEnumerator RotateCameraFinished()
@@ -169,12 +172,40 @@ namespace Planting
         SeedtoolCanvas.DOFade(1, 1.5f);
     }
     
-    
+    //Start Game button
     public void StartGame()
     {
-        StartCoroutine(TapStart());
+        if(buttonPressed)
+        {
+            return;
+        }
+        if (SaveManager.Instance.state.tutorialFinished)
+        {
+            NoTutorial();
+        }
+        else
+        {
+            LoadTutorial();
+        }
+        buttonPressed = true;
     }
-
+    //Skip Tutorial button
+    public void SkipTutorial()
+    {
+        if (buttonPressed)
+        {
+            return;
+        }
+        if (SaveManager.Instance.state.tutorialFinished)
+        {
+            LoadTutorial();
+        }
+        else
+        {
+            NoTutorial();
+        }
+        buttonPressed = true;
+    }
     IEnumerator TapStart()
     {
         TutorialCamera.SetActive(false);
@@ -186,21 +217,22 @@ namespace Planting
         startCanvas.transform.gameObject.SetActive(false);
         RotationCanvas.DOFade(1f, 2f);
         yield return new WaitForSeconds(1.5f);
-        GardenInput.instance.EnableControl();
-        
+        GardenInput.instance.EnableControl();       
     }
-
-    public void SkipTutorial()
+    public void NoTutorial()
     {
-        if (!finishedTutorial)
-        {
-            StartCoroutine(SkipT());
-        }
-        finishedTutorial = true;
+        StartCoroutine(SkipT());
     }
 
+    public void LoadTutorial()
+    {
+        watchTutorial = true;
+        StartCoroutine(TapStart());
+    }
     IEnumerator SkipT()
     {
+        SaveManager.Instance.TutorialFinished();
+        completedSequence = true;
         creditButton.SetActive(true);
         TutorialCamera.SetActive(false);
         yield return new WaitForSeconds(0.2f);
@@ -215,7 +247,7 @@ namespace Planting
 
     public void ToggleSeedButton()
     {
-        if (!finishedTutorial && !barOpened)
+        if (watchTutorial && !barOpened)
         {
             StartCoroutine(TappedSeedButton());
         }
@@ -239,9 +271,9 @@ namespace Planting
         yield return new WaitForSeconds(3f);
         CongratulationCanvas.DOFade(0, 1.5f);
         yield return new WaitForSeconds(1.5f);
-        finishedTutorial = true;
         tutorialGroup.SetActive(false);
-        
+        SaveManager.Instance.TutorialFinished();
+        completedSequence = true;
     }
 
     public void TapCamera1Botton()

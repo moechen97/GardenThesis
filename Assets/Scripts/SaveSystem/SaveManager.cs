@@ -30,7 +30,6 @@ public class SaveManager : MonoBehaviour
             state = SaveHelper.Deserialize<SaveState>(PlayerPrefs.GetString("save"));
             Debug.Log("Loading plants: " + state.plants.Count);
             state.PrintState();
-            state.CheckTimeReset();
         }
         else
         {
