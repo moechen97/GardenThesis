@@ -15,11 +15,15 @@ public class UIButtonCooldown : MonoBehaviour
     private bool isCountingdown =false;
     private MaterialPropertyBlock block;
 
-    private void Awake()
+    private void Start()
     {
-        _renderer.GetMaterial().SetFloat("_StepEdge", 0f);
+        StartCoroutine(OnStart());
     }
-
+    private IEnumerator OnStart()
+    {
+        yield return new WaitForEndOfFrame();
+        _renderer.GetMaterial().SetFloat("_StepEdge", 1.02f);
+    }
     // Update is called once per frame
     void Update()
     {

@@ -10,7 +10,6 @@ public class SaveState
     public bool tutorialFinished;
     public SaveState()
     {
-        Debug.Log("CONSTRUCTOR!");
         CreateNewSaveState();
     }
     private void CreateNewSaveState()
@@ -50,8 +49,10 @@ public class SaveState
         TimeSpan difference = currLogin.Subtract(prevLogin);
         if(difference.Days >= 7)
         {
+            //Reset tutorial
             ResetSaveState();
         }
+        //Reset plants after 4am
         Debug.Log("Difference since last login: " + difference);
         Debug.Log("Difference in seconds: " + difference.TotalSeconds);
     }
