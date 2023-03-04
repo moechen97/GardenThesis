@@ -15,7 +15,10 @@ public class UIButtonCooldown : MonoBehaviour
     private bool isCountingdown =false;
     private MaterialPropertyBlock block;
 
-   
+    private void Awake()
+    {
+        _renderer.GetMaterial().SetFloat("_StepEdge", 0f);
+    }
 
     // Update is called once per frame
     void Update()

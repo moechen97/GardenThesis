@@ -14,12 +14,26 @@ namespace Planting {
 
         private int indexcount = 0;
 
-
+        private void Awake()
+        {
+            unlockable_icons = GetComponent<UnlockableIconDictionaryScript>().DeserializeDictionary();
+        }
         // Start is called before the first frame update
         void Start()
-        { 
-            unlockable_icons = GetComponent<UnlockableIconDictionaryScript>().DeserializeDictionary();
-            SpawnPlantIcon(PlantType.Fungus_Green, indexcount, false);
+        {
+            SaveManager.Instance.state.PrintState();
+            if (SaveManager.Instance.state.plants.Count == 0)
+            {
+                Debug.Log("Saving in fungus green");
+                SavePlantUnlock(PlantType.Fungus_Green);
+            }
+            //Add your unlocked plants to the game
+            List<string> plants = SaveManager.Instance.state.plants;
+            foreach (string plant in plants)
+            {
+                Debug.Log("ADD PLANT TO GAME: " + plant);
+                SpawnPlantIcon((PlantType)System.Enum.Parse(typeof(PlantType), plant), indexcount++, false);
+            }
         }
 
         // Update is called once per frame
@@ -33,20 +47,13 @@ namespace Planting {
             List<PlantType> unlocks = new List<PlantType>();
             foreach (KeyValuePair<PlantType, GameObject> unlockable in unlockable_icons.ToList())
             {
-                //if (unlockable.Key == PlantType.Fungus_Purple)
-                //{
-                //    if (PlantManager.plantedPlantCounter[PlantType.Fungus_Green] >= 3 &&
-                //        PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 4)
-                //    {
-                //        SpawnPlantIcon(PlantType.Fungus_Purple, ++indexcount);
-                //    }
-                //}
                 if (unlockable.Key == PlantType.Plant_Peach)
                 {
                     if (PlantManager.plantedPlantCounter[PlantType.Fungus_Green] >= 2 &&
                        PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 1)
                     {
-                        SpawnPlantIcon(PlantType.Plant_Peach, ++indexcount);
+                        SavePlantUnlock(PlantType.Plant_Peach);
+                        SpawnPlantIcon(PlantType.Plant_Peach, indexcount++);
                         RecordAnalyticsData(Time.time, "Peach");
                     }
                 }
@@ -55,7 +62,8 @@ namespace Planting {
                     if (PlantManager.plantedPlantCounter[PlantType.Plant_Peach] >= 3 &&
                        PlantManager.bredPlantCounter[PlantType.Plant_Peach] >= 1)
                     {
-                        SpawnPlantIcon(PlantType.Plant_Drum, ++indexcount);
+                        SavePlantUnlock(PlantType.Plant_Drum);
+                        SpawnPlantIcon(PlantType.Plant_Drum, indexcount++);
                         RecordAnalyticsData(Time.time, "Drum");
                     }
                 }
@@ -63,7 +71,8 @@ namespace Planting {
                 {
                     if (PlantManager.allPlants.Count > 15)
                     {
-                        SpawnPlantIcon(PlantType.Plant_Spike, ++indexcount);
+                        SavePlantUnlock(PlantType.Plant_Spike);
+                        SpawnPlantIcon(PlantType.Plant_Spike, indexcount++);
                         RecordAnalyticsData(Time.time, "Spike");
                     }
                 }
@@ -72,7 +81,8 @@ namespace Planting {
                     if (PlantManager.plantedPlantCounter[PlantType.Fungus_Green] >= 5 &&
                        PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 3)
                     {
-                        SpawnPlantIcon(PlantType.Plant_Bubble, ++indexcount);
+                        SavePlantUnlock(PlantType.Plant_Bubble);
+                        SpawnPlantIcon(PlantType.Plant_Bubble, indexcount++);
                         RecordAnalyticsData(Time.time, "Bubble");
                     }
                 }
@@ -81,7 +91,8 @@ namespace Planting {
                     if (PlantManager.plantedPlantCounter[PlantType.Plant_Bubble] >= 5 &&
                        PlantManager.bredPlantCounter[PlantType.Plant_Bubble] >= 1)
                     {
-                        SpawnPlantIcon(PlantType.Plant_Capture, ++indexcount);
+                        SavePlantUnlock(PlantType.Plant_Capture);
+                        SpawnPlantIcon(PlantType.Plant_Capture, indexcount++);
                         RecordAnalyticsData(Time.time, "Capture");
                     }
                 }
@@ -90,7 +101,8 @@ namespace Planting {
                     if (PlantManager.plantedPlantCounter[PlantType.Plant_Peach] >= 5 &&
                        PlantManager.bredPlantCounter[PlantType.Plant_Peach] >= 2)
                     {
-                        SpawnPlantIcon(PlantType.Plant_Rings, ++indexcount);
+                        SavePlantUnlock(PlantType.Plant_Rings);
+                        SpawnPlantIcon(PlantType.Plant_Rings, indexcount++);
                         RecordAnalyticsData(Time.time, "Rings");
                     }
                 }
@@ -99,11 +111,16 @@ namespace Planting {
                     if (PlantManager.plantedPlantCounter[PlantType.Plant_Drum] >= 4 &&
                        PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 0)
                     {
-                        SpawnPlantIcon(PlantType.Plant_Lotus, ++indexcount);
+                        SavePlantUnlock(PlantType.Plant_Lotus);
+                        SpawnPlantIcon(PlantType.Plant_Lotus, indexcount++);
                         RecordAnalyticsData(Time.time, "Lotus");
                     }
                 }
             }
+        }
+        private void SavePlantUnlock(PlantType plant)
+        {
+            SaveManager.Instance.state.AddPlant(plant);
         }
         private void SpawnPlantIcon(PlantType plant, int index, bool showUnlockPanel = true)
         {
