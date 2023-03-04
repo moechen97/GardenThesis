@@ -2690,7 +2690,7 @@ MonoBehaviour:
   - {fileID: 4408640369241399940}
   lotus_audiosource: {fileID: 8424324399804110831}
   bloomSound:
-  - {fileID: 8300000, guid: a1dfa803e4c6f4dec8ad0bf4429069b4, type: 3}
+  - {fileID: 8300000, guid: 6a57bbab135504a8a8b4d32d752d03ea, type: 3}
   growSound:
   - {fileID: 8300000, guid: 00ab614146fdc49c893947891e515b95, type: 3}
   breathSound:

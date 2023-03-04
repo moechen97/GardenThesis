@@ -76,6 +76,7 @@ public class HUDAnimation : MonoBehaviour
         SeedBarUI.DOAnchorPos(barEndAnchorPose, fadeInSpeed);
         SeedToggleUI.DOAnchorPos(seedEndAnchorPose, fadeInSpeed);
     }
+    
 
     public void SettingFadeIn()
     {

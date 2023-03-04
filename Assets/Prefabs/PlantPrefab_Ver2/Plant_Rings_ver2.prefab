@@ -913,11 +913,19 @@ MonoBehaviour:
   - {fileID: 1651821598}
   - {fileID: 533168773}
   ring_audiosource: {fileID: 4604927566023633415}
-  grow: {fileID: 8300000, guid: 5d8fff6021b8b47c4903cfb4f24216a5, type: 3}
-  bloom: {fileID: 8300000, guid: f063b3b7a52e045b6934b5a4ec931d35, type: 3}
-  breath: {fileID: 8300000, guid: 891d84b231ed34287bb3b64f8e788f51, type: 3}
+  grow: []
+  bloom:
+  - {fileID: 8300000, guid: 657639f4875b2428e8fd0918345d10e1, type: 3}
+  - {fileID: 8300000, guid: a06d58ec6706b4a7480590cf11a67303, type: 3}
+  - {fileID: 8300000, guid: 51c1eead76f5c4f08845f8fdb79b59db, type: 3}
+  breath:
+  - {fileID: 8300000, guid: e589b0d80dee941f2a03f3a2d7032f47, type: 3}
+  - {fileID: 8300000, guid: 584e39f5f4017415fb73d1b945da1da4, type: 3}
+  - {fileID: 8300000, guid: 13d625193156f432d8bbed5f8bb4e5a6, type: 3}
   withered: {fileID: 8300000, guid: 8a1b1ef1976ed4c7fb2e6af35ccdd869, type: 3}
-  interact: {fileID: 8300000, guid: fa0b5d637edff49ae82be6e280d5ad7f, type: 3}
+  interact:
+  - {fileID: 8300000, guid: b067536cda7ae4a42820e7e0cf9b5305, type: 3}
+  - {fileID: 8300000, guid: 50093a4b326a34e7c806b9fd8b3f0e0e, type: 3}
   emitParticle: {fileID: 7182645755328016063, guid: 1f5c707c3dd8a49f38c188e59f0963f4, type: 3}
   emitPosition: {fileID: 8220185618946086841}
   _stateControl: {fileID: 4604927566023633414}

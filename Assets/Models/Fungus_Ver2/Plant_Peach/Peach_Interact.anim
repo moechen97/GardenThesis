@@ -13759,6 +13759,13 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
+  - time: 0
+    functionName: CannotbeInteract
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.041666668
     functionName: InteractSoundPlay
     data: 
@@ -13773,15 +13780,15 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.20833333
-    functionName: CannotbeInteract
+  - time: 0.625
+    functionName: InteractLightDim
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.625
-    functionName: InteractLightDim
+  - time: 0.6666667
+    functionName: CanInteract
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

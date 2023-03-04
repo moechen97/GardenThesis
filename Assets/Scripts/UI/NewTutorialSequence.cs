@@ -24,6 +24,7 @@ namespace Planting
     [SerializeField] private CanvasGroup CongratulationCanvas;
     [SerializeField] private CanvasRenderer _renderer;
     [SerializeField] private GameObject tutorialGroup;
+    [SerializeField] private GameObject creditButton;
     private bool rotationFinishd = false;
     private bool zoomFinished = false;
     private bool panFinished = false;
@@ -33,6 +34,10 @@ namespace Planting
     private bool isRotating;
     private bool isZooming;
     private bool isPanning;
+    private bool isCamera1Toggle = false;
+    private bool isCamera2Toggle = false;
+    private bool iscameraResetFinished = false;
+    private bool cameraReset = false;
 
 
     private void Awake()
@@ -54,9 +59,11 @@ namespace Planting
         gameCanvas.alpha = 0;
         StartCoroutine(ChangeTitleColor());
         
+        
         if (!finishedTutorial)
         {
             HUDAnimation.instance.SetUpTutorialFormat();
+            creditButton.SetActive(false);
             gameCanvas.alpha = 1;
         }
     }
@@ -115,6 +122,13 @@ namespace Planting
             }
         }
         
+        //camera reset tutorial
+        if (isCamera1Toggle && isCamera2Toggle && !cameraReset)
+        {
+            StartCoroutine(CameraResetFinished());
+            cameraReset = true;
+        }
+        
         
     }
 
@@ -141,10 +155,20 @@ namespace Planting
         yield return new WaitForSeconds(3f);
         PanCanvas.DOFade(0, 1.5f);
         yield return new WaitForSeconds(3f);
-        HUDAnimation.instance.SeedFadeIn();
-        SeedtoolCanvas.DOFade(1, 1.5f);
+        HUDAnimation.instance.SettingFadeIn();
+        SettingCanvas.DOFade(1, 1.5f);
         panFinished = true;
     }
+
+    IEnumerator CameraResetFinished()
+    {
+        yield return new WaitForSeconds(3f);
+        SettingCanvas.DOFade(0, 1.2f);
+        yield return new WaitForSeconds(2f);
+        HUDAnimation.instance.SeedFadeIn();
+        SeedtoolCanvas.DOFade(1, 1.5f);
+    }
+    
     
     public void StartGame()
     {
@@ -177,11 +201,12 @@ namespace Planting
 
     IEnumerator SkipT()
     {
+        creditButton.SetActive(true);
         TutorialCamera.SetActive(false);
         yield return new WaitForSeconds(0.2f);
         _renderer.GetMaterial().DOFloat(1.03f, "_StepEdge", 1.8f);
         startCanvas.DOFade(0f, 1.5f);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2f);
         HUDAnimation.instance.IdleFadeIn();
         _renderer.GetMaterial().SetFloat("_StepEdge", 0f);
         startCanvas.transform.gameObject.SetActive(false);
@@ -208,12 +233,8 @@ namespace Planting
     {
         SeedbarCanvas.DOFade(0, 1f);
         yield return new WaitForSeconds(2f);
-        HUDAnimation.instance.SettingFadeIn();
-        SettingCanvas.DOFade(1, 2f);
         seedPlanted = true;
-        yield return new WaitForSeconds(3.5f);
-        SettingCanvas.DOFade(0, 1.5f);
-        yield return new WaitForSeconds(2f);
+        creditButton.SetActive(true);
         CongratulationCanvas.DOFade(1, 2f);
         yield return new WaitForSeconds(3f);
         CongratulationCanvas.DOFade(0, 1.5f);
@@ -221,6 +242,16 @@ namespace Planting
         finishedTutorial = true;
         tutorialGroup.SetActive(false);
         
+    }
+
+    public void TapCamera1Botton()
+    {
+        isCamera1Toggle = true;
+    }
+    
+    public void TapCamera2Botton()
+    {
+        isCamera2Toggle = true;
     }
 }
 

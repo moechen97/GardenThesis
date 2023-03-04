@@ -1,24 +1,33 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Random = UnityEngine.Random;
 
 public class AnimationEvent_Peach : MonoBehaviour
 {
     [SerializeField] Fungus_MaterialChange[] MaterialChanges;
     [SerializeField] private AudioSource peach_audiosource;
-    [SerializeField] private AudioClip grow;
-    [SerializeField] private AudioClip fullygrow;
-    [SerializeField] private AudioClip bloom;
+    [SerializeField] private AudioClip[] grow;
+    [SerializeField] private AudioClip[] fullygrow;
+    [SerializeField] private AudioClip[] bloom;
     [SerializeField] private AudioClip withered;
     [SerializeField] private AudioClip killed;
-    [SerializeField] private AudioClip interact;
+    [SerializeField] private AudioClip[] interact;
     
     [SerializeField] private GameObject emitParticle;
     [SerializeField] private Transform emitPosition;
 
     [SerializeField] private Plant_StateControl _stateControl;
+    private int interactnum;
     
+    private void Start()
+    {
+         interactnum = Random.Range(0, interact.Length);
+    }
+
+
     public void GrowColorChange()
     {
         MaterialPropertyBlock _shadowPropertyBlock = new MaterialPropertyBlock();
@@ -45,7 +54,8 @@ public class AnimationEvent_Peach : MonoBehaviour
     public void Grow()
     {
         peach_audiosource.pitch = Random.Range(0.9f, 1.1f);
-        peach_audiosource.PlayOneShot(grow);
+        int num = Random.Range(0, grow.Length);
+        peach_audiosource.PlayOneShot(grow[num]);
     }
 
     public void EmitParticle()
@@ -56,19 +66,21 @@ public class AnimationEvent_Peach : MonoBehaviour
     public void Bloom()
     {
         peach_audiosource.pitch = Random.Range(0.9f, 1.1f);
-        peach_audiosource.PlayOneShot(bloom);
+        int num = Random.Range(0, bloom.Length);
+        peach_audiosource.PlayOneShot(bloom[num]);
     }
 
     public void Breath()
     {
         peach_audiosource.pitch = Random.Range(0.9f, 1.1f);
-        peach_audiosource.PlayOneShot(fullygrow);
+        int num = Random.Range(0, fullygrow.Length);
+        peach_audiosource.PlayOneShot(fullygrow[num]);
     }
 
     public void InteractSoundPlay()
     {
         peach_audiosource.pitch = Random.Range(0.9f, 1.1f);
-        peach_audiosource.PlayOneShot(interact);
+        peach_audiosource.PlayOneShot(interact[interactnum]);
     }
     
     public void Withered()

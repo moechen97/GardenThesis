@@ -248,9 +248,10 @@ public class Fungus_MaterialChange : MonoBehaviour
        
         if (BigParent)
         {
+            this.DOKill();
             Destroy(BigParent.gameObject,DieSpeed*0.8f+0.1f);
         }
-        
+        this.DOKill();
         Destroy(this.gameObject,DieSpeed*0.8f+0.1f);
         yield return null;
     }
@@ -318,9 +319,10 @@ public class Fungus_MaterialChange : MonoBehaviour
         
         if (BigParent)
         {
+            this.DOKill();
             Destroy(BigParent.gameObject,DieSpeed*0.8f+0.1f);
         }
-        
+        this.DOKill();
         Destroy(this.gameObject,DieSpeed*0.8f+0.1f);
         yield return null;
 

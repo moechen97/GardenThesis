@@ -662,6 +662,7 @@ namespace Planting
             }
             rotatingScreen = false;
             _uiIndicator.gameObject.SetActive(false);
+            _uiIndicator.ResetIndicator();
         }
 
         private bool AttemptPlant(PlantType type)

@@ -27,10 +27,10 @@ public class UIIndicator : MonoBehaviour
     {
         if (canPlant)
             return;
-        DOTween.ClearCachedTweens();
+        _image.DOKill();
         _animator.SetBool("expanded",true);
 
-        _image.DOColor(canPlantColor, 1f);
+        _image.DOColor(canPlantColor, 0.5f);
         canPlant = true;
     }
 
@@ -38,9 +38,15 @@ public class UIIndicator : MonoBehaviour
     {
         if (!canPlant)
             return;
-        _animator.SetBool("expanded",false);
-        DOTween.ClearCachedTweens();
-        _image.DOColor(cannotPlantColor, 1f);
+        _image.DOKill();
+        _image.DOColor(cannotPlantColor, 0.5f);
         canPlant = false;
+    }
+
+    public void ResetIndicator()
+    {
+        _animator.SetBool("expanded",false);
+        _image.DOKill();
+        _image.color = cannotPlantColor;
     }
 }
