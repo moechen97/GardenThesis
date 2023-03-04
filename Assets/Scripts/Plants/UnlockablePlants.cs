@@ -8,12 +8,13 @@ namespace Planting {
 
     public class UnlockablePlants : MonoBehaviour
     {
+        public static bool unlockDisplayOpen = false;
         private Dictionary<PlantType, GameObject> unlockable_icons;
         [SerializeField] GameObject seedPanel;
         [SerializeField] private GameObject newSeedPanel;
 
         private int indexcount = 0;
-
+        private List<KeyValuePair<PlantType, GameObject>> unlockables;
         private void Awake()
         {
             unlockable_icons = GetComponent<UnlockableIconDictionaryScript>().DeserializeDictionary();
@@ -34,89 +35,91 @@ namespace Planting {
                 Debug.Log("ADD PLANT TO GAME: " + plant);
                 SpawnPlantIcon((PlantType)System.Enum.Parse(typeof(PlantType), plant), indexcount++, false);
             }
-        }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-
+            unlockables = unlockable_icons.ToList();
         }
         public void Unlock_Progress()
         {
-            List<PlantType> unlocks = new List<PlantType>();
-            foreach (KeyValuePair<PlantType, GameObject> unlockable in unlockable_icons.ToList())
+            StartCoroutine(UnlockCheck());
+        }
+        private IEnumerator UnlockCheck()
+        {
+            yield return new WaitUntil(() => !unlockDisplayOpen);
+            if (unlockables.Count > 0)
             {
-                if (unlockable.Key == PlantType.Plant_Peach)
+                bool unlocked = false;
+                KeyValuePair<PlantType, GameObject> nextUnlock = unlockables[0];
+                PlantType type = nextUnlock.Key;
+                if (type == PlantType.Plant_Peach)
                 {
                     if (PlantManager.plantedPlantCounter[PlantType.Fungus_Green] >= 2 &&
                        PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 1)
                     {
-                        SavePlantUnlock(PlantType.Plant_Peach);
-                        SpawnPlantIcon(PlantType.Plant_Peach, indexcount++);
-                        RecordAnalyticsData(Time.time, "Peach");
+                        unlocked = true;
                     }
                 }
-                else if (unlockable.Key == PlantType.Plant_Drum)
+                else if (type == PlantType.Plant_Drum)
                 {
                     if (PlantManager.plantedPlantCounter[PlantType.Plant_Peach] >= 3 &&
                        PlantManager.bredPlantCounter[PlantType.Plant_Peach] >= 1)
                     {
-                        SavePlantUnlock(PlantType.Plant_Drum);
-                        SpawnPlantIcon(PlantType.Plant_Drum, indexcount++);
-                        RecordAnalyticsData(Time.time, "Drum");
+                        unlocked = true;
                     }
                 }
-                else if (unlockable.Key == PlantType.Plant_Spike)
+                else if (type == PlantType.Plant_Spike)
                 {
                     if (PlantManager.allPlants.Count > 15)
                     {
-                        SavePlantUnlock(PlantType.Plant_Spike);
-                        SpawnPlantIcon(PlantType.Plant_Spike, indexcount++);
-                        RecordAnalyticsData(Time.time, "Spike");
+                        unlocked = true;
                     }
                 }
-                else if (unlockable.Key == PlantType.Plant_Bubble)
+                else if (type == PlantType.Plant_Bubble)
                 {
                     if (PlantManager.plantedPlantCounter[PlantType.Fungus_Green] >= 5 &&
                        PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 3)
                     {
-                        SavePlantUnlock(PlantType.Plant_Bubble);
-                        SpawnPlantIcon(PlantType.Plant_Bubble, indexcount++);
-                        RecordAnalyticsData(Time.time, "Bubble");
+                        unlocked = true;
                     }
                 }
-                else if (unlockable.Key == PlantType.Plant_Capture)
+                else if (type == PlantType.Plant_Capture)
                 {
                     if (PlantManager.plantedPlantCounter[PlantType.Plant_Bubble] >= 5 &&
                        PlantManager.bredPlantCounter[PlantType.Plant_Bubble] >= 1)
                     {
-                        SavePlantUnlock(PlantType.Plant_Capture);
-                        SpawnPlantIcon(PlantType.Plant_Capture, indexcount++);
-                        RecordAnalyticsData(Time.time, "Capture");
+                        unlocked = true;
                     }
                 }
-                else if (unlockable.Key == PlantType.Plant_Rings)
+                else if (type == PlantType.Plant_Rings)
                 {
                     if (PlantManager.plantedPlantCounter[PlantType.Plant_Peach] >= 5 &&
                        PlantManager.bredPlantCounter[PlantType.Plant_Peach] >= 2)
                     {
-                        SavePlantUnlock(PlantType.Plant_Rings);
-                        SpawnPlantIcon(PlantType.Plant_Rings, indexcount++);
-                        RecordAnalyticsData(Time.time, "Rings");
+                        unlocked = true;
                     }
                 }
-                else if (unlockable.Key == PlantType.Plant_Lotus)
+                else if (type == PlantType.Plant_Lotus)
                 {
                     if (PlantManager.plantedPlantCounter[PlantType.Plant_Drum] >= 4 &&
                        PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 0)
                     {
-                        SavePlantUnlock(PlantType.Plant_Lotus);
-                        SpawnPlantIcon(PlantType.Plant_Lotus, indexcount++);
-                        RecordAnalyticsData(Time.time, "Lotus");
+                        unlocked = true;
                     }
                 }
+
+                if (unlocked)
+                {
+                    UnlockPlant(type);
+                    unlockables.RemoveAt(0);
+                }
             }
+        }
+        private void UnlockPlant(PlantType plant)
+        {
+            SavePlantUnlock(plant);
+            SpawnPlantIcon(plant, indexcount++);
+            string plantStr = plant.ToString();
+            string plant_id = plantStr.Substring(plantStr.IndexOf('_') + 1);
+            RecordAnalyticsData(Time.time, plant_id);
         }
         private void SavePlantUnlock(PlantType plant)
         {
@@ -133,8 +136,10 @@ namespace Planting {
             //delete gray icon gameobject
             int i = seedPanel.transform.childCount - 1;
             Object.Destroy(seedPanel.transform.GetChild(i).gameObject);
+
             if (showUnlockPanel)
             {
+                unlockDisplayOpen = true;
                 //new seed unlock panel appear
                 GameObject newPanel = Instantiate(newSeedPanel);
                 newPanel.GetComponent<UINewSeedPanel>().GetNewSeedInfo(icon);
