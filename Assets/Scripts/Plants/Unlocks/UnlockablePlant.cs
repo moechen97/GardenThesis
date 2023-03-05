@@ -20,7 +20,6 @@ namespace Planting
             return false;
         }
     }
-
     public class Unlock_Plant_Peach : Unlockable
     {
         public Unlock_Plant_Peach(PlantType type) : base(type) { }
@@ -68,7 +67,6 @@ namespace Planting
             return false;
         }
     }
-
     public class Unlock_Plant_Bubble : Unlockable
     {
         public Unlock_Plant_Bubble(PlantType type) : base(type) { }
