@@ -33,7 +33,7 @@ public class UINewSeedPanel : MonoBehaviour
     {
         transform.GetComponent<CanvasGroup>().DOFade(0, 1f);
         yield return new WaitForSeconds(1.2f);
-        Planting.UnlockablePlants.unlockDisplayOpen = false;
+        Planting.UnlockablePlantManager.unlockDisplayOpen = false;
         Destroy(this.gameObject);
     }
 }

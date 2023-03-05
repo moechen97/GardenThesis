@@ -43,4 +43,14 @@ public class SaveManager : MonoBehaviour
         state.tutorialFinished = true;
         Save();
     }
+    public void UpdatePlantedPlantCounter(string dict)
+    {
+        state.UpdatePlantedPlantCounter(dict);
+        Save();
+    }
+    public void UpdateBredPlantCounter(string dict)
+    {
+        state.UpdateBredPlantCounter(dict);
+        Save();
+    }
 }

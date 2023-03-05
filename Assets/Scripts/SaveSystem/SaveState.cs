@@ -8,6 +8,8 @@ public class SaveState
 {
     public List<string> plants;
     public bool tutorialFinished;
+    public string plantedPlantCounterDict;
+    public string bredPlantCounterDict;
     private DateTime currLoginTime;
     public SaveState()
     {
@@ -20,6 +22,8 @@ public class SaveState
         {
             plants = new List<string>();
             tutorialFinished = false;
+            plantedPlantCounterDict = "";
+            bredPlantCounterDict = "";
             PlayerPrefs.SetString("firstLoginTime", currLoginTime.ToBinary().ToString());
             PlayerPrefs.SetString("prevLoginTime", currLoginTime.ToBinary().ToString());
         }
@@ -34,19 +38,18 @@ public class SaveState
     public void PrintState()
     {
         Debug.Log("~SaveState~");
-        Debug.Log("Tutorial Complete: " + tutorialFinished);
+        Debug.Log("Tutorial Is Complete: " + tutorialFinished);
         for (int i = 0; i < plants.Count; i++)
         {
-            Debug.Log("Plant " + i +": " + plants[i]);
+            Debug.Log("Unlocked Plant " + (i + 1) +": " + plants[i]);
         }
+        Debug.Log("Planted Plant Counter Dict: \n" + plantedPlantCounterDict);
+        Debug.Log("Bred Plant Counter Dict: \n" + bredPlantCounterDict);
     }
     public void CheckTimeReset()
     {
-        DateTime firstLoginTime = DateTime.FromBinary(Convert.ToInt64(PlayerPrefs.GetString("firstLoginTime")));
+        //DateTime firstLoginTime = DateTime.FromBinary(Convert.ToInt64(PlayerPrefs.GetString("firstLoginTime")));
         DateTime prevLoginTime = DateTime.FromBinary(Convert.ToInt64(PlayerPrefs.GetString("prevLoginTime")));
-        Debug.Log("FIRST LOGIN: " + firstLoginTime);
-        Debug.Log("PREV LOGIN: " + prevLoginTime);
-        Debug.Log("CURR LOGIN: " + currLoginTime);
         TimeSpan timeSinceLastLogin = currLoginTime.Subtract(prevLoginTime);
 
         //Reset tutorial if time since last login >= 7 days
@@ -60,5 +63,13 @@ public class SaveState
             plants.Clear();
         }
         PlayerPrefs.SetString("prevLoginTime", currLoginTime.ToBinary().ToString());
+    }
+    public void UpdatePlantedPlantCounter(string dict)
+    {
+        plantedPlantCounterDict = dict;
+    }
+    public void UpdateBredPlantCounter(string dict)
+    {
+        bredPlantCounterDict = dict;
     }
 }

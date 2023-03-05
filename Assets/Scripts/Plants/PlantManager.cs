@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,8 +14,13 @@ namespace Planting
     public class PlantManager : MonoBehaviour
     {
         public static PlantManager instance;
+        private SaveManager saveManager;
         public static Transform PlantTransform { get; private set; }
         public static Transform SpikeTransform { get; private set; }
+
+        //plant counting for unlockables
+        public static Dictionary<PlantType, int> plantedPlantCounter;
+        public static Dictionary<PlantType, int> bredPlantCounter;
 
         public static float plantLifeFactor = 1;
         private void Awake()
@@ -23,28 +29,45 @@ namespace Planting
             PlantTransform = GameObject.FindGameObjectWithTag("Plants").transform;
             SpikeTransform = GameObject.FindGameObjectWithTag("Spikes").transform;
         }
-        private UnlockablePlants unlockablePlants;
+        private UnlockablePlantManager unlockablePlantManager;
         private void Start()
         {
             GameEvents.current.onPlantFullyGrownTrigger += FullyGrownPlant;
-            unlockablePlants = GetComponent<UnlockablePlants>();
+            unlockablePlantManager = GetComponent<UnlockablePlantManager>();
+            saveManager = SaveManager.Instance;
+            plantedPlantCounter = JsonConvert.DeserializeObject<Dictionary<PlantType, int>>(saveManager.state.plantedPlantCounterDict);
+            bredPlantCounter = JsonConvert.DeserializeObject<Dictionary<PlantType, int>>(saveManager.state.bredPlantCounterDict);
+            if (plantedPlantCounter == null)
+            {
+                plantedPlantCounter = new Dictionary<PlantType, int>();
+            }
+            if (bredPlantCounter == null)
+            {
+                bredPlantCounter = new Dictionary<PlantType, int>();
+            }
+            Dictionary<PlantType, GameObject> seeds = GetComponent<SeedDictionaryScript>().DeserializeDictionary();
+            foreach (PlantType type in seeds.Keys)
+            {
+                AddPlantToCounter(type);
+            }
         }
+
         public static Dictionary<PlantType, int> plantCounter = new Dictionary<PlantType, int>();
-        public static Dictionary<PlantType, float> resourceDict = new
-            Dictionary<PlantType, float>() {
-                { PlantType.MushroomDarkGreen, 0.05F },
-                { PlantType.MushroomPink, 0.01F },
-                { PlantType.Fungus_Green , 0.05f},
-                { PlantType.Fungus_Jelly , 0.05f },
-                { PlantType.Fungus_Purple, 0.01f},
-                { PlantType.Plant_Peach, 0.05F},
-                { PlantType.Plant_Drum, 0.1F },
-                { PlantType.Plant_Spike, 0.0F },
-                { PlantType.Plant_Bubble, 0.05F },
-                { PlantType.Plant_Capture, 0.05F },
-                { PlantType.Plant_Rings, 0.05F },
-                { PlantType.Plant_Lotus, 0.1F }
-            };
+        //public static Dictionary<PlantType, float> resourceDict = new
+        //    Dictionary<PlantType, float>() {
+        //        { PlantType.MushroomDarkGreen, 0.05F },
+        //        { PlantType.MushroomPink, 0.01F },
+        //        { PlantType.Fungus_Green , 0.05f},
+        //        { PlantType.Fungus_Jelly , 0.05f },
+        //        { PlantType.Fungus_Purple, 0.01f},
+        //        { PlantType.Plant_Peach, 0.05F},
+        //        { PlantType.Plant_Drum, 0.1F },
+        //        { PlantType.Plant_Spike, 0.0F },
+        //        { PlantType.Plant_Bubble, 0.05F },
+        //        { PlantType.Plant_Capture, 0.05F },
+        //        { PlantType.Plant_Rings, 0.05F },
+        //        { PlantType.Plant_Lotus, 0.1F }
+        //    };
 
         public static Dictionary<PlantType, Image> seedIconBGs = new Dictionary<PlantType, Image>();
         //public static int num_MushroomDarkGreen = 0;
@@ -70,22 +93,21 @@ namespace Planting
             { PlantType.Plant_Lotus, 10 }
         };
         public static List<Plant> allPlants = new List<Plant>();
-
-        //for unlocks
-        public static Dictionary<PlantType, int> plantedPlantCounter = new Dictionary<PlantType, int>();
-        public static Dictionary<PlantType, int> bredPlantCounter = new Dictionary<PlantType, int>();
-        public static void AddPlant(PlantType type)
+        private void AddPlantToCounter(PlantType type)
         {
-            plantCounter[type] = 0;
-            plantedPlantCounter[type] = 0;
-            bredPlantCounter[type] = 0;
+            if(!plantCounter.ContainsKey(type))
+            {
+                plantCounter[type] = 0;
+                plantedPlantCounter[type] = 0;
+                bredPlantCounter[type] = 0;
+            }
         }
         public static bool CanSpawnPlantBreed(PlantType type)
         {
-            if(Resources.GetResourcesUsed() + resourceDict[type] > 1.0F)
-            {
-                return false;
-            }
+            //if(Resources.GetResourcesUsed() + resourceDict[type] > 1.0F)
+            //{
+            //    return false;
+            //}
             float random = Random.value;
             //if (type == PlantType.MushroomDarkGreen)
             //{
@@ -117,13 +139,13 @@ namespace Planting
             allPlants.Add(plant);
             //Debug.Log("Plant counter - " + type + ": " + plantCounter[type]);
             plantCounter[type]++;
-            Resources.IncrementResources(resourceDict[type],plant.ReturnHue());
+            //Resources.IncrementResources(resourceDict[type],plant.ReturnHue());
         }
         public static void DecrementPlant(PlantType type, Plant plant)
         {
             allPlants.Remove(plant);
             plantCounter[type]--;
-            Resources.DecrementResources(resourceDict[type],plant.ReturnHue());
+            //Resources.DecrementResources(resourceDict[type],plant.ReturnHue());
         }
 
         //tracker for unlocking
@@ -132,24 +154,24 @@ namespace Planting
             if (isBred)
             {
                 bredPlantCounter[type]++;
+                saveManager.UpdateBredPlantCounter(JsonConvert.SerializeObject(plantedPlantCounter));
                 Debug.Log("Bred plant counter - " + type + ": " + bredPlantCounter[type]);
             }
             else
             {
                 plantedPlantCounter[type]++;
+                saveManager.UpdatePlantedPlantCounter(JsonConvert.SerializeObject(plantedPlantCounter));
                 Debug.Log("Planted plant counter - " + type + ": " + plantedPlantCounter[type]);
             }
-            unlockablePlants.Unlock_Progress();
+            unlockablePlantManager.UnlockCheck();
         }
-
         public static void UpdatePlantsAnimationSpeed(float speedFactor)
         {
             foreach(Plant plant in allPlants)
             {
                 plant.UpdateAnimationSpeed(speedFactor);
             }
-        }
-        
+        }   
         public static void UpdatePlantsLifeSpeed(float speedFactor)
         {
             plantLifeFactor = speedFactor;
@@ -158,7 +180,6 @@ namespace Planting
                 plant.UpdateLifeTime(speedFactor);
             }
         }
-
         public static void AddPlantIconBG(PlantType plant, Image icon)
         {
             seedIconBGs.Add(plant, icon);
