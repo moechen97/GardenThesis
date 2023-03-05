@@ -4,9 +4,9 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Analytics;
 
-namespace Planting {
-
-    public class UnlockablePlants : MonoBehaviour
+namespace Planting
+{
+    public class UnlockablePlantManager : MonoBehaviour
     {
         public static bool unlockDisplayOpen = false;
         private Dictionary<PlantType, GameObject> unlockable_icons;
@@ -14,102 +14,83 @@ namespace Planting {
         [SerializeField] private GameObject newSeedPanel;
 
         private int indexcount = 0;
-        private List<KeyValuePair<PlantType, GameObject>> unlockables;
+        private List<KeyValuePair<Unlockable, GameObject>> unlockables;
+        private Unlockable lastUnlock = null;
         private void Awake()
         {
             unlockable_icons = GetComponent<UnlockableIconDictionaryScript>().DeserializeDictionary();
         }
-        // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
             SaveManager.Instance.state.PrintState();
             if (SaveManager.Instance.state.plants.Count == 0)
             {
-                Debug.Log("Saving in fungus green");
                 SavePlantUnlock(PlantType.Fungus_Green);
             }
             //Add your unlocked plants to the game
             List<string> plants = SaveManager.Instance.state.plants;
             foreach (string plant in plants)
-            {
-                Debug.Log("ADD PLANT TO GAME: " + plant);
+            { 
                 SpawnPlantIcon((PlantType)System.Enum.Parse(typeof(PlantType), plant), indexcount++, false);
             }
 
-            unlockables = unlockable_icons.ToList();
-        }
-        public void Unlock_Progress()
-        {
-            StartCoroutine(UnlockCheck());
-        }
-        private IEnumerator UnlockCheck()
-        {
-            yield return new WaitUntil(() => !unlockDisplayOpen);
-            if (unlockables.Count > 0)
+            unlockables = new List<KeyValuePair<Unlockable, GameObject>>();
+            List<KeyValuePair<PlantType, GameObject>> unlockablesList = unlockable_icons.ToList();
+            foreach (KeyValuePair<PlantType, GameObject> unlockable in unlockablesList)
             {
-                bool unlocked = false;
-                KeyValuePair<PlantType, GameObject> nextUnlock = unlockables[0];
-                PlantType type = nextUnlock.Key;
-                if (type == PlantType.Plant_Peach)
+                Unlockable u = null;
+                if (unlockable.Key == PlantType.Plant_Peach)
                 {
-                    if (PlantManager.plantedPlantCounter[PlantType.Fungus_Green] >= 2 &&
-                       PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 1)
-                    {
-                        unlocked = true;
-                    }
+                    u = new Unlock_Plant_Peach(unlockable.Key);
                 }
-                else if (type == PlantType.Plant_Drum)
+                else if (unlockable.Key == PlantType.Plant_Drum)
                 {
-                    if (PlantManager.plantedPlantCounter[PlantType.Plant_Peach] >= 3 &&
-                       PlantManager.bredPlantCounter[PlantType.Plant_Peach] >= 1)
-                    {
-                        unlocked = true;
-                    }
+                    u = new Unlock_Plant_Drum(unlockable.Key);
                 }
-                else if (type == PlantType.Plant_Spike)
+                else if (unlockable.Key == PlantType.Plant_Spike)
                 {
-                    if (PlantManager.allPlants.Count > 15)
-                    {
-                        unlocked = true;
-                    }
+                    u = new Unlock_Plant_Spike(unlockable.Key);
                 }
-                else if (type == PlantType.Plant_Bubble)
+                else if (unlockable.Key == PlantType.Plant_Bubble)
                 {
-                    if (PlantManager.plantedPlantCounter[PlantType.Fungus_Green] >= 5 &&
-                       PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 3)
-                    {
-                        unlocked = true;
-                    }
+                    u = new Unlock_Plant_Bubble(unlockable.Key);
                 }
-                else if (type == PlantType.Plant_Capture)
+                else if (unlockable.Key == PlantType.Plant_Capture)
                 {
-                    if (PlantManager.plantedPlantCounter[PlantType.Plant_Bubble] >= 5 &&
-                       PlantManager.bredPlantCounter[PlantType.Plant_Bubble] >= 1)
-                    {
-                        unlocked = true;
-                    }
+                    u = new Unlock_Plant_Capture(unlockable.Key);
                 }
-                else if (type == PlantType.Plant_Rings)
+                else if (unlockable.Key == PlantType.Plant_Rings)
                 {
-                    if (PlantManager.plantedPlantCounter[PlantType.Plant_Peach] >= 5 &&
-                       PlantManager.bredPlantCounter[PlantType.Plant_Peach] >= 2)
-                    {
-                        unlocked = true;
-                    }
+                    u = new Unlock_Plant_Rings(unlockable.Key);
                 }
-                else if (type == PlantType.Plant_Lotus)
+                else if (unlockable.Key == PlantType.Plant_Lotus)
                 {
-                    if (PlantManager.plantedPlantCounter[PlantType.Plant_Drum] >= 4 &&
-                       PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 0)
-                    {
-                        unlocked = true;
-                    }
+                    u = new Unlock_Plant_Lotus(unlockable.Key);
                 }
 
+                if(u == null) //Fungus_Purple
+                {
+                    continue;
+                }
+                unlockables.Add(new KeyValuePair<Unlockable, GameObject>(u, unlockable.Value));
+            }
+        }
+        public void UnlockCheck()
+        {
+            StartCoroutine(Unlock_Check());
+        }
+        private IEnumerator Unlock_Check()
+        {
+            bool unlocked = false;
+            yield return new WaitUntil(() => !unlockDisplayOpen);
+            foreach (KeyValuePair<Unlockable, GameObject> unlockable in unlockables)
+            {
+                unlocked = unlockable.Key.CheckUnlock(lastUnlock);
                 if (unlocked)
                 {
-                    UnlockPlant(type);
-                    unlockables.RemoveAt(0);
+                    UnlockPlant(unlockable.Key.ID);
+                    unlockables.Remove(unlockable);
+                    break;
                 }
             }
         }
@@ -147,7 +128,6 @@ namespace Planting {
             //add icon to PlantManager
             PlantManager.AddPlantIconBG(plant, icon.transform.GetChild(0).GetComponent<UnityEngine.UI.Image>());
         }
-
         void RecordAnalyticsData(float time, string name)
         {
             Dictionary<string, object> analyticsData = new Dictionary<string, object>()
@@ -155,7 +135,7 @@ namespace Planting {
                 { "Plant name", name },
                 { "Time", time }
             };
-            AnalyticsResult a = Analytics.CustomEvent("unlockPlant",analyticsData);
+            AnalyticsResult a = Analytics.CustomEvent("unlockPlant", analyticsData);
         }
     }
 }

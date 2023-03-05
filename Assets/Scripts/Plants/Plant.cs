@@ -92,10 +92,10 @@ namespace Planting {
 
         protected virtual void CheckForBreeding()
         {
-            if(Resources.GetResourcesUsed() + PlantManager.resourceDict[id] > 1.0F)
-            {
-                return;
-            }
+            //if(Resources.GetResourcesUsed() + PlantManager.resourceDict[id] > 1.0F)
+            //{
+            //    return;
+            //}
             if (!isBreeding || !PlantManager.CanBreedPlant(id))
             {
                 return;

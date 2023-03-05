@@ -94,10 +94,6 @@ namespace Planting
         private void Start()
         {
             seeds = PlantManager.instance.GetComponent<SeedDictionaryScript>().DeserializeDictionary();
-            foreach (PlantType type in seeds.Keys)
-            {
-                PlantManager.AddPlant(type);
-            }
             gardenControl.Plant.Hold.started += ctx => StartDrag(ctx);
             gardenControl.Plant.Hold.canceled += ctx => EndDrag(ctx);
             gardenControl.Plant.Tap.started += ctx => StartTap(ctx);
@@ -448,41 +444,41 @@ namespace Planting
                     //Set square indicator when user is dragging object
                     _uiIndicator.gameObject.SetActive(true);
                     _uiIndicator.transform.position = screenCoordinates;
-                    if (Resources.GetResourcesUsed() + PlantManager.resourceDict[currSeed] > 1.0F)
-                    {
+                    //if (Resources.GetResourcesUsed() + PlantManager.resourceDict[currSeed] > 1.0F)
+                    //{
                         //indicator.color = Color.red;
-                    }
-                    else
+                    //}
+                    //else
+                    //{
+                    RaycastHit hit;
+                    Ray ray = cameraMain.ScreenPointToRay(screenCoordinates);
+                    int layer_mask = LayerMask.GetMask("Ground");
+                    if (Physics.Raycast(ray, out hit, Mathf.Infinity, layer_mask))
                     {
-                        RaycastHit hit;
-                        Ray ray = cameraMain.ScreenPointToRay(screenCoordinates);
-                        int layer_mask = LayerMask.GetMask("Ground");
-                        if (Physics.Raycast(ray, out hit, Mathf.Infinity, layer_mask))
+                        Transform objectHit = hit.transform;
+                        //Debug.Log("Hit transform: " + hit.point);
+                        //Debug.Log("Hit name: " + hit.transform);
+                        //Don't let plants plant on top of each other
+                        float radius = 0.5f;
+                        if (currSeed == PlantType.Plant_Spike)
                         {
-                            Transform objectHit = hit.transform;
-                            //Debug.Log("Hit transform: " + hit.point);
-                            //Debug.Log("Hit name: " + hit.transform);
-                            //Don't let plants plant on top of each other
-                            float radius = 0.5f;
-                            if (currSeed == PlantType.Plant_Spike)
-                            {
-                                radius = 0.05f;
-                            }
-                            Collider[] collisions = Physics.OverlapSphere(hit.point, radius, LayerMask.GetMask("Plant"));//activeSeeds[0].plantRadius);
-                            if (hit.transform.gameObject.name.Equals("Ground") && collisions.Length == 0)
-                            {
-                                _uiIndicator.CanPlant();
-                            }
-                            else
-                            {
-                                _uiIndicator.CannotPlant();
-                            }
+                            radius = 0.05f;
+                        }
+                        Collider[] collisions = Physics.OverlapSphere(hit.point, radius, LayerMask.GetMask("Plant"));//activeSeeds[0].plantRadius);
+                        if (hit.transform.gameObject.name.Equals("Ground") && collisions.Length == 0)
+                        {
+                            _uiIndicator.CanPlant();
                         }
                         else
                         {
                             _uiIndicator.CannotPlant();
                         }
                     }
+                    else
+                    {
+                        _uiIndicator.CannotPlant();
+                    }
+                    //}
                 }
             }
             else if(rotatingScreen)
