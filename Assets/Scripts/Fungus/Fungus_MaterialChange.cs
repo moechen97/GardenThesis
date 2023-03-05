@@ -71,15 +71,15 @@ public class Fungus_MaterialChange : MonoBehaviour
         m_Material = fungusRenderer.material;
         currentTime = TimeEventManager.state;
         //if it's night now
-        if (currentTime == 0)
+        if(currentTime == 0)
         {
             _propertyBlock.SetFloat("_GlowExtent",glowExtentMax);
             fungusRenderer.SetPropertyBlock(_propertyBlock);
         }
 
-        if (shadowRenderer)
+        if(shadowRenderer)
         {
-            Debug.Log("ShadowChange");
+            //Debug.Log("ShadowChange");
             MaterialPropertyBlock _shadowPropertyBlock = new MaterialPropertyBlock();
             Color originalColor = shadowRenderer.material.color;
             Color transparentColor = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
@@ -89,22 +89,17 @@ public class Fungus_MaterialChange : MonoBehaviour
             {
                 _shadowPropertyBlock.SetColor("_BaseColor", value);
                 shadowRenderer.SetPropertyBlock(_shadowPropertyBlock);
-            });
-            
+            });       
         }
 
-        if (canGlow)
+        if(canGlow)
         {
             _propertyBlock.SetColor("_GlowColor", glowColor);
             fungusRenderer.SetPropertyBlock(_propertyBlock);
         }
         
-       
-
-
         //change Initial Color
-        if(!canChangeInitialColor)
-            return;
+        if(!canChangeInitialColor) return;
         
         _propertyBlock.SetColor("_MainColor", initialColor);
         fungusRenderer.SetPropertyBlock(_propertyBlock);
@@ -173,7 +168,7 @@ public class Fungus_MaterialChange : MonoBehaviour
         m_Material.DOFloat(0, "_DeformExtent", witheredSpeed);*/
     }
 
-    public void PlantTouchedWiggle()
+    public void PlantTouchedWiggle(Plant_StateControl plantControl)
     {
         //float deformSpeed = 30f;
         //float duration = 0.125f; //.25
@@ -181,11 +176,9 @@ public class Fungus_MaterialChange : MonoBehaviour
             _propertyBlock.SetFloat("_WaveSpeed", value);
             fungusRenderer.SetPropertyBlock(_propertyBlock);
         });
-
-        StartCoroutine(StopWiggle(wiggleDuration));
+        StartCoroutine(StopWiggle(wiggleDuration, plantControl));
     }
-
-    private IEnumerator StopWiggle(float duration)
+    private IEnumerator StopWiggle(float duration, Plant_StateControl plantControl)
     {
         yield return new WaitForSeconds(duration);
         float deformSpeed = _propertyBlock.GetFloat("_WaveSpeed");
@@ -193,6 +186,10 @@ public class Fungus_MaterialChange : MonoBehaviour
             _propertyBlock.SetFloat("_WaveSpeed", value);
             fungusRenderer.SetPropertyBlock(_propertyBlock);
         });
+        if (plantControl != null)
+        {
+            plantControl.DoneInteracting();
+        }
     }
     public void Exploded()
     {
@@ -221,15 +218,12 @@ public class Fungus_MaterialChange : MonoBehaviour
         }
         
         Destroy(this.gameObject,explodeSpeed*0.8f+0.1f);
-        yield return null;
-        
+        yield return null;     
     }
-
     public void Die()
     {
         StartCoroutine(Dead());
     }
-
     IEnumerator Dead()
     {
         float currentDissolveExtent = _propertyBlock.GetFloat("_DissolveExtent");
@@ -255,7 +249,6 @@ public class Fungus_MaterialChange : MonoBehaviour
         Destroy(this.gameObject,DieSpeed*0.8f+0.1f);
         yield return null;
     }
-
     public void BreathIn()
     {
         float currentHighLightExtent = _propertyBlock.GetFloat("_HighlightExtent");
@@ -265,7 +258,6 @@ public class Fungus_MaterialChange : MonoBehaviour
         });
         //m_Material.DOFloat(0f,"_HighlightExtent",hightLightBreathInSpeed);
     }
-
     public void BreathOut()
     {
         float currentHighLightExtent = _propertyBlock.GetFloat("_HighlightExtent");
@@ -275,7 +267,6 @@ public class Fungus_MaterialChange : MonoBehaviour
         });
         //m_Material.DOFloat(hightLightExtent,"_HighlightExtent",hightLightBreathOutSpeed);
     }
-    
 
     public void Killed()
     {
@@ -284,7 +275,6 @@ public class Fungus_MaterialChange : MonoBehaviour
         StartCoroutine(Death());
         iskilled = true;
     }
-
     IEnumerator Death()
     {
         float currentkillExtent = _propertyBlock.GetFloat("_Killed_Extent");
@@ -327,7 +317,6 @@ public class Fungus_MaterialChange : MonoBehaviour
         yield return null;
 
     }
-
     public void Glow()
     {
         if (!canGlow)
@@ -342,7 +331,6 @@ public class Fungus_MaterialChange : MonoBehaviour
             fungusRenderer.SetPropertyBlock(_propertyBlock);
         });
     }
-
     public void Dim()
     {
         if (!canGlow)
@@ -356,9 +344,7 @@ public class Fungus_MaterialChange : MonoBehaviour
             _propertyBlock.SetColor("_GlowColor", value);
             fungusRenderer.SetPropertyBlock(_propertyBlock);
         });
-    }
-    
-
+    } 
     private void OnDestroy()
     {
         //Destroy(m_Material);

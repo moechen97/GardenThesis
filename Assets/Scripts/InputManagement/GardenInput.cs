@@ -371,9 +371,8 @@ namespace Planting
             Fungus_MaterialChange plantModifier = plant.collider.GetComponentInParent<Fungus_MaterialChange>();
             if (plantModifier != null)
             {
-                plantModifier.PlantTouchedWiggle();
+                plantModifier.PlantTouchedWiggle(null);
             }
-
             Plant_StateControl plantStateControl = plant.collider.GetComponent<Plant_StateControl>();
             if (plantStateControl != null) 
             {
