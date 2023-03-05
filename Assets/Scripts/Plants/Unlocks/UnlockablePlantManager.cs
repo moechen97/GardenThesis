@@ -14,7 +14,7 @@ namespace Planting
         [SerializeField] private GameObject newSeedPanel;
 
         private int indexcount = 0;
-        private List<KeyValuePair<Unlockable, GameObject>> unlockables;
+        private Dictionary<Unlockable, GameObject> unlockables;
         private Unlockable lastUnlock = null;
         private void Awake()
         {
@@ -34,7 +34,7 @@ namespace Planting
                 SpawnPlantIcon((PlantType)System.Enum.Parse(typeof(PlantType), plant), indexcount++, false);
             }
 
-            unlockables = new List<KeyValuePair<Unlockable, GameObject>>();
+            unlockables = new Dictionary<Unlockable, GameObject>();
             List<KeyValuePair<PlantType, GameObject>> unlockablesList = unlockable_icons.ToList();
             foreach (KeyValuePair<PlantType, GameObject> unlockable in unlockablesList)
             {
@@ -67,13 +67,14 @@ namespace Planting
                 {
                     u = new Unlock_Plant_Lotus(unlockable.Key);
                 }
-
                 if(u == null) //Fungus_Purple
                 {
                     continue;
                 }
-                unlockables.Add(new KeyValuePair<Unlockable, GameObject>(u, unlockable.Value));
+                unlockables.Add(u, unlockable.Value);
             }
+            //Shuffle unlockables dictionary to make the unlock order more unpredictable
+            unlockables = unlockables.Shuffle();
         }
         public void UnlockCheck()
         {
@@ -88,7 +89,8 @@ namespace Planting
                 if (unlocked)
                 {
                     UnlockPlant(unlockable.Key.ID);
-                    unlockables.Remove(unlockable);
+                    unlockables.Remove(unlockable.Key);
+                    lastUnlock = unlockable.Key;
                     break;
                 }
             }
@@ -136,5 +138,15 @@ namespace Planting
             };
             AnalyticsResult a = Analytics.CustomEvent("unlockPlant", analyticsData);
         }
+    }
+}
+public static class DictionaryExtensions
+{
+    public static Dictionary<TKey, TValue> Shuffle<TKey, TValue>(
+       this Dictionary<TKey, TValue> source)
+    {
+        System.Random r = new System.Random();
+        return source.OrderBy(x => r.Next())
+           .ToDictionary(item => item.Key, item => item.Value);
     }
 }
