@@ -53,21 +53,21 @@ namespace Planting
         }
 
         public static Dictionary<PlantType, int> plantCounter = new Dictionary<PlantType, int>();
-        //public static Dictionary<PlantType, float> resourceDict = new
-        //    Dictionary<PlantType, float>() {
-        //        { PlantType.MushroomDarkGreen, 0.05F },
-        //        { PlantType.MushroomPink, 0.01F },
-        //        { PlantType.Fungus_Green , 0.05f},
-        //        { PlantType.Fungus_Jelly , 0.05f },
-        //        { PlantType.Fungus_Purple, 0.01f},
-        //        { PlantType.Plant_Peach, 0.05F},
-        //        { PlantType.Plant_Drum, 0.1F },
-        //        { PlantType.Plant_Spike, 0.0F },
-        //        { PlantType.Plant_Bubble, 0.05F },
-        //        { PlantType.Plant_Capture, 0.05F },
-        //        { PlantType.Plant_Rings, 0.05F },
-        //        { PlantType.Plant_Lotus, 0.1F }
-        //    };
+        public static Dictionary<PlantType, float> resourceDict = new
+            Dictionary<PlantType, float>() {
+                { PlantType.MushroomDarkGreen, 0.05F },
+                { PlantType.MushroomPink, 0.01F },
+                { PlantType.Fungus_Green , 0.05f},
+                { PlantType.Fungus_Jelly , 0.05f },
+                { PlantType.Fungus_Purple, 0.01f},
+                { PlantType.Plant_Peach, 0.05F},
+                { PlantType.Plant_Drum, 0.1F },
+                { PlantType.Plant_Spike, 0.0F },
+                { PlantType.Plant_Bubble, 0.05F },
+                { PlantType.Plant_Capture, 0.05F },
+                { PlantType.Plant_Rings, 0.05F },
+                { PlantType.Plant_Lotus, 0.1F }
+            };
 
         public static Dictionary<PlantType, Image> seedIconBGs = new Dictionary<PlantType, Image>();
         //public static int num_MushroomDarkGreen = 0;
@@ -137,15 +137,14 @@ namespace Planting
         public static void IncrementPlant(PlantType type, Plant plant, bool isBred = false)
         {
             allPlants.Add(plant);
-            //Debug.Log("Plant counter - " + type + ": " + plantCounter[type]);
             plantCounter[type]++;
-            //Resources.IncrementResources(resourceDict[type],plant.ReturnHue());
+            Resources.IncrementResources(resourceDict[type],plant.ReturnHue());
         }
         public static void DecrementPlant(PlantType type, Plant plant)
         {
             allPlants.Remove(plant);
             plantCounter[type]--;
-            //Resources.DecrementResources(resourceDict[type],plant.ReturnHue());
+            Resources.DecrementResources(resourceDict[type],plant.ReturnHue());
         }
 
         //tracker for unlocking

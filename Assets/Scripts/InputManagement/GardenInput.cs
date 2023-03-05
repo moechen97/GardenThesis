@@ -446,7 +446,7 @@ namespace Planting
                     _uiIndicator.transform.position = screenCoordinates;
                     //if (Resources.GetResourcesUsed() + PlantManager.resourceDict[currSeed] > 1.0F)
                     //{
-                        //indicator.color = Color.red;
+                    //    indicator.color = Color.red;
                     //}
                     //else
                     //{
