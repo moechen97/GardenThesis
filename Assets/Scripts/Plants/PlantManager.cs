@@ -153,7 +153,7 @@ namespace Planting
             if (isBred)
             {
                 bredPlantCounter[type]++;
-                saveManager.UpdateBredPlantCounter(JsonConvert.SerializeObject(plantedPlantCounter));
+                saveManager.UpdateBredPlantCounter(JsonConvert.SerializeObject(bredPlantCounter));
                 Debug.Log("Bred plant counter - " + type + ": " + bredPlantCounter[type]);
             }
             else

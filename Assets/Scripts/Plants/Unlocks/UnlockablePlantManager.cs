@@ -77,12 +77,11 @@ namespace Planting
         }
         public void UnlockCheck()
         {
-            StartCoroutine(Unlock_Check());
-        }
-        private IEnumerator Unlock_Check()
-        {
+            if(unlockDisplayOpen)
+            {
+                return;
+            }
             bool unlocked = false;
-            yield return new WaitUntil(() => !unlockDisplayOpen);
             foreach (KeyValuePair<Unlockable, GameObject> unlockable in unlockables)
             {
                 unlocked = unlockable.Key.CheckUnlock(lastUnlock);

@@ -13,11 +13,11 @@ namespace Planting
         }
         public virtual bool CheckUnlock(Unlockable lastUnlock)
         {
-            if(lastUnlock == null || PlantManager.plantedPlantCounter[lastUnlock.ID] == 0)
+            if(lastUnlock == null || PlantManager.plantedPlantCounter[lastUnlock.ID] > 0)
             {
-                return false;
+                return true;
             }
-            return true;
+            return false;
         }
     }
 

@@ -66,12 +66,10 @@ public class SaveState
     }
     public void UpdatePlantedPlantCounter(string dict)
     {
-        Debug.Log("Update planted plant counter with " + dict);
         plantedPlantCounterDict = dict;
     }
     public void UpdateBredPlantCounter(string dict)
     {
-        Debug.Log("Update bred plant counter with " + dict);
         bredPlantCounterDict = dict;
     }
 }
