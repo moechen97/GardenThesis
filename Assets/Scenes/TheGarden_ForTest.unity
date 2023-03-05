@@ -15059,7 +15059,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4074416643147679536, guid: 9b13f8382566843dd9c374f4e1696fe4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4074416643147679539, guid: 9b13f8382566843dd9c374f4e1696fe4, type: 3}
       propertyPath: m_RootOrder
@@ -15112,7 +15112,7 @@ PrefabInstance:
     - target: {fileID: 4074416643953853044, guid: 9b13f8382566843dd9c374f4e1696fe4, type: 3}
       propertyPath: interactSound.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: 09a376783aec04a66a2397cef3582ee1, type: 3}
+      objectReference: {fileID: 8300000, guid: 6b2ef222196444a898689c131342f1e2, type: 3}
     - target: {fileID: 4074416643953853044, guid: 9b13f8382566843dd9c374f4e1696fe4, type: 3}
       propertyPath: particleSound.Array.data[0]
       value: 

@@ -1166,15 +1166,15 @@ MonoBehaviour:
   - {fileID: 4074416644307436453}
   drum_audiosource: {fileID: 4074416643147679541}
   growAndBloomSound:
-  - {fileID: 8300000, guid: e61f88dbdb31b487998ff6dcbb147a39, type: 3}
+  - {fileID: 8300000, guid: 0cf35132c53c04427a225b28af31417b, type: 3}
   interactSound:
-  - {fileID: 8300000, guid: 89f7c1aa566924091b0a3c7510b70732, type: 3}
+  - {fileID: 8300000, guid: 6b2ef222196444a898689c131342f1e2, type: 3}
   breathSound:
-  - {fileID: 8300000, guid: eb09f8483488a444ebb86965241e6e34, type: 3}
+  - {fileID: 8300000, guid: 511cf776c20ae415cbbad9d5346fce27, type: 3}
   witheredSound:
   - {fileID: 8300000, guid: 71cd9c3beb07f419b80c43c15d9ef7b5, type: 3}
   particleSound:
-  - {fileID: 8300000, guid: f1210c3354cc1413cb739583c3cd178e, type: 3}
+  - {fileID: 8300000, guid: 2132a2ed9888145c4ae177e4e9754882, type: 3}
   emitParticle: {fileID: 3948436799340536499, guid: cc155d5a7345449e7a497f4eab4c8d34, type: 3}
   emitPosition: {fileID: 8589730538834697971}
   _stateControl: {fileID: 4074416643147679538}
