@@ -31,6 +31,9 @@ namespace Planting
             SpikeTransform = GameObject.FindGameObjectWithTag("Spikes").transform;
         }
         private UnlockablePlantManager unlockablePlantManager;
+        //list of the plants used in game currently
+        private static List<PlantType> activePlants = new List<PlantType> { PlantType.Fungus_Green, PlantType.Plant_Peach, PlantType.Plant_Drum,
+                                            PlantType.Plant_Spike, PlantType.Plant_Bubble, PlantType.Plant_Capture, PlantType.Plant_Rings, PlantType.Plant_Lotus };
         private void Start()
         {
             GameEvents.current.onPlantFullyGrownTrigger += FullyGrownPlant;
@@ -45,6 +48,10 @@ namespace Planting
             if (bredPlantCounter == null)
             {
                 bredPlantCounter = new Dictionary<PlantType, int>();
+            }
+            foreach(PlantType type in activePlants)
+            {
+                SetPlantCounter(type);
             }
         }
         private void SetPlantCounter(PlantType type)
