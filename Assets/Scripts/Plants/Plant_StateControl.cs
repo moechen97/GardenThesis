@@ -69,13 +69,19 @@ public class Plant_StateControl : MonoBehaviour
     }
     public void IsInteracting()
     {
-        interacting = true;
-        Plant_State_Control_Manager.Instance.AddInteractingPlant(this);
+        if (!interacting)
+        {
+            interacting = true;
+            Plant_State_Control_Manager.Instance.AddInteractingPlant(this);
+        }
     }
     public void DoneInteracting()
     {
-        interacting = false;
-        Plant_State_Control_Manager.Instance.RemoveInteractingPlant(this);
+        if (interacting)
+        {
+            interacting = false;
+            Plant_State_Control_Manager.Instance.RemoveInteractingPlant(this);
+        }
     }
     public float GetVolume()
     {
