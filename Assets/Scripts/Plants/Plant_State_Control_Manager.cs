@@ -12,7 +12,6 @@ public class Plant_State_Control_Manager : MonoBehaviour
     [SerializeField] private float volumeUpTime = 6.895f;
     [SerializeField] private float volumeDownTime = 0.675f;
     private float timer = 0f;
-    private bool volumeAdjustment = false;
     private enum Volume { Up, Down, None }
     private Volume volumeDirection = Volume.None;
     private Volume lastVolumeDirection = Volume.None;
@@ -42,7 +41,7 @@ public class Plant_State_Control_Manager : MonoBehaviour
                 {
                     timer = timer / volumeDownTime * volumeUpTime;                 
                 }
-                else
+                else if(volumeDirection == Volume.Down)
                 {
                     timer = timer / volumeUpTime * volumeDownTime;
                 }
@@ -88,7 +87,6 @@ public class Plant_State_Control_Manager : MonoBehaviour
     }
     private void EndVolumeAdjustment()
     {
-        volumeAdjustment = false;
         timer = 0f;
         volumeDirection = Volume.None;
     }

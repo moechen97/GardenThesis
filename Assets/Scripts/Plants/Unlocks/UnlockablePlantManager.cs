@@ -12,6 +12,7 @@ namespace Planting
         private Dictionary<PlantType, GameObject> unlockable_icons;
         [SerializeField] GameObject seedPanel;
         [SerializeField] private GameObject newSeedPanel;
+        [SerializeField] private GameObject grayIcon;
 
         private int indexcount = 0;
         private Dictionary<Unlockable, GameObject> unlockables;
@@ -115,25 +116,32 @@ namespace Planting
         }
         private void SpawnPlantIcon(PlantType plant, int index, bool showUnlockPanel = true)
         {
+            //delete gray icon gameobject
+            Debug.Log("CHILD 0: " + seedPanel.transform.childCount);
+            Debug.Log("GAME OBJECT: " + seedPanel.transform.GetChild(seedPanel.transform.childCount - 1).gameObject);
+            GameObject.Destroy(seedPanel.transform.GetChild(seedPanel.transform.childCount - 1).gameObject);
+            Debug.Log("CHILD 1: " + seedPanel.transform.childCount);
+            Debug.Log("CHILD 2: " + seedPanel.transform.childCount);
+
+            //spawn in icon
             GameObject icon = GameObject.Instantiate(unlockable_icons[plant]);
             icon.name = plant.ToString();
             icon.transform.parent = seedPanel.transform;
             icon.transform.SetSiblingIndex(index);
             icon.transform.localScale = new Vector3(1F, 1F, 1F);
             unlockable_icons.Remove(plant);
-            //delete gray icon gameobject
-            int i = seedPanel.transform.childCount - 1;
-            Object.Destroy(seedPanel.transform.GetChild(i).gameObject);
 
-            if (showUnlockPanel)
-            {
-                unlockDisplayOpen = true;
-                //new seed unlock panel appear
-                GameObject newPanel = Instantiate(newSeedPanel);
-                newPanel.GetComponent<UINewSeedPanel>().GetNewSeedInfo(icon);
-            }
-            //add icon to PlantManager
-            PlantManager.AddPlantIconBG(plant, icon.transform.GetChild(0).GetComponent<UnityEngine.UI.Image>());
+            //if (showUnlockPanel)
+            //{
+            //    unlockDisplayOpen = true;
+            //    //new seed unlock panel appear
+            //    GameObject newPanel = Instantiate(newSeedPanel);
+            //    newPanel.GetComponent<UINewSeedPanel>().GetNewSeedInfo(icon);
+            //}
+            //Debug.Log("CHILD 3: " + seedPanel.transform.childCount);
+            ////add icon to PlantManager
+            //PlantManager.AddPlantIconBG(plant, icon.transform.GetChild(0).GetComponent<UnityEngine.UI.Image>());
+            //Debug.Log("CHILD 4: " + seedPanel.transform.childCount);
         }
         void RecordAnalyticsData(float time, string name)
         {
