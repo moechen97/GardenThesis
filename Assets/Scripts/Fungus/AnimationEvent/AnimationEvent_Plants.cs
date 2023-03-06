@@ -106,17 +106,15 @@ public abstract class AnimationEvent_Plants : MonoBehaviour
         {
             material.BreathIn();
         }
-    }
-    
+    } 
     public void InteractAnimationStart()
     {
-        
+        _stateControl.IsInteracting();
     }
-
     public void InteractAnimationEnd()
     {
-        
+        _stateControl.DoneInteracting();
     }
-    
-    
+
+
 }

@@ -14,12 +14,16 @@ public class Plant_StateControl : MonoBehaviour
     private bool iskilled = false;
     [HideInInspector] public bool interacting = false;
     private float defaultVolume;
-
+    private float timer = 0f;
+    [SerializeField] private float minimumPlantVolume = 0.15f;
+    [SerializeField] private float volumeUpTime = 5f;
+    [SerializeField] private float volumeDownTime = 5f;
+    private bool volumeAdjustment = false;
+    private bool volumeDown = false;
     private void Awake()
     {
         defaultVolume = _audioSource.volume;
-        Plant_State_Control_Manager.Instance.AddPlant(this);
-        
+        Plant_State_Control_Manager.Instance.AddPlant(this);        
     }
     private void OnDestroy()
     {
@@ -80,11 +84,40 @@ public class Plant_StateControl : MonoBehaviour
         interacting = false;
         Plant_State_Control_Manager.Instance.RemoveInteractingPlant(this);
     }
+    private void Update()
+    {
+        if (volumeAdjustment)
+        {
+            timer += Time.deltaTime;
+            if (volumeDown)
+            {
+                _audioSource.volume = Mathf.Lerp(1f, minimumPlantVolume, (timer / volumeDownTime));
+                if (timer >= volumeDownTime)
+                {
+                    timer = 0f;
+                    volumeAdjustment = false;
+                }
+            }
+            else
+            {
+                _audioSource.volume = Mathf.Lerp(minimumPlantVolume, 1f, (timer / volumeUpTime));
+                if (timer >= volumeUpTime)
+                {
+                    timer = 0f;
+                    volumeAdjustment = false;
+                }
+            }
+        }
+    }
     public void AdjustVolume(bool activeInteractions)
     {
         if(!activeInteractions)
         {
-            _audioSource.volume = defaultVolume;
+            if (_audioSource.volume != 1f)
+            {
+                volumeAdjustment = true;
+                volumeDown = false;
+            }
         }
         else if(interacting)
         {
@@ -92,7 +125,8 @@ public class Plant_StateControl : MonoBehaviour
         }
         else
         {
-            _audioSource.volume = 0.15f;
+            volumeAdjustment = true;
+            volumeDown = true;
         }
     }
 }

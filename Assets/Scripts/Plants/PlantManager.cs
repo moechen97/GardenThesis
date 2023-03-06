@@ -63,6 +63,7 @@ namespace Planting
                 bredPlantCounter[type] = 0;
             }
         }
+
         public static Dictionary<PlantType, float> resourceDict = new
             Dictionary<PlantType, float>() {
                 { PlantType.MushroomDarkGreen, 0.05F },
