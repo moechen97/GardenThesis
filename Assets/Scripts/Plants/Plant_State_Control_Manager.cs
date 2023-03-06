@@ -26,7 +26,7 @@ public class Plant_State_Control_Manager : MonoBehaviour
         if (prevInteractionCount != interactingPlants.Count)
         {
             volumeAdjustment = true;
-            if (prevInteractionCount == 0)
+            if (interactingPlants.Count == 0)
             {
                 volumeDown = false;
             }
@@ -35,7 +35,6 @@ public class Plant_State_Control_Manager : MonoBehaviour
                 volumeDown = true;
             }
         }
-        Debug.Log("Uniform volume: " + uniformVolume);
         if (volumeAdjustment)
         {
             timer += Time.deltaTime;
@@ -58,9 +57,10 @@ public class Plant_State_Control_Manager : MonoBehaviour
                     plant.SetVolume(uniformVolume);
                 }
             }
-            
-            if((volumeDown && uniformVolume == minimumPlantVolume) || (!volumeDown && uniformVolume == 1f))
+            Debug.Log("Uniform volume: " + uniformVolume + "|| Volume Down: " + volumeDown);
+            if ((volumeDown && uniformVolume == minimumPlantVolume) || (!volumeDown && uniformVolume == 1f))
             {
+                Debug.Log("End Volume Adjustment");
                 EndVolumeAdjustment();
             }
         }

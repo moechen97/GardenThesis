@@ -13,11 +13,6 @@ public class Plant_StateControl : MonoBehaviour
     [SerializeField] private float beingKilledDuration;
     private bool iskilled = false;
     [HideInInspector] public bool interacting = false;
-    [SerializeField] private float minimumPlantVolume = 0.05f;
-    [SerializeField] private float volumeUpTime = 6.895f;
-    [SerializeField] private float volumeDownTime = 0.675f;
-    private bool volumeAdjustment = false;
-    private bool volumeDown = false;
     private void Awake()
     {
         Plant_State_Control_Manager.Instance.AddPlant(this);
