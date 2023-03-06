@@ -92,12 +92,15 @@ namespace Planting
             bool unlocked = false;
             foreach (KeyValuePair<Unlockable, GameObject> unlockable in unlockables)
             {
+                Debug.Log("Checking unlock: " + unlockable.Value);
                 unlocked = unlockable.Key.CheckUnlock(lastUnlock);
+                Debug.Log("Last unlock: " + unlocked);
                 if (unlocked)
                 {
                     UnlockPlant(unlockable.Key.ID);
                     unlockables.Remove(unlockable.Key);
                     lastUnlock = unlockable.Key;
+                    Debug.Log("Unlocked " + unlockable.Value);
                     break;
                 }
             }

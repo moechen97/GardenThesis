@@ -45,11 +45,6 @@ namespace Planting
             {
                 bredPlantCounter = new Dictionary<PlantType, int>();
             }
-            Dictionary<PlantType, GameObject> seeds = GetComponent<SeedDictionaryScript>().DeserializeDictionary();
-            foreach (PlantType type in seeds.Keys)
-            {
-                AddPlantToCounter(type);
-            }
         }
 
         public static Dictionary<PlantType, int> plantCounter = new Dictionary<PlantType, int>();
@@ -70,11 +65,6 @@ namespace Planting
             };
 
         public static Dictionary<PlantType, Image> seedIconBGs = new Dictionary<PlantType, Image>();
-        //public static int num_MushroomDarkGreen = 0;
-        //public static int max_MushroomDarkGreen = 10;
-        //public static int num_MushroomPink = 0;
-        //public static int max_Fungus_Green = 10;
-        //public static int max_Fungus_Jelly = 15;
 
         public static Dictionary<PlantType, int> maxPlants = new
             Dictionary<PlantType, int>()
@@ -93,15 +83,6 @@ namespace Planting
             { PlantType.Plant_Lotus, 10 }
         };
         public static List<Plant> allPlants = new List<Plant>();
-        private void AddPlantToCounter(PlantType type)
-        {
-            if(!plantCounter.ContainsKey(type))
-            {
-                plantCounter[type] = 0;
-                plantedPlantCounter[type] = 0;
-                bredPlantCounter[type] = 0;
-            }
-        }
         public static bool CanSpawnPlantBreed(PlantType type)
         {
             //if(Resources.GetResourcesUsed() + resourceDict[type] > 1.0F)

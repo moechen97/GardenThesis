@@ -46,11 +46,16 @@ public class SaveManager : MonoBehaviour
     public void UpdatePlantedPlantCounter(string dict)
     {
         state.UpdatePlantedPlantCounter(dict);
-        Save();
+        StartCoroutine(DelayedSave());
     }
     public void UpdateBredPlantCounter(string dict)
     {
         state.UpdateBredPlantCounter(dict);
+        StartCoroutine(DelayedSave());
+    }
+    private IEnumerator DelayedSave()
+    {
+        yield return new WaitForFixedUpdate();
         Save();
     }
 }
