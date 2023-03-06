@@ -108,5 +108,15 @@ public abstract class AnimationEvent_Plants : MonoBehaviour
         }
     }
     
+    public void InteractAnimationStart()
+    {
+        
+    }
+
+    public void InteractAnimationEnd()
+    {
+        
+    }
+    
     
 }

@@ -28714,6 +28714,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0
+    functionName: InteractAnimationStart
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.041666668
     functionName: InteractLightUp
     data: 
@@ -28730,6 +28737,13 @@ AnimationClip:
     messageOptions: 0
   - time: 0.875
     functionName: InteractDim
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 2
+    functionName: InteractAnimationEnd
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

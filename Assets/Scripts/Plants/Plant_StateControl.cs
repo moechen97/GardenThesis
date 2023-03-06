@@ -14,10 +14,12 @@ public class Plant_StateControl : MonoBehaviour
     private bool iskilled = false;
     [HideInInspector] public bool interacting = false;
     private float defaultVolume;
+
     private void Awake()
     {
         defaultVolume = _audioSource.volume;
         Plant_State_Control_Manager.Instance.AddPlant(this);
+        
     }
     private void OnDestroy()
     {

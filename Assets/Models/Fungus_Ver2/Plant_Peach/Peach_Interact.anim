@@ -13766,6 +13766,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0
+    functionName: InteractAnimationStart
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.041666668
     functionName: InteractSound
     data: 
@@ -13789,6 +13796,13 @@ AnimationClip:
     messageOptions: 0
   - time: 0.6666667
     functionName: CanInteract
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.5833334
+    functionName: InteractAnimationEnd
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
