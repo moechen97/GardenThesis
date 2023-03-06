@@ -14,9 +14,9 @@ public class Plant_StateControl : MonoBehaviour
     private bool iskilled = false;
     [HideInInspector] public bool interacting = false;
     private float timer = 0f;
-    [SerializeField] private float minimumPlantVolume = 0.1f;
-    [SerializeField] private float volumeUpTime = 6f;
-    [SerializeField] private float volumeDownTime = 2f;
+    [SerializeField] private float minimumPlantVolume = 0.075f;
+    [SerializeField] private float volumeUpTime = 6.895f;
+    [SerializeField] private float volumeDownTime = 0.675f;
     private bool volumeAdjustment = false;
     private bool volumeDown = false;
     private void Awake()
@@ -96,8 +96,7 @@ public class Plant_StateControl : MonoBehaviour
                 _audioSource.volume = Mathf.Lerp(1f, minimumPlantVolume, (timer / volumeDownTime));
                 if (timer >= volumeDownTime)
                 {
-                    timer = 0f;
-                    volumeAdjustment = false;
+                    EndVolumeAdjustment();
                 }
             }
             else //volume up
@@ -105,8 +104,7 @@ public class Plant_StateControl : MonoBehaviour
                 _audioSource.volume = Mathf.Lerp(minimumPlantVolume, 1f, (timer / volumeUpTime));
                 if (timer >= volumeUpTime)
                 {
-                    timer = 0f;
-                    volumeAdjustment = false;
+                    EndVolumeAdjustment();
                 }
             }
         }
@@ -115,21 +113,31 @@ public class Plant_StateControl : MonoBehaviour
     {
         if(!activeInteractions)
         {
-            if (_audioSource.volume != 1f)
+            volumeDown = false;
+            if (_audioSource.volume == 1.0f)
+            {
+                EndVolumeAdjustment();
+            }
+            else
             {
                 volumeAdjustment = true;
-                volumeDown = false;
             }
         }
         else if(interacting)
         {
             _audioSource.volume = 1.0f;
-            volumeAdjustment = false;
+            EndVolumeAdjustment();
+            volumeDown = false;
         }
         else
         {
             volumeAdjustment = true;
             volumeDown = true;
         }
+    }
+    private void EndVolumeAdjustment()
+    {
+        timer = 0f;
+        volumeAdjustment = false;
     }
 }
