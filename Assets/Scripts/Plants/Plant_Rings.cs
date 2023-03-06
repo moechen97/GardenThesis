@@ -17,7 +17,6 @@ namespace Planting
             id = PlantType.Plant_Rings;
             finishGrowAnimationName = "Ring_default";
             base.Start(); 
-            //Debug.Log("Mushroom Dark Green: " + PlantManager.plantCounter[id]);
         }
 
         protected override void Update()

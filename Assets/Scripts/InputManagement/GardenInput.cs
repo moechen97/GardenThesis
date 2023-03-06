@@ -169,10 +169,6 @@ namespace Planting
                 if ((deltaFirstFingerPos == Vector2.zero && deltaSecondFingerPos == Vector2.zero)
                     || previousDistance == 0F || previousDistance == distance || (doneZooming && Mathf.Abs(distance - previousDistance) <= 0.35F))
                 {
-                    //if(doneZooming && Mathf.Abs(distance - previousDistance) > 0F && Mathf.Abs(distance - previousDistance) <= 0.85F)
-                    //{
-                    //    Debug.Log("DONE ZOOMING SKIP");
-                    //}
                     if(deltaFirstFingerPos == Vector2.zero && deltaSecondFingerPos == Vector2.zero && isZooming && zoomToPanEndDelay == null)
                     {
                         doneZooming = true;
@@ -291,14 +287,6 @@ namespace Planting
             prevFirstFingerPos = firstFingerPos;
             prevSecondFingerPos = secondFingerPos;
         }
-        private void StartSecondTouch(InputAction.CallbackContext context)
-        {
-            //Debug.Log("Second Touch Information");
-        }
-        private void StartSecondaryFinger(InputAction.CallbackContext context)
-        {
-            Debug.Log("Secondary Finger Position");
-        }
         private void StartTap(InputAction.CallbackContext context)
         {
             if (isOnPlantMenu)
@@ -306,7 +294,6 @@ namespace Planting
                 Vector2 finger = gardenControl.Plant.FirstFingerPosition.ReadValue<Vector2>();
                 Vector3 screenCoordinates = new Vector3(finger.x, finger.y, cameraMain.nearClipPlane);
                 screenCoordinates.z = 0.0F;
-                RaycastHit2D hit;
                 PointerEventData pointerEventData = new PointerEventData(eventSystem);
                 pointerEventData.position = screenCoordinates;
                 List<RaycastResult> results = new List<RaycastResult>();
@@ -356,13 +343,6 @@ namespace Planting
                         hit.transform.GetComponent<TouchDetectBox>().IsTouched();
                     }
                     DeformPlant(hit);
-                    // //If true, create plant menu
-                    // isOnPlantMenu = true;
-                    // GameObject menuObject = GameObject.Instantiate(plantMenu);
-                    // //Give y-height boost of 0.25F so the menu doesn't spawn partially inside the ground
-                    // menuObject.transform.parent = plantMenu_Canvas.transform;
-                    // menuObject.transform.position = screenCoordinates;
-                    // menu = new PlantMenu(menuObject, hit.transform.gameObject);
                 }
             }
         }
@@ -374,7 +354,6 @@ namespace Planting
                 plantModifier.PlantTouchedWiggle();
             }
         }
-
         private void Update()
         {
             //Idle Check
@@ -386,7 +365,6 @@ namespace Planting
                     isIdle = true;
                 }
             }
-            //Debug.Log("isIdle"+isIdle);
             
             if (!enableControl)
                 return;
@@ -438,21 +416,13 @@ namespace Planting
                     //Set square indicator when user is dragging object
                     _uiIndicator.gameObject.SetActive(true);
                     _uiIndicator.transform.position = screenCoordinates;
-                    //if (Resources.GetResourcesUsed() + PlantManager.resourceDict[currSeed] > 1.0F)
-                    //{
-                    //    indicator.color = Color.red;
-                    //}
-                    //else
-                    //{
                     RaycastHit hit;
                     Ray ray = cameraMain.ScreenPointToRay(screenCoordinates);
                     int layer_mask = LayerMask.GetMask("Ground");
                     if (Physics.Raycast(ray, out hit, Mathf.Infinity, layer_mask))
-                    {
-                        Transform objectHit = hit.transform;
-                        //Debug.Log("Hit transform: " + hit.point);
-                        //Debug.Log("Hit name: " + hit.transform);
+                    {               
                         //Don't let plants plant on top of each other
+                        Transform objectHit = hit.transform;      
                         float radius = 0.5f;
                         if (currSeed == PlantType.Plant_Spike)
                         {
@@ -472,7 +442,6 @@ namespace Planting
                     {
                         _uiIndicator.CannotPlant();
                     }
-                    //}
                 }
             }
             else if(rotatingScreen)
@@ -497,12 +466,10 @@ namespace Planting
                 camFocusPoint.transform.localEulerAngles = rot;
                 previousRotatePosition = currentRotatePosition;
             }
-
             // tutorial parameters
             isRotatingCamera = rotatingScreen;
             isZoomingCamera = isZooming;
-            isPanningCamera = isPanning;
-            
+            isPanningCamera = isPanning;         
         }
         
         float ClampAngle(float angle, float from, float to)
@@ -516,7 +483,6 @@ namespace Planting
         private IEnumerator SpinAfterRotate(Vector3 direction)
         {
             yield return new WaitForEndOfFrame();
-            //rotateStep -= Time.deltaTime * Mathf.Clamp(rotateStep, 1F, rotateSpeed) * rotateSpeed;
             rotateStep -= Time.deltaTime * rotationSlowDownSpeed;
             float rotationAroundYAxis = direction.normalized.x * rotateStep; //camera moves horizontally
             Vector3 rot = camFocusPoint.transform.localEulerAngles +
@@ -570,15 +536,13 @@ namespace Planting
                             isDragging_InScrollbar = true;
                             currSeed = plant.Key;  
                         }
-                        //PlantManager.SelectPlantIcon(currSeed, true);
                     }
                 }
             }
             if(!isDraggingSeed && !twoFingers && UIresults.Count == 0)
             {
                 RaycastHit hit;
-                Ray ray = cameraMain.ScreenPointToRay(screenCoordinates);
-                
+                Ray ray = cameraMain.ScreenPointToRay(screenCoordinates);            
                 int layer_mask = LayerMask.GetMask("PlantTouch");
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, layer_mask))
                 {
@@ -589,11 +553,9 @@ namespace Planting
                 {
                     rotatingScreen = true;
                     StartCoroutine(SaveStartDragPosition());
-                }
-                
+                }                
                 StopRotating();
                 camFocusPoint.transform.DOKill();
-                //rotateStep = rotateSpeed / 2F;
                 previousRotatePosition = screenCoordinates;
             }
         }
@@ -638,11 +600,6 @@ namespace Planting
                 if (Mathf.Abs(dragRotationLength.x) > Mathf.Abs(dragRotationLength.y))
                 {
                     rotateStep = Mathf.Abs(Mathf.Clamp(dragRotationLength.x, -400F, 400F)) / 300F;
-                    //rotateStep = 0.1F * Mathf.Abs(Mathf.Clamp(dragRotationLength.x, -7F, 7F));
-                    //if (rotateStep < 0.25F)
-                    //{
-                    //    rotateStep = 0.25F;
-                    //}
                     afterRotate = StartCoroutine(SpinAfterRotate(-rotateDirection));
                 }
                 else
@@ -657,10 +614,6 @@ namespace Planting
 
         private bool AttemptPlant(PlantType type)
         {
-            /*if (Resources.GetResourcesUsed() + PlantManager.resourceDict[type] > 1.0F)
-            {
-                return false;
-            }*/
             bool success = false;
             Vector2 finger = gardenControl.Plant.FirstFingerPosition.ReadValue<Vector2>();
             finger += fingerPositionOffset;
@@ -668,7 +621,6 @@ namespace Planting
             screenCoordinates.z = 0.0F;
             RaycastHit hit;
             Ray ray = cameraMain.ScreenPointToRay(screenCoordinates);
-            //if (Physics.Raycast(ray, out hit))
             int layer_mask = LayerMask.GetMask("Ground");
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, layer_mask))
             {
@@ -682,17 +634,13 @@ namespace Planting
                 Collider[] collisions = Physics.OverlapSphere(hit.point, radius);
                 if (hit.transform.gameObject.name.Equals("Ground") && collisions.Length == 1)
                 {
-                    //GameObject newPlant = GameObject.Instantiate(seeds[currSeed]);
-                    //newPlant.transform.position = hit.point;
                     StartCoroutine(PlantSeed(hit.point,seeds[currSeed]));
                     success = true;
                 }
             }
-            //seed.ResetPosition();
             PlantManager.SelectPlantIcon(currSeed, false);
             return success;
         }
-
         IEnumerator PlantSeed(Vector3 instantiateP,GameObject seed)
         {
             presseButtonCooldown.StartCountDown();
@@ -701,17 +649,13 @@ namespace Planting
             yield return new WaitForSeconds(2.5f);
             GameObject newPlant = GameObject.Instantiate(seed);
             newPlant.transform.position = instantiateP;
-        }
-        
+        }     
         private void OnEnable()
         {
-            //Debug.Log("Enabled garden input control");
             gardenControl.Enable();
         }
-
         private void OnDisable()
         {
-            Debug.Log("Disabled garden input control");
             gardenControl.Disable();
         }
         public struct PlantMenu
@@ -731,11 +675,9 @@ namespace Planting
                 }
             }
         }
-
         public void EnableControl()
         {
             enableControl = true;
-        }
-        
+        }      
     }
 }

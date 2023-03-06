@@ -16,8 +16,7 @@ namespace Planting
             transform.localScale = new Vector3(XZScale, Random.Range(height_minRange, height_maxRange), XZScale);
             id = PlantType.Plant_Drum;
             finishGrowAnimationName = "Drum_Breath";
-            base.Start(); 
-            //Debug.Log("Mushroom Dark Green: " + PlantManager.plantCounter[id]);
+            base.Start();
         }
 
         protected override void Update()

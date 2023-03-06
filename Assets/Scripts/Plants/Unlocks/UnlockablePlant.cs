@@ -13,14 +13,8 @@ namespace Planting
         }
         public virtual bool CheckUnlock(Unlockable lastUnlock)
         {
-            Debug.Log("Has lanted plant: " + lastUnlock);
-            if(lastUnlock != null)
-            {
-                Debug.Log("ID: " + lastUnlock.ID);
-            }
             if(lastUnlock == null || PlantManager.plantedPlantCounter[lastUnlock.ID] > 0)
             {
-                Debug.Log("TRUE");
                 return true;
             }
             return false;

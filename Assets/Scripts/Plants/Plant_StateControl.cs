@@ -13,7 +13,6 @@ public class Plant_StateControl : MonoBehaviour
     [SerializeField] private float beingKilledDuration;
     private bool iskilled = false;
     private bool interacting = false;
-    private Coroutine activeInteract = null;
     public bool GetInteracting()
     {
         return interacting;

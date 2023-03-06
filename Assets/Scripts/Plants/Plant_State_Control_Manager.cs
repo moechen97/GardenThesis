@@ -34,7 +34,6 @@ public class Plant_State_Control_Manager : MonoBehaviour
             {
                 volumeDirection = Volume.Down;
             }
-
             if (lastVolumeDirection != volumeDirection)
             {
                 if(volumeDirection == Volume.Up)
@@ -47,7 +46,6 @@ public class Plant_State_Control_Manager : MonoBehaviour
                 }
             }
         }
-
         if (volumeDirection != Volume.None)
         {
             timer += Time.deltaTime;
@@ -59,7 +57,6 @@ public class Plant_State_Control_Manager : MonoBehaviour
             {
                 uniformVolume = Mathf.Lerp(1f, minimumPlantVolume, (timer / volumeDownTime));
             }
-
             foreach (Plant_StateControl plant in allPlants)
             {
                 if (plant.GetInteracting())
@@ -71,16 +68,10 @@ public class Plant_State_Control_Manager : MonoBehaviour
                     plant.SetVolume(uniformVolume);
                 }
             }
-
             if ((volumeDirection == Volume.Down && timer >= volumeDownTime) || (volumeDirection == Volume.Up && timer >= volumeUpTime))
             {
-                Debug.Log("End Volume Adjustment");
                 EndVolumeAdjustment();
             }
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            Debug.Log("Uniform Volume: " + uniformVolume + " || INTERACT COUNT: " + interactingPlants.Count + " || " + "Volume direction: " + volumeDirection + " || " + timer);
         }
         prevInteractionCount = interactingPlants.Count;
         lastVolumeDirection = volumeDirection;

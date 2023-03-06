@@ -79,7 +79,6 @@ public class Fungus_MaterialChange : MonoBehaviour
 
         if(shadowRenderer)
         {
-            //Debug.Log("ShadowChange");
             MaterialPropertyBlock _shadowPropertyBlock = new MaterialPropertyBlock();
             Color originalColor = shadowRenderer.material.color;
             Color transparentColor = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
