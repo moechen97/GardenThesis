@@ -26,7 +26,7 @@ public class Plant_State_Control_Manager : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.A))
         {
-            Debug.Log("COUNT: " + interactingPlants.Count + " || " + "Volume down: " + volumeDown + " || Interactable plant count: " + interactingPlants.Count);
+            Debug.Log("COUNT: " + interactingPlants.Count + " || " + "Volume down: " + volumeDown + " || Interactable plant count: " + interactingPlants.Count + " || Volume Adjustment: " + volumeAdjustment);
         }
         if (prevInteractionCount != interactingPlants.Count)
         {
