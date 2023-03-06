@@ -14,9 +14,9 @@ public class Plant_StateControl : MonoBehaviour
     private bool iskilled = false;
     [HideInInspector] public bool interacting = false;
     private float timer = 0f;
-    [SerializeField] private float minimumPlantVolume = 0.15f;
-    [SerializeField] private float volumeUpTime = 5f;
-    [SerializeField] private float volumeDownTime = 5f;
+    [SerializeField] private float minimumPlantVolume = 0.1f;
+    [SerializeField] private float volumeUpTime = 6f;
+    [SerializeField] private float volumeDownTime = 2f;
     private bool volumeAdjustment = false;
     private bool volumeDown = false;
     private void Awake()
