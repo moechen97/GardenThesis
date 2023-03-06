@@ -24,7 +24,7 @@ public class Plant_State_Control_Manager : MonoBehaviour
     }
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.A))
+        if(Input.GetKey(KeyCode.A))
         {
             Debug.Log("COUNT: " + interactingPlants.Count + " || " + "Volume down: " + volumeDown);
         }
