@@ -99,7 +99,6 @@ public abstract class AnimationEvent_Plants : MonoBehaviour
             material.BreathOut();
         }
     }
-
     public void InteractDim()
     {
         foreach (var material in _materials)
@@ -109,12 +108,12 @@ public abstract class AnimationEvent_Plants : MonoBehaviour
     } 
     public void InteractAnimationStart()
     {
+        Debug.Log("Animation start");
         _stateControl.IsInteracting();
     }
     public void InteractAnimationEnd()
     {
+        Debug.Log("Animation end");
         _stateControl.DoneInteracting();
     }
-
-
 }
