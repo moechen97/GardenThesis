@@ -28,47 +28,52 @@ namespace Planting
                 SavePlantUnlock(PlantType.Fungus_Green);
             }
             //Add your unlocked plants to the game
-            List<string> plants = SaveManager.Instance.state.plants;
-            foreach (string plant in plants)
-            { 
-                SpawnPlantIcon((PlantType)System.Enum.Parse(typeof(PlantType), plant), indexcount++, false);
+            List<PlantType> unlockedPlants = new List<PlantType>();
+            List<string> unlockedString = SaveManager.Instance.state.plants;
+            foreach(string unlockedPlant in unlockedString)
+            {
+                PlantType type = (PlantType)System.Enum.Parse(typeof(PlantType), unlockedPlant);
+                unlockedPlants.Add(type);
+                SpawnPlantIcon(type, indexcount++, false);
             }
-
             unlockables = new Dictionary<Unlockable, GameObject>();
             List<KeyValuePair<PlantType, GameObject>> unlockablesList = unlockable_icons.ToList();
             foreach (KeyValuePair<PlantType, GameObject> unlockable in unlockablesList)
             {
+                if(unlockedPlants.Contains(unlockable.Key))
+                {
+                    continue;
+                }
                 Unlockable u = null;
-                if (unlockable.Key == PlantType.Plant_Peach)
+                if(unlockable.Key == PlantType.Plant_Peach)
                 {
                     u = new Unlock_Plant_Peach(unlockable.Key);
                 }
-                else if (unlockable.Key == PlantType.Plant_Drum)
+                else if(unlockable.Key == PlantType.Plant_Drum)
                 {
                     u = new Unlock_Plant_Drum(unlockable.Key);
                 }
-                else if (unlockable.Key == PlantType.Plant_Spike)
+                else if(unlockable.Key == PlantType.Plant_Spike)
                 {
                     u = new Unlock_Plant_Spike(unlockable.Key);
                 }
-                else if (unlockable.Key == PlantType.Plant_Bubble)
+                else if(unlockable.Key == PlantType.Plant_Bubble)
                 {
                     u = new Unlock_Plant_Bubble(unlockable.Key);
                 }
-                else if (unlockable.Key == PlantType.Plant_Capture)
+                else if(unlockable.Key == PlantType.Plant_Capture)
                 {
                     u = new Unlock_Plant_Capture(unlockable.Key);
                 }
-                else if (unlockable.Key == PlantType.Plant_Rings)
+                else if(unlockable.Key == PlantType.Plant_Rings)
                 {
                     u = new Unlock_Plant_Rings(unlockable.Key);
                 }
-                else if (unlockable.Key == PlantType.Plant_Lotus)
+                else if(unlockable.Key == PlantType.Plant_Lotus)
                 {
                     u = new Unlock_Plant_Lotus(unlockable.Key);
                 }
-
-                if(u == null) //Fungus_Purple
+                else if(u == null) //Fungus_Purple
                 {
                     continue;
                 }
@@ -81,6 +86,7 @@ namespace Planting
         {
             if(unlockDisplayOpen)
             {
+                Debug.Log("Unlock Display Open!!!");
                 return;
             }
             bool unlocked = false;
