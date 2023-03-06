@@ -14,23 +14,12 @@ public class Plant_State_Control_Manager : MonoBehaviour
     private float timer = 0f;
     private bool volumeAdjustment = false;
     private bool volumeDown = false;
-    [HideInInspector] public float uniformVolume = 0f;
+    [HideInInspector] public float uniformVolume = 1f;
     private void Awake()
     {
         Instance = this;
         allPlants = new List<Plant_StateControl>();
         interactingPlants = new List<Plant_StateControl>();
-        foreach(Plant_StateControl plant in allPlants)
-        {
-            if(plant.interacting)
-            {
-                //AdjustVolumes = 1;
-            }
-            else
-            {
-                //volume = uniformVolume
-            }
-        }
     }
     private void Update()
     {
@@ -46,7 +35,7 @@ public class Plant_State_Control_Manager : MonoBehaviour
                 volumeDown = true;
             }
         }
-
+        Debug.Log("Uniform volume: " + uniformVolume);
         if (volumeAdjustment)
         {
             timer += Time.deltaTime;

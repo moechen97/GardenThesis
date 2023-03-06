@@ -13,7 +13,6 @@ public class Plant_StateControl : MonoBehaviour
     [SerializeField] private float beingKilledDuration;
     private bool iskilled = false;
     [HideInInspector] public bool interacting = false;
-    private float timer = 0f;
     [SerializeField] private float minimumPlantVolume = 0.05f;
     [SerializeField] private float volumeUpTime = 6.895f;
     [SerializeField] private float volumeDownTime = 0.675f;
