@@ -27,11 +27,11 @@ public class Plant_State_Control_Manager : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.A))
         {
-            Debug.Log("Uniform Volume: " + uniformVolume + " || INTERACT COUNT: " + interactingPlants.Count + " || " + "Volume direction: " + volumeDirection + " || Interactable plant count: " + interactingPlants.Count + " || Volume Adjustment: " + volumeAdjustment);
+            Debug.Log("Uniform Volume: " + uniformVolume + " || INTERACT COUNT: " + interactingPlants.Count + " || " + "Volume direction: " + volumeDirection);
         }
+
         if (prevInteractionCount != interactingPlants.Count)
         {
-            volumeAdjustment = true;
             if (interactingPlants.Count == 0)
             {
                 volumeDirection = Volume.Up;
@@ -43,26 +43,27 @@ public class Plant_State_Control_Manager : MonoBehaviour
 
             if (lastVolumeDirection != volumeDirection)
             {
-                if(volumeDirection == Volume.Down)
+                if(volumeDirection == Volume.Up)
                 {
-                    timer = timer / volumeUpTime * volumeDownTime;
+                    timer = timer / volumeDownTime * volumeUpTime;                 
                 }
                 else
                 {
-                    timer = timer / volumeDownTime * volumeUpTime;
+                    timer = timer / volumeUpTime * volumeDownTime;
                 }
             }
         }
-        if (volumeAdjustment)
+
+        if (volumeDirection != Volume.None)
         {
             timer += Time.deltaTime;
-            if (volumeDirection == Volume.Down)
+            if (volumeDirection == Volume.Up)
             {
-                uniformVolume = Mathf.Lerp(1f, minimumPlantVolume, (timer / volumeDownTime));
+                uniformVolume = Mathf.Lerp(minimumPlantVolume, 1f, (timer / volumeUpTime));
             }
             else if(volumeDirection == Volume.Up)
             {
-                uniformVolume = Mathf.Lerp(minimumPlantVolume, 1f, (timer / volumeUpTime));
+                uniformVolume = Mathf.Lerp(1f, minimumPlantVolume, (timer / volumeDownTime));
             }
 
             foreach (Plant_StateControl plant in allPlants)
@@ -92,6 +93,7 @@ public class Plant_State_Control_Manager : MonoBehaviour
     {
         volumeAdjustment = false;
         timer = 0f;
+        volumeDirection = Volume.None;
     }
     public void AddPlant(Plant_StateControl plant)
     {

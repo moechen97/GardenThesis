@@ -108,12 +108,10 @@ public abstract class AnimationEvent_Plants : MonoBehaviour
     } 
     public void InteractAnimationStart()
     {
-        Debug.Log("Animation start");
         _stateControl.IsInteracting();
     }
     public void InteractAnimationEnd()
     {
-        Debug.Log("Animation end");
         _stateControl.DoneInteracting();
     }
 }
