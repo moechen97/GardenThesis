@@ -58,7 +58,7 @@ public class Plant_State_Control_Manager : MonoBehaviour
                 }
             }
             Debug.Log("Uniform volume: " + uniformVolume + "|| Volume Down: " + volumeDown);
-            if ((volumeDown && uniformVolume == minimumPlantVolume) || (!volumeDown && uniformVolume == 1f))
+            if (timer > 0f && (volumeDown && uniformVolume == minimumPlantVolume) || (!volumeDown && uniformVolume == 1f))
             {
                 Debug.Log("End Volume Adjustment");
                 EndVolumeAdjustment();
