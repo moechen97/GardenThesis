@@ -32,7 +32,7 @@ namespace Planting
         }
         private UnlockablePlantManager unlockablePlantManager;
         //list of the plants used in game currently
-        private static List<PlantType> activePlants = new List<PlantType> { PlantType.Fungus_Green, PlantType.Plant_Peach, PlantType.Plant_Drum,
+        public static List<PlantType> activePlants = new List<PlantType> { PlantType.Fungus_Green, PlantType.Plant_Peach, PlantType.Plant_Drum,
                                             PlantType.Plant_Spike, PlantType.Plant_Bubble, PlantType.Plant_Capture, PlantType.Plant_Rings, PlantType.Plant_Lotus };
         private void Start()
         {

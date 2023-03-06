@@ -21,6 +21,7 @@ namespace Planting
         {
             unlockable_icons = GetComponent<UnlockableIconDictionaryScript>().DeserializeDictionary();
         }
+
         private void Start()
         {
             SaveManager.Instance.state.PrintState();
@@ -35,7 +36,11 @@ namespace Planting
             {
                 PlantType type = (PlantType)System.Enum.Parse(typeof(PlantType), unlockedPlant);
                 unlockedPlants.Add(type);
-                SpawnPlantIcon(type, indexcount++, false);
+                SpawnPlantIcon(type, indexcount++, false, false);
+            }
+            for(int i = unlockedPlants.Count; i < PlantManager.activePlants.Count; i++)
+            {
+                SpawnGrayIcon();
             }
             unlockables = new Dictionary<Unlockable, GameObject>();
             List<KeyValuePair<PlantType, GameObject>> unlockablesList = unlockable_icons.ToList();
@@ -114,14 +119,13 @@ namespace Planting
         {
             SaveManager.Instance.state.AddPlant(plant);
         }
-        private void SpawnPlantIcon(PlantType plant, int index, bool showUnlockPanel = true)
+        private void SpawnPlantIcon(PlantType plant, int index, bool newUnlock = true, bool showUnlockPanel = true)
         {
             //delete gray icon gameobject
-            Debug.Log("CHILD 0: " + seedPanel.transform.childCount);
-            Debug.Log("GAME OBJECT: " + seedPanel.transform.GetChild(seedPanel.transform.childCount - 1).gameObject);
-            GameObject.Destroy(seedPanel.transform.GetChild(seedPanel.transform.childCount - 1).gameObject);
-            Debug.Log("CHILD 1: " + seedPanel.transform.childCount);
-            Debug.Log("CHILD 2: " + seedPanel.transform.childCount);
+            if (newUnlock)
+            {
+                GameObject.Destroy(seedPanel.transform.GetChild(seedPanel.transform.childCount - 1).gameObject);
+            }
 
             //spawn in icon
             GameObject icon = GameObject.Instantiate(unlockable_icons[plant]);
@@ -131,17 +135,22 @@ namespace Planting
             icon.transform.localScale = new Vector3(1F, 1F, 1F);
             unlockable_icons.Remove(plant);
 
-            //if (showUnlockPanel)
-            //{
-            //    unlockDisplayOpen = true;
-            //    //new seed unlock panel appear
-            //    GameObject newPanel = Instantiate(newSeedPanel);
-            //    newPanel.GetComponent<UINewSeedPanel>().GetNewSeedInfo(icon);
-            //}
-            //Debug.Log("CHILD 3: " + seedPanel.transform.childCount);
-            ////add icon to PlantManager
-            //PlantManager.AddPlantIconBG(plant, icon.transform.GetChild(0).GetComponent<UnityEngine.UI.Image>());
-            //Debug.Log("CHILD 4: " + seedPanel.transform.childCount);
+            if (showUnlockPanel)
+            {
+                unlockDisplayOpen = true;
+                //new seed unlock panel appear
+                GameObject newPanel = Instantiate(newSeedPanel);
+                newPanel.GetComponent<UINewSeedPanel>().GetNewSeedInfo(icon);
+            }
+
+            //add icon to PlantManager
+            PlantManager.AddPlantIconBG(plant, icon.transform.GetChild(0).GetComponent<UnityEngine.UI.Image>());
+        }
+        private void SpawnGrayIcon()
+        {
+            GameObject icon = GameObject.Instantiate(grayIcon);
+            icon.transform.parent = seedPanel.transform;
+            icon.transform.SetSiblingIndex(seedPanel.transform.childCount - 1);
         }
         void RecordAnalyticsData(float time, string name)
         {
