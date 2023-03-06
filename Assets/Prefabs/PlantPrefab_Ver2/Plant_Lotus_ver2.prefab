@@ -303,6 +303,9 @@ MonoBehaviour:
   _audioSource: {fileID: 8424324399804110831}
   beingKilledDuration: 4.2
   interacting: 0
+  minimumPlantVolume: 0.05
+  volumeUpTime: 6.895
+  volumeDownTime: 0.675
 --- !u!1001 &4408640369286013994
 PrefabInstance:
   m_ObjectHideFlags: 0

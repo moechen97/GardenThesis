@@ -159,6 +159,9 @@ MonoBehaviour:
   _audioSource: {fileID: 6715718224660522268}
   beingKilledDuration: 2.5
   interacting: 0
+  minimumPlantVolume: 0.05
+  volumeUpTime: 6.895
+  volumeDownTime: 0.675
 --- !u!82 &6715718224660522268
 AudioSource:
   m_ObjectHideFlags: 0
