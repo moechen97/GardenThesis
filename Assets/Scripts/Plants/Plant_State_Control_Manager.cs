@@ -8,10 +8,13 @@ public class Plant_State_Control_Manager : MonoBehaviour
     private List<Plant_StateControl> allPlants;
     private List<Plant_StateControl> interactingPlants;
     private int prevInteractionCount = 0;
-    private float uniformVolume = 0f;
     [SerializeField] private float minimumPlantVolume = 0.05f;
     [SerializeField] private float volumeUpTime = 6.895f;
     [SerializeField] private float volumeDownTime = 0.675f;
+    private float timer = 0f;
+    private bool volumeAdjustment = false;
+    private bool volumeDown = false;
+    [HideInInspector] public float uniformVolume = 0f;
     private void Awake()
     {
         Instance = this;
@@ -28,37 +31,57 @@ public class Plant_State_Control_Manager : MonoBehaviour
                 //volume = uniformVolume
             }
         }
-
-        bool value for all plant
-            1 plant is interacted: bool is true
-            if no interact or 1 plant stop: 2 second countdown -> after, set bool value to false
-            if bool is true: set initial plant sound volume to minimum
-            else: set other plants sound volume to 
     }
     private void Update()
     {
-        if (interactingPlants.Count != prevInteractionCount)
+        if (prevInteractionCount != interactingPlants.Count)
         {
-            AdjustVolumes();
+            volumeAdjustment = true;
+            if (prevInteractionCount == 0)
+            {
+                volumeDown = false;
+            }
+            else
+            {
+                volumeDown = true;
+            }
         }
+
+        if (volumeAdjustment)
+        {
+            timer += Time.deltaTime;
+            if (volumeDown)
+            {
+                uniformVolume = Mathf.Lerp(1f, minimumPlantVolume, (timer / volumeDownTime));
+            }
+            else
+            {
+                uniformVolume = Mathf.Lerp(minimumPlantVolume, 1f, (timer / volumeUpTime));
+            }
+            foreach (Plant_StateControl plant in allPlants)
+            {
+                if (plant.interacting)
+                {
+                    plant.SetVolume(1f);
+                }
+                else
+                {
+                    plant.SetVolume(uniformVolume);
+                }
+            }
+            
+            if((volumeDown && uniformVolume == minimumPlantVolume) || (!volumeDown && uniformVolume == 1f))
+            {
+                EndVolumeAdjustment();
+            }
+        }
+
         prevInteractionCount = interactingPlants.Count;
     }
-    public void AdjustVolumes()
+    private void EndVolumeAdjustment()
     {
-        if (interactingPlants.Count == 0)
-        {
-            foreach (Plant_StateControl plant in allPlants)
-            {
-                plant.AdjustVolume(false);
-            }
-        }
-        else
-        {
-            foreach (Plant_StateControl plant in allPlants)
-            {
-                plant.AdjustVolume(true);
-            }
-        }
+        volumeAdjustment = false;
+        timer = 0f;
     }
     public void AddPlant(Plant_StateControl plant)
     {
@@ -75,10 +98,5 @@ public class Plant_State_Control_Manager : MonoBehaviour
     public void RemoveInteractingPlant(Plant_StateControl plant)
     {
         interactingPlants.Remove(plant);
-    }
-
-    public bool IsInteractingPlant()
-    {
-        return interactingPlants.Count > 0;
     }
 }

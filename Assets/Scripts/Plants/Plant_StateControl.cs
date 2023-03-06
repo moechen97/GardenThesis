@@ -21,11 +21,8 @@ public class Plant_StateControl : MonoBehaviour
     private bool volumeDown = false;
     private void Awake()
     {
-        Plant_State_Control_Manager.Instance.AddPlant(this);    
-        if(Plant_State_Control_Manager.Instance.IsInteractingPlant())
-        {
-            _audioSource.volume = minimumPlantVolume;
-        }
+        Plant_State_Control_Manager.Instance.AddPlant(this);
+        _audioSource.volume = Plant_State_Control_Manager.Instance.uniformVolume;
     }
     private void OnDestroy()
     {
@@ -86,58 +83,12 @@ public class Plant_StateControl : MonoBehaviour
         interacting = false;
         Plant_State_Control_Manager.Instance.RemoveInteractingPlant(this);
     }
-    private void Update()
+    public float GetVolume()
     {
-        if (volumeAdjustment)
-        {
-            timer += Time.deltaTime;
-            if (volumeDown)
-            {
-                _audioSource.volume = Mathf.Lerp(1f, minimumPlantVolume, (timer / volumeDownTime));
-                if (timer >= volumeDownTime)
-                {
-                    EndVolumeAdjustment();
-                }
-            }
-            else //volume up
-            {
-                _audioSource.volume = Mathf.Lerp(minimumPlantVolume, 1f, (timer / volumeUpTime));
-                if (timer >= volumeUpTime)
-                {
-                    EndVolumeAdjustment();
-                }
-            }
-        }
+        return _audioSource.volume;
     }
-    public void AdjustVolume(bool activeInteractions)
+    public void SetVolume(float v)
     {
-        if(!activeInteractions)
-        {
-            volumeDown = false;
-            if (_audioSource.volume == 1.0f)
-            {
-                EndVolumeAdjustment();
-            }
-            else
-            {
-                volumeAdjustment = true;
-            }
-        }
-        else if(interacting)
-        {
-            _audioSource.volume = 1.0f;
-            EndVolumeAdjustment();
-            volumeDown = false;
-        }
-        else
-        {
-            volumeAdjustment = true;
-            volumeDown = true;
-        }
-    }
-    private void EndVolumeAdjustment()
-    {
-        timer = 0f;
-        volumeAdjustment = false;
+        _audioSource.volume = v;
     }
 }
