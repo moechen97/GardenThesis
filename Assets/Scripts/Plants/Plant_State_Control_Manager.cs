@@ -14,7 +14,7 @@ public class Plant_State_Control_Manager : MonoBehaviour
     private float timer = 0f;
     private bool volumeAdjustment = false;
     private bool volumeDown = false;
-    [HideInInspector] public float uniformVolume = 1f;
+    private float uniformVolume = 1f;
     private void Awake()
     {
         Instance = this;
@@ -87,5 +87,9 @@ public class Plant_State_Control_Manager : MonoBehaviour
     public void RemoveInteractingPlant(Plant_StateControl plant)
     {
         interactingPlants.Remove(plant);
+    }
+    public float GetUniformVolume()
+    {
+        return uniformVolume;
     }
 }

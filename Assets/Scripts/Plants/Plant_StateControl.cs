@@ -21,7 +21,7 @@ public class Plant_StateControl : MonoBehaviour
     private void Awake()
     {
         Plant_State_Control_Manager.Instance.AddPlant(this);
-        _audioSource.volume = Plant_State_Control_Manager.Instance.uniformVolume;
+        _audioSource.volume = Plant_State_Control_Manager.Instance.GetUniformVolume();
     }
     private void OnDestroy()
     {
