@@ -110,7 +110,7 @@ MonoBehaviour:
   dimColor: {r: 0, g: 0, b: 0, a: 0}
   glowSpeed: 0
   dimSpeed: 0
-  BigParent: {fileID: 0}
+  BigParent: {fileID: 2434433552892972561}
   wiggleDuration: 0.2
   deformSpeed: 20
   originalDeformSpeed: 0
@@ -158,6 +158,7 @@ MonoBehaviour:
   - {fileID: 2434433552892972560}
   _audioSource: {fileID: 6715718224660522268}
   beingKilledDuration: 2.5
+  interacting: 0
 --- !u!82 &6715718224660522268
 AudioSource:
   m_ObjectHideFlags: 0
@@ -711,20 +712,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 767ad23e4484c4082a4a9a2c1b7ae587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _materials:
+  - {fileID: 2434433552892972560}
   _audioSource: {fileID: 6715718224660522268}
   bloomSounds:
   - {fileID: 8300000, guid: b3052a5f6715f47e98380c1b7af39da1, type: 3}
   - {fileID: 8300000, guid: c2e9edf5b5af8404bae349c4269ec971, type: 3}
   - {fileID: 8300000, guid: 238259cae77d74111bf80bd384ffd7a1, type: 3}
-  breathSound:
-  - {fileID: 8300000, guid: 4e648734929ab4219af468e1784b6a89, type: 3}
-  - {fileID: 8300000, guid: 16b79b0c79b644200829d015f9bedaf6, type: 3}
-  growthSounds:
+  - {fileID: 8300000, guid: b3052a5f6715f47e98380c1b7af39da1, type: 3}
+  - {fileID: 8300000, guid: c2e9edf5b5af8404bae349c4269ec971, type: 3}
+  - {fileID: 8300000, guid: 238259cae77d74111bf80bd384ffd7a1, type: 3}
+  growthAudios:
   - {fileID: 8300000, guid: 6627408aa7a074fbb9ece283aa386fe7, type: 3}
   - {fileID: 8300000, guid: 7d9e83c820d974868a2040e34e96f6eb, type: 3}
-  witheredSounds:
+  breatheAudios:
+  - {fileID: 8300000, guid: 4e648734929ab4219af468e1784b6a89, type: 3}
+  - {fileID: 8300000, guid: 16b79b0c79b644200829d015f9bedaf6, type: 3}
+  interactAudios: []
+  witheredAudios:
   - {fileID: 8300000, guid: 36166d999e1b04321bf713589aa040b9, type: 3}
   - {fileID: 8300000, guid: 83acd6b708cca45689d1d4752d89fdd1, type: 3}
+  dieParticle: {fileID: 0}
+  dieParticlePosition: {fileID: 0}
+  _stateControl: {fileID: 6003845611554343084}
   BreathParticle: {fileID: 3217292046673814602, guid: f8d92fd35b8cb4025a31e5fdafb60134, type: 3}
   particleInstantiatePosition: {fileID: 6274619088247021445}
   MaterialChange: {fileID: 2434433552892972560}

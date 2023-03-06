@@ -302,6 +302,7 @@ MonoBehaviour:
   - {fileID: 4408640369241399940}
   _audioSource: {fileID: 8424324399804110831}
   beingKilledDuration: 4.2
+  interacting: 0
 --- !u!1001 &4408640369286013994
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2658,7 +2659,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29780bdcda127479cb82c6da1486cbcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materials:
+  _materials:
+  - {fileID: 297139926687317670}
   - {fileID: 4408640369286014058}
   - {fileID: 4408640369286014059}
   - {fileID: 4408640369286014056}
@@ -2678,9 +2680,9 @@ MonoBehaviour:
   - {fileID: 4408640368174281901}
   - {fileID: 4408640368449102888}
   - {fileID: 4408640368740203972}
-  - {fileID: 4408640367951295254}
   - {fileID: 4408640369526095369}
   - {fileID: 4408640369053451405}
+  - {fileID: 4408640367951295254}
   - {fileID: 4408640368842009400}
   - {fileID: 4408640368426162311}
   - {fileID: 4408640369762192613}
@@ -2688,17 +2690,19 @@ MonoBehaviour:
   - {fileID: 4408640368637833152}
   - {fileID: 4408640368079640104}
   - {fileID: 4408640369241399940}
-  lotus_audiosource: {fileID: 8424324399804110831}
-  bloomSound:
+  _audioSource: {fileID: 8424324399804110831}
+  bloomSounds:
   - {fileID: 8300000, guid: 6a57bbab135504a8a8b4d32d752d03ea, type: 3}
-  growSound:
+  growthAudios:
   - {fileID: 8300000, guid: 00ab614146fdc49c893947891e515b95, type: 3}
-  breathSound:
+  breatheAudios:
   - {fileID: 8300000, guid: d173cea2cbb67463aad555ffb3ba8618, type: 3}
-  interactSound:
+  interactAudios:
   - {fileID: 8300000, guid: 239a485b0841646e69af810ead921b17, type: 3}
-  witheredSound:
+  witheredAudios:
   - {fileID: 8300000, guid: 235921583da8e427b919a432943d8cc6, type: 3}
+  dieParticle: {fileID: 0}
+  dieParticlePosition: {fileID: 0}
   _stateControl: {fileID: 2344558669442181748}
 --- !u!23 &3639581759209885587 stripped
 MeshRenderer:

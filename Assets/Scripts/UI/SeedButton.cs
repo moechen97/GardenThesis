@@ -72,6 +72,7 @@ namespace Planting
                 hasPlanted = true;
                 FingerHint.SetActive(false);
             }
+            Debug.Log("resourceUsed"+resourceUsed);
         }
     }
 

@@ -397,6 +397,7 @@ MonoBehaviour:
   - {fileID: 533168773}
   _audioSource: {fileID: 4604927566023633415}
   beingKilledDuration: 2.2
+  interacting: 0
 --- !u!82 &4604927566023633415
 AudioSource:
   m_ObjectHideFlags: 0
@@ -906,29 +907,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5198b1eed7ad47f4bbf7621b39ce9eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materials:
+  _materials:
   - {fileID: 1156525520}
   - {fileID: 1156525519}
   - {fileID: 1156525518}
   - {fileID: 1651821598}
   - {fileID: 533168773}
-  ring_audiosource: {fileID: 4604927566023633415}
-  grow: []
-  bloom:
+  _audioSource: {fileID: 4604927566023633415}
+  bloomSounds:
   - {fileID: 8300000, guid: 657639f4875b2428e8fd0918345d10e1, type: 3}
   - {fileID: 8300000, guid: a06d58ec6706b4a7480590cf11a67303, type: 3}
   - {fileID: 8300000, guid: 51c1eead76f5c4f08845f8fdb79b59db, type: 3}
-  breath:
+  growthAudios: []
+  breatheAudios:
   - {fileID: 8300000, guid: e589b0d80dee941f2a03f3a2d7032f47, type: 3}
   - {fileID: 8300000, guid: 584e39f5f4017415fb73d1b945da1da4, type: 3}
   - {fileID: 8300000, guid: 13d625193156f432d8bbed5f8bb4e5a6, type: 3}
-  withered: {fileID: 8300000, guid: 8a1b1ef1976ed4c7fb2e6af35ccdd869, type: 3}
-  interact:
+  interactAudios:
   - {fileID: 8300000, guid: b067536cda7ae4a42820e7e0cf9b5305, type: 3}
   - {fileID: 8300000, guid: 50093a4b326a34e7c806b9fd8b3f0e0e, type: 3}
+  witheredAudios: []
+  dieParticle: {fileID: 0}
+  dieParticlePosition: {fileID: 0}
+  _stateControl: {fileID: 4604927566023633414}
   emitParticle: {fileID: 7182645755328016063, guid: 1f5c707c3dd8a49f38c188e59f0963f4, type: 3}
   emitPosition: {fileID: 8220185618946086841}
-  _stateControl: {fileID: 4604927566023633414}
   ringsAnimator: {fileID: 1156525507}
 --- !u!4 &4065981097826869289 stripped
 Transform:

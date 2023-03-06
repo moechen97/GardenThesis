@@ -65,6 +65,7 @@ MonoBehaviour:
   - {fileID: 4074416644307436453}
   _audioSource: {fileID: 4074416643147679541}
   beingKilledDuration: 3.5
+  interacting: 0
 --- !u!82 &4074416643147679541
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1151,7 +1152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5bb90653b33849efb5149cff48612cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materials:
+  _materials:
   - {fileID: 4074416644861894909}
   - {fileID: 4074416644861894906}
   - {fileID: 4074416644861894907}
@@ -1164,20 +1165,23 @@ MonoBehaviour:
   - {fileID: 4074416643279550495}
   - {fileID: 4074416643965454002}
   - {fileID: 4074416644307436453}
-  drum_audiosource: {fileID: 4074416643147679541}
-  growAndBloomSound:
+  _audioSource: {fileID: 4074416643147679541}
+  bloomSounds: []
+  growthAudios:
   - {fileID: 8300000, guid: 0cf35132c53c04427a225b28af31417b, type: 3}
-  interactSound:
-  - {fileID: 8300000, guid: 6b2ef222196444a898689c131342f1e2, type: 3}
-  breathSound:
+  breatheAudios:
   - {fileID: 8300000, guid: 511cf776c20ae415cbbad9d5346fce27, type: 3}
-  witheredSound:
+  interactAudios:
+  - {fileID: 8300000, guid: 6b2ef222196444a898689c131342f1e2, type: 3}
+  witheredAudios:
   - {fileID: 8300000, guid: 71cd9c3beb07f419b80c43c15d9ef7b5, type: 3}
+  dieParticle: {fileID: 0}
+  dieParticlePosition: {fileID: 0}
+  _stateControl: {fileID: 4074416643147679538}
   particleSound:
   - {fileID: 8300000, guid: 2132a2ed9888145c4ae177e4e9754882, type: 3}
   emitParticle: {fileID: 3948436799340536499, guid: cc155d5a7345449e7a497f4eab4c8d34, type: 3}
   emitPosition: {fileID: 8589730538834697971}
-  _stateControl: {fileID: 4074416643147679538}
 --- !u!1 &3951019097167700638 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1035804509216539214, guid: e8857766ac2d44cb28451cd159b4c5c8, type: 3}
