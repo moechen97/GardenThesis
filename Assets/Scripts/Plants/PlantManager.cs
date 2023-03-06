@@ -56,9 +56,9 @@ namespace Planting
         }
         private void SetPlantCounter(PlantType type)
         {
-            if(!plantedPlantCounter.ContainsKey(type))
-            {
-                plantCounter[type] = 0;
+            plantCounter[type] = 0;
+            if (!plantedPlantCounter.ContainsKey(type))
+            {               
                 plantedPlantCounter[type] = 0;
                 bredPlantCounter[type] = 0;
             }
