@@ -14,6 +14,7 @@ public class Plant_State_Control_Manager : MonoBehaviour
     private float timer = 0f;
     private bool volumeAdjustment = false;
     private bool volumeDown = false;
+    private bool lastVolumeDirection = false;
     private float uniformVolume = 1f;
     private void Awake()
     {
@@ -33,6 +34,18 @@ public class Plant_State_Control_Manager : MonoBehaviour
             else
             {
                 volumeDown = true;
+            }
+
+            if (lastVolumeDirection != volumeDown)
+            {
+                if(volumeDown)
+                {
+                    timer = timer / volumeUpTime * volumeDownTime;
+                }
+                else
+                {
+                    timer = timer / volumeDownTime * volumeUpTime;
+                }
             }
         }
         if (volumeAdjustment)
@@ -58,7 +71,7 @@ public class Plant_State_Control_Manager : MonoBehaviour
                 }
             }
             Debug.Log("Uniform volume: " + uniformVolume + "|| Volume Down: " + volumeDown);
-            if (timer > 0f && (volumeDown && uniformVolume == minimumPlantVolume) || (!volumeDown && uniformVolume == 1f))
+            if ((volumeDown && uniformVolume == minimumPlantVolume) || (!volumeDown && uniformVolume == 1f))
             {
                 Debug.Log("End Volume Adjustment");
                 EndVolumeAdjustment();
@@ -66,6 +79,7 @@ public class Plant_State_Control_Manager : MonoBehaviour
         }
 
         prevInteractionCount = interactingPlants.Count;
+        lastVolumeDirection = volumeDown;
     }
     private void EndVolumeAdjustment()
     {
