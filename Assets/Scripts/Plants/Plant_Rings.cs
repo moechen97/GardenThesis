@@ -14,7 +14,7 @@ namespace Planting
             float randomRotateY = Random.Range(0f, 360f);
             transform.rotation = Quaternion.Euler(new Vector3(0,randomRotateY,0));
             transform.localScale = new Vector3(XZScale, Random.Range(height_minRange, height_maxRange), XZScale);
-            id = PlantType.Plant_Drum;
+            id = PlantType.Plant_Rings;
             finishGrowAnimationName = "Ring_default";
             base.Start(); 
             //Debug.Log("Mushroom Dark Green: " + PlantManager.plantCounter[id]);
