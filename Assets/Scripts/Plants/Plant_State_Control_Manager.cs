@@ -56,7 +56,7 @@ public class Plant_State_Control_Manager : MonoBehaviour
             {
                 uniformVolume = Mathf.Lerp(minimumPlantVolume, 1f, (timer / volumeUpTime));
             }
-            else if(volumeDirection == Volume.Up)
+            else if(volumeDirection == Volume.Down)
             {
                 uniformVolume = Mathf.Lerp(1f, minimumPlantVolume, (timer / volumeDownTime));
             }
