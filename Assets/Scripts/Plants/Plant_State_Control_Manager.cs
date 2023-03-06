@@ -55,4 +55,9 @@ public class Plant_State_Control_Manager : MonoBehaviour
     {
         interactingPlants.Remove(plant);
     }
+
+    public bool IsInteractingPlant()
+    {
+        return interactingPlants.Count > 0;
+    }
 }

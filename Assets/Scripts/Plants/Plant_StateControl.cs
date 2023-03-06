@@ -13,7 +13,6 @@ public class Plant_StateControl : MonoBehaviour
     [SerializeField] private float beingKilledDuration;
     private bool iskilled = false;
     [HideInInspector] public bool interacting = false;
-    private float defaultVolume;
     private float timer = 0f;
     [SerializeField] private float minimumPlantVolume = 0.15f;
     [SerializeField] private float volumeUpTime = 5f;
@@ -22,8 +21,11 @@ public class Plant_StateControl : MonoBehaviour
     private bool volumeDown = false;
     private void Awake()
     {
-        defaultVolume = _audioSource.volume;
-        Plant_State_Control_Manager.Instance.AddPlant(this);        
+        Plant_State_Control_Manager.Instance.AddPlant(this);    
+        if(Plant_State_Control_Manager.Instance.IsInteractingPlant())
+        {
+            _audioSource.volume = minimumPlantVolume;
+        }
     }
     private void OnDestroy()
     {
