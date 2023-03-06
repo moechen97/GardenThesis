@@ -168,7 +168,7 @@ public class Fungus_MaterialChange : MonoBehaviour
         m_Material.DOFloat(0, "_DeformExtent", witheredSpeed);*/
     }
 
-    public void PlantTouchedWiggle(Plant_StateControl plantControl)
+    public void PlantTouchedWiggle()
     {
         //float deformSpeed = 30f;
         //float duration = 0.125f; //.25
@@ -176,9 +176,9 @@ public class Fungus_MaterialChange : MonoBehaviour
             _propertyBlock.SetFloat("_WaveSpeed", value);
             fungusRenderer.SetPropertyBlock(_propertyBlock);
         });
-        StartCoroutine(StopWiggle(wiggleDuration, plantControl));
+        StartCoroutine(StopWiggle(wiggleDuration));
     }
-    private IEnumerator StopWiggle(float duration, Plant_StateControl plantControl)
+    private IEnumerator StopWiggle(float duration)
     {
         yield return new WaitForSeconds(duration);
         float deformSpeed = _propertyBlock.GetFloat("_WaveSpeed");
@@ -186,10 +186,6 @@ public class Fungus_MaterialChange : MonoBehaviour
             _propertyBlock.SetFloat("_WaveSpeed", value);
             fungusRenderer.SetPropertyBlock(_propertyBlock);
         });
-        if (plantControl != null)
-        {
-            plantControl.DoneInteracting();
-        }
     }
     public void Exploded()
     {

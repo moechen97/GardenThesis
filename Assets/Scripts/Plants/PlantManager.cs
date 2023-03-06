@@ -19,6 +19,7 @@ namespace Planting
         public static Transform SpikeTransform { get; private set; }
 
         //plant counting for unlockables
+        public static Dictionary<PlantType, int> plantCounter = new Dictionary<PlantType, int>();
         public static Dictionary<PlantType, int> plantedPlantCounter;
         public static Dictionary<PlantType, int> bredPlantCounter;
 
@@ -46,8 +47,15 @@ namespace Planting
                 bredPlantCounter = new Dictionary<PlantType, int>();
             }
         }
-
-        public static Dictionary<PlantType, int> plantCounter = new Dictionary<PlantType, int>();
+        private void SetPlantCounter(PlantType type)
+        {
+            if(!plantedPlantCounter.ContainsKey(type))
+            {
+                plantCounter[type] = 0;
+                plantedPlantCounter[type] = 0;
+                bredPlantCounter[type] = 0;
+            }
+        }
         public static Dictionary<PlantType, float> resourceDict = new
             Dictionary<PlantType, float>() {
                 { PlantType.MushroomDarkGreen, 0.05F },
@@ -104,17 +112,14 @@ namespace Planting
             //}
             return false;
         }
-
         public static int GetNumPlants(PlantType type)
         {
             return plantCounter[type];
         }
-
         public static bool CanBreedPlant(PlantType type)
         {
             return plantCounter[type] < maxPlants[type];
         }
-
         public static void IncrementPlant(PlantType type, Plant plant, bool isBred = false)
         {
             allPlants.Add(plant);

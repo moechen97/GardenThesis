@@ -65,10 +65,9 @@ public class Plant_StateControl : MonoBehaviour
     }
     public void Wiggle()
     {
-        IsInteracting();
         foreach (var materialChange in MaterialControls)
         {
-            materialChange.PlantTouchedWiggle(this);
+            materialChange.PlantTouchedWiggle();
         }
     }
     public void IsInteracting()
