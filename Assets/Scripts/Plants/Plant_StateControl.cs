@@ -98,7 +98,7 @@ public class Plant_StateControl : MonoBehaviour
                     volumeAdjustment = false;
                 }
             }
-            else
+            else //volume up
             {
                 _audioSource.volume = Mathf.Lerp(minimumPlantVolume, 1f, (timer / volumeUpTime));
                 if (timer >= volumeUpTime)
@@ -122,6 +122,7 @@ public class Plant_StateControl : MonoBehaviour
         else if(interacting)
         {
             _audioSource.volume = 1.0f;
+            volumeAdjustment = false;
         }
         else
         {
