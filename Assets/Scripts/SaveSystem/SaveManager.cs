@@ -29,8 +29,6 @@ public class SaveManager : MonoBehaviour
         {
             state = SaveHelper.Deserialize<SaveState>(PlayerPrefs.GetString("save"));
             StartCoroutine(CheckTime());
-            Debug.Log("LAST TIME PLAYED: " + DateTime.FromBinary(Convert.ToInt64(PlayerPrefs.GetString("lastTimePlaying"))));
-            Debug.Log("NOW: " + DateTime.Now);
         }
         else
         {
@@ -66,10 +64,6 @@ public class SaveManager : MonoBehaviour
         yield return new WaitForFixedUpdate();
         Save();
     }
-    private void OnApplicationQuit()
-    {
-        PlayerPrefs.SetString("lastTimePlaying", DateTime.Now.ToBinary().ToString());
-    }
     private IEnumerator CheckTime()
     {
         yield return new WaitUntil(() => state.plants != null);
@@ -86,9 +80,7 @@ public class SaveManager : MonoBehaviour
         //Reset stored plants 12 hours after last login
         if (timeSinceLastLogin.Seconds >= 12)
         {
-            state.plants.Clear();
-            state.plantedPlantCounterDict = "";
-            state.bredPlantCounterDict = "";
+            ClearSave();
             modify = true;
         }
         if(modify)
@@ -96,5 +88,29 @@ public class SaveManager : MonoBehaviour
             Save();
         }
         hasCheckedReset = true;
+    }
+    public void ClearSave()
+    {
+        state.plants.Clear();
+        state.tutorialFinished = false;
+        state.plantedPlantCounterDict = "";
+        state.bredPlantCounterDict = "";
+        Save();
+    }
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.SetString("lastTimePlaying", DateTime.Now.ToBinary().ToString());
+    }
+
+    //iOS
+    private void OnApplicationFocus(bool focus)
+    {
+        PlayerPrefs.SetString("lastTimePlaying", DateTime.Now.ToBinary().ToString());
+    }
+
+    //iOS
+    private void OnApplicationPause(bool pause)
+    {
+        PlayerPrefs.SetString("lastTimePlaying", DateTime.Now.ToBinary().ToString());
     }
 }

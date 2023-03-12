@@ -18,6 +18,7 @@ namespace Planting
         private Dictionary<Unlockable, GameObject> unlockables;
         private Unlockable lastUnlock = null;
         private SaveManager saveManager;
+        private bool hasStartedGame = false;
         private void Awake()
         {
             unlockable_icons = GetComponent<UnlockableIconDictionaryScript>().DeserializeDictionary();
@@ -31,6 +32,7 @@ namespace Planting
         private IEnumerator Initialize()
         {
             yield return new WaitUntil(() => saveManager.hasCheckedReset);
+            yield return new WaitUntil(() => hasStartedGame);
             if (saveManager.state.plants.Count == 0)
             {
                 SavePlantUnlock(PlantType.Fungus_Green);
@@ -166,6 +168,10 @@ namespace Planting
                 { "Time", time }
             };
             AnalyticsResult a = Analytics.CustomEvent("unlockPlant", analyticsData);
+        }
+        public void HasStartedGame()
+        {
+            hasStartedGame = true;
         }
     }
 }
