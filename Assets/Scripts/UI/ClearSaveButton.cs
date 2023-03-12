@@ -6,12 +6,13 @@ using UnityEngine.UI;
 
 public class ClearSaveButton : MonoBehaviour
 {
-    private Image bg;
-    private TextMeshProUGUI text;
+    private Image button_bg;
+    private TextMeshProUGUI button_text;
+    [SerializeField] private GameObject tapThisText;
     private void Awake()
     {
-        bg = GetComponent<Image>();
-        text = GetComponentInChildren<TextMeshProUGUI>();
+        button_bg = GetComponent<Image>();
+        button_text = GetComponentInChildren<TextMeshProUGUI>();
         if(!SaveManager.Instance.HasSavedAnythingYet())
         {
             gameObject.SetActive(false);
@@ -19,14 +20,14 @@ public class ClearSaveButton : MonoBehaviour
     }
     public void ClearSave()
     {
-        Debug.Log("CLEAR!");
-        SaveManager.Instance.ClearSave();
         ClearSaveButtonAnimation();
+        SaveManager.Instance.ClearSave();       
     }
 
     private void ClearSaveButtonAnimation() 
     {
-        text.text = "Data cleared";
-        bg.color = Color.white;
+        button_text.text = "Data cleared";
+        button_bg.color = Color.white;
+        tapThisText.SetActive(false);
     }
 }
