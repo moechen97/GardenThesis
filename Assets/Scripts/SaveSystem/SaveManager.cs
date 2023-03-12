@@ -14,8 +14,8 @@ public class SaveManager : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
         Instance = this;
-        Load();
         currLoginTime = DateTime.Now;
+        Load();
     }
     // Update is called once per frame
     public void Save()
@@ -27,18 +27,19 @@ public class SaveManager : MonoBehaviour
     {
         if(PlayerPrefs.HasKey("save"))
         {
-            //state = Deserialized class
             state = SaveHelper.Deserialize<SaveState>(PlayerPrefs.GetString("save"));
-            Debug.Log("STATE:\n" + state.ToString());
-            Debug.Log("Loading plants: " + state.plants.Count);
-            //state.PrintState();
             StartCoroutine(CheckTime());
+            Debug.Log("LAST TIME PLAYED: " + DateTime.FromBinary(Convert.ToInt64(PlayerPrefs.GetString("lastTimePlaying"))));
+            Debug.Log("NOW: " + DateTime.Now);
         }
         else
         {
-            state = new SaveState();            
+            state = new SaveState();
+            PlayerPrefs.SetString("firstLoginTime", currLoginTime.ToBinary().ToString());
+            PlayerPrefs.SetString("lastTimePlayed", currLoginTime.ToBinary().ToString());
             Save();
             Debug.Log("No save file found, creating a new one!");
+            hasCheckedReset = true;
         }
     }
     public void TutorialFinished()
@@ -65,22 +66,16 @@ public class SaveManager : MonoBehaviour
         yield return new WaitForFixedUpdate();
         Save();
     }
-
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.SetString("lastTimePlaying", DateTime.Now.ToBinary().ToString());
+    }
     private IEnumerator CheckTime()
     {
-        yield return new WaitUntil(() => state.plants != null);        
-        DateTime prevLoginTime;
-        if (PlayerPrefs.HasKey("prevLoginTime"))
-        {
-            prevLoginTime = DateTime.FromBinary(Convert.ToInt64(PlayerPrefs.GetString("prevLoginTime")));
-        }
-        else
-        {
-            prevLoginTime = DateTime.Now;
-        }
-        TimeSpan timeSinceLastLogin = currLoginTime.Subtract(prevLoginTime);
-        PlayerPrefs.SetString("prevLoginTime", currLoginTime.ToBinary().ToString());
-        Debug.Log("~MADE IT~");
+        yield return new WaitUntil(() => state.plants != null);
+        DateTime lastTimePlaying = DateTime.FromBinary(Convert.ToInt64(PlayerPrefs.GetString("lastTimePlaying")));
+        TimeSpan timeSinceLastLogin = currLoginTime.Subtract(lastTimePlaying);
+        PlayerPrefs.SetString("lastTimePlaying", currLoginTime.ToBinary().ToString());
         //Reset tutorial if time since last login >= 7 days
         bool modify = false;
         if (timeSinceLastLogin.Days >= 7)
@@ -91,7 +86,6 @@ public class SaveManager : MonoBehaviour
         //Reset stored plants 12 hours after last login
         if (timeSinceLastLogin.Seconds >= 12)
         {
-            Debug.Log("Cleared");
             state.plants.Clear();
             state.plantedPlantCounterDict = "";
             state.bredPlantCounterDict = "";

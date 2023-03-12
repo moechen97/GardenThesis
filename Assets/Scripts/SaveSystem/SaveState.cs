@@ -22,7 +22,6 @@ public class SaveState
             tutorialFinished = false;
             plantedPlantCounterDict = "";
             bredPlantCounterDict = "";
-            PlayerPrefs.SetString("firstLoginTime", DateTime.Now.ToBinary().ToString());
         }
     }
     public void AddPlant(PlantType plant)
@@ -42,8 +41,6 @@ public class SaveState
         Debug.Log("Planted Plant Counter Dict: \n" + plantedPlantCounterDict);
         Debug.Log("Bred Plant Counter Dict: \n" + bredPlantCounterDict);
     }
-
-    //DateTime firstLoginTime = DateTime.FromBinary(Convert.ToInt64(PlayerPrefs.GetString("firstLoginTime")));
     public void UpdatePlantedPlantCounter(string dict)
     {
         Debug.Log("~Planted Plant Counter Dict Save - " + dict);
