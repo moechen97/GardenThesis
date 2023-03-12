@@ -78,7 +78,7 @@ public class SaveManager : MonoBehaviour
             modify = true;
         }
         //Reset stored plants 12 hours after last login
-        if (timeSinceLastLogin.Seconds >= 12)
+        if (timeSinceLastLogin.Hours >= 12)
         {
             ClearSave();
             modify = true;
