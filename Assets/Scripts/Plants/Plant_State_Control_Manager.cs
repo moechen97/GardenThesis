@@ -38,11 +38,15 @@ public class Plant_State_Control_Manager : MonoBehaviour
             {
                 if(volumeDirection == Volume.Up)
                 {
-                    timer = timer / volumeDownTime * volumeUpTime;                 
+                    Debug.Log( "Uptimer" + timer + "," + timer / volumeDownTime);
+                    timer = timer / volumeDownTime * volumeUpTime;
+                    //timer = (1 - timer / volumeDownTime) * volumeUpTime;
                 }
                 else if(volumeDirection == Volume.Down)
                 {
+                    Debug.Log( "Downtimer" + + timer + "," + timer / volumeUpTime);
                     timer = timer / volumeUpTime * volumeDownTime;
+                    //timer = (1 - timer / volumeUpTime) * volumeDownTime;
                 }
             }
         }

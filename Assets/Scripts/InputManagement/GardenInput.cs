@@ -72,6 +72,7 @@ namespace Planting
         public static bool isRotatingCamera = false;
         public static bool isZoomingCamera = false;
         public static bool isPanningCamera = false;
+        private bool isdragging = false;
 
         void Awake()
         {
@@ -97,10 +98,12 @@ namespace Planting
             gardenControl.Plant.Hold.started += ctx => StartDrag(ctx);
             gardenControl.Plant.Hold.canceled += ctx => EndDrag(ctx);
             gardenControl.Plant.Tap.started += ctx => StartTap(ctx);
+            gardenControl.Plant.Tap.canceled += ctx => EndTap(ctx);
             gardenControl.Plant.SecondaryTouchContact.started += _ => ZoomStart();
             gardenControl.Plant.SecondaryTouchContact.canceled += _ => ZoomEnd();
             _virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
         }
+        
 
         public void ResetPosition()
         {
@@ -415,6 +418,7 @@ namespace Planting
                 {
                     //Set square indicator when user is dragging object
                     _uiIndicator.gameObject.SetActive(true);
+                    Debug.Log("ActiveIndicator");
                     _uiIndicator.transform.position = screenCoordinates;
                     RaycastHit hit;
                     Ray ray = cameraMain.ScreenPointToRay(screenCoordinates);
@@ -502,6 +506,7 @@ namespace Planting
         private void StartDrag(InputAction.CallbackContext context)
         {
             //Check for taps on UI seeds
+            isdragging = true;
             StartCoroutine(WaitForDrag());
             stoptouch = false;
             isIdle = false;
@@ -570,8 +575,24 @@ namespace Planting
             yield return new WaitForEndOfFrame();
             touchPlantDrag = false;
         }
+        
+        private void EndTap(InputAction.CallbackContext ctx)
+        {
+            //Debug.Log("EndTap");
+            if (isdragging)
+            {
+                return;
+            }
+            isDraggingSeed = false;
+            isDragging_InScrollbar = false;
+            rotatingScreen = false;
+            _uiIndicator.gameObject.SetActive(false);
+            _uiIndicator.ResetIndicator();
+        }
         private void EndDrag(InputAction.CallbackContext context)
         {
+            isdragging = false;
+            //Debug.Log("EndDrag");
             scrollbar.enabled = true;
             isScrolling = false;
             stoptouch = true;

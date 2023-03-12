@@ -72,10 +72,6 @@ MonoBehaviour:
   - {fileID: 204825767805376873}
   _audioSource: {fileID: 204825766393873444}
   beingKilledDuration: 4
-  interacting: 0
-  minimumPlantVolume: 0.05
-  volumeUpTime: 6.895
-  volumeDownTime: 0.675
 --- !u!82 &204825766393873444
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1151,6 +1147,7 @@ MonoBehaviour:
   - {fileID: 204825766554843833}
   - {fileID: 204825767805376873}
   - {fileID: 204825767930293082}
+  _plant: {fileID: 5296102840759131666}
   _audioSource: {fileID: 204825766393873444}
   bloomSounds: []
   growthAudios:

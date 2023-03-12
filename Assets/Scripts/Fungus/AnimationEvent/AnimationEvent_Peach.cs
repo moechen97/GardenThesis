@@ -5,40 +5,39 @@ using UnityEngine;
 using DG.Tweening;
 using Random = UnityEngine.Random;
 
-public class AnimationEvent_Peach : AnimationEvent_Plants
+namespace Planting
 {
-   
-    
-    [SerializeField] private GameObject emitParticle;
-    [SerializeField] private Transform emitPosition;
-
-   
-    private int interactnum;
-    
-    private void Start()
+    public class AnimationEvent_Peach : AnimationEvent_Plants
     {
-         interactnum = Random.Range(0, interactAudios.Length);
-    }
-    
-    
-    public override void GrowSound()
-    {
-        _audioSource.pitch = Random.Range(0.9f, 1.1f);
-        int num = Random.Range(0, growthAudios.Length);
-        _audioSource.PlayOneShot(growthAudios[num]);
-    }
 
-    public void EmitParticle()
-    {
-        Instantiate(emitParticle, emitPosition.position,Quaternion.identity,emitPosition);
-    }
 
-    
+        [SerializeField] private GameObject emitParticle;
+        [SerializeField] private Transform emitPosition;
 
-    public override void InteractSound()
-    {
-        _audioSource.pitch = Random.Range(0.9f, 1.1f);
-        _audioSource.PlayOneShot(interactAudios[interactnum]);
+
+        private int interactnum;
+
+        override public void Start()
+        {
+            base.Start();
+            interactnum = Random.Range(0, interactAudios.Length);
+        }
+
+
+        public override void GrowSound()
+        {
+            //_audioSource.pitch = Random.Range(0.9f, 1.1f);
+            //int num = Random.Range(0, growthAudios.Length);
+            //_audioSource.PlayOneShot(growthAudios[num]);
+        }
+
+        public void EmitParticle()
+        {
+            Instantiate(emitParticle, emitPosition.position, Quaternion.identity, emitPosition);
+        }
+
+
+
+        
     }
-    
 }

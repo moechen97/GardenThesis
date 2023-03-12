@@ -302,10 +302,6 @@ MonoBehaviour:
   - {fileID: 4408640369241399940}
   _audioSource: {fileID: 8424324399804110831}
   beingKilledDuration: 4.2
-  interacting: 0
-  minimumPlantVolume: 0.05
-  volumeUpTime: 6.895
-  volumeDownTime: 0.675
 --- !u!1001 &4408640369286013994
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2693,6 +2689,7 @@ MonoBehaviour:
   - {fileID: 4408640368637833152}
   - {fileID: 4408640368079640104}
   - {fileID: 4408640369241399940}
+  _plant: {fileID: 5625409904628746559}
   _audioSource: {fileID: 8424324399804110831}
   bloomSounds:
   - {fileID: 8300000, guid: 6a57bbab135504a8a8b4d32d752d03ea, type: 3}
