@@ -58,6 +58,7 @@ public class SaveState
         {
             tutorialFinished = false;
         }
+        Debug.Log("Plant County: " + plants.Count);
         //Reset stored plants 12 hours after last login
         if(timeSinceLastLogin.Seconds >= 12)
         {
