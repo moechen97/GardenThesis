@@ -59,7 +59,7 @@ public class SaveState
             tutorialFinished = false;
         }
         //Reset stored plants 12 hours after last login
-        if(timeSinceLastLogin.Hours >= 12)
+        if(timeSinceLastLogin.Seconds >= 12)
         {
             plants.Clear();
         }
