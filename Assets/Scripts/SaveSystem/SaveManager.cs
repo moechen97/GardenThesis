@@ -28,6 +28,7 @@ public class SaveManager : MonoBehaviour
         {
             //state = Deserialized class
             state = SaveHelper.Deserialize<SaveState>(PlayerPrefs.GetString("save"));
+            Debug.Log("STATE:\n" + state.ToString());
             Debug.Log("Loading plants: " + state.plants.Count);
             state.PrintState();
         }
