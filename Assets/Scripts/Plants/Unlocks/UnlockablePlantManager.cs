@@ -17,6 +17,7 @@ namespace Planting
         private int indexcount = 0;
         private Dictionary<Unlockable, GameObject> unlockables;
         private Unlockable lastUnlock = null;
+        private SaveManager saveManager;
         private void Awake()
         {
             unlockable_icons = GetComponent<UnlockableIconDictionaryScript>().DeserializeDictionary();
@@ -24,21 +25,26 @@ namespace Planting
 
         private void Start()
         {
-            SaveManager.Instance.state.PrintState();
-            if (SaveManager.Instance.state.plants.Count == 0)
+            saveManager = SaveManager.Instance;
+            StartCoroutine(Initialize());
+        }
+        private IEnumerator Initialize()
+        {
+            yield return new WaitUntil(() => saveManager.hasCheckedReset);
+            if (saveManager.state.plants.Count == 0)
             {
                 SavePlantUnlock(PlantType.Fungus_Green);
             }
             //Add your unlocked plants to the game
             List<PlantType> unlockedPlants = new List<PlantType>();
-            List<string> unlockedString = SaveManager.Instance.state.plants;
-            foreach(string unlockedPlant in unlockedString)
+            List<string> unlockedString = saveManager.state.plants;
+            foreach (string unlockedPlant in unlockedString)
             {
                 PlantType type = (PlantType)System.Enum.Parse(typeof(PlantType), unlockedPlant);
                 unlockedPlants.Add(type);
                 SpawnPlantIcon(type, indexcount++, false, false);
             }
-            for(int i = unlockedPlants.Count; i < PlantManager.activePlants.Count; i++)
+            for (int i = unlockedPlants.Count; i < PlantManager.activePlants.Count; i++)
             {
                 SpawnGrayIcon();
             }
@@ -46,40 +52,40 @@ namespace Planting
             List<KeyValuePair<PlantType, GameObject>> unlockablesList = unlockable_icons.ToList();
             foreach (KeyValuePair<PlantType, GameObject> unlockable in unlockablesList)
             {
-                if(unlockedPlants.Contains(unlockable.Key))
+                if (unlockedPlants.Contains(unlockable.Key))
                 {
                     continue;
                 }
                 Unlockable u = null;
-                if(unlockable.Key == PlantType.Plant_Peach)
+                if (unlockable.Key == PlantType.Plant_Peach)
                 {
                     u = new Unlock_Plant_Peach(unlockable.Key);
                 }
-                else if(unlockable.Key == PlantType.Plant_Drum)
+                else if (unlockable.Key == PlantType.Plant_Drum)
                 {
                     u = new Unlock_Plant_Drum(unlockable.Key);
                 }
-                else if(unlockable.Key == PlantType.Plant_Spike)
+                else if (unlockable.Key == PlantType.Plant_Spike)
                 {
                     u = new Unlock_Plant_Spike(unlockable.Key);
                 }
-                else if(unlockable.Key == PlantType.Plant_Bubble)
+                else if (unlockable.Key == PlantType.Plant_Bubble)
                 {
                     u = new Unlock_Plant_Bubble(unlockable.Key);
                 }
-                else if(unlockable.Key == PlantType.Plant_Capture)
+                else if (unlockable.Key == PlantType.Plant_Capture)
                 {
                     u = new Unlock_Plant_Capture(unlockable.Key);
                 }
-                else if(unlockable.Key == PlantType.Plant_Rings)
+                else if (unlockable.Key == PlantType.Plant_Rings)
                 {
                     u = new Unlock_Plant_Rings(unlockable.Key);
                 }
-                else if(unlockable.Key == PlantType.Plant_Lotus)
+                else if (unlockable.Key == PlantType.Plant_Lotus)
                 {
                     u = new Unlock_Plant_Lotus(unlockable.Key);
                 }
-                else if(u == null) //Fungus_Purple
+                else if (u == null) //Fungus_Purple
                 {
                     continue;
                 }
@@ -117,7 +123,7 @@ namespace Planting
         }
         private void SavePlantUnlock(PlantType plant)
         {
-            SaveManager.Instance.state.AddPlant(plant);
+            saveManager.state.AddPlant(plant);
         }
         private void SpawnPlantIcon(PlantType plant, int index, bool newUnlock = true, bool showUnlockPanel = true)
         {

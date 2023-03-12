@@ -8,6 +8,7 @@ public class SaveManager : MonoBehaviour
     public static SaveManager Instance { set; get; }
     public SaveState state;
     private DateTime currLoginTime;
+    [HideInInspector] public bool hasCheckedReset = false;
 
     void Awake()
     {
@@ -15,7 +16,6 @@ public class SaveManager : MonoBehaviour
         Instance = this;
         Load();
         currLoginTime = DateTime.Now;
-        //Debug.Log("STATE: " + SaveHelper.Serialize<SaveState>(state));
     }
     // Update is called once per frame
     public void Save()
@@ -82,14 +82,12 @@ public class SaveManager : MonoBehaviour
         PlayerPrefs.SetString("prevLoginTime", currLoginTime.ToBinary().ToString());
         Debug.Log("~MADE IT~");
         //Reset tutorial if time since last login >= 7 days
-
         bool modify = false;
         if (timeSinceLastLogin.Days >= 7)
         {
             state.tutorialFinished = false;
             modify = true;
         }
-
         //Reset stored plants 12 hours after last login
         if (timeSinceLastLogin.Seconds >= 12)
         {
@@ -99,10 +97,10 @@ public class SaveManager : MonoBehaviour
             state.bredPlantCounterDict = "";
             modify = true;
         }
-
         if(modify)
         {
             Save();
         }
+        hasCheckedReset = true;
     }
 }
