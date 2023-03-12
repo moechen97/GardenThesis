@@ -51,6 +51,7 @@ public class SaveState
         //DateTime firstLoginTime = DateTime.FromBinary(Convert.ToInt64(PlayerPrefs.GetString("firstLoginTime")));
         DateTime prevLoginTime = DateTime.FromBinary(Convert.ToInt64(PlayerPrefs.GetString("prevLoginTime")));
         TimeSpan timeSinceLastLogin = currLoginTime.Subtract(prevLoginTime);
+        PlayerPrefs.SetString("prevLoginTime", currLoginTime.ToBinary().ToString());
 
         //Reset tutorial if time since last login >= 7 days
         if (timeSinceLastLogin.Days >= 7)
@@ -62,7 +63,6 @@ public class SaveState
         {
             plants.Clear();
         }
-        PlayerPrefs.SetString("prevLoginTime", currLoginTime.ToBinary().ToString());
     }
     public void UpdatePlantedPlantCounter(string dict)
     {
