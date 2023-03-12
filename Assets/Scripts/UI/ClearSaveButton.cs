@@ -9,6 +9,7 @@ public class ClearSaveButton : MonoBehaviour
     private Image button_bg;
     private TextMeshProUGUI button_text;
     [SerializeField] private GameObject tapThisText;
+    [SerializeField] private TextMeshProUGUI skipTutorialButtonText;
     private void Awake()
     {
         button_bg = GetComponent<Image>();
@@ -16,6 +17,7 @@ public class ClearSaveButton : MonoBehaviour
         if(!SaveManager.Instance.HasSavedAnythingYet())
         {
             gameObject.SetActive(false);
+            tapThisText.SetActive(false);
         }
     }
     public void ClearSave()
@@ -29,5 +31,6 @@ public class ClearSaveButton : MonoBehaviour
         button_text.text = "Data cleared";
         button_bg.color = Color.white;
         tapThisText.SetActive(false);
+        skipTutorialButtonText.text = "Skip Tutorial";
     }
 }
