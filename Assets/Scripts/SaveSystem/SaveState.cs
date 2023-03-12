@@ -63,6 +63,7 @@ public class SaveState
         if(timeSinceLastLogin.Seconds >= 12)
         {
             plants.Clear();
+            SaveManager.Instance.Save();
         }
     }
     public void UpdatePlantedPlantCounter(string dict)
