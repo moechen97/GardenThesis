@@ -27,7 +27,7 @@ namespace Planting
 
         private void CheckForSpikeDestroy()
         {
-            Collider[] hits = Physics.OverlapSphere(transform.position, 1F, LayerMask.GetMask("Plant"));
+            Collider[] hits = Physics.OverlapSphere(transform.position, 0.6F, LayerMask.GetMask("Plant"));
             foreach (Collider hit in hits)
             {
                 Plant plant = hit.transform.parent.GetComponent<Plant>();

@@ -158,10 +158,6 @@ MonoBehaviour:
   - {fileID: 2434433552892972560}
   _audioSource: {fileID: 6715718224660522268}
   beingKilledDuration: 2.5
-  interacting: 0
-  minimumPlantVolume: 0.05
-  volumeUpTime: 6.895
-  volumeDownTime: 0.675
 --- !u!82 &6715718224660522268
 AudioSource:
   m_ObjectHideFlags: 0
@@ -171,7 +167,7 @@ AudioSource:
   m_GameObject: {fileID: 2434433552892972562}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2609860702172313904, guid: 4b59bae56bc30486ab3e3653e826e613, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -717,6 +713,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _materials:
   - {fileID: 2434433552892972560}
+  _plant: {fileID: 7072614448206257579}
   _audioSource: {fileID: 6715718224660522268}
   bloomSounds:
   - {fileID: 8300000, guid: b3052a5f6715f47e98380c1b7af39da1, type: 3}

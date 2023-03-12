@@ -18,7 +18,7 @@ namespace Planting {
         [SerializeField, Tooltip("Maximum growth speed")] private float growthSpeed_maxRange = 0.1F;
         private float speed;
         [SerializeField] private float aliveTimeRandomRange;
-        [SerializeField] private float aliveTime = 20F;
+        [SerializeField] protected float aliveTime = 20F;
         private float lifetime;
         private float currentlifetime;
         private float aliveTimer;
@@ -75,6 +75,7 @@ namespace Planting {
                         Destroy(transform.gameObject);
                     }
                 }
+                
             }
         }
 
@@ -196,6 +197,16 @@ namespace Planting {
         public float ReturnHue()
         {
             return hueValue;
+        }
+
+        public float ReturnAliveTime()
+        {
+            return currentlifetime;
+        }
+
+        public float ReturnCurrentLife()
+        {
+            return aliveTimer;
         }
     }
 }

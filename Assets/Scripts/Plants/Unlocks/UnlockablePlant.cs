@@ -13,7 +13,7 @@ namespace Planting
         }
         public virtual bool CheckUnlock(Unlockable lastUnlock)
         {
-            if(lastUnlock == null || PlantManager.plantedPlantCounter[lastUnlock.ID] > 0)
+            if(lastUnlock == null || PlantManager.plantedPlantCounter[lastUnlock.ID] > 2)
             {
                 return true;
             }
@@ -90,8 +90,8 @@ namespace Planting
         {
             if (base.CheckUnlock(lastUnlock))
             {
-                if (PlantManager.plantedPlantCounter[PlantType.Plant_Bubble] >= 5 &&
-                       PlantManager.bredPlantCounter[PlantType.Plant_Bubble] >= 1)
+                if (PlantManager.plantedPlantCounter[PlantType.Plant_Bubble] >= 3 &&
+                       PlantManager.bredPlantCounter[PlantType.Plant_Bubble] >= 2)
                 {
                     return true;
                 }
@@ -106,7 +106,7 @@ namespace Planting
         {
             if (base.CheckUnlock(lastUnlock))
             {
-                if (PlantManager.plantedPlantCounter[PlantType.Plant_Peach] >= 5 &&
+                if (PlantManager.plantedPlantCounter[PlantType.Plant_Peach] >= 3 &&
                       PlantManager.bredPlantCounter[PlantType.Plant_Peach] >= 2)
                 {
                     return true;
@@ -122,8 +122,8 @@ namespace Planting
         {
             if (base.CheckUnlock(lastUnlock))
             {
-                if (PlantManager.plantedPlantCounter[PlantType.Plant_Drum] >= 4 &&
-                       PlantManager.bredPlantCounter[PlantType.Fungus_Green] >= 0)
+                if (PlantManager.plantedPlantCounter[PlantType.Plant_Drum] >= 3 &&
+                       PlantManager.bredPlantCounter[PlantType.Plant_Drum] >= 2)
                 {
                     return true;
                 }

@@ -65,10 +65,6 @@ MonoBehaviour:
   - {fileID: 4074416644307436453}
   _audioSource: {fileID: 4074416643147679541}
   beingKilledDuration: 3.5
-  interacting: 0
-  minimumPlantVolume: 0.05
-  volumeUpTime: 6.895
-  volumeDownTime: 0.675
 --- !u!82 &4074416643147679541
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1168,6 +1164,7 @@ MonoBehaviour:
   - {fileID: 4074416643279550495}
   - {fileID: 4074416643965454002}
   - {fileID: 4074416644307436453}
+  _plant: {fileID: 0}
   _audioSource: {fileID: 4074416643147679541}
   bloomSounds: []
   growthAudios:
@@ -1178,7 +1175,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6b2ef222196444a898689c131342f1e2, type: 3}
   witheredAudios:
   - {fileID: 8300000, guid: 71cd9c3beb07f419b80c43c15d9ef7b5, type: 3}
-  dieParticle: {fileID: 0}
+  dieParticle: {fileID: 4074416643147679536}
   dieParticlePosition: {fileID: 0}
   _stateControl: {fileID: 4074416643147679538}
   particleSound:
