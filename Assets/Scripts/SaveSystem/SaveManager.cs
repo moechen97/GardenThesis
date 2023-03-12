@@ -97,6 +97,16 @@ public class SaveManager : MonoBehaviour
         state.bredPlantCounterDict = "";
         Save();
     }
+    public bool HasSavedAnythingYet()
+    {
+        if(state.plants.Count == 0 && 
+            state.plantedPlantCounterDict.Length == 0 && 
+            state.bredPlantCounterDict.Length == 0)
+        {
+            return false;
+        }
+        return true;
+    }
     private void OnApplicationQuit()
     {
         PlayerPrefs.SetString("lastTimePlaying", DateTime.Now.ToBinary().ToString());
