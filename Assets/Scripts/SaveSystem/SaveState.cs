@@ -10,24 +10,20 @@ public class SaveState
     public bool tutorialFinished;
     public string plantedPlantCounterDict;
     public string bredPlantCounterDict;
-    private DateTime currLoginTime;
     public SaveState()
     {
         CreateNewSaveState();
     }
     private void CreateNewSaveState()
     {
-        currLoginTime = DateTime.Now;
         if (!PlayerPrefs.HasKey("save"))
         {
             plants = new List<string>();
             tutorialFinished = false;
             plantedPlantCounterDict = "";
             bredPlantCounterDict = "";
-            PlayerPrefs.SetString("firstLoginTime", currLoginTime.ToBinary().ToString());
-            PlayerPrefs.SetString("prevLoginTime", currLoginTime.ToBinary().ToString());
+            PlayerPrefs.SetString("firstLoginTime", DateTime.Now.ToBinary().ToString());
         }
-        CheckTimeReset();
     }
     public void AddPlant(PlantType plant)
     {
@@ -46,28 +42,8 @@ public class SaveState
         Debug.Log("Planted Plant Counter Dict: \n" + plantedPlantCounterDict);
         Debug.Log("Bred Plant Counter Dict: \n" + bredPlantCounterDict);
     }
-    public void CheckTimeReset()
-    {
-        //DateTime firstLoginTime = DateTime.FromBinary(Convert.ToInt64(PlayerPrefs.GetString("firstLoginTime")));
-        DateTime prevLoginTime = DateTime.FromBinary(Convert.ToInt64(PlayerPrefs.GetString("prevLoginTime")));
-        TimeSpan timeSinceLastLogin = currLoginTime.Subtract(prevLoginTime);
-        PlayerPrefs.SetString("prevLoginTime", currLoginTime.ToBinary().ToString());
 
-        //Reset tutorial if time since last login >= 7 days
-        if (timeSinceLastLogin.Days >= 7)
-        {
-            tutorialFinished = false;
-        }
-        Debug.Log("Plant County: " + plants.Count);
-        //Reset stored plants 12 hours after last login
-        if(timeSinceLastLogin.Seconds >= 12)
-        {
-            plants.Clear();
-            plantedPlantCounterDict = null;
-            bredPlantCounterDict = null;
-            SaveManager.Instance.Save();
-        }
-    }
+    //DateTime firstLoginTime = DateTime.FromBinary(Convert.ToInt64(PlayerPrefs.GetString("firstLoginTime")));
     public void UpdatePlantedPlantCounter(string dict)
     {
         Debug.Log("~Planted Plant Counter Dict Save - " + dict);
