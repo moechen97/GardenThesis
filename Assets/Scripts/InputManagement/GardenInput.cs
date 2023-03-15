@@ -73,6 +73,7 @@ namespace Planting
         public static bool isZoomingCamera = false;
         public static bool isPanningCamera = false;
         private bool isdragging = false;
+        private bool stopDragging = false;
 
         void Awake()
         {
@@ -325,6 +326,18 @@ namespace Planting
 
             stoptouch = false;
             isIdle = false;
+
+            if (!stopDragging)
+            {
+                isDraggingSeed = false;
+                isDragging_InScrollbar = false;
+                rotatingScreen = false;
+                _uiIndicator.gameObject.SetActive(false);
+                _uiIndicator.ResetIndicator();
+            }
+
+            stopDragging = false;
+
         }
 
         private IEnumerator WaitForTap()
@@ -591,6 +604,7 @@ namespace Planting
         }
         private void EndDrag(InputAction.CallbackContext context)
         {
+            stopDragging = true;
             isdragging = false;
             //Debug.Log("EndDrag");
             scrollbar.enabled = true;

@@ -38,6 +38,11 @@ namespace Planting
             ringsAnimator.SetBool("CanBreathe", false);
         }
 
+        public override void InteractSound()
+        {
+            _audioSource.PlayOneShot(interactAudios[randomSound]);
+        }
+
         public void EmitParticle()
         {
             Instantiate(emitParticle, emitPosition.position, Quaternion.identity);

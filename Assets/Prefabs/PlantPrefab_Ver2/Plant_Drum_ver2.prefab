@@ -1164,7 +1164,7 @@ MonoBehaviour:
   - {fileID: 4074416643279550495}
   - {fileID: 4074416643965454002}
   - {fileID: 4074416644307436453}
-  _plant: {fileID: 0}
+  _plant: {fileID: 4074416643147679540}
   _audioSource: {fileID: 4074416643147679541}
   bloomSounds: []
   growthAudios:

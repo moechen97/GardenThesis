@@ -9,7 +9,7 @@ namespace Planting
     public abstract class AnimationEvent_Plants : MonoBehaviour
     {
         [SerializeField] private Fungus_MaterialChange[] _materials;
-        [SerializeField] private Plant _plant;
+        [SerializeField] protected Plant _plant;
         [SerializeField] protected AudioSource _audioSource;
         [SerializeField] AudioClip[] bloomSounds;
         [SerializeField] protected AudioClip[] growthAudios;
@@ -23,7 +23,7 @@ namespace Planting
 
         private float randomPitch;
         private float soundPitch;
-        private int randomSound;
+        protected int randomSound;
         
         public virtual void Start()
         {

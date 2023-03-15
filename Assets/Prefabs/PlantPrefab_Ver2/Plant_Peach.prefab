@@ -895,7 +895,7 @@ MonoBehaviour:
   growthSpeed_minRange: 0.8
   growthSpeed_maxRange: 1
   aliveTimeRandomRange: 0
-  aliveTime: 4
+  aliveTime: 8
   isBreeding: 0
   growthRadius: 2.2
   hueValue: -0.05

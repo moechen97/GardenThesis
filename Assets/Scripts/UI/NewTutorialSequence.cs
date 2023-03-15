@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using Planting;
+using TMPro;
 
 namespace Planting
 {
@@ -25,6 +26,9 @@ namespace Planting
     [SerializeField] private GameObject tutorialGroup;
     [SerializeField] private GameObject creditButton;
     [SerializeField] private TMPro.TextMeshProUGUI skipTutorialButtonText;
+    [SerializeField] private TextMeshProUGUI viewButton1Text;
+    [SerializeField] private TextMeshProUGUI viewButton2Text;
+    [SerializeField] private TextMeshProUGUI viewText;
     private bool rotationFinishd = false;
     private bool zoomFinished = false;
     private bool panFinished = false;
@@ -36,6 +40,7 @@ namespace Planting
     private bool isPanning;
     private bool isCamera1Toggle = false;
     private bool isCamera2Toggle = false;
+    private bool isviewToggle = false;
     private bool iscameraResetFinished = false;
     private bool cameraReset = false;
     private bool buttonPressed = false;
@@ -65,6 +70,10 @@ namespace Planting
             CreateTutorialButton();
         }
 
+        viewButton1Text.color = new Color(1f, 1f, 1f, 0f);
+        viewButton2Text.color = new Color(1f, 1f, 1f, 0f);
+        viewText.color = new Color(1f, 1f, 1f, 1f);
+        
         HUDAnimation.instance.SetUpTutorialFormat();
         creditButton.SetActive(false);
         gameCanvas.alpha = 1;
@@ -165,7 +174,7 @@ namespace Planting
 
     IEnumerator CameraResetFinished()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         SettingCanvas.DOFade(0, 1.2f);
         yield return new WaitForSeconds(2f);
         HUDAnimation.instance.SeedFadeIn();
@@ -278,12 +287,34 @@ namespace Planting
 
     public void TapCamera1Botton()
     {
-        isCamera1Toggle = true;
+        if (isviewToggle)
+        {
+            isCamera1Toggle = true;
+            viewButton1Text.DOColor(new Color(1f, 1f, 1f, 0f), 0.5f);
+            viewButton2Text.DOColor(new Color(1f, 1f, 1f, 1f), 0.5f);
+           
+        }
     }
     
     public void TapCamera2Botton()
     {
-        isCamera2Toggle = true;
+        if (isCamera1Toggle)
+        {
+            isCamera2Toggle = true;
+            viewButton2Text.DOColor(new Color(1f, 1f, 1f, 0f), 0.5f);
+
+        }
+    }
+
+    public void TapviewButton()
+    {
+        if (SaveManager.Instance.state.tutorialFinished)
+            return;
+        isviewToggle = true;
+        viewText.DOColor(new Color(1f, 1f, 1f, 0f), 0.5f);
+        viewButton1Text.DOColor(new Color(1f, 1f, 1f, 1f), 0.5f);
+        //viewText.SetActive(false);
+        
     }
 }
 

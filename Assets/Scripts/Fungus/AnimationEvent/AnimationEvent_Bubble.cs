@@ -8,6 +8,10 @@ namespace Planting
 {
     public class AnimationEvent_Bubble : AnimationEvent_Plants
     {
-
+        public override void InteractSound()
+        {
+            int ran = Random.Range(0, interactAudios.Length);
+            _audioSource.PlayOneShot(interactAudios[ran]);
+        }
     }
 }
