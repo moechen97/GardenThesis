@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -27,6 +28,7 @@ namespace Planting {
         [SerializeField] protected float growthRadius = 2F;
         [HideInInspector] private bool wasBred = false;
         [SerializeField] protected float hueValue;
+        [SerializeField] private GameObject reproductionEffect;
         
         // Start is called before the first frame update
         protected virtual void Start()
@@ -154,11 +156,33 @@ namespace Planting {
         protected virtual void Breed(Plant otherPlant, Vector3 direction, float distance)
         {
             Vector3 newPlantPosition = transform.position + direction * distance;
+            //StartCoroutine(ReproductionParticle(newPlantPosition));
             GameObject newPlant = GameObject.Instantiate(plantPrefab,newPlantPosition,quaternion.identity);
             newPlant.GetComponent<Plant>().WasBred();
             //newPlant.transform.position += direction * distance;
             otherPlant.isBreeding = false;
             isBreeding = false;
+        }
+
+        IEnumerator ReproductionParticle(Vector3 goalPosition)
+        {
+            if (!reproductionEffect)
+            {
+                yield return null;
+            }
+            Vector3 newPlantPosition = goalPosition;
+            GameObject particle = Instantiate(reproductionEffect, transform.position+Vector3.up*0.3f, quaternion.identity);
+            particle.transform.rotation = Quaternion.LookRotation(newPlantPosition-(transform.position+Vector3.up*0.3f));
+            particle.transform.DOMove(newPlantPosition+Vector3.up*0.3f, 1f);
+            yield return new WaitForSeconds(1f);
+            particle.transform.GetChild(0).gameObject.SetActive(false);
+            particle.transform.DOMove(newPlantPosition-Vector3.up*0.05f, 0.2f);
+            yield return new WaitForSeconds(0.05f);
+            particle.transform.DOScale(Vector3.zero, 0.1f);
+            yield return new WaitForSeconds(0.15f);
+            GameObject newPlant = GameObject.Instantiate(plantPrefab,newPlantPosition,quaternion.identity);
+            newPlant.GetComponent<Plant>().WasBred();
+            Destroy(particle);
         }
 
         public List<Vector3> Shuffle(List<Vector3> directionList)

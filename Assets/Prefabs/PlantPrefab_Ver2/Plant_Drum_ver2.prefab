@@ -184,6 +184,7 @@ MonoBehaviour:
   isBreeding: 0
   growthRadius: 5
   hueValue: 0.08
+  reproductionEffect: {fileID: 5720137426816063850, guid: eff793ad00c7e4426aea2be1e8de0383, type: 3}
   height_minRange: 0.8
   height_maxRange: 1.2
   XZScale: 1

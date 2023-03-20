@@ -21,8 +21,8 @@ namespace Planting
         [SerializeField] private Transform dieParticlePosition;
         [SerializeField] private Plant_StateControl _stateControl;
 
-        private float randomPitch;
-        private float soundPitch;
+        protected float randomPitch;
+        protected float soundPitch;
         protected int randomSound;
         
         public virtual void Start()
@@ -41,6 +41,7 @@ namespace Planting
 
         public void BreathSound()
         {
+            _audioSource.pitch = 1;
             int num = Random.Range(0, breatheAudios.Length);
             _audioSource.PlayOneShot(breatheAudios[num]);
         }
