@@ -98,13 +98,23 @@ namespace Planting
             seeds = PlantManager.instance.GetComponent<SeedDictionaryScript>().DeserializeDictionary();
             gardenControl.Plant.Hold.started += ctx => StartDrag(ctx);
             gardenControl.Plant.Hold.canceled += ctx => EndDrag(ctx);
+            gardenControl.Plant.Hold.performed += ctx => PerformDrag(ctx);
             gardenControl.Plant.Tap.started += ctx => StartTap(ctx);
             gardenControl.Plant.Tap.canceled += ctx => EndTap(ctx);
             gardenControl.Plant.SecondaryTouchContact.started += _ => ZoomStart();
             gardenControl.Plant.SecondaryTouchContact.canceled += _ => ZoomEnd();
             _virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
         }
-        
+
+        private void PerformDrag(InputAction.CallbackContext ctx)
+        {
+            Debug.Log("performDrag");
+            isdragging = true;
+            StartCoroutine(WaitForDrag());
+            stoptouch = false;
+            isIdle = false;
+        }
+
 
         public void ResetPosition()
         {
@@ -317,6 +327,8 @@ namespace Planting
                     Destroy(menu.menuObject);
                     isOnPlantMenu = false;
                 }
+                StopRotating();
+                camFocusPoint.transform.DOKill();
             }
 
             if (!isOnPlantMenu)
@@ -519,13 +531,17 @@ namespace Planting
         private void StartDrag(InputAction.CallbackContext context)
         {
             //Check for taps on UI seeds
+            /*Debug.Log("StartDrag");
             isdragging = true;
             StartCoroutine(WaitForDrag());
             stoptouch = false;
-            isIdle = false;
+            isIdle = false;*/
+            StartCoroutine(WaitForStartDrag());
+            StopRotating();
+            camFocusPoint.transform.DOKill();
         }
 
-        private IEnumerator WaitForDrag()
+        private IEnumerator WaitForStartDrag()
         {
             yield return new WaitForEndOfFrame();
             if(twoFingers)
@@ -557,6 +573,41 @@ namespace Planting
                     }
                 }
             }
+        }
+
+
+        private IEnumerator WaitForDrag()
+        {
+            yield return new WaitForEndOfFrame();
+            if(twoFingers)
+            {
+                yield return null;
+            }
+            Vector2 fingerPos = gardenControl.Plant.FirstFingerPosition.ReadValue<Vector2>();
+            Vector3 screenCoordinates = new Vector3(fingerPos.x, fingerPos.y, cameraMain.nearClipPlane);
+            screenCoordinates.z = 0.0F;
+            PointerEventData pointerEventData = new PointerEventData(eventSystem);
+            pointerEventData.position = screenCoordinates;
+            List<RaycastResult> UIresults = new List<RaycastResult>();
+            UIgraphicRaycaster.Raycast(pointerEventData, UIresults);
+            /*foreach (RaycastResult result in UIresults)
+            {
+                isScrolling = true;
+                foreach (KeyValuePair<PlantType, GameObject> plant in seeds)
+                {
+                    if(result.gameObject.name.Equals(plant.Key.ToString()))
+                    {
+                        if (!result.gameObject.GetComponentInParent<UIButtonCooldown>().GetCountDownState())
+                        {
+                            presseButtonCooldown =
+                                result.gameObject.GetComponentInParent<UIButtonCooldown>();
+                            isDraggingSeed = true;
+                            isDragging_InScrollbar = true;
+                            currSeed = plant.Key;  
+                        }
+                    }
+                }
+            }*/
             if(!isDraggingSeed && !twoFingers && UIresults.Count == 0)
             {
                 RaycastHit hit;

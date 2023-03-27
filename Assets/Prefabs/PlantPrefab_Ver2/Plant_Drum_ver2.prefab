@@ -1169,18 +1169,33 @@ MonoBehaviour:
   _audioSource: {fileID: 4074416643147679541}
   bloomSounds: []
   growthAudios:
-  - {fileID: 8300000, guid: 0cf35132c53c04427a225b28af31417b, type: 3}
+  - {fileID: 8300000, guid: ae68c7bf7e9b042389959320d7fdf3ca, type: 3}
+  - {fileID: 8300000, guid: f4e7e4a7c1dbf4b6594e49837c4b973c, type: 3}
+  - {fileID: 8300000, guid: 1a7c373e4241446fc94a5f9ca07fc2e3, type: 3}
+  - {fileID: 8300000, guid: a52ca86bf37e74b05938cd21179fa6e0, type: 3}
+  - {fileID: 8300000, guid: 4b1e38269a56d445ca8bc8d0c5bb09ec, type: 3}
   breatheAudios:
-  - {fileID: 8300000, guid: 511cf776c20ae415cbbad9d5346fce27, type: 3}
+  - {fileID: 8300000, guid: 5b3312087730d4258a57ae7e7baf058b, type: 3}
+  - {fileID: 8300000, guid: f724b8a22dd464252a90f57ea574a8c3, type: 3}
+  - {fileID: 8300000, guid: abd14397eaf3049188a4f35ba656280d, type: 3}
+  - {fileID: 8300000, guid: 7d23d7a171b554ea1a6639f0a7f85721, type: 3}
+  - {fileID: 8300000, guid: f31c9aa575fb642b295b7ecd5f8c4af6, type: 3}
   interactAudios:
-  - {fileID: 8300000, guid: 6b2ef222196444a898689c131342f1e2, type: 3}
-  witheredAudios:
-  - {fileID: 8300000, guid: 71cd9c3beb07f419b80c43c15d9ef7b5, type: 3}
+  - {fileID: 8300000, guid: 92969a393e0c04d7a8f6f867c414ba7b, type: 3}
+  - {fileID: 8300000, guid: 39c2eb51c561e4dbbb7cb4bfe92141c1, type: 3}
+  - {fileID: 8300000, guid: 529abb5505a994dc4afe1d42d2b13a1a, type: 3}
+  - {fileID: 8300000, guid: c8c6175e20dae4dac81b53fb12ffbf8e, type: 3}
+  - {fileID: 8300000, guid: cb1b727dcebef42529ab7b98cf3618fe, type: 3}
+  witheredAudios: []
   dieParticle: {fileID: 4074416643147679536}
   dieParticlePosition: {fileID: 0}
   _stateControl: {fileID: 4074416643147679538}
   particleSound:
-  - {fileID: 8300000, guid: 2132a2ed9888145c4ae177e4e9754882, type: 3}
+  - {fileID: 8300000, guid: b4cbd30facd8a4b38a5acc208af468e5, type: 3}
+  - {fileID: 8300000, guid: 420e58e86537a4ff5984ca5f2967c6a7, type: 3}
+  - {fileID: 8300000, guid: fa9d1be3d81834cae8ca43418e684b1c, type: 3}
+  - {fileID: 8300000, guid: 3540d4a9792534559be96d2fd1395d97, type: 3}
+  - {fileID: 8300000, guid: 09de8063f61cc4373b4c59ca2f56c053, type: 3}
   emitParticle: {fileID: 3948436799340536499, guid: cc155d5a7345449e7a497f4eab4c8d34, type: 3}
   emitPosition: {fileID: 8589730538834697971}
 --- !u!1 &3951019097167700638 stripped
