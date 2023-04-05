@@ -1539,14 +1539,21 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 657639f4875b2428e8fd0918345d10e1, type: 3}
   - {fileID: 8300000, guid: a06d58ec6706b4a7480590cf11a67303, type: 3}
   - {fileID: 8300000, guid: 51c1eead76f5c4f08845f8fdb79b59db, type: 3}
+  - {fileID: 8300000, guid: 725c01469fe174acb923a40cc9a79e4d, type: 3}
+  - {fileID: 8300000, guid: 38711fd50dcbd406999c4396682b096b, type: 3}
   growthAudios: []
   breatheAudios:
   - {fileID: 8300000, guid: e589b0d80dee941f2a03f3a2d7032f47, type: 3}
   - {fileID: 8300000, guid: 584e39f5f4017415fb73d1b945da1da4, type: 3}
   - {fileID: 8300000, guid: 13d625193156f432d8bbed5f8bb4e5a6, type: 3}
+  - {fileID: 8300000, guid: 4862937af23094e2e8bffe3cdb240a73, type: 3}
+  - {fileID: 8300000, guid: c5bda103c41a447cd8cc6555ea2b458d, type: 3}
   interactAudios:
   - {fileID: 8300000, guid: b067536cda7ae4a42820e7e0cf9b5305, type: 3}
   - {fileID: 8300000, guid: 50093a4b326a34e7c806b9fd8b3f0e0e, type: 3}
+  - {fileID: 8300000, guid: 4e53cfa47c6424de6b7c12a44e42998e, type: 3}
+  - {fileID: 8300000, guid: b4383d05fd46349b7b2b974ba41b9600, type: 3}
+  - {fileID: 8300000, guid: b9be139febb5d4aa9ba34355b98fa748, type: 3}
   witheredAudios: []
   dieParticle: {fileID: 0}
   dieParticlePosition: {fileID: 0}

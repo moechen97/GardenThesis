@@ -79,6 +79,7 @@ public class Plant_State_Control_Manager : MonoBehaviour
         }
         prevInteractionCount = interactingPlants.Count;
         lastVolumeDirection = volumeDirection;
+        Debug.Log("interactingPlants.Count "+ interactingPlants.Count );
     }
     private void EndVolumeAdjustment()
     {

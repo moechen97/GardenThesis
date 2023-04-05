@@ -1152,12 +1152,12 @@ MonoBehaviour:
   _audioSource: {fileID: 204825766393873444}
   bloomSounds: []
   growthAudios:
-  - {fileID: 8300000, guid: 70ed3e17dfec44c8a80d11d506167bf4, type: 3}
-  - {fileID: 8300000, guid: 3a947f57f9e8e4a3390a071c47105d3f, type: 3}
-  - {fileID: 8300000, guid: aa8416cf0e1e1414db891b5189bb4017, type: 3}
-  - {fileID: 8300000, guid: f0d9963c1f27b4d6c93de76e80b33ebb, type: 3}
-  - {fileID: 8300000, guid: 23a6a5ad6a0bc4431aa9964c591e788a, type: 3}
-  - {fileID: 8300000, guid: 802e33bcef90340e295304e1ed2ff14e, type: 3}
+  - {fileID: 8300000, guid: d61ebf43a3e944a25b0ad37d2e269244, type: 3}
+  - {fileID: 8300000, guid: 111569f2cf1574ac69ddbf0ccc4266d7, type: 3}
+  - {fileID: 8300000, guid: 78dc55fb57052493d9f771827b186989, type: 3}
+  - {fileID: 8300000, guid: 7465d225a5fd743ea8dcd69daa1ce78a, type: 3}
+  - {fileID: 8300000, guid: 7b3cee826ae554f339f418bd0bc54000, type: 3}
+  - {fileID: 8300000, guid: c8259eea0b4a341d4b16c91fdeb712b8, type: 3}
   breatheAudios:
   - {fileID: 8300000, guid: 6bd7d4788e7c547b89f655540f4a742c, type: 3}
   - {fileID: 8300000, guid: 58f86a20330594fffab621e1545b783b, type: 3}
@@ -1166,12 +1166,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5237ee42d265f4dfebb0edfdf648dd90, type: 3}
   - {fileID: 8300000, guid: 7284603cf6ca14b809b1bf9bb00e127a, type: 3}
   interactAudios:
-  - {fileID: 8300000, guid: aef3cb8d82ba847aa95c0b27dc0c9323, type: 3}
-  - {fileID: 8300000, guid: 0671def32b4594f388e6e6dd601024b8, type: 3}
-  - {fileID: 8300000, guid: 49c32c29dc7424c50be382553c75a50c, type: 3}
-  - {fileID: 8300000, guid: dfefa8b7351cc43999120d639934d632, type: 3}
-  - {fileID: 8300000, guid: 1724631a0b2c0425abb3fecdbdaaa2ac, type: 3}
-  - {fileID: 8300000, guid: 9abf8b310a01d483bb5a26ba44ab9a41, type: 3}
+  - {fileID: 8300000, guid: f6d2a728cf8b247a1a02282a00dbe67d, type: 3}
+  - {fileID: 8300000, guid: d818b0979d98349a189e7a9d9f685c46, type: 3}
+  - {fileID: 8300000, guid: 3e6f2453c0fa74596b52d6f9abe5cc6f, type: 3}
+  - {fileID: 8300000, guid: 041ddc9f3dd17469382443ca457cbe6b, type: 3}
+  - {fileID: 8300000, guid: 2c57f4ba2cccd4b8d9788643b9a47136, type: 3}
+  - {fileID: 8300000, guid: c3067426c5f99445cae639f8d91d1298, type: 3}
   witheredAudios:
   - {fileID: 8300000, guid: 8f213f14c90a34f99a9280db3e98d27d, type: 3}
   - {fileID: 8300000, guid: 7a0791c78f732416ab7a3c7c6bd2a49d, type: 3}

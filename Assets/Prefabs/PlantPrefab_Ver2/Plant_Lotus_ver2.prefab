@@ -2703,11 +2703,11 @@ MonoBehaviour:
   breatheAudios:
   - {fileID: 8300000, guid: d173cea2cbb67463aad555ffb3ba8618, type: 3}
   interactAudios:
-  - {fileID: 8300000, guid: 4beba7470443447a99da160953ab4ef8, type: 3}
-  - {fileID: 8300000, guid: ee15f4154fb8a4296b128ff24e28f38e, type: 3}
-  - {fileID: 8300000, guid: 4152a378644ad43069221ace4deb9be6, type: 3}
-  - {fileID: 8300000, guid: 99b3523ad1a9c4cc1a2987384036b5aa, type: 3}
-  - {fileID: 8300000, guid: 786bff0e3f35746669896ffea80052d1, type: 3}
+  - {fileID: 8300000, guid: 49e93f9184989419291fa72ec48287cf, type: 3}
+  - {fileID: 8300000, guid: f98a4f2d03b274e6c8f20fc15bff1488, type: 3}
+  - {fileID: 8300000, guid: c0f4bc85c12ff41ffac47777b5a42a41, type: 3}
+  - {fileID: 8300000, guid: d4eadfaca9cfb486a83bc94696851f43, type: 3}
+  - {fileID: 8300000, guid: 5c27c0c60e9d74059b3d567e4668a828, type: 3}
   witheredAudios:
   - {fileID: 8300000, guid: 235921583da8e427b919a432943d8cc6, type: 3}
   dieParticle: {fileID: 0}

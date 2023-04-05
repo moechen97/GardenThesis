@@ -1021,12 +1021,22 @@ MonoBehaviour:
   _audioSource: {fileID: 4569493714470857910}
   bloomSounds: []
   growthAudios:
-  - {fileID: 8300000, guid: 047fe5eaac3d748408a0c0293151edbe, type: 3}
+  - {fileID: 8300000, guid: 80035946bee264832926f07fc62d9612, type: 3}
+  - {fileID: 8300000, guid: fd6e2571df53a4d6ba9ab60d71481668, type: 3}
+  - {fileID: 8300000, guid: 8679a056d7456407ab499deaa7f24297, type: 3}
+  - {fileID: 8300000, guid: 195e449fca25f4b70b2992e9a4a307f1, type: 3}
   breatheAudios: []
   interactAudios:
-  - {fileID: 8300000, guid: 04328facc94f0491da316665bcee6eee, type: 3}
+  - {fileID: 8300000, guid: 1513945e044cd4b63907dfeef4f6e800, type: 3}
+  - {fileID: 8300000, guid: 093349dfaddc94c34aab60cf90034af3, type: 3}
+  - {fileID: 8300000, guid: 4784f8a25d5334f82a053ef331b48459, type: 3}
+  - {fileID: 8300000, guid: 1b6514a098687454894b70d8cabfb808, type: 3}
   witheredAudios:
-  - {fileID: 8300000, guid: 68c84cbbf727548f09ed5ab08afd3901, type: 3}
+  - {fileID: 8300000, guid: d479db5f9b9574499b574201f892845d, type: 3}
+  - {fileID: 8300000, guid: 7a82420f7e5ca4c0b858384e4268c720, type: 3}
+  - {fileID: 8300000, guid: fce67a8414cbe4db69d79b88612bc17b, type: 3}
+  - {fileID: 8300000, guid: 2ada291b19ce849efadcea8b209f1cd5, type: 3}
+  - {fileID: 8300000, guid: 1b58a2d82244b404bb3a960d035533d1, type: 3}
   dieParticle: {fileID: 0}
   dieParticlePosition: {fileID: 0}
   _stateControl: {fileID: 4569493714470857911}
