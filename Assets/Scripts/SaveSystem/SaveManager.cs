@@ -9,7 +9,6 @@ public class SaveManager : MonoBehaviour
     public SaveState state;
     private DateTime currLoginTime;
     [HideInInspector] public bool hasCheckedReset = false;
-
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -20,6 +19,7 @@ public class SaveManager : MonoBehaviour
     // Update is called once per frame
     public void Save()
     {
+        Debug.Log("SAVING STATE: " + state.ToString());
         PlayerPrefs.SetString("save", SaveHelper.Serialize<SaveState>(state));
     }
 

@@ -431,7 +431,6 @@ namespace Planting
                 {
                     //Set square indicator when user is dragging object
                     _uiIndicator.gameObject.SetActive(true);
-                    Debug.Log("ActiveIndicator");
                     _uiIndicator.transform.position = screenCoordinates;
                     RaycastHit hit;
                     Ray ray = cameraMain.ScreenPointToRay(screenCoordinates);

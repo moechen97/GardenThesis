@@ -39,6 +39,8 @@ namespace Planting
             GameEvents.current.onPlantFullyGrownTrigger += FullyGrownPlant;
             unlockablePlantManager = GetComponent<UnlockablePlantManager>();
             saveManager = SaveManager.Instance;
+            Debug.Log("PLANTY PLANT PLANTED : " + saveManager.state.plantedPlantCounterDict);
+            Debug.Log("PLANTY PLANT BRED: " + saveManager.state.bredPlantCounterDict);
             plantedPlantCounter = JsonConvert.DeserializeObject<Dictionary<PlantType, int>>(saveManager.state.plantedPlantCounterDict);
             bredPlantCounter = JsonConvert.DeserializeObject<Dictionary<PlantType, int>>(saveManager.state.bredPlantCounterDict);
             if (plantedPlantCounter == null)
