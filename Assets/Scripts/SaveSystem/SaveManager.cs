@@ -40,6 +40,14 @@ public class SaveManager : MonoBehaviour
             hasCheckedReset = true;
         }
     }
+    void OnApplicationFocus()
+    {
+        PlayerPrefs.Save();
+    }
+    void OnApplicationPause ()
+    {
+        PlayerPrefs.Save();
+    }
     public void TutorialFinished()
     {
         state.tutorialFinished = true;
