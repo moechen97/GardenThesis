@@ -1,5 +1,5 @@
 using Newtonsoft.Json;
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,9 +19,9 @@ namespace Planting
         public static Transform SpikeTransform { get; private set; }
 
         //plant counting for unlockables
-        public static Dictionary<PlantType, int> plantCounter = new Dictionary<PlantType, int>();
-        public static Dictionary<PlantType, int> plantedPlantCounter;
-        public static Dictionary<PlantType, int> bredPlantCounter;
+        [NonSerialized] public Dictionary<PlantType, int> plantCounter = new Dictionary<PlantType, int>();
+        [NonSerialized] public Dictionary<PlantType, int> plantedPlantCounter = new Dictionary<PlantType, int>();
+        [NonSerialized] public Dictionary<PlantType, int> bredPlantCounter = new Dictionary<PlantType, int>();
 
         public static float plantLifeFactor = 1;
         private void Awake()
@@ -39,8 +39,6 @@ namespace Planting
             GameEvents.current.onPlantFullyGrownTrigger += FullyGrownPlant;
             unlockablePlantManager = GetComponent<UnlockablePlantManager>();
             saveManager = SaveManager.Instance;
-            Debug.Log("PLANTY PLANT PLANTED : " + saveManager.state.plantedPlantCounterDict);
-            Debug.Log("PLANTY PLANT BRED: " + saveManager.state.bredPlantCounterDict);
             plantedPlantCounter = JsonConvert.DeserializeObject<Dictionary<PlantType, int>>(saveManager.state.plantedPlantCounterDict);
             bredPlantCounter = JsonConvert.DeserializeObject<Dictionary<PlantType, int>>(saveManager.state.bredPlantCounterDict);
             if (plantedPlantCounter == null)
@@ -52,6 +50,16 @@ namespace Planting
                 bredPlantCounter = new Dictionary<PlantType, int>();
             }
             foreach(PlantType type in activePlants)
+            {
+                SetPlantCounter(type);
+            }
+        }
+        public void ResetSave()
+        {
+            plantedPlantCounter = new Dictionary<PlantType, int>();
+            bredPlantCounter = new Dictionary<PlantType, int>();
+            plantCounter = new Dictionary<PlantType, int>();
+            foreach (PlantType type in activePlants)
             {
                 SetPlantCounter(type);
             }

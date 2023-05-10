@@ -21,6 +21,7 @@ public class SaveManager : MonoBehaviour
     {
         Debug.Log("SAVING STATE: " + state.ToString());
         PlayerPrefs.SetString("save", SaveHelper.Serialize<SaveState>(state));
+        PlayerPrefs.Save();
     }
 
     public void Load()
@@ -104,6 +105,8 @@ public class SaveManager : MonoBehaviour
         state.plantedPlantCounterDict = "";
         state.bredPlantCounterDict = "";
         Save();
+        Planting.PlantManager.instance.ResetSave();
+        Planting.UnlockablePlantManager.Instance.ResetSave();
     }
     public bool HasSavedAnythingYet()
     {

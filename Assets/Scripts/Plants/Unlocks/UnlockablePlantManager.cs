@@ -10,18 +10,29 @@ namespace Planting
     {
         public static bool unlockDisplayOpen = false;
         private Dictionary<PlantType, GameObject> unlockable_icons;
+        private Dictionary<PlantType, GameObject> unlockable_icons_copy;
         [SerializeField] GameObject seedPanel;
         [SerializeField] private GameObject newSeedPanel;
         [SerializeField] private GameObject grayIcon;
 
         private int indexcount = 0;
         private Dictionary<Unlockable, GameObject> unlockables;
+        private Dictionary<Unlockable, GameObject> unlockables_copy;
         private Unlockable lastUnlock = null;
         private SaveManager saveManager;
         private bool hasStartedGame = false;
+        public static UnlockablePlantManager Instance;
+        public void ResetSave()
+        {
+            unlockable_icons = unlockable_icons_copy;
+            unlockables = unlockables_copy;
+            lastUnlock = null;
+        }
         private void Awake()
         {
+            Instance = this;
             unlockable_icons = GetComponent<UnlockableIconDictionaryScript>().DeserializeDictionary();
+            unlockable_icons_copy = new Dictionary<PlantType, GameObject>(unlockable_icons);
         }
 
         private void Start()
@@ -54,10 +65,6 @@ namespace Planting
             List<KeyValuePair<PlantType, GameObject>> unlockablesList = unlockable_icons.ToList();
             foreach (KeyValuePair<PlantType, GameObject> unlockable in unlockablesList)
             {
-                if (unlockedPlants.Contains(unlockable.Key))
-                {
-                    continue;
-                }
                 Unlockable u = null;
                 if (unlockable.Key == PlantType.Plant_Peach)
                 {
@@ -91,7 +98,11 @@ namespace Planting
                 {
                     continue;
                 }
-                unlockables.Add(u, unlockable.Value);
+                unlockables_copy.Add(u, unlockable.Value);
+                if (!unlockedPlants.Contains(unlockable.Key))
+                {
+                    unlockables.Add(u, unlockable.Value);
+                }
             }
             //Shuffle unlockables dictionary to make the unlock order more unpredictable 
             unlockables = unlockables.Shuffle();
