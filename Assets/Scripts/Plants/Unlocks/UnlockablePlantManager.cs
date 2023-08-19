@@ -62,6 +62,7 @@ namespace Planting
                 SpawnGrayIcon();
             }
             unlockables = new Dictionary<Unlockable, GameObject>();
+            unlockables_copy = new Dictionary<Unlockable, GameObject>();
             List<KeyValuePair<PlantType, GameObject>> unlockablesList = unlockable_icons.ToList();
             foreach (KeyValuePair<PlantType, GameObject> unlockable in unlockablesList)
             {

@@ -19,9 +19,9 @@ namespace Planting
         public static Transform SpikeTransform { get; private set; }
 
         //plant counting for unlockables
-        [NonSerialized] public Dictionary<PlantType, int> plantCounter = new Dictionary<PlantType, int>();
-        [NonSerialized] public Dictionary<PlantType, int> plantedPlantCounter = new Dictionary<PlantType, int>();
-        [NonSerialized] public Dictionary<PlantType, int> bredPlantCounter = new Dictionary<PlantType, int>();
+        [NonSerialized] public static Dictionary<PlantType, int> plantCounter = new Dictionary<PlantType, int>();
+        [NonSerialized] public static Dictionary<PlantType, int> plantedPlantCounter = new Dictionary<PlantType, int>();
+        [NonSerialized] public static Dictionary<PlantType, int> bredPlantCounter = new Dictionary<PlantType, int>();
 
         public static float plantLifeFactor = 1;
         private void Awake()
@@ -115,7 +115,7 @@ namespace Planting
             //{
             //    return false;
             //}
-            float random = Random.value;
+            float random = UnityEngine.Random.value;
             //if (type == PlantType.MushroomDarkGreen)
             //{
                 //randomize mushroom spawning validity
